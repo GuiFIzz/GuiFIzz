@@ -1,0 +1,5 @@
+# Contact lists and client data never go in git (this repo is public).
+metabolic-free/data/private/
+*.csv
+*.xlsx
+*.xls

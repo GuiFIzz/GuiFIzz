@@ -10,7 +10,7 @@
 - [ ] Load email + SMS sequences from `campaigns/`
 - [ ] Coach records **the hero video: 1 body + 3 openings, 20 minutes** (see `campaigns/hero-video.md`)
 - [ ] Telehealth: pick Altrohealth or OpenLoop, get the referral/intake flow + payout terms in writing, confirm whether their LegitScript covers your ads (see guardrails §2)
-- [ ] **Warm-start list:** export GFC Xtreme members, past clients and phone contacts → personal "I'm launching" message + quiz link (the fastest first 5 clients)
+- [ ] **Warm list (~600):** run `tools/prepare_list.py`, verify emails, then launch per `campaigns/warm-list-launch.md`. Original note: export GFC Xtreme members, past clients and phone contacts → personal "I'm launching" message + quiz link (the fastest first 5 clients)
 
 ## Phase 1: Prove the funnel (Weeks 3–6). Small budget, learn fast.
 - Budget: **$500/month ≈ $16/day on Meta** only: 1 ad set, the hero video × 3 openings (GLP-1 muscle / hidden pre-diabetes / every tool)

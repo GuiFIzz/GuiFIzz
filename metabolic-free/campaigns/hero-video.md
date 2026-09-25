@@ -67,7 +67,22 @@ your own contacts, followers and ad audiences only.
 - When that happens, record **one new body** or **3 new openings**. That's about 15 minutes of filming a month.
 - Organic posts can reuse the same video every few weeks with a new caption. Most followers won't have seen it.
 
-## The one thing only you can do
+## Production with Higgsfield
 
-Record it. Your own face and voice are what sell coaching. **Batch day: 20 minutes.**
-Phone on a tripod, window light, gym background, 3 openings + 1 body, done.
+**Rule: the person talking is you.** Higgsfield makes it look professional; it doesn't replace you. People buy a
+coach they trust, and Meta and the FTC both penalize misleading AI content in health ads.
+
+| Piece | How | Higgsfield tool |
+|---|---|---|
+| The body + 3 openings | **Option 1 (best):** you on camera, 10 min of phone footage. **Option 2:** an avatar built from your own photos + a clone of your own voice, reading the script | Upscale / reframe · or avatar + `create_voice` from your recordings |
+| B-roll (cutaways) | Lifting, protein meal, breathing into a Lumen, a morning walk, a coaching video call | Image → video generation |
+| Formats | 9:16 (Reels/TikTok/Shorts), 4:5 (feed), 1:1 | Reframe |
+| Captions + end card | Quiz URL, "Free Lumen ($249 value)" | Editor / CapCut |
+
+**Never generate:** fake clients, fake testimonials, AI before/after bodies, anyone in a white coat or presented as a
+doctor, or a real brand's medication packaging. If the talking person is an AI avatar, turn on Meta's "AI info"
+disclosure. Real-looking AI people who don't exist, presented as clients, are deceptive advertising.
+
+**What I need from you to produce it:** 10–20 clear photos of you (face, gym, different angles), 1–2 minutes of
+your voice reading anything (for the voice clone, only if you choose Option 2), and your OK on the final script above.
+Or just the phone footage for Option 1.

@@ -44,7 +44,9 @@ it improved.
 | [`docs/04-compliance-guardrails.md`](docs/04-compliance-guardrails.md) | Hard rules every agent enforces (health claims, GLP-1 ads, HIPAA, SMS, LinkedIn). |
 | [`docs/05-launch-plan.md`](docs/05-launch-plan.md) | 90-day rollout, week by week. |
 | [`agents/`](agents/) | One spec per agent: job, inputs, outputs, KPIs, guardrails, handoffs. |
-| [`campaigns/hero-video.md`](campaigns/hero-video.md) | **Launch playbook:** one video, one offer, blasted to every channel. |
+| [`campaigns/hero-video.md`](campaigns/hero-video.md) | **Launch playbook:** one video, one offer, blasted to every channel (Higgsfield production brief). |
+| [`campaigns/warm-list-launch.md`](campaigns/warm-list-launch.md) | **Day-one blast** to the ~600-contact warm list: emails, compliant texts, the math. |
+| [`tools/prepare_list.py`](tools/prepare_list.py) | Cleans the contact file and splits it by email / SMS consent (output is git-ignored). |
 | [`campaigns/`](campaigns/) | Ready-to-use copy: Meta, Google, email, SMS, social calendar, LinkedIn outreach. |
 | [`site/index.html`](site/index.html) | Landing page + Metabolic Score quiz (lead capture). |
 | [`data/schema.sql`](data/schema.sql) | Lead/client pipeline + evidence log (Postgres / Supabase). |

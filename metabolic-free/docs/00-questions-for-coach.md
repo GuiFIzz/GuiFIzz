@@ -11,16 +11,18 @@
 | Renewal | After 3 months: 6-month commitment at $199/mo | Calculator, offer |
 | Lumen membership | First 12 months included with the device | Calculator (no app cost) |
 | Launch approach | One video, one offer, pushed through every channel | `campaigns/hero-video.md` |
+| Video production | Higgsfield (the coach is the face/voice) | `campaigns/hero-video.md` |
+| Warm list | ~600 contacts, all with email, some with phone; expect 5% → ~30 clients | `campaigns/warm-list-launch.md` |
 
 ## Still open (in priority order)
-1. **Will you record the hero video?** (20 minutes: 1 body + 3 openings.) Nothing launches without it.
-2. **What share of clients do you expect to take the $199 renewal?** (Calculator assumes 50%. At 30% the max cost per lead is ~$9; at 70% it's ~$13.)
+1. **Send the contact file** (CSV or Excel). Does it have a column showing who agreed to receive texts?
+2. **Video: Option 1 (your phone footage, enhanced) or Option 2 (avatar from your photos + your voice clone)?**
+3. **Renewal:** of clients who finish 3 months, what share do you expect to take $199 × 6? (Calculator assumes 50%.)
 3. Does **every** client get a free Lumen? (Calculator assumes yes.)
 4. **Session length:** 30 minutes? (It changes capacity: 45 min → ~59 clients.)
 5. **Telehealth payout:** what do you earn per GLP-1 / hormone client per month from Altrohealth or OpenLoop?
 6. **States / languages** you serve (a Portuguese/Spanish funnel could be a cheap, underserved channel).
-7. **Warm list size:** how many GFC Xtreme members, past clients and contacts can we message at launch?
-8. Client results with written permission, credentials to feature, existing social accounts and follower counts.
+7. Client results with written permission, credentials to feature, existing social accounts and follower counts.
 
 ---
 
