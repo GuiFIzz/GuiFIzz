@@ -1,5 +1,28 @@
 # Questions for the coach
 
+## Answered (Sept 2026)
+| Question | Answer | Where it's used |
+|---|---|---|
+| Price | $299/mo, 3-month minimum; focus on discipline, accountability and consistency | Calculator, offer, copy |
+| Lumen | Costs $199, sold for $249 | Calculator, offer |
+| Prescribing | Altrohealth or OpenLoop (LegitScript-certified) | Offer ladder, guardrails |
+| Ad budget | $500/month at launch, growing with clients | Calculator, compounding rule, Meta plan |
+| Coaching hours | 25/week → capacity ~81 clients | Calculator |
+
+## Still open (in priority order)
+1. **Can you record one 60-second phone video per week?** Organic content has to carry growth at $500/month.
+2. **After the 3-month minimum, how long do clients actually stay?** (Calculator assumes 5 months.)
+3. **Is the Lumen required for every client** or optional? (Calculator assumes every client buys it.)
+4. **Session length:** 30 minutes? (It changes capacity: 45 min → ~59 clients.)
+5. **Telehealth payout:** what do you earn per GLP-1 / hormone client per month from Altrohealth or OpenLoop?
+6. **States / languages** you serve (a Portuguese/Spanish funnel could be a cheap, underserved channel).
+7. **Warm list size:** how many GFC Xtreme members, past clients and contacts can we message at launch?
+8. Client results with written permission, credentials to feature, existing social accounts and follower counts.
+
+---
+
+## Original full question list (reference)
+
 Every default in this repo is a placeholder. Your answers turn it into your
 real system. Answer what you can; I've listed **why each answer matters**.
 The top block matters most.

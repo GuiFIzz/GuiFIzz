@@ -1,10 +1,10 @@
 # Meta ads (Facebook + Instagram)
 
 **Objective:** Leads (website conversion on quiz submit) → later Schedule.
-**Structure:** 1 campaign (CBO) → 3 ad sets (one per angle) → 2–3 creatives each.
+**Structure:** 1 campaign (CBO) → 2 ad sets at launch (Angles 1 + 2) → 2 creatives each. Add angles as the budget grows.
 **Audience:** broad, age 35–65, target states/regions only. Let creative do the targeting.
 (Health-condition interest targeting is largely removed by Meta, so don't rely on it.)
-**Budget (Phase 1):** $30–50/day total.
+**Budget:** $500/month ≈ **$16/day**, Meta only (Google waits until budget ≥ $1,000/month). With $16/day, run **2 angles, not 3**, so each gets enough data.
 **Link:** `https://<domain>/?utm_source=meta&utm_campaign={{campaign.name}}&utm_content={{ad.id}}`
 
 All copy passes `docs/04-compliance-guardrails.md`: no "you are diabetic", no drug brand names, no guaranteed results.
@@ -48,12 +48,12 @@ All copy passes `docs/04-compliance-guardrails.md`: no "you are diabetic", no dr
 > Stop guessing. Each morning a breath shows whether your body is running on fat or carbs, and that tells you
 > what to eat today.
 >
-> Our coaching clients get a **Lumen device free** with their program, plus a coach who reads the data with them
-> every two weeks.
+> Every coaching client starts with a **Lumen device** and a coach who reads the data with them every two weeks.
+> Discipline, accountability, consistency: the tools make it easier and the habits make it last.
 >
 > See if you qualify. Take the Metabolic Score. 👇
 
-**Headline:** Free metabolic device with coaching  **CTA:** See if you qualify
+**Headline:** Know when to eat. Coached every 2 weeks.  **CTA:** See if you qualify
 
 ## Angle 4 (test later): Every tool, then only habits
 **Hook:** "Medication, hormones, apps... use them. Then make yourself not need them."

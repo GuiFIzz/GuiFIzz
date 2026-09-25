@@ -49,7 +49,7 @@ names and hashed contact data, **never health answers**; see guardrails.)
 | Creative | Phone video (you) + Canva + AI image/video for b-roll | Real face + fast volume | CapCut |
 | Social scheduling | Meta Business Suite / Buffer / GHL Social Planner | Auto-posting | Later, Metricool |
 | Reporting | Supermetrics → dashboard, or GHL reports | Weekly 1-page report | Looker Studio |
-| Telehealth (Rx) | Partner platform with licensed clinicians | Needed for GLP-1s and hormones | Your own licensed clinician |
+| Telehealth (Rx) | **Altrohealth or OpenLoop** (LegitScript-certified, licensed clinicians) | Needed for GLP-1s and hormones | — |
 | HIPAA storage | A platform that signs a BAA with you | Required for health data when you're a covered entity | — |
 
 ## 4. The decision layer (how agents stay safe and improve)

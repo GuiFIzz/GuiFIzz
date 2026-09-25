@@ -1,27 +1,29 @@
 # 90-day launch plan
 
 ## Phase 0: Foundation (Weeks 1–2). Nothing runs until this is done.
-- [ ] Coach answers `00-questions-for-coach.md` → re-run `tools/economics.py` with real numbers
-- [ ] Domain + landing page live (`site/index.html`), privacy policy, terms, enrollment agreement (Lumen clause)
+- [x] Coach answered core numbers ($299/mo 3-mo min, Lumen $249/$199, $500/mo ads, 25 h/wk); calculator updated
+- [ ] Domain + landing page live (`site/index.html`), privacy policy, terms, enrollment agreement (3-month minimum, Lumen purchase, cancellation terms)
 - [ ] CRM set up (GoHighLevel or similar): pipeline stages match `data/schema.sql`
 - [ ] Booking calendar (discovery-call slots), reminders
 - [ ] Meta Business Manager, Pixel + Conversions API; Google Ads + GA4; **no health data in events**
 - [ ] SMS number registered (A2P 10DLC); email domain authenticated (SPF, DKIM, DMARC)
 - [ ] Load email + SMS sequences from `campaigns/`
 - [ ] Coach records 4 videos (see `campaigns/content-calendar.md`, "batch day")
-- [ ] Telehealth partner chosen; LegitScript status known
+- [ ] Telehealth: pick Altrohealth or OpenLoop, get the referral/intake flow + payout terms in writing, confirm whether their LegitScript covers your ads (see guardrails §2)
+- [ ] **Warm-start list:** export GFC Xtreme members, past clients and phone contacts → personal "I'm launching" message + quiz link (the fastest first 5 clients)
 
 ## Phase 1: Prove the funnel (Weeks 3–6). Small budget, learn fast.
-- Budget: **$30–50/day on Meta** only, 3 angles × 2 creatives each:
-  1. GLP-1 muscle preservation, 2. Power Warrior pre-diabetes, 3. Lumen "know when to eat"
+- Budget: **$500/month ≈ $16/day on Meta** only, 2 angles × 2 creatives each:
+  1. Keep your muscle (GLP-1 wedge), 2. Power Warrior pre-diabetes. The Lumen angle is tested in Phase 2.
 - Organic: 5 posts/week + 1 coach video/week, all pointing to the quiz
 - Google: turn on a Business Profile + ask every past client for a review
-- Goal: **50 leads, 5 booked calls/week, first 3–5 enrolled clients.** Gets real CPL, show and close rates.
+- Goal: **~55 paid leads + organic/warm leads → first 5–8 enrolled clients** (most from the warm list and organic). Gets real CPL, show and close rates.
 - Weekly: Reporting agent sends a 1-page report; coach approves kills/scales
 
 ## Phase 2: Scale what works (Weeks 7–10)
 - Kill the losing angle, put 70% of budget on the winner, 30% on new tests
-- Launch Google Search ($20–40/day) on high-intent terms (see `campaigns/google-ads.md`)
+- Ad budget grows by the compounding rule in `03-client-economics.md` ($500 + $100 × active clients)
+- Launch Google Search once the budget is ≥ $1,000/month (see `campaigns/google-ads.md`)
 - Launch retargeting (quiz starters who didn't finish, leads who didn't book)
 - Start the referral program (client gets a free month for each enrolled referral)
 - Start LinkedIn B2B outreach (corporate wellness pilot)
@@ -35,7 +37,7 @@
 ## Targets by Day 90 (placeholder, recalibrated after Phase 1)
 | Metric | Target |
 |---|---|
-| Active clients | 20–30 |
-| CPL | < max CPL from calculator |
+| Active clients | 15–25 (≈ $4.5–7.5k/mo recurring) |
+| CPL | < $13 (target $9) |
 | LTV:CAC | ≥ 3:1 |
 | Coach time spent on non-coaching work | < 2 h/week |

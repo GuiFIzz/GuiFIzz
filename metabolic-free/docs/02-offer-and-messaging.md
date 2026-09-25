@@ -18,6 +18,7 @@ Tagline options (A/B test):
 2. *Medication gets you started. Behavior keeps you there.*
 3. *Keep your muscle. Lose the dysfunction.*
 4. *Know when to eat, not just what to eat.* (a Lumen angle)
+5. *Discipline. Accountability. Consistency.* (the coach's core promise)
 
 ## Segments (each gets its own ads, quiz result and emails)
 
@@ -39,17 +40,20 @@ market, a real problem (lean mass loss), and few coaches own it.
 | 0 | **Metabolic Score quiz** + personalized results | Free | Lead capture + segmentation |
 | 1 | "7-Day Metabolic Reset" email/SMS mini-course | Free | Nurture, first quick win |
 | 2 | **Discovery call** (15–20 min) | Free | Conversion |
-| 3 | **Metabolic Free Coaching**: biweekly 1:1 + app + **free Lumen with 6-month commitment** | $X/mo | Core offer |
-| 4 | + Telehealth add-on (GLP-1 / hormone evaluation via licensed partner) | Partner pricing | Tools layer |
+| 3 | **Metabolic Free Coaching**: biweekly 1:1, 3-month minimum, built on discipline, accountability and consistency | **$299/mo** | Core offer |
+| 3b | **Lumen metabolic device** (onboarding kit) | **$249** one-time (your cost $199) | Daily data between sessions |
+| 4 | + Telehealth add-on: GLP-1 / hormone evaluation via **Altrohealth or OpenLoop** (licensed clinicians, LegitScript-certified) | Partner pricing | Tools layer |
 | 5 | Power Warrior group (monthly group call + community) | Lower $/mo | Downsell / alumni retention |
 
-### The Lumen offer (structure matters)
-- **Headline:** "Free Lumen metabolic device when you join."
-- **Condition:** 6-month commitment (or pay in full). If they cancel early, they either return the device or pay
-  its cost. Put this in the enrollment agreement.
-- **Why it's valuable to *us*, not just them:** Lumen breath data (fat vs. carb burn) gives you a daily signal
-  between biweekly sessions. The Retention agent watches for missed logs and nudges. **Adherence data = retention.**
-- Ship **after** first payment clears, never before.
+### The Lumen offer
+- **Price:** $249 one-time, charged with the first month ($299 + $249 = **$548 at enrollment**). Your cost is $199.
+- **Framing:** "Your onboarding kit: the Lumen device that shows whether you're burning fat or carbs each morning."
+  Sell it as part of the program, not as an optional add-on.
+- **Why it matters to the business:** Lumen breath data gives you a daily signal between biweekly sessions. The Retention
+  agent watches for missed logs and nudges. **Adherence data = retention**, and retention past the 3-month minimum
+  is where most of the profit is.
+- Ship **after** the first payment clears.
+- **Test later:** "Lumen included when you pay 6 months up front" as a bonus to lengthen commitments.
 
 ## Voice
 

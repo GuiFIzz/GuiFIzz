@@ -18,6 +18,10 @@ not legal advice; have a healthcare attorney review before launch.*
 
 ## 2. GLP-1 and hormone therapy advertising
 
+- **Partners: Altrohealth / OpenLoop** hold LegitScript. That certification covers *their* domain and ads. **Your** ads
+  and landing page are a separate advertiser, so either (a) keep your ads coaching-first and send medication interest to the
+  partner's certified intake page, or (b) ask the partner whether their certification can extend to your co-branded page.
+  Confirm in writing before naming any drug in an ad.
 - **Google and Meta require LegitScript certification** (or equivalent) to advertise prescription drugs or
   online pharmacy/telehealth prescribing. Until you or your telehealth partner are certified:
   **ads promote coaching and Lumen, not medication.** Medication is discussed on the discovery call and in
