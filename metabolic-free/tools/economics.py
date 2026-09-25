@@ -21,7 +21,7 @@ ASSUMPTIONS = {
     "referrals_per_client": 0.3,      # new clients each client brings over lifetime
     # Costs per client
     "lumen_device_cost": 199.0,       # what one device costs you
-    "lumen_price": 249.0,             # what the client pays for it
+    "lumen_price": 0.0,               # what the client pays (0 = free device; $249 retail value)
     "lumen_attach_rate": 1.0,         # share of clients who buy it (1.0 = part of every enrollment)
     "lumen_sub_per_month": 0.0,       # if you pay the app subscription
     "software_per_client_month": 8.0, # CRM/SMS/etc. allocated
@@ -69,7 +69,7 @@ def run(a):
     print("\n== ONE CLIENT ==")
     print(f"Revenue / month ................. ${rev_month:,.0f}")
     print(f"Gross profit / month ............ ${gross_month:,.0f}")
-    print(f"Lumen net per client ............ ${lumen_net:,.0f}")
+    print(f"Lumen net per client (- = cost) . ${lumen_net:,.0f}")
     print(f"Guaranteed gross (3-mo minimum) . ${guaranteed_gp:,.0f}")
     print(f"Lifetime gross profit (LTV) ..... ${gp_ltv:,.0f}")
     print(f"LTV incl. referrals ............. ${gp_ltv_with_referrals:,.0f}")

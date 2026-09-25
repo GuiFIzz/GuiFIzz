@@ -4,7 +4,7 @@
 | Question | Answer | Where it's used |
 |---|---|---|
 | Price | $299/mo, 3-month minimum; focus on discipline, accountability and consistency | Calculator, offer, copy |
-| Lumen | Costs $199, sold for $249 | Calculator, offer |
+| Lumen | **Free to the client** ($249 value); costs GFC Xtreme $199 | Calculator, offer, ads |
 | Prescribing | Altrohealth or OpenLoop (LegitScript-certified) | Offer ladder, guardrails |
 | Ad budget | $500/month at launch, growing with clients | Calculator, compounding rule, Meta plan |
 | Coaching hours | 25/week → capacity ~81 clients | Calculator |
@@ -12,7 +12,7 @@
 ## Still open (in priority order)
 1. **Can you record one 60-second phone video per week?** Organic content has to carry growth at $500/month.
 2. **After the 3-month minimum, how long do clients actually stay?** (Calculator assumes 5 months.)
-3. **Is the Lumen required for every client** or optional? (Calculator assumes every client buys it.)
+3. Does **every** client get a free Lumen, or only some plans? Who pays the Lumen app subscription after the first period? (Calculator assumes every client, and the client pays the app.)
 4. **Session length:** 30 minutes? (It changes capacity: 45 min → ~59 clients.)
 5. **Telehealth payout:** what do you earn per GLP-1 / hormone client per month from Altrohealth or OpenLoop?
 6. **States / languages** you serve (a Portuguese/Spanish funnel could be a cheap, underserved channel).

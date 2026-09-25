@@ -14,7 +14,7 @@ Without LegitScript certification, **don't bid on drug-name keywords**; they'll 
 **Negatives:** free, jobs, certification, course, salary, recipes, reddit, cheap, pill, "near me" (if fully remote)
 
 **RSA headlines (≤ 30 chars):**
-Metabolic Coaching Online · Keep Muscle, Lose Fat · Lumen + Coaching Program · Coach Check-In Every 2 Weeks ·
+Metabolic Coaching Online · Keep Muscle, Lose Fat · Free Lumen With Coaching · Coach Check-In Every 2 Weeks ·
 Take the Metabolic Score · Pre-Diabetes Program · Works With Your Doctor · Built for 40+
 
 **Descriptions (≤ 90 chars):**

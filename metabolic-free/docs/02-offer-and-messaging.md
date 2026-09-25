@@ -41,19 +41,19 @@ market, a real problem (lean mass loss), and few coaches own it.
 | 1 | "7-Day Metabolic Reset" email/SMS mini-course | Free | Nurture, first quick win |
 | 2 | **Discovery call** (15–20 min) | Free | Conversion |
 | 3 | **Metabolic Free Coaching**: biweekly 1:1, 3-month minimum, built on discipline, accountability and consistency | **$299/mo** | Core offer |
-| 3b | **Lumen metabolic device** (onboarding kit) | **$249** one-time (your cost $199) | Daily data between sessions |
+| 3b | **Lumen metabolic device: FREE** with enrollment ($249 value) | $0 to client; **$199 cost to GFC Xtreme** | Hook + daily data between sessions |
 | 4 | + Telehealth add-on: GLP-1 / hormone evaluation via **Altrohealth or OpenLoop** (licensed clinicians, LegitScript-certified) | Partner pricing | Tools layer |
 | 5 | Power Warrior group (monthly group call + community) | Lower $/mo | Downsell / alumni retention |
 
 ### The Lumen offer
-- **Price:** $249 one-time, charged with the first month ($299 + $249 = **$548 at enrollment**). Your cost is $199.
-- **Framing:** "Your onboarding kit: the Lumen device that shows whether you're burning fat or carbs each morning."
-  Sell it as part of the program, not as an optional add-on.
+- **Headline:** "Free Lumen metabolic device ($249 value) when you join."
+- **Cost to GFC Xtreme:** $199 per client. It's covered in month one ($299 coaching) and fully protected by the
+  3-month minimum ($897 committed per client).
+- **Rules:** ship only **after** the first payment clears. The enrollment agreement states the 3-month minimum is owed
+  even if the client cancels early (the device is theirs to keep). Never ship on a free trial.
 - **Why it matters to the business:** Lumen breath data gives you a daily signal between biweekly sessions. The Retention
   agent watches for missed logs and nudges. **Adherence data = retention**, and retention past the 3-month minimum
   is where most of the profit is.
-- Ship **after** the first payment clears.
-- **Test later:** "Lumen included when you pay 6 months up front" as a bonus to lengthen commitments.
 
 ## Voice
 

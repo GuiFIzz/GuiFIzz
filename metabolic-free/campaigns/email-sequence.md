@@ -10,7 +10,7 @@ From: Coach first name. Plain-text style (no heavy design). One link per email.
 | 2 | Why you crash at 3pm | Blood sugar swings + meal order (veg/protein first, carbs last). Action: try meal order today. |
 | 3 | A story: {{client_story}} | Consented client story from the same segment. CTA: "Want the same plan? Book 15 min." |
 | 4 | Medication, hormones, apps: my honest take | Tools are bridges, not destinations. How we combine GLP-1s/HRT (via licensed providers) with habits. |
-| 5 | Know when to eat | Lumen explained; how it's used in coaching ($249 onboarding kit). CTA: book a call. |
+| 5 | Know when to eat | Lumen explained; **free device ($249 value)** for every client. CTA: see if you qualify / book a call. |
 | 6 | 2 lifts that matter most after 40 | Strength basics, 2×/week. Action: do one session. |
 | 7 | Your reset recap + next step | Recap 6 habits. Strong CTA to book. |
 | 9 | "Is this for me?" | FAQ: cost range, time per week, remote, what if I'm on medication. CTA book. |
