@@ -1,10 +1,11 @@
 # Meta ads (Facebook + Instagram)
 
 **Objective:** Leads (website conversion on quiz submit) → later Schedule.
-**Structure:** 1 campaign (CBO) → 2 ad sets at launch (Angles 1 + 3; Angle 2 next) → 2 creatives each. Add angles as the budget grows.
+**Structure at launch:** 1 campaign → **1 ad set → the hero video with 3 openings** (see `hero-video.md`). The angles below are the
+caption/copy variants and the backlog for new videos once the budget grows.
 **Audience:** broad, age 35–65, target states/regions only. Let creative do the targeting.
 (Health-condition interest targeting is largely removed by Meta, so don't rely on it.)
-**Budget:** $500/month ≈ **$16/day**, Meta only (Google waits until budget ≥ $1,000/month). With $16/day, run **2 angles, not 3**: *Keep your muscle* + *Free Lumen / know when to eat* (the free device is the strongest hook), so each gets enough data.
+**Budget:** $500/month ≈ **$16/day**, Meta only (Google waits until budget ≥ $1,000/month). With $16/day, **one ad set** gets all the data. Split into more ad sets once the budget is ≥ $1,000/month.
 **Link:** `https://<domain>/?utm_source=meta&utm_campaign={{campaign.name}}&utm_content={{ad.id}}`
 
 All copy passes `docs/04-compliance-guardrails.md`: no "you are diabetic", no drug brand names, no guaranteed results.

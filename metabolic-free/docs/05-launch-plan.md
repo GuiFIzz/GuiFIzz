@@ -8,13 +8,13 @@
 - [ ] Meta Business Manager, Pixel + Conversions API; Google Ads + GA4; **no health data in events**
 - [ ] SMS number registered (A2P 10DLC); email domain authenticated (SPF, DKIM, DMARC)
 - [ ] Load email + SMS sequences from `campaigns/`
-- [ ] Coach records 4 videos (see `campaigns/content-calendar.md`, "batch day")
+- [ ] Coach records **the hero video: 1 body + 3 openings, 20 minutes** (see `campaigns/hero-video.md`)
 - [ ] Telehealth: pick Altrohealth or OpenLoop, get the referral/intake flow + payout terms in writing, confirm whether their LegitScript covers your ads (see guardrails §2)
 - [ ] **Warm-start list:** export GFC Xtreme members, past clients and phone contacts → personal "I'm launching" message + quiz link (the fastest first 5 clients)
 
 ## Phase 1: Prove the funnel (Weeks 3–6). Small budget, learn fast.
-- Budget: **$500/month ≈ $16/day on Meta** only, 2 angles × 2 creatives each:
-  1. Keep your muscle (GLP-1 wedge), 2. Free Lumen / know when to eat. Power Warrior pre-diabetes is tested in Phase 2.
+- Budget: **$500/month ≈ $16/day on Meta** only: 1 ad set, the hero video × 3 openings (GLP-1 muscle / hidden pre-diabetes / every tool)
+- **Blast day:** the same video goes to every free channel on launch day (see the distribution table in `hero-video.md`)
 - Organic: 5 posts/week + 1 coach video/week, all pointing to the quiz
 - Google: turn on a Business Profile + ask every past client for a review
 - Goal: **~65 paid leads + organic/warm leads → first 5–8 enrolled clients** (most from the warm list and organic). Gets real CPL, show and close rates.

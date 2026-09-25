@@ -14,8 +14,11 @@ import argparse
 
 ASSUMPTIONS = {
     # Revenue
-    "price_per_month": 299.0,         # coaching fee (3-month minimum)
-    "avg_months_retained": 5.0,       # ESTIMATE: 3 guaranteed by the minimum; replace with real average
+    "price_per_month": 299.0,         # phase 1 coaching fee
+    "minimum_months": 3.0,            # phase 1 commitment
+    "renewal_price": 199.0,           # phase 2: cheaper price for a longer commitment
+    "renewal_months": 6.0,            # phase 2 commitment
+    "renewal_rate": 0.50,             # ESTIMATE: share of clients who take the 6-month renewal
     "telehealth_attach_rate": 0.30,   # share of clients who add GLP-1 / hormone care
     "telehealth_margin_per_month": 60.0,  # your net per telehealth client-month
     "referrals_per_client": 0.3,      # new clients each client brings over lifetime
@@ -23,7 +26,7 @@ ASSUMPTIONS = {
     "lumen_device_cost": 199.0,       # what one device costs you
     "lumen_price": 0.0,               # what the client pays (0 = free device; $249 retail value)
     "lumen_attach_rate": 1.0,         # share of clients who buy it (1.0 = part of every enrollment)
-    "lumen_sub_per_month": 0.0,       # if you pay the app subscription
+    "lumen_sub_per_month": 0.0,       # Lumen membership: first 12 months included with the device
     "software_per_client_month": 8.0, # CRM/SMS/etc. allocated
     "payment_fee_pct": 0.03,
     # Funnel
@@ -41,14 +44,21 @@ ASSUMPTIONS = {
 
 
 def run(a):
-    months = a["avg_months_retained"]
-    rev_month = a["price_per_month"] + a["telehealth_attach_rate"] * a["telehealth_margin_per_month"]
-    cost_month = (a["lumen_sub_per_month"] + a["software_per_client_month"]
-                  + a["price_per_month"] * a["payment_fee_pct"])
-    gross_month = rev_month - cost_month
+    def gross(price):
+        rev = price + a["telehealth_attach_rate"] * a["telehealth_margin_per_month"]
+        return rev, rev - a["lumen_sub_per_month"] - a["software_per_client_month"] - price * a["payment_fee_pct"]
+
+    rev_month, gross_month = gross(a["price_per_month"])
+    rev_renew, gross_renew = gross(a["renewal_price"])
+    months = a["minimum_months"] + a["renewal_rate"] * a["renewal_months"]  # expected months per client
+    # Blended per-month figures for a full roster (weighted by time spent in each phase)
+    renew_share = a["renewal_rate"] * a["renewal_months"] / months
+    blended_rev = (1 - renew_share) * rev_month + renew_share * rev_renew
+    blended_gross = (1 - renew_share) * gross_month + renew_share * gross_renew
     lumen_net = a["lumen_attach_rate"] * (a["lumen_price"] * (1 - a["payment_fee_pct"]) - a["lumen_device_cost"])
-    gp_ltv = gross_month * months + lumen_net
-    guaranteed_gp = gross_month * 3 + lumen_net  # the 3-month minimum
+    guaranteed_gp = gross_month * a["minimum_months"] + lumen_net
+    renewal_gp = gross_renew * a["renewal_months"]
+    gp_ltv = guaranteed_gp + a["renewal_rate"] * renewal_gp
     # Referrals are free clients: count their value once (not recursively).
     gp_ltv_with_referrals = gp_ltv * (1 + a["referrals_per_client"])
 
@@ -67,10 +77,12 @@ def run(a):
     paid_clients = paid_leads * lead_to_client
 
     print("\n== ONE CLIENT ==")
-    print(f"Revenue / month ................. ${rev_month:,.0f}")
-    print(f"Gross profit / month ............ ${gross_month:,.0f}")
+    print(f"Phase 1 gross / month ........... ${gross_month:,.0f}  (${a['price_per_month']:.0f} x {a['minimum_months']:.0f} mo)")
+    print(f"Phase 2 gross / month ........... ${gross_renew:,.0f}  (${a['renewal_price']:.0f} x {a['renewal_months']:.0f} mo, {a['renewal_rate']:.0%} renew)")
+    print(f"Expected months per client ...... {months:.1f}")
     print(f"Lumen net per client (- = cost) . ${lumen_net:,.0f}")
-    print(f"Guaranteed gross (3-mo minimum) . ${guaranteed_gp:,.0f}")
+    print(f"Guaranteed gross (minimum) ...... ${guaranteed_gp:,.0f}")
+    print(f"Each 6-month renewal adds ....... ${renewal_gp:,.0f}")
     print(f"Lifetime gross profit (LTV) ..... ${gp_ltv:,.0f}")
     print(f"LTV incl. referrals ............. ${gp_ltv_with_referrals:,.0f}")
 
@@ -81,8 +93,8 @@ def run(a):
 
     print("\n== COACH CAPACITY ==")
     print(f"Max active clients .............. {capacity}")
-    print(f"Monthly revenue at capacity ..... ${capacity * rev_month:,.0f}")
-    print(f"Monthly gross profit at capacity  ${capacity * gross_month:,.0f}")
+    print(f"Monthly revenue at capacity ..... ${capacity * blended_rev:,.0f}")
+    print(f"Monthly gross profit at capacity  ${capacity * blended_gross:,.0f}")
     print(f"New clients / month to stay full  {new_clients_needed:.1f}")
     print(f"Leads / month needed ............ {new_clients_needed / lead_to_client:.0f}")
     print(f"Ad budget / month at max CPL .... ${new_clients_needed / lead_to_client * max_cpl:,.0f}")
