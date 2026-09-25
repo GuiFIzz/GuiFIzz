@@ -5,7 +5,7 @@ Answers four questions:
   1. What is one client worth (LTV, gross profit)?
   2. How much can we pay to acquire one (max CAC) and per lead (max CPL)?
   3. How many clients can the coach hold, and what does full capacity earn?
-  4. How long until the free Lumen pays for itself?
+  4. What does this ad budget actually buy?
 
 Edit ASSUMPTIONS (or pass --key value) with real numbers from
 docs/00-questions-for-coach.md. Run:  python3 tools/economics.py
