@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metabolic Free</title>
+<meta name="description" content="Take the free 2-minute Metabolic Score. Coaching that uses every tool now and builds habits for life.">
+<style>
+  :root { --bg:#0e1116; --card:#171b22; --ink:#eef1f5; --muted:#9aa4b2; --accent:#3ddc97; --accent-ink:#06281a; --line:#262c36; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:17px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; background:var(--bg); color:var(--ink); }
+  .wrap { max-width:720px; margin:0 auto; padding:0 16px; }
+  header { padding:56px 0 24px; }
+  .eyebrow { color:var(--accent); font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:13px; }
+  h1 { font-size:clamp(30px,6vw,46px); line-height:1.1; margin:.3em 0; }
+  .sub { color:var(--muted); font-size:19px; }
+  .btn { display:inline-block; background:var(--accent); color:var(--accent-ink); border:0; border-radius:10px; padding:14px 22px; font-weight:700; font-size:17px; cursor:pointer; text-decoration:none; }
+  .btn:disabled { opacity:.4; cursor:not-allowed; }
+  .pillars { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin:32px 0; }
+  .pill { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; }
+  .pill b { display:block; margin-bottom:4px; }
+  .pill span { color:var(--muted); font-size:15px; }
+  #quiz { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px; margin:24px 0 48px; }
+  .bar { height:6px; background:var(--line); border-radius:3px; margin-bottom:20px; overflow:hidden; }
+  .bar i { display:block; height:100%; width:0; background:var(--accent); transition:width .25s; }
+  .opt { display:block; width:100%; text-align:left; background:transparent; color:var(--ink); border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin:8px 0; font-size:16px; cursor:pointer; }
+  .opt:hover, .opt:focus-visible { border-color:var(--accent); outline:none; }
+  label { display:block; margin:12px 0 4px; font-size:15px; color:var(--muted); }
+  input[type=text], input[type=email], input[type=tel] { width:100%; padding:12px; border-radius:8px; border:1px solid var(--line); background:var(--bg); color:var(--ink); font-size:16px; }
+  .consent { display:flex; gap:10px; align-items:flex-start; font-size:13px; color:var(--muted); margin:12px 0; }
+  .consent input { margin-top:3px; }
+  .score { font-size:64px; font-weight:800; color:var(--accent); line-height:1; }
+  .note { font-size:12px; color:var(--muted); margin-top:24px; }
+  footer { border-top:1px solid var(--line); padding:24px 0 48px; color:var(--muted); font-size:13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Metabolic Free coaching</div>
+    <h1>Use every tool. Keep only the habits.</h1>
+    <p class="sub">Medication, hormones, a metabolic breath device, training and nutrition, coordinated by a coach who checks in with you every two weeks, until behavior does the work.</p>
+    <a class="btn" href="#quiz">Take the 2-minute Metabolic Score</a>
+  </header>
+
+  <section class="pillars" aria-label="How it works">
+    <div class="pill"><b>Keep your muscle</b><span>Lose fat without losing the muscle that runs your metabolism.</span></div>
+    <div class="pill"><b>Know when to eat</b><span>Free Lumen device with your program: see fat vs. carb burn each morning.</span></div>
+    <div class="pill"><b>Every tool, in order</b><span>GLP-1s and hormone therapy via licensed providers when appropriate.</span></div>
+    <div class="pill"><b>Coach every 2 weeks</b><span>Accountability that turns a plan into a lifestyle.</span></div>
+  </section>
+
+  <section id="quiz" aria-live="polite">
+    <div class="bar"><i id="progress"></i></div>
+    <div id="stage"></div>
+  </section>
+
+  <footer>
+    Coaching is educational and not a substitute for medical care. Prescription treatments are only available after
+    evaluation by a licensed clinician, where legally permitted. Individual results vary.
+    <br><a href="/privacy" style="color:inherit">Privacy policy</a> · <a href="/terms" style="color:inherit">Terms</a>
+  </footer>
+</div>
+
+<script>
+// ---- Config -------------------------------------------------------------
+// POST target for leads (CRM webhook, e.g. GoHighLevel inbound webhook or a Supabase edge function).
+const LEAD_ENDPOINT = "";           // TODO: set before launch
+const BOOKING_URL   = "#book";      // TODO: calendar link
+
+// Each answer adds "risk points" (higher = more dysfunction) and can tag a segment or red flag.
+const QUESTIONS = [
+  { q: "How is your energy in the afternoon?", a: [
+    ["Steady all day", 0], ["A small dip", 4], ["I crash most days", 10] ] },
+  { q: "Where do you carry extra weight?", a: [
+    ["I'm at a weight I'm happy with", 0], ["Mostly hips/legs", 4], ["Mostly belly/waist", 12] ] },
+  { q: "Has a doctor ever mentioned your blood sugar or A1c?", a: [
+    ["No / normal", 0], ["Told it's borderline or pre-diabetic", 14, "prediabetic"],
+    ["Diagnosed type 2 diabetes", 18, "type2"], ["I have type 1 diabetes or use insulin", 18, "type2", true] ] },
+  { q: "How often do you get strong cravings for sugar or carbs?", a: [
+    ["Rarely", 0], ["A few times a week", 5], ["Daily", 10] ] },
+  { q: "Strength training in a typical week?", a: [
+    ["2+ sessions", 0], ["Once, or on and off", 5], ["None", 10] ] },
+  { q: "Are you using or considering a GLP-1 medication?", a: [
+    ["No", 0], ["Considering it", 4, "glp1"], ["Currently using one", 6, "glp1"] ] },
+  { q: "Do you notice hormone-related changes (sleep, mood, libido, hot flashes)?", a: [
+    ["No", 0], ["Some", 5, "hormones"], ["A lot", 8, "hormones"] ] },
+  { q: "How is your sleep?", a: [
+    ["7+ hours, rested", 0], ["Often short or broken", 6], ["Poor most nights", 10] ] },
+  { q: "Any of these apply: pregnant, eating-disorder history, heart condition?", a: [
+    ["None of these", 0], ["Yes, one or more", 0, null, true] ] },
+];
+const MAX = QUESTIONS.reduce((s, x) => s + Math.max(...x.a.map(o => o[1])), 0);
+
+const SEGMENT_LINES = {
+  type2:        "You're in our Power Warrior track: coaching that works alongside your doctor's care.",
+  prediabetic:  "You're in our Power Warrior track. Borderline is the best window to act.",
+  glp1:         "Your focus: keep your muscle while you lose fat, and build the plan for after medication.",
+  hormones:     "Your focus: energy, body composition, and whether a hormone evaluation makes sense.",
+  weight_energy:"Your focus: steady energy, fat loss, and keeping your muscle.",
+};
+const SEGMENT_PRIORITY = ["type2", "prediabetic", "glp1", "hormones"];
+
+let i = 0, points = 0, tags = new Set(), redFlag = false;
+const answers = [];
+const stage = document.getElementById("stage");
+const progress = document.getElementById("progress");
+const el = (h) => { const d = document.createElement("div"); d.innerHTML = h; return d; };
+
+function renderQuestion() {
+  progress.style.width = (i / (QUESTIONS.length + 1) * 100) + "%";
+  const item = QUESTIONS[i];
+  stage.replaceChildren(el(`<h2 style="margin-top:0">${item.q}</h2>`));
+  item.a.forEach(([label, pts, tag, flag]) => {
+    const b = document.createElement("button");
+    b.className = "opt"; b.type = "button"; b.textContent = label;
+    b.onclick = () => {
+      points += pts; if (tag) tags.add(tag); if (flag) redFlag = true;
+      answers.push({ question: item.q, answer: label });
+      i++; i < QUESTIONS.length ? renderQuestion() : renderCapture();
+    };
+    stage.appendChild(b);
+  });
+}
+
+function scoreAndSegment() {
+  // Higher score = healthier (100 = metabolically free).
+  const score = Math.max(0, Math.round(100 - points / MAX * 100));
+  const segment = SEGMENT_PRIORITY.find(s => tags.has(s)) || "weight_energy";
+  return { score, segment };
+}
+
+function renderCapture() {
+  progress.style.width = (QUESTIONS.length / (QUESTIONS.length + 1) * 100) + "%";
+  stage.replaceChildren(el(`
+    <h2 style="margin-top:0">Your score is ready.</h2>
+    <p class="sub">Where should we send your personalized breakdown and 7-Day Metabolic Reset?</p>
+    <form id="lead" novalidate>
+      <label for="fn">First name</label><input id="fn" type="text" autocomplete="given-name" required>
+      <label for="em">Email</label><input id="em" type="email" autocomplete="email" required>
+      <label for="ph">Mobile (optional)</label><input id="ph" type="tel" autocomplete="tel">
+      <div class="consent"><input id="c_email" type="checkbox" required>
+        <label for="c_email" style="margin:0">Email me my results and the 7-Day Metabolic Reset. I can unsubscribe anytime.</label></div>
+      <div class="consent"><input id="c_sms" type="checkbox">
+        <label for="c_sms" style="margin:0">Optional: I agree to receive text messages from Metabolic Free about my results and coaching, including automated messages. Up to 4 msgs/week. Msg &amp; data rates may apply. Reply STOP to opt out. Consent is not a condition of purchase.</label></div>
+      <button class="btn" id="go" type="submit" disabled>See my score</button>
+    </form>`));
+  const f = document.getElementById("lead");
+  const check = () => document.getElementById("go").disabled =
+    !(f.fn.value.trim() && /\S+@\S+\.\S+/.test(f.em.value) && f.c_email.checked);
+  f.addEventListener("input", check);
+  f.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const { score, segment } = scoreAndSegment();
+    const params = new URLSearchParams(location.search);
+    const payload = {
+      first_name: f.fn.value.trim(), email: f.em.value.trim(),
+      phone: f.ph.value.trim() || null,
+      email_consent: true, sms_consent: f.c_sms.checked && !!f.ph.value.trim(),
+      metabolic_score: score, segment, red_flag: redFlag, answers,
+      utm_source: params.get("utm_source"), utm_campaign: params.get("utm_campaign"),
+      utm_content: params.get("utm_content"),
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    };
+    if (LEAD_ENDPOINT) {
+      try { await fetch(LEAD_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }); }
+      catch (err) { console.warn("Lead submit failed", err); }
+    }
+    // Ad-platform event: name only, never health data (see docs/04-compliance-guardrails.md).
+    if (window.fbq) fbq("track", "Lead");
+    if (window.gtag) gtag("event", "generate_lead");
+    renderResult(score, segment, f.fn.value.trim());
+  });
+}
+
+function renderResult(score, segment, name) {
+  progress.style.width = "100%";
+  const cta = redFlag
+    ? `<p>Based on your answers, please talk with your physician before starting a new nutrition or training program. We've sent your results by email, and the coach will reach out personally.</p>`
+    : `<p><a class="btn" href="${BOOKING_URL}">Book a free 15-minute strategy call</a></p>`;
+  stage.replaceChildren(el(`
+    <p class="eyebrow">${name ? name + ", your" : "Your"} Metabolic Score</p>
+    <div class="score">${score}<span style="font-size:24px;color:var(--muted)">/100</span></div>
+    <p class="sub">${SEGMENT_LINES[segment]}</p>
+    <p>Your full breakdown is on its way to your inbox. On a free call we'll map your first 30 days: training, meal timing, and whether tools like a Lumen device, GLP-1s or hormone therapy belong in your plan.</p>
+    ${cta}
+    <p class="note">The Metabolic Score is an educational self-assessment, not a diagnosis.</p>`));
+  stage.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+renderQuestion();
+</script>
+</body>
+</html>
