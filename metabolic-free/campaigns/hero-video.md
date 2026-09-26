@@ -83,6 +83,11 @@ coach they trust, and Meta and the FTC both penalize misleading AI content in he
 doctor, or a real brand's medication packaging. If the talking person is an AI avatar, turn on Meta's "AI info"
 disclosure. Real-looking AI people who don't exist, presented as clients, are deceptive advertising.
 
+**Production status (Sept 26, 2026):** Option 2 chosen. Digital twin **"Coach GFC Xtreme"** (Higgsfield Soul V2,
+soul_id `16ccf338-368f-4d70-8bcf-dc434815a406`) trained from 19 of the coach's photos. Voice clone: pending.
+Pipeline: Soul V2 stills of the coach (gym / office settings) → talking video driven by the coach's cloned voice →
+b-roll → edit in 9:16, 4:5 and 1:1. Every script is approved by the coach before generation.
+
 **What I need from you to produce it:** 10–20 clear photos of you (face, gym, different angles), 1–2 minutes of
 your voice reading anything (for the voice clone, only if you choose Option 2), and your OK on the final script above.
 Or just the phone footage for Option 1.
