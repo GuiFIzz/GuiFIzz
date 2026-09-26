@@ -5,42 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Metabolic Free</title>
 <meta name="description" content="Take the free 2-minute Metabolic Score. Coaching that uses every tool now and builds habits for life.">
-<style>
-  :root { --bg:#0e1116; --card:#171b22; --ink:#eef1f5; --muted:#9aa4b2; --accent:#3ddc97; --accent-ink:#06281a; --line:#262c36; }
-  * { box-sizing:border-box; }
-  body { margin:0; font:17px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; background:var(--bg); color:var(--ink); }
-  .wrap { max-width:720px; margin:0 auto; padding:0 16px; }
-  header { padding:56px 0 24px; }
-  .eyebrow { color:var(--accent); font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:13px; }
-  h1 { font-size:clamp(30px,6vw,46px); line-height:1.1; margin:.3em 0; }
-  .sub { color:var(--muted); font-size:19px; }
-  .btn { display:inline-block; background:var(--accent); color:var(--accent-ink); border:0; border-radius:10px; padding:14px 22px; font-weight:700; font-size:17px; cursor:pointer; text-decoration:none; }
-  .btn:disabled { opacity:.4; cursor:not-allowed; }
-  .pillars { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin:32px 0; }
-  .pill { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; }
-  .pill b { display:block; margin-bottom:4px; }
-  .pill span { color:var(--muted); font-size:15px; }
-  #quiz { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px; margin:24px 0 48px; }
-  .bar { height:6px; background:var(--line); border-radius:3px; margin-bottom:20px; overflow:hidden; }
-  .bar i { display:block; height:100%; width:0; background:var(--accent); transition:width .25s; }
-  .opt { display:block; width:100%; text-align:left; background:transparent; color:var(--ink); border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin:8px 0; font-size:16px; cursor:pointer; }
-  .opt:hover, .opt:focus-visible { border-color:var(--accent); outline:none; }
-  label { display:block; margin:12px 0 4px; font-size:15px; color:var(--muted); }
-  input[type=text], input[type=email], input[type=tel] { width:100%; padding:12px; border-radius:8px; border:1px solid var(--line); background:var(--bg); color:var(--ink); font-size:16px; }
-  .consent { display:flex; gap:10px; align-items:flex-start; font-size:13px; color:var(--muted); margin:12px 0; }
-  .consent input { margin-top:3px; }
-  .score { font-size:64px; font-weight:800; color:var(--accent); line-height:1; }
-  .note { font-size:12px; color:var(--muted); margin-top:24px; }
-  footer { border-top:1px solid var(--line); padding:24px 0 48px; color:var(--muted); font-size:13px; }
-</style>
+<link rel="stylesheet" href="styles.css">
+<script src="config.js"></script>
 </head>
 <body>
+<nav class="topnav" aria-label="Main"><div class="wrap">
+  <a class="brand" href="index.html">Metabolic <span>Free</span></a>
+  <a class="tab" href="index.html" aria-current="page">Home</a>
+  <a class="tab" href="program.html">Program</a>
+  <a class="tab lab" href="lab.html">GFC Lab</a>
+  <a class="tab" href="app/index.html">Client login</a>
+</div></nav>
 <div class="wrap">
-  <header>
+  <header class="hero">
     <div class="eyebrow">Metabolic Free coaching</div>
     <h1>Use every tool. Keep only the habits.</h1>
     <p class="sub">Medication, hormones, a metabolic breath device, training and nutrition, coordinated by a coach who checks in with you every two weeks, until behavior does the work.</p>
     <a class="btn" href="#quiz">Take the 2-minute Metabolic Score</a>
+    <div><span class="spots" id="spots"></span></div>
   </header>
 
   <section class="pillars" aria-label="How it works">
@@ -65,8 +47,10 @@
 <script>
 // ---- Config -------------------------------------------------------------
 // POST target for leads (CRM webhook, e.g. GoHighLevel inbound webhook or a Supabase edge function).
-const LEAD_ENDPOINT = "";           // TODO: set before launch
-const BOOKING_URL   = "#book";      // TODO: calendar link
+// All settings live in config.js (shared by every page).
+const { LEAD_ENDPOINT, BOOKING_URL } = window.MF_CONFIG;
+const FULL = MF.spotsLeft() <= 0;
+MF.renderSpots(document.getElementById("spots"));
 
 // Each answer adds "risk points" (higher = more dysfunction) and can tag a segment or red flag.
 const QUESTIONS = [
@@ -161,6 +145,7 @@ function renderCapture() {
       utm_source: params.get("utm_source"), utm_campaign: params.get("utm_campaign"),
       utm_content: params.get("utm_content"),
       timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      waitlist: FULL,
     };
     if (LEAD_ENDPOINT) {
       try { await fetch(LEAD_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }); }
@@ -177,9 +162,11 @@ function renderResult(score, segment, name) {
   progress.style.width = "100%";
   const cta = redFlag
     ? `<p>Based on your answers, please talk with your physician before starting a new nutrition or training program. We've sent your results by email, and the coach will reach out personally.</p>`
+    : FULL
+    ? `<p><b>All founding spots are taken, and you're on the waitlist.</b> You'll be first to hear when a spot opens, and we'll email you the 7-Day Metabolic Reset in the meantime.</p>`
     : `<p><a class="btn" href="${BOOKING_URL}">Book a free 15-minute strategy call</a></p>`;
   stage.replaceChildren(el(`
-    <p class="eyebrow">${name ? name + ", your" : "Your"} Metabolic Score</p>
+    <p class="eyebrow">${name ? MF.esc(name) + ", your" : "Your"} Metabolic Score</p>
     <div class="score">${score}<span style="font-size:24px;color:var(--muted)">/100</span></div>
     <p class="sub">${SEGMENT_LINES[segment]}</p>
     <p>Your full breakdown is on its way to your inbox. On a free call we'll map your first 30 days: training, meal timing, and whether tools like a Lumen device, GLP-1s or hormone therapy belong in your plan.</p>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Program · Metabolic Free</title>
+<meta name="description" content="Biweekly 1:1 coaching, a training app, a free Lumen device and access to licensed medical care through GFC Lab.">
+<link rel="stylesheet" href="styles.css">
+<script src="config.js"></script>
+</head>
+<body>
+<nav class="topnav" aria-label="Main"><div class="wrap">
+  <a class="brand" href="index.html">Metabolic <span>Free</span></a>
+  <a class="tab" href="index.html">Home</a>
+  <a class="tab" href="program.html" aria-current="page">Program</a>
+  <a class="tab lab" href="lab.html">GFC Lab</a>
+  <a class="tab" href="app/index.html">Client login</a>
+</div></nav>
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">The program</div>
+    <h1>Discipline. Accountability. Consistency.</h1>
+    <p class="sub">Every tool that works, used in the right order, with a coach who checks in with you every two weeks until the habits are yours.</p>
+    <div><span class="spots" id="spots"></span></div>
+  </header>
+
+  <section class="block">
+    <h2>What's included</h2>
+    <ul class="check">
+      <li><b>1:1 coaching session every two weeks</b> (video call): your plan reviewed, adjusted and held accountable.</li>
+      <li><b>The Metabolic Free training app:</b> your weekly strength program, daily check-ins and progress.</li>
+      <li><b>Free Lumen metabolic device ($249 value)</b> with 12 months of Lumen membership: see from your breath whether you're burning fat or carbs, and plan meals around it.</li>
+      <li><b>GFC Lab access:</b> evaluation by licensed clinicians for GLP-1 medications or hormone therapy, when appropriate.</li>
+      <li><b>Muscle-first nutrition:</b> protein targets and meal timing built around your Lumen data.</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li><b>Take the Metabolic Score</b> (2 minutes, free).</li>
+      <li><b>Free 15-minute strategy call</b> to see if the program fits.</li>
+      <li><b>Enroll:</b> your Lumen ships and your training app is set up.</li>
+      <li><b>Optional GFC Lab visit</b> with a licensed clinician for medication or hormones.</li>
+      <li><b>Every two weeks:</b> a session with your coach. Every day: a 60-second check-in.</li>
+    </ol>
+  </section>
+
+  <section class="block">
+    <h2>Investment</h2>
+    <div class="card">
+      <div class="eyebrow">Phase 1: Foundation</div>
+      <div class="price">$299<small>/month · 3-month minimum</small></div>
+      <p>Everything above, including the free Lumen.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Phase 2: Momentum</div>
+      <div class="price">$199<small>/month · 6-month commitment</small></div>
+      <p>Offered after your first 3 months. Same coaching and app, at a lower price for a longer commitment.</p>
+    </div>
+    <p class="note">GFC Lab medical visits, labs and medications are provided and billed by our licensed telehealth partner, separately from coaching.</p>
+    <p><a class="btn" id="cta" href="index.html#quiz">Take the Metabolic Score</a></p>
+  </section>
+
+  <section class="block">
+    <h2>Questions</h2>
+    <details><summary>Do I have to take medication?</summary><p>No. Medication is one tool, not a requirement. Many clients never use it. If you do, we build the training and nutrition that protect your muscle and prepare you to need it less.</p></details>
+    <details><summary>I already use a GLP-1. Is this for me?</summary><p>Yes, and it's one of the most important times to have a coach. Strength training and protein help you keep muscle while you lose fat.</p></details>
+    <details><summary>Is this in person or online?</summary><p>Online, from anywhere. Local clients can also train at GFC Xtreme.</p></details>
+    <details><summary>What if I cancel early?</summary><p>The first phase is a 3-month commitment. Your Lumen is yours to keep.</p></details>
+    <details><summary>Do you replace my doctor?</summary><p>No. Coaching works alongside your medical care. Keep your doctor informed of changes to your routine.</p></details>
+  </section>
+
+  <footer>
+    Coaching is educational and not a substitute for medical care. Prescription treatments are only available after
+    evaluation by a licensed clinician, where legally permitted. Individual results vary.
+  </footer>
+</div>
+<script>
+  MF.renderSpots(document.getElementById("spots"));
+  if (MF.spotsLeft() === 0) document.getElementById("cta").textContent = "Join the waitlist";
+</script>
+</body>
+</html>

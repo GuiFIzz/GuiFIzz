@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GFC Lab · Metabolic Free</title>
+<meta name="description" content="GFC Lab: online evaluation by licensed clinicians for GLP-1 medications and hormone therapy, coordinated with your coaching.">
+<link rel="stylesheet" href="styles.css">
+<script src="config.js"></script>
+</head>
+<body>
+<nav class="topnav" aria-label="Main"><div class="wrap">
+  <a class="brand" href="index.html">Metabolic <span>Free</span></a>
+  <a class="tab" href="index.html">Home</a>
+  <a class="tab" href="program.html">Program</a>
+  <a class="tab lab" href="lab.html" aria-current="page">GFC Lab</a>
+  <a class="tab" href="app/index.html">Client login</a>
+</div></nav>
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">GFC Lab · powered by Altrohealth</div>
+    <h1>The medical tools, from licensed clinicians.</h1>
+    <p class="sub">GLP-1 medications and hormone therapy can speed things up. In GFC Lab, licensed clinicians decide whether they're right for you, and your coach builds the training and nutrition around them.</p>
+    <p><a class="btn" id="start" href="#">Start my GFC Lab visit</a></p>
+  </header>
+
+  <section class="block">
+    <h2>What GFC Lab offers</h2>
+    <div class="card"><b>GLP-1 weight-management medications</b><p>Clinician-evaluated and monitored. We pair them with strength training and protein so you lose fat, not muscle.</p></div>
+    <div class="card"><b>Hormone therapy</b><p>For men and women with symptoms of low testosterone, perimenopause or menopause, after evaluation and labs.</p></div>
+    <div class="card"><b>Metabolic labs</b><p>Blood work such as A1c, fasting glucose, lipids and hormones, when ordered by your clinician.</p></div>
+  </section>
+
+  <section class="block">
+    <h2>How a visit works</h2>
+    <ol class="steps">
+      <li><b>Online intake</b> on Altrohealth's secure platform: health history and goals.</li>
+      <li><b>Review by a licensed clinician</b> in your state, with labs if needed.</li>
+      <li><b>If appropriate, a prescription</b> sent to a pharmacy and shipped to you.</li>
+      <li><b>Ongoing check-ins</b> with the clinician for dosing and safety.</li>
+      <li><b>Your coach connects it all</b> to your training, nutrition and Lumen data.</li>
+    </ol>
+  </section>
+
+  <section class="block">
+    <h2>Good to know</h2>
+    <ul class="check">
+      <li>Prescriptions are issued only when a licensed clinician determines they are medically appropriate. They are never guaranteed.</li>
+      <li>Your medical records stay with Altrohealth on its secure, HIPAA-compliant platform. Your coach sees only what you choose to share.</li>
+      <li>Visits, labs and medications are priced and billed by Altrohealth, separately from coaching.</li>
+      <li>Availability depends on your state.</li>
+    </ul>
+  </section>
+
+  <footer>
+    GFC Lab medical services are provided by independent licensed clinicians through Altrohealth. GFC Xtreme / Metabolic Free
+    provides coaching only and does not diagnose, prescribe or provide medical care. In an emergency, call 911.
+  </footer>
+</div>
+<script>
+  const url = MF_CONFIG.ALTROHEALTH_URL;
+  const btn = document.getElementById("start");
+  if (url) { btn.href = url; btn.target = "_blank"; btn.rel = "noopener"; }
+  else { btn.href = "index.html#quiz"; btn.textContent = "Take the Metabolic Score first"; }
+</script>
+</body>
+</html>

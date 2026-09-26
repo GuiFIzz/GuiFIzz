@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Program · Metabolic Free</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .tabs { display:flex; gap:6px; margin:16px 0; overflow-x:auto; }
+  .tabs button { background:var(--card); color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:8px 14px; font-size:15px; cursor:pointer; white-space:nowrap; }
+  .tabs button[aria-selected=true] { color:var(--accent-ink); background:var(--accent); border-color:var(--accent); font-weight:700; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .stat { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; }
+  .stat b { display:block; font-size:28px; }
+  .stat span { color:var(--muted); font-size:13px; }
+  .scale { display:flex; gap:6px; }
+  .scale button { flex:1; padding:12px 0; border-radius:8px; border:1px solid var(--line); background:var(--bg); color:var(--ink); font-size:17px; cursor:pointer; }
+  .scale button[aria-pressed=true] { background:var(--accent); color:var(--accent-ink); border-color:var(--accent); font-weight:800; }
+  .toggle { display:flex; align-items:center; gap:10px; margin:10px 0; font-size:16px; color:var(--ink); }
+  .toggle input { width:22px; height:22px; flex:none; accent-color:var(--accent); }
+  input[type=number], textarea { width:100%; padding:10px; border-radius:8px; border:1px solid var(--line); background:var(--bg); color:var(--ink); font-size:16px; font-family:inherit; }
+  .workout { display:flex; gap:12px; align-items:flex-start; }
+  .workout input { width:26px; height:26px; margin-top:2px; accent-color:var(--accent); flex:none; }
+  .workout ul { margin:6px 0 0; padding-left:18px; color:var(--muted); font-size:15px; }
+  .dots { display:flex; gap:4px; flex-wrap:wrap; }
+  .dots i { width:16px; height:16px; border-radius:4px; background:var(--line); }
+  .dots i.on { background:var(--accent); }
+  .banner { background:#2a2410; border:1px solid #f5a524; color:#f7d58b; border-radius:10px; padding:10px 14px; font-size:14px; margin-top:12px; }
+  .saved { color:var(--accent); font-weight:700; margin-left:10px; }
+  svg.spark { width:100%; height:70px; }
+</style>
+<script src="../config.js"></script>
+<script src="program.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="store.js"></script>
+</head>
+<body>
+<nav class="topnav" aria-label="Main"><div class="wrap">
+  <a class="brand" href="../index.html">Metabolic <span>Free</span></a>
+  <a class="tab" href="../program.html">Program</a>
+  <a class="tab lab" href="../lab.html">GFC Lab</a>
+  <a class="tab" href="index.html" aria-current="page">My program</a>
+</div></nav>
+<main class="wrap" id="root" aria-live="polite"></main>
+
+<script>
+const S = window.MF_STORE, P = window.MF_PROGRAM, { iso, daysAgo } = window.MF_UTIL, esc = MF.esc;
+const root = document.getElementById("root");
+const html = (h) => { root.innerHTML = h; };
+let tab = "today";
+
+function weekOf(profile) {
+  if (!profile?.start_date) return 1;
+  const d = Math.floor((Date.now() - new Date(profile.start_date + "T00:00:00")) / 864e5);
+  return Math.min(P.weeks, Math.max(1, Math.floor(d / 7) + 1));
+}
+
+async function boot() {
+  const user = await S.session();
+  if (!user) return renderLogin();
+  const profile = await S.profile();
+  if (profile?.role === "coach") { location.href = "coach.html"; return; }
+  render(profile);
+}
+
+function renderLogin(msg = "") {
+  html(`
+    <header class="hero"><div class="eyebrow">Client login</div><h1>Your program</h1>
+    <p class="sub">Enter the email you enrolled with and we'll send you a secure login link. No password needed.</p></header>
+    <form id="login" class="card">
+      <label for="em">Email</label><input id="em" type="email" autocomplete="email" required>
+      <p><button class="btn" type="submit">Send my login link</button></p>
+      <p class="note">${esc(msg)}</p>
+    </form>`);
+  document.getElementById("login").onsubmit = async (e) => {
+    e.preventDefault();
+    try { await S.signIn(document.getElementById("em").value.trim()); renderLogin("Check your inbox for the login link."); }
+    catch (err) { renderLogin("Couldn't send the link. Check the email and try again."); }
+  };
+}
+
+async function render(profile) {
+  const week = weekOf(profile), phase = P.phaseFor(week);
+  const next = profile?.next_session ? new Date(profile.next_session) : null;
+  html(`
+    ${S.mode === "demo" ? `<div class="banner">Demo mode: sample data stored only in this browser. Connect Supabase in config.js to go live.</div>` : ""}
+    <header class="hero" style="padding-bottom:0">
+      <div class="eyebrow">Week ${week} of ${P.weeks} · ${esc(phase.name)} phase</div>
+      <h1 style="font-size:32px">Hi ${esc(profile?.first_name || "there")} 👋</h1>
+      <p class="sub" style="font-size:16px">Next session with ${esc(MF_CONFIG.COACH_NAME)}: <b>${next ? next.toLocaleString([], { weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }) : "not scheduled yet"}</b>
+      · <a href="${esc(MF_CONFIG.BOOKING_URL)}">reschedule</a></p>
+    </header>
+    <div class="tabs" role="tablist">
+      ${[["today", "Today"], ["train", "Training"], ["progress", "Progress"], ["lab", "GFC Lab"]]
+        .map(([k, l]) => `<button role="tab" data-tab="${k}" aria-selected="${tab === k}">${l}</button>`).join("")}
+    </div>
+    <section id="panel"></section>
+    <p class="note"><a href="#" id="out">Log out</a></p>`);
+  root.querySelectorAll("[data-tab]").forEach((b) => b.onclick = () => { tab = b.dataset.tab; render(profile); });
+  document.getElementById("out").onclick = async (e) => { e.preventDefault(); await S.signOut(); location.reload(); };
+  const panel = document.getElementById("panel");
+  ({ today: renderToday, train: renderTrain, progress: renderProgress, lab: renderLab })[tab](panel, week, phase);
+}
+
+async function renderToday(panel) {
+  const today = iso(new Date());
+  const c = (await S.checkins(1)).find((x) => x.day === today) || { day: today };
+  const scale = (name, val, labels) => `<div class="scale" data-name="${name}">${[1, 2, 3, 4, 5]
+    .map((n) => `<button type="button" aria-pressed="${val === n}" title="${labels?.[n] || n}">${n}</button>`).join("")}</div>`;
+  panel.innerHTML = `
+    <form id="ci" class="card">
+      <h2>Today's check-in <span style="font-size:14px;color:var(--muted)">(60 seconds)</span></h2>
+      <label>Lumen morning score <span class="note">1 = burning fat · 5 = burning carbs</span></label>
+      ${scale("lumen_score", c.lumen_score, { 1: "Fat burn", 5: "Carb burn" })}
+      <label>Energy today</label>${scale("energy", c.energy)}
+      ${P.daily.slice(0, 2).map((t, i) => `<label class="toggle"><input type="checkbox" name="${["walk_done", "protein_hit"][i]}" ${c[["walk_done", "protein_hit"][i]] ? "checked" : ""}> ${esc(t)}</label>`).join("")}
+      <div class="grid2">
+        <div><label for="w">Weight (lb, optional)</label><input id="w" name="weight_lb" type="number" step="0.1" inputmode="decimal" value="${c.weight_lb ?? ""}"></div>
+        <div><label for="st">Steps</label><input id="st" name="steps" type="number" inputmode="numeric" value="${c.steps ?? ""}"></div>
+        <div><label for="sl">Sleep (hours)</label><input id="sl" name="sleep_hours" type="number" step="0.5" inputmode="decimal" value="${c.sleep_hours ?? ""}"></div>
+      </div>
+      <label for="nt">Note for your coach (optional)</label><textarea id="nt" name="note" rows="2">${esc(c.note || "")}</textarea>
+      <p><button class="btn" type="submit">Save check-in</button><span class="saved" id="ok"></span></p>
+    </form>`;
+  const vals = { lumen_score: c.lumen_score ?? null, energy: c.energy ?? null };
+  panel.querySelectorAll(".scale").forEach((sc) => sc.querySelectorAll("button").forEach((b, i) => b.onclick = () => {
+    vals[sc.dataset.name] = i + 1;
+    sc.querySelectorAll("button").forEach((x, j) => x.setAttribute("aria-pressed", j === i));
+  }));
+  document.getElementById("ci").onsubmit = async (e) => {
+    e.preventDefault();
+    const f = e.target, num = (v) => (v === "" ? null : Number(v));
+    await S.saveCheckin({ day: today, ...vals, walk_done: f.walk_done.checked, protein_hit: f.protein_hit.checked,
+      weight_lb: num(f.weight_lb.value), steps: num(f.steps.value), sleep_hours: num(f.sleep_hours.value), note: f.note.value.trim() || null });
+    document.getElementById("ok").textContent = "Saved ✓";
+  };
+}
+
+async function renderTrain(panel, week, phase) {
+  const done = await S.workouts();
+  panel.innerHTML = `
+    <div class="card"><div class="eyebrow">${esc(phase.name)} · weeks ${phase.from}–${phase.to}</div>
+      <p style="margin:.4em 0"><b>${esc(phase.dose)}</b></p><p class="note" style="margin:0">${esc(phase.focus)}</p></div>
+    ${Object.entries(P.days).map(([k, d]) => `
+      <label class="card workout"><input type="checkbox" data-day="${k}" ${done[`${week}-${k}`] ? "checked" : ""}>
+        <div><b>${esc(d.label)}</b><ul>${d.exercises.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div></label>`).join("")}
+    <div class="card"><b>Every day</b><ul class="check">${P.daily.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div>`;
+  panel.querySelectorAll("[data-day]").forEach((cb) => cb.onchange = () => S.toggleWorkout(week, cb.dataset.day, cb.checked));
+}
+
+function spark(points, invert) {
+  if (points.length < 2) return `<p class="note">Not enough data yet.</p>`;
+  const ys = points.map((p) => p[1]), min = Math.min(...ys), max = Math.max(...ys), span = max - min || 1;
+  const d = points.map((p, i) => `${i ? "L" : "M"}${(i / (points.length - 1) * 300).toFixed(1)},${(8 + (invert ? (p[1] - min) : (max - p[1])) / span * 54).toFixed(1)}`).join(" ");
+  return `<svg class="spark" viewBox="0 0 300 70" preserveAspectRatio="none" role="img"><path d="${d}" fill="none" stroke="var(--accent)" stroke-width="2.5" vector-effect="non-scaling-stroke"/></svg>`;
+}
+
+async function renderProgress(panel) {
+  const cs = await S.checkins(30), byDay = Object.fromEntries(cs.map((c) => [c.day, c]));
+  const last14 = [...Array(14)].map((_, i) => iso(daysAgo(13 - i)));
+  const last7 = last14.slice(7).filter((d) => byDay[d]).length;
+  let streak = 0; for (let i = 0; byDay[iso(daysAgo(i))] || (i === 0 && !byDay[iso(daysAgo(0))]); i++) { if (byDay[iso(daysAgo(i))]) streak++; else if (i > 0) break; }
+  const weights = cs.filter((c) => c.weight_lb).map((c) => [c.day, +c.weight_lb]);
+  const lumen = cs.filter((c) => c.lumen_score).map((c) => [c.day, c.lumen_score]);
+  const change = weights.length > 1 ? (weights[weights.length - 1][1] - weights[0][1]).toFixed(1) : null;
+  panel.innerHTML = `
+    <div class="grid2">
+      <div class="stat"><b>${streak}</b><span>day check-in streak</span></div>
+      <div class="stat"><b>${Math.round(last7 / 7 * 100)}%</b><span>check-ins, last 7 days</span></div>
+    </div>
+    <div class="card"><b>Last 14 days</b><div class="dots" style="margin-top:8px">${last14.map((d) => `<i class="${byDay[d] ? "on" : ""}" title="${d}"></i>`).join("")}</div></div>
+    <div class="card"><b>Weight (30 days)</b> ${change !== null ? `<span class="note">${change > 0 ? "+" : ""}${change} lb</span>` : ""}${spark(weights)}</div>
+    <div class="card"><b>Lumen score (30 days)</b> <span class="note">lower = more fat burning</span>${spark(lumen, true)}</div>`;
+}
+
+function renderLab(panel) {
+  const url = MF_CONFIG.ALTROHEALTH_URL;
+  panel.innerHTML = `
+    <div class="card"><div class="eyebrow">GFC Lab · powered by Altrohealth</div>
+      <p>Medication (GLP-1s), hormone therapy and labs are handled by licensed clinicians on Altrohealth's secure platform. Your medical records stay there.</p>
+      <p><a class="btn" href="${url ? esc(url) : "../lab.html"}" ${url ? 'target="_blank" rel="noopener"' : ""}>${url ? "Open GFC Lab" : "Learn about GFC Lab"}</a></p>
+      <p class="note">Tell your coach about any new medication or dose change at your next session so your training and nutrition can be adjusted.</p></div>`;
+}
+
+boot();
+</script>
+</body>
+</html>
