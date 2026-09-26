@@ -13,10 +13,13 @@ Outputs go to metabolic-free/data/private/ (git-ignored, never committed):
   sms_consented.csv     valid phone + recorded SMS consent -> launch texts
   phone_no_consent.csv  phone but no recorded consent -> personal 1:1 texts or opt-in ask only
   rejected.csv          no usable email or phone, with the reason
+  email_wave_N.csv      the email list split into equal random waves (default 4), so intake
+                        never outruns coaching capacity and a bad first send can be fixed
 
-Usage:  python3 tools/prepare_list.py path/to/contacts.csv
+Usage:  python3 tools/prepare_list.py path/to/contacts.csv [waves]
 """
 import csv
+import random
 import re
 import sys
 from pathlib import Path
@@ -30,8 +33,8 @@ HEADER_HINTS = {
     "first_name": ("first name", "first_name", "firstname", "first"),
     "last_name": ("last name", "last_name", "lastname", "last", "surname"),
     "full_name": ("name", "full name", "full_name", "contact", "client"),
-    "email": ("email", "e-mail", "email address", "mail"),
-    "phone": ("phone", "mobile", "cell", "phone number", "telephone", "whatsapp"),
+    "email": ("email", "e-mail", "email address", "email - primary", "mail"),
+    "phone": ("phone", "mobile", "cell", "phone number", "phone - mobile", "mobile phone", "telephone", "whatsapp"),
     "sms_consent": ("sms consent", "sms_consent", "text consent", "sms opt in", "sms opt-in", "texting"),
 }
 
@@ -70,7 +73,7 @@ def clean_phone(raw):
     return ""
 
 
-def main(path):
+def main(path, waves=4):
     header, rows = read_rows(Path(path))
     cols = map_columns(header)
     if "email" not in cols and "phone" not in cols:
@@ -78,7 +81,10 @@ def main(path):
     get = lambda r, k: r[cols[k]].strip() if k in cols and cols[k] < len(r) else ""
 
     seen, email_list, sms_ok, phone_only, rejected = set(), [], [], [], []
+    blank = 0
     for r in rows:
+        if not any(v.strip() for v in r):
+            blank += 1; continue
         first = get(r, "first_name") or get(r, "full_name").split(" ")[0]
         first = first.title()
         email = get(r, "email").lower()
@@ -107,21 +113,27 @@ def main(path):
     for name, data in [("email_list", email_list), ("sms_consented", sms_ok), ("phone_no_consent", phone_only)]:
         with open(OUT / f"{name}.csv", "w", newline="") as f:
             w = csv.DictWriter(f, fieldnames=fields); w.writeheader(); w.writerows(data)
+    shuffled = email_list[:]
+    random.Random(42).shuffle(shuffled)  # fixed seed: same waves every run
+    for i in range(waves):
+        with open(OUT / f"email_wave_{i + 1}.csv", "w", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=fields); w.writeheader(); w.writerows(shuffled[i::waves])
     with open(OUT / "rejected.csv", "w", newline="") as f:
         w = csv.writer(f); w.writerow(["reason"] + header)
         for x in rejected:
             w.writerow([x["reason"]] + x["row"])
 
     print(f"Columns used: { {k: header[v] for k, v in cols.items()} }")
-    print(f"Rows read ..................... {len(rows)}")
+    print(f"Rows read ..................... {len(rows)}  ({blank} blank rows skipped)")
     print(f"Email list .................... {len(email_list)}")
     print(f"SMS with recorded consent ..... {len(sms_ok)}")
     print(f"Phone, no recorded consent .... {len(phone_only)}  -> 1:1 personal texts / opt-in ask only")
     print(f"Rejected ...................... {len(rejected)}")
+    print(f"Email waves ................... {waves} x ~{len(email_list) // waves}")
     print(f"Files written to {OUT}")
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
+    if len(sys.argv) not in (2, 3):
         sys.exit(__doc__)
-    main(sys.argv[1])
+    main(sys.argv[1], int(sys.argv[2]) if len(sys.argv) == 3 else 4)

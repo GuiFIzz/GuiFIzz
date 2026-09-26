@@ -12,12 +12,14 @@
 | Lumen membership | First 12 months included with the device | Calculator (no app cost) |
 | Launch approach | One video, one offer, pushed through every channel | `campaigns/hero-video.md` |
 | Video production | Higgsfield (the coach is the face/voice) | `campaigns/hero-video.md` |
-| Warm list | ~600 contacts, all with email, some with phone; expect 5% → ~30 clients | `campaigns/warm-list-launch.md` |
+| Warm list | File received: **2,188 reachable** (2,049 emails, 1,796 mobiles, 0 recorded SMS consent). Sent in 4 waves | `campaigns/warm-list-launch.md` |
 
 ## Still open (in priority order)
-1. **Send the contact file** (CSV or Excel). Does it have a column showing who agreed to receive texts?
-2. **Video: Option 1 (your phone footage, enhanced) or Option 2 (avatar from your photos + your voice clone)?**
-3. **Renewal:** of clients who finish 3 months, what share do you expect to take $199 × 6? (Calculator assumes 50%.)
+1. **Do you have SMS consent anywhere** for these contacts (sign-up forms, gym agreements, a texting tool)? If not, texts start only after people opt in.
+2. **Which state is GFC Xtreme in?** (Florida has stricter texting rules.)
+3. **How many founding spots** before the waitlist? (Default 30.)
+4. **Video:** Option 2 chosen (digital twin). Waiting on your photos + voice trained in Higgsfield.
+5. **Renewal:** of clients who finish 3 months, what share do you expect to take $199 × 6? (Calculator assumes 50%.)
 3. Does **every** client get a free Lumen? (Calculator assumes yes.)
 4. **Session length:** 30 minutes? (It changes capacity: 45 min → ~59 clients.)
 5. **Telehealth payout:** what do you earn per GLP-1 / hormone client per month from Altrohealth or OpenLoop?

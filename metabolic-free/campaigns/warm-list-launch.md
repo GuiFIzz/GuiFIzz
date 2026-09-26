@@ -1,10 +1,24 @@
-# Warm-list launch: 600 contacts → ~30 founding clients
+# Warm-list launch: 2,188 contacts, in waves
 
-**The list:** ~600 GFC Xtreme contacts, all with email, some with phone.
-**Coach's estimate:** 5% become clients, so **~30 founding clients.** (Plan for 2–5%, or 12–30 clients: older leads
-convert lower and past clients convert higher.)
+**The real list (cleaned Sept 26, 2026):** 4,652 rows → **2,188 reachable people**
+- **2,049 valid emails** (1,657 of them also have a mobile number)
+- **139 phone-only** (no email)
+- 138 rejected: 82 with no email or phone, 54 duplicates, 2 bad emails
+- **0 with recorded SMS consent** (the export has no consent column)
 
-## What 30 clients means
+**The capacity problem:** at the coach's 5% estimate, 2,188 people → **~109 clients, more than the 81-client
+capacity.** Older, bigger lists usually convert at 1–3% (22–66 clients), but we shouldn't gamble on it. So
+the list goes out in **4 waves of ~512**, one per week. Stop sending when the founding spots are full, and
+everyone after that goes on a waitlist. Waves also protect email deliverability and let us fix the message after wave 1.
+
+| Wave | Send | Cumulative clients at 1% / 3% / 5% |
+|---|---|---|
+| 1 | Week 1 | 5 / 15 / 26 |
+| 2 | Week 2 | 10 / 31 / 51 |
+| 3 | Week 3 (only if spots remain) | 15 / 46 / 77 |
+| 4 | Week 4 (only if spots remain) | 20 / 61 / 102 → waitlist |
+
+## What 30 founding clients means (the first milestone)
 
 | | |
 |---|---|
@@ -20,9 +34,9 @@ convert lower and past clients convert higher.)
 ```
 python3 tools/prepare_list.py path/to/your-file.csv
 ```
-It splits the list into **email list**, **SMS with recorded consent**, **phone without consent**, and **rejected**
+It splits the list into **email list** (plus `email_wave_1..4`), **SMS with recorded consent**, **phone without consent**, and **rejected**
 (duplicates, bad emails). Files go to `data/private/`, which is **never committed**; this repo is public.
-Then run the email list through a verifier (ZeroBounce / NeverBounce, ~$5 for 600) before sending. Old lists
+Then run the email list through a verifier (ZeroBounce / NeverBounce, ~$15–20 for 2,049) before sending. Old lists
 bounce, and a high bounce rate can send all your email to spam.
 
 ## Step 2: Email everyone (the main blast)
@@ -71,7 +85,7 @@ for marketing texts sent through a texting platform. Having someone's number isn
 | Group | What we send |
 |---|---|
 | **SMS consent on record** | Platform texts: Day 0 (video + quiz link) and Day 7 (founding spots). Registered number (A2P 10DLC), "Reply STOP to opt out" |
-| **Phone, no consent on record** | No bulk texts. Two safe options: (1) the emails invite them to opt in to texts; (2) **you** send short personal 1:1 texts from your own phone to people you actually know, typed individually. Check your state's rules first |
+| **Phone, no consent on record** (all 1,796 in this file) | No bulk texts. Many numbers look Southeast US (lots of bellsouth.net emails); if you're in **Florida**, its FTSA is stricter than federal law. Two safe options: (1) the emails invite them to opt in to texts; (2) **you** send short personal 1:1 texts from your own phone to people you actually know, typed individually. Check your state's rules first |
 | **Email only** | Email only |
 
 **Personal 1:1 text (for people you know):**
