@@ -65,6 +65,7 @@ All copy passes `docs/04-compliance-guardrails.md`: no "you are diabetic", no dr
 
 ## Creative checklist
 - [ ] Face in the first frame, captions burned in, 9:16 + 1:1 + 4:5
+- [ ] Brand palette only: black background, white text, GFC orange accents (`docs/06-brand.md`)
 - [ ] No before/after in ads
 - [ ] One idea per ad
 - [ ] 15–45 s length

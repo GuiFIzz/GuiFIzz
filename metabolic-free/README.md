@@ -43,6 +43,7 @@ it improved.
 | [`docs/03-client-economics.md`](docs/03-client-economics.md) | What a client is worth to the business (LTV, CAC, capacity, Lumen payback). |
 | [`docs/04-compliance-guardrails.md`](docs/04-compliance-guardrails.md) | Hard rules every agent enforces (health claims, GLP-1 ads, HIPAA, SMS, LinkedIn). |
 | [`docs/05-launch-plan.md`](docs/05-launch-plan.md) | 90-day rollout, week by week. |
+| [`docs/06-brand.md`](docs/06-brand.md) | **Brand palette: GFC orange + black.** Used by every page, creative and video. |
 | [`agents/`](agents/) | One spec per agent: job, inputs, outputs, KPIs, guardrails, handoffs. |
 | [`campaigns/hero-video.md`](campaigns/hero-video.md) | **Launch playbook:** one video, one offer, blasted to every channel (Higgsfield production brief). |
 | [`campaigns/warm-list-launch.md`](campaigns/warm-list-launch.md) | **Day-one blast** to the ~600-contact warm list: emails, compliant texts, the math. |
