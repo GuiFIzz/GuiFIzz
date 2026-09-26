@@ -48,7 +48,7 @@ it improved.
 | [`campaigns/warm-list-launch.md`](campaigns/warm-list-launch.md) | **Day-one blast** to the ~600-contact warm list: emails, compliant texts, the math. |
 | [`tools/prepare_list.py`](tools/prepare_list.py) | Cleans the contact file and splits it by email / SMS consent (output is git-ignored). |
 | [`campaigns/`](campaigns/) | Ready-to-use copy: Meta, Google, email, SMS, social calendar, LinkedIn outreach. |
-| [`site/`](site/) | Website: Home + Metabolic Score quiz, Program, **GFC Lab** (Altrohealth), founding-spots counter → waitlist. Settings in `site/config.js`. |
+| [`site/`](site/) | Website: Home + Metabolic Score quiz, **The Science** (13 cited studies), Program, **GFC Lab** (Altrohealth), founding-spots counter → waitlist. Settings in `site/config.js`. |
 | [`site/app/`](site/app/) | **Client training platform:** daily check-in (Lumen, protein, walk, weight), 12-week program, progress, GFC Lab; coach roster with at-risk and renewal flags. Demo mode until Supabase is connected. |
 | [`data/platform.sql`](data/platform.sql) | Platform database + security rules (Supabase). No medical data: that stays in Altrohealth. |
 | [`campaigns/launch-emails.md`](campaigns/launch-emails.md) | **The 5 launch emails, ready to paste**, plus resend and waitlist emails. |

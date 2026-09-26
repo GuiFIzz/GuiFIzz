@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Science · Metabolic Free</title>
+<meta name="description" content="The evidence behind Metabolic Free: muscle as the metabolic organ, the pre-diabetes window, GLP-1s as a bridge, meal timing, sleep and accountability.">
+<link rel="stylesheet" href="styles.css">
+<style>
+  sup a { text-decoration:none; font-weight:700; font-size:12px; }
+  .model { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:10px; margin:16px 0; }
+  .model .card { margin:0; }
+  .model .n { color:var(--accent); font-weight:800; font-size:13px; letter-spacing:.08em; }
+  .evidence { border-left:3px solid var(--accent); padding:4px 0 4px 14px; margin:14px 0; }
+  .evidence b { color:var(--ink); }
+  .fig { font-size:44px; font-weight:800; color:var(--accent); line-height:1; }
+  .apply { background:var(--bg); border:1px dashed var(--line); border-radius:10px; padding:12px 14px; margin-top:12px; font-size:15px; }
+  .apply b { color:var(--accent); }
+  ol.refs { font-size:14px; color:var(--muted); padding-left:22px; }
+  ol.refs li { margin:8px 0; }
+  .honest { border:1px solid #f5a524; background:#2a2410; color:#f7d58b; border-radius:12px; padding:16px 18px; }
+  .honest h2 { color:#f7d58b; }
+  .toc a { display:inline-block; margin:4px 8px 4px 0; font-size:14px; }
+</style>
+<script src="config.js"></script>
+</head>
+<body>
+<nav class="topnav" aria-label="Main"><div class="wrap">
+  <a class="brand" href="index.html">Metabolic <span>Free</span></a>
+  <a class="tab" href="index.html">Home</a>
+  <a class="tab" href="science.html" aria-current="page">The Science</a>
+  <a class="tab" href="program.html">Program</a>
+  <a class="tab lab" href="lab.html">GFC Lab</a>
+  <a class="tab" href="app/index.html">Client login</a>
+</div></nav>
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">The Science</div>
+    <h1>The approach, and the evidence behind it.</h1>
+    <p class="sub">Metabolic Free isn't a diet. It's a sequence: <b>measure</b> your metabolism, use the right <b>tools</b> to
+      move fast, and build the <b>behaviors</b> that let you need the tools less over time. Every part of it rests on published research.</p>
+    <p class="toc"><a href="#muscle">1 · Muscle</a><a href="#window">2 · The pre-diabetes window</a><a href="#bridge">3 · Medication as a bridge</a><a href="#timing">4 · When to eat</a><a href="#sleep">5 · Sleep</a><a href="#coach">6 · Accountability</a><a href="#refs">References</a></p>
+  </header>
+
+  <section class="block">
+    <h2>The model</h2>
+    <div class="model">
+      <div class="card"><div class="n">01 · MEASURE</div><b>Know your starting point</b><p class="note" style="margin:6px 0 0">Metabolic Score, Lumen breath data, and labs through GFC Lab when needed.</p></div>
+      <div class="card"><div class="n">02 · TOOLS</div><b>Use what works, safely</b><p class="note" style="margin:6px 0 0">GLP-1s or hormone therapy when a licensed clinician says they fit.</p></div>
+      <div class="card"><div class="n">03 · BEHAVIOR</div><b>Build what lasts</b><p class="note" style="margin:6px 0 0">Strength training, protein, meal timing, sleep: the habits that keep results.</p></div>
+      <div class="card"><div class="n">04 · TAPER</div><b>Need the tools less</b><p class="note" style="margin:6px 0 0">As behavior takes over, tools are reduced with your clinician.</p></div>
+    </div>
+  </section>
+
+  <section class="block" id="muscle">
+    <h2>1 · Muscle is your metabolic organ</h2>
+    <p>Most people think of muscle as strength or looks. Metabolically, it's much more: skeletal muscle is where most of the
+      sugar in your blood goes after a meal.</p>
+    <div class="evidence"><div class="fig">~80%</div>
+      <b>of insulin-stimulated glucose uptake happens in skeletal muscle.</b> When muscle is lost or becomes insulin
+      resistant, blood sugar has nowhere to go.<sup><a href="#r1">1</a></sup></div>
+    <div class="evidence"><b>Resistance training improves blood-sugar control and insulin sensitivity.</b> The American Diabetes
+      Association recommends 2–3 resistance sessions per week for adults with diabetes, alongside aerobic activity.<sup><a href="#r2">2</a></sup></div>
+    <div class="apply"><b>In the program:</b> 3 full-body strength sessions per week, progressing over 12 weeks (Foundation → Build → Strength).</div>
+  </section>
+
+  <section class="block" id="window">
+    <h2>2 · The pre-diabetes window</h2>
+    <div class="evidence"><div class="fig">1 in 3</div>
+      <b>US adults has pre-diabetes, and more than 8 in 10 of them don't know it.</b><sup><a href="#r3">3</a></sup></div>
+    <div class="evidence"><div class="fig">58%</div>
+      <b>lower risk of developing type 2 diabetes</b> with a structured lifestyle program (activity + modest weight loss)
+      in the landmark Diabetes Prevention Program, compared with 31% for the drug metformin.<sup><a href="#r4">4</a></sup></div>
+    <p>Pre-diabetes is usually silent. It shows up as afternoon crashes, cravings and belly weight long before a diagnosis.
+      It's also the stage where behavior change has the strongest evidence.</p>
+    <div class="apply"><b>In the program:</b> the Metabolic Score screens for the warning signs, and GFC Lab can order A1c and glucose labs to get real numbers.</div>
+  </section>
+
+  <section class="block" id="bridge">
+    <h2>3 · Medication is a bridge, not the destination</h2>
+    <div class="evidence"><b>GLP-1 medications are highly effective.</b> Average weight loss was about 15% with semaglutide at
+      68 weeks and about 21% with the highest dose of tirzepatide at 72 weeks in their pivotal trials.<sup><a href="#r5">5</a>,<a href="#r6">6</a></sup></div>
+    <div class="evidence"><div class="fig">25–40%</div>
+      <b>of the weight lost can be lean (non-fat) mass</b>, measured by DXA scans in trial sub-studies where participants had general diet and
+      activity advice but no structured strength-training program.<sup><a href="#r5">5</a>,<a href="#r6">6</a></sup></div>
+    <div class="evidence"><div class="fig">⅔</div>
+      <b>of the lost weight was regained within a year of stopping semaglutide</b> in the STEP 1 extension.<sup><a href="#r7">7</a></sup></div>
+    <div class="evidence"><b>Higher protein intake during weight loss helps preserve lean mass</b>, especially combined with resistance training.<sup><a href="#r8">8</a></sup></div>
+    <div class="apply"><b>In the program:</b> if you use a GLP-1 through GFC Lab, we pair it with strength training and protein targets from day one, so what you lose is fat. Then we build the habits that hold the result when the dose comes down.</div>
+  </section>
+
+  <section class="block" id="timing">
+    <h2>4 · When and how you eat matters</h2>
+    <div class="evidence"><b>Food order changes the glucose response.</b> Eating vegetables and protein before carbohydrates
+      produced substantially lower post-meal glucose and insulin than the same meal with carbs first.<sup><a href="#r9">9</a></sup></div>
+    <div class="evidence"><b>Short walks after meals lower post-meal blood sugar.</b> In people with type 2 diabetes, a 10-minute walk after each meal
+      lowered post-meal glucose more than one 30-minute walk at another time of day, with the biggest effect after dinner.<sup><a href="#r10">10</a></sup></div>
+    <div class="evidence"><b>Lumen estimates which fuel you're burning</b> by measuring CO₂ in a single breath, similar in principle to the
+      respiratory exchange ratio a lab measures with a metabolic cart. A validation study in healthy young adults found its readings were significantly
+      correlated with the metabolic cart's.<sup><a href="#r11">11</a></sup> We use it as a <b>daily feedback signal</b> for meal timing and carbohydrate
+      choices, not as a diagnostic test.</div>
+    <div class="apply"><b>In the program:</b> a morning Lumen breath, protein-and-vegetables-first meals, and a 10-minute walk after your biggest meal, logged in your daily check-in.</div>
+  </section>
+
+  <section class="block" id="sleep">
+    <h2>5 · Sleep is metabolic</h2>
+    <div class="evidence"><b>Sleep restriction impairs glucose tolerance.</b> In a classic study, healthy young men restricted to 4 hours
+      of sleep for 6 nights processed glucose markedly worse than when fully rested.<sup><a href="#r12">12</a></sup></div>
+    <div class="apply"><b>In the program:</b> sleep hours are part of your daily check-in and a standing topic in every coaching session.</div>
+  </section>
+
+  <section class="block" id="coach">
+    <h2>6 · Accountability is the missing ingredient</h2>
+    <div class="evidence"><b>Behavior change works best when it's intensive and ongoing.</b> The US Preventive Services Task Force
+      recommends intensive, multicomponent behavioral interventions for adults with obesity. The effective programs it reviewed
+      typically involved 12 or more sessions in the first year.<sup><a href="#r13">13</a></sup></div>
+    <div class="apply"><b>In the program:</b> a 1:1 session every two weeks (26 a year), plus daily check-ins your coach reviews. Discipline, accountability, consistency.</div>
+  </section>
+
+  <section class="block honest">
+    <h2>What we don't claim</h2>
+    <ul class="check" style="color:#f7d58b">
+      <li>We don't claim to cure or reverse diabetes. We help people improve the markers that matter, alongside their medical care.</li>
+      <li>We don't promise specific weight loss. Results vary with starting point, adherence, medication and biology.</li>
+      <li>Lumen is a wellness device, not a medical diagnostic. Medical decisions belong to your clinician.</li>
+      <li>Medication is never guaranteed. Licensed clinicians decide whether it's appropriate.</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <p><a class="btn" href="index.html#quiz">Take the 2-minute Metabolic Score</a></p>
+  </section>
+
+  <section class="block" id="refs">
+    <h2>References</h2>
+    <ol class="refs">
+      <li id="r1">DeFronzo RA, Tripathy D. Skeletal muscle insulin resistance is the primary defect in type 2 diabetes. <i>Diabetes Care</i>. 2009;32(Suppl 2):S157–S163.</li>
+      <li id="r2">Colberg SR, et al. Physical activity/exercise and diabetes: a position statement of the American Diabetes Association. <i>Diabetes Care</i>. 2016;39(11):2065–2079.</li>
+      <li id="r3">Centers for Disease Control and Prevention. National Diabetes Statistics Report. cdc.gov/diabetes.</li>
+      <li id="r4">Diabetes Prevention Program Research Group (Knowler WC, et al.). Reduction in the incidence of type 2 diabetes with lifestyle intervention or metformin. <i>N Engl J Med</i>. 2002;346:393–403.</li>
+      <li id="r5">Wilding JPH, et al. Once-weekly semaglutide in adults with overweight or obesity (STEP 1). <i>N Engl J Med</i>. 2021;384:989–1002.</li>
+      <li id="r6">Jastreboff AM, et al. Tirzepatide once weekly for the treatment of obesity (SURMOUNT-1). <i>N Engl J Med</i>. 2022;387:205–216.</li>
+      <li id="r7">Wilding JPH, et al. Weight regain and cardiometabolic effects after withdrawal of semaglutide: the STEP 1 trial extension. <i>Diabetes Obes Metab</i>. 2022;24(8):1553–1564.</li>
+      <li id="r8">Cava E, Yeat NC, Mittendorfer B. Preserving healthy muscle during weight loss. <i>Adv Nutr</i>. 2017;8(3):511–519.</li>
+      <li id="r9">Shukla AP, et al. Food order has a significant impact on postprandial glucose and insulin levels. <i>Diabetes Care</i>. 2015;38(7):e98–e99.</li>
+      <li id="r10">Reynolds AN, et al. Advice to walk after meals is more effective for lowering postprandial glycaemia in type 2 diabetes mellitus than advice that does not specify timing. <i>Diabetologia</i>. 2016;59:2572–2578.</li>
+      <li id="r11">Lorenz KA, et al. A handheld metabolic device (Lumen) to measure fuel utilization in healthy young adults: device validation study. <i>Interactive Journal of Medical Research</i>. 2021.</li>
+      <li id="r12">Spiegel K, Leproult R, Van Cauter E. Impact of sleep debt on metabolic and endocrine function. <i>Lancet</i>. 1999;354:1435–1439.</li>
+      <li id="r13">US Preventive Services Task Force. Behavioral weight loss interventions to prevent obesity-related morbidity and mortality in adults: recommendation statement. <i>JAMA</i>. 2018;320(11):1163–1171.</li>
+    </ol>
+  </section>
+
+  <footer>
+    Educational content, not medical advice. Coaching is not a substitute for medical care. Prescription treatments are only
+    available after evaluation by a licensed clinician, where legally permitted. Individual results vary.
+  </footer>
+</div>
+</body>
+</html>
