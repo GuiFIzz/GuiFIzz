@@ -84,7 +84,10 @@ doctor, or a real brand's medication packaging. If the talking person is an AI a
 disclosure. Real-looking AI people who don't exist, presented as clients, are deceptive advertising.
 
 **Production status (Sept 26, 2026):** Option 2 chosen. Digital twin **"Coach GFC Xtreme"** (Higgsfield Soul V2,
-soul_id `16ccf338-368f-4d70-8bcf-dc434815a406`) trained from 19 of the coach's photos. Voice clone: pending.
+soul_id `16ccf338-368f-4d70-8bcf-dc434815a406`) trained from 19 of the coach's photos. Voice clone: **"Gui-Filizzola-Cury"** (Higgsfield element voice `c8ce33af-fd22-4af8-aaae-9663923ee34e`), recorded by the coach.
+Talking-video pipeline: script line → `seed_audio` in the coach's voice → `seedance_2_5` (omni_reference: approved
+still as start image + that audio as reference) → lip-synced clip. Test clip: opening A, 5 s, 720p (35 credits);
+the final uses 1080p (~60 credits per 5 s).
 Shirt reference: Higgsfield media `ed95d66f-02e1-4ce3-bbe3-e8ff10a015a8` (navy performance shirt, full logo centered on chest).
 Test stills: `af833a84…` (Soul V2 likeness test) → `83c7dcb6…` (GPT Image 2.5 edit with the real shirt, 2.75 credits). **APPROVED by the coach (Sept 28): logo, likeness and shirt all correct. This is the master still for all video.**
 Pipeline: Soul V2 stills of the coach (gym / office settings) → talking video driven by the coach's cloned voice →
