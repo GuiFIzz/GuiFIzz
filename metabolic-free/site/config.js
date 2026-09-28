@@ -6,7 +6,8 @@ window.MF_CONFIG = {
   SPOTS_TAKEN: 0,            // updated by hand, or live from Supabase once connected
   BOOKING_URL: "#book",      // discovery-call calendar link
   LEAD_ENDPOINT: "",         // CRM webhook that receives quiz leads
-  ALTROHEALTH_URL: "",       // GFC Lab: your Altrohealth partner/intake link
+  ALTROHEALTH_URL: "",       // GFC Lab: your Altrohealth partner/intake link (ideally https://lab.gfcxtreme.com)
+  ALTROHEALTH_EMBED: true,   // true = show Altrohealth inside the GFC Lab tab (needs Altrohealth to allow embedding)
   SUPABASE_URL: "",          // client platform backend; empty = demo mode
   SUPABASE_ANON_KEY: "",
   COACH_NAME: "Coach",

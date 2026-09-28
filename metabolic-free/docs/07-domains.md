@@ -19,11 +19,31 @@ lab.gfcxtreme.com           → GFC Lab: Altrohealth's platform (intake, clinici
 - Embedding their intake inside our page with an iframe is the fallback. It often breaks logins, payments and
   cookies, so it's used only if they can't do a custom domain.
 
+## GFC Lab as a tab inside the site (built)
+The **GFC Lab** tab can show Altrohealth *inside* our page: the menu stays on top and their platform appears
+below it, with an "Open full screen ↗" link as a backup. Set in `site/config.js`:
+
+```
+ALTROHEALTH_URL:   "https://lab.gfcxtreme.com"   // or whatever link Altrohealth gives you
+ALTROHEALTH_EMBED: true                          // false = the tab opens GFC Lab in a new window instead
+```
+
+Their pages are still served by Altrohealth's servers, so medical data goes straight to them. This only works if
+Altrohealth **allows embedding** (the technical terms are `X-Frame-Options` / `frame-ancestors`), so ask them. On iPhone
+Safari, logins inside embedded pages can be blocked, so the full-screen link stays visible.
+
+## Where is gfcxtreme.com's DNS?
+Look it up at **lookup.icann.org** (type `gfcxtreme.com` and check "Nameservers"):
+- `ns…domaincontrol.com` → **GoDaddy**
+- `…ns.cloudflare.com` → **Cloudflare**
+Whichever it shows is where the CNAME records get added.
+
 ## Setup steps
 1. **Ask Altrohealth** (copy/paste):
    > "We'd like GFC Lab to run on our own subdomain, `lab.gfcxtreme.com`. Do you support custom domains / white-label
    > for partners? If so, what DNS record (CNAME) should we add, and can the pages use our logo and colors
-   > (orange #F26B2A / black)? If not, do you provide an embeddable intake or a partner referral link with tracking?"
+   > (orange #F26B2A / black)? Can your patient pages be embedded (iframe) on metabolic.gfcxtreme.com
+   > (frame-ancestors allowed)? If not, do you provide a partner referral link with tracking?"
 2. **Find where your DNS lives:** the company where you bought gfcxtreme.com, or where its DNS is managed
    (GoDaddy, Namecheap, Cloudflare, Wix, Squarespace, Google/Squarespace Domains…).
 3. **Host the Metabolic Free site** on a free static host (Netlify, Vercel or Cloudflare Pages) and connect

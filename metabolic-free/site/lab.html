@@ -6,6 +6,12 @@
 <title>GFC Lab · Metabolic Free</title>
 <meta name="description" content="GFC Lab: online evaluation by licensed clinicians for GLP-1 medications and hormone therapy, coordinated with your coaching.">
 <link rel="stylesheet" href="styles.css">
+<style>
+  #visit { display:none; margin:24px 0; }
+  #visit.on { display:block; }
+  #visit iframe { width:100%; height:calc(100vh - 140px); min-height:640px; border:1px solid var(--line); border-radius:14px; background:#fff; }
+  #visit .bar2 { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:10px; font-size:14px; color:var(--muted); }
+</style>
 <script src="config.js"></script>
 </head>
 <body>
@@ -24,6 +30,13 @@
     <p class="sub">GLP-1 medications and hormone therapy can speed things up. In GFC Lab, licensed clinicians decide whether they're right for you, and your coach builds the training and nutrition around them.</p>
     <p><a class="btn" id="start" href="#">Start my GFC Lab visit</a></p>
   </header>
+
+  <section id="visit" aria-label="GFC Lab visit">
+    <div class="bar2"><span>🔒 Secure visit on Altrohealth's HIPAA-compliant platform</span>
+      <a id="popout" href="#" target="_blank" rel="noopener">Open full screen ↗</a></div>
+    <iframe id="labframe" title="GFC Lab visit (Altrohealth)" allow="camera; microphone; payment; clipboard-write"
+      referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  </section>
 
   <section class="block">
     <h2>What GFC Lab offers</h2>
@@ -59,10 +72,27 @@
   </footer>
 </div>
 <script>
-  const url = MF_CONFIG.ALTROHEALTH_URL;
+  const { ALTROHEALTH_URL: url, ALTROHEALTH_EMBED: embed } = MF_CONFIG;
   const btn = document.getElementById("start");
-  if (url) { btn.href = url; btn.target = "_blank"; btn.rel = "noopener"; }
-  else { btn.href = "index.html#quiz"; btn.textContent = "Take the Metabolic Score first"; }
+  if (!url) {
+    btn.href = "index.html#quiz"; btn.textContent = "Take the Metabolic Score first";
+  } else if (embed) {
+    // Altrohealth runs inside this tab. Their pages are served from their own servers, so medical
+    // data goes straight to them and never passes through this site.
+    const visit = document.getElementById("visit");
+    document.getElementById("popout").href = url;
+    btn.href = "#visit";
+    btn.onclick = (e) => {
+      e.preventDefault();
+      const f = document.getElementById("labframe");
+      if (!f.src) f.src = url;
+      visit.classList.add("on");
+      visit.scrollIntoView({ behavior: "smooth" });
+    };
+    if (location.hash === "#visit") btn.click();
+  } else {
+    btn.href = url; btn.target = "_blank"; btn.rel = "noopener";
+  }
 </script>
 </body>
 </html>
