@@ -121,7 +121,7 @@ function renderQuestion() {
 }
 
 function scoreAndSegment() {
-  // Higher score = healthier (100 = metabolically free).
+  // Higher score = healthier (100 = metabolic dysfunction free).
   const score = Math.max(0, Math.round(100 - points / MAX * 100));
   const segment = SEGMENT_PRIORITY.find(s => tags.has(s)) || "weight_energy";
   return { score, segment };
