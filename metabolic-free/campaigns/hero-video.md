@@ -96,3 +96,20 @@ b-roll → edit in 9:16, 4:5 and 1:1. Every script is approved by the coach befo
 **What I need from you to produce it:** 10–20 clear photos of you (face, gym, different angles), 1–2 minutes of
 your voice reading anything (for the voice clone, only if you choose Option 2), and your OK on the final script above.
 Or just the phone footage for Option 1.
+
+## Production log: full set (Sept 28, 2026, approved by the coach after the test clip)
+
+All clips: `seedance_2_5` omni_reference, 1080p, 9:16, start image = approved still `83c7dcb6…`, voice = coach's clone.
+
+| # | Piece | Line | Voice job | Video job | Length |
+|---|---|---|---|---|---|
+| 1 | Opening A (GLP-1 muscle) | "If you're losing weight fast… how much of it is muscle?" | `92d808e5…` | `cc248a99-e2aa-442d-a90e-3eae64b9c63d` | 5 s |
+| 2 | Opening B (hidden pre-diabetes) | "One in three adults has pre-diabetes… more than eight in ten don't know it." | `7ba9c362…` | `074635ea-6402-4ed4-958c-da0c85156d2d` | 7 s |
+| 3 | Opening C (every tool) | "Medication. Hormones. Devices. Use every tool… then make yourself not need them." | `9aba14bc…` | `56cd869d-b932-4c02-aaff-ca67efeb7ace` | 7 s |
+| 4 | Body 1 (intro + muscle) | "I'm Coach Gui from GFC Xtreme… keeps your metabolism running." | `d55ff24a…` | `8b6bf48f-09f9-4756-9a9a-2debd388e24a` | 16 s |
+| 5 | Body 2 (hormones + blood sugar) | "People who want hormone therapy… nobody's told them." | `f73e94f5…` | `c5cba913-1789-463b-944a-7e5221b1452a` | 10 s |
+| 6 | Body 3 (every tool + free Lumen) | "My program uses every tool we have… fat or carbs each morning." | `40cf3268…` | `afa1a979-be04-47a8-81dc-24106b9730b1` | 18 s |
+| 7 | Body 4 (accountability + CTA) | "Then every two weeks, you and I meet… your Lumen is on me." | `18e8bfa1…` | `3954f37d-84e4-4f36-b0ea-e7ac72a96444` | 19 s |
+
+Cost: ~984 credits of video (12 credits/s at 1080p) + voice tracks.
+Final edits: each opening (1, 2 or 3) + body 4–7 → three ~60–70 s ads; captions burned in, black/orange end card with the quiz URL; 9:16 master, then 4:5 and 1:1.
