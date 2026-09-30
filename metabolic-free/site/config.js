@@ -4,7 +4,7 @@
 window.MF_CONFIG = {
   FOUNDING_SPOTS: 30,        // after this many enrollments, every CTA becomes "join the waitlist"
   SPOTS_TAKEN: 0,            // updated by hand, or live from Supabase once connected
-  BOOKING_URL: "#book",      // discovery-call calendar link
+  BOOKING_URL: "https://cal.com/gfcxtreme-fitness-nmylwf/30min", // discovery-call calendar link (Cal.com)
   LEAD_ENDPOINT: "/api/lead", // Cloudflare Pages Function → Systeme.io (functions/api/lead.js)
   ALTROHEALTH_URL: "",       // GFC Lab: your Altrohealth partner/intake link (ideally https://lab.metabolicgfcxtremefit.com)
   ALTROHEALTH_EMBED: true,   // true = show Altrohealth inside the GFC Lab tab (needs Altrohealth to allow embedding)
