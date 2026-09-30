@@ -1,4 +1,4 @@
-// Metabolic Free: one settings file for every page (site + client platform).
+// Metabolic Flex: one settings file for every page (site + client platform).
 // Fill these in before launch. Nothing here is secret: the Supabase "anon" key is
 // designed to be public and is protected by row-level security (see data/platform.sql).
 window.MF_CONFIG = {

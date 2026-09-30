@@ -1,8 +1,8 @@
-// "Metabolic Free Foundations": the 12-week starter program every client gets.
+// "Metabolic Flex Foundations": the 12-week starter program every client gets.
 // Muscle-first: 3 full-body strength days + a 10-minute walk after the biggest meal, every day.
 // The coach adjusts loads and exercises in the biweekly session.
 window.MF_PROGRAM = {
-  name: "Metabolic Free Foundations",
+  name: "Metabolic Flex Foundations",
   weeks: 12,
   phases: [
     { from: 1, to: 4, name: "Foundation", dose: "2–3 sets × 10–12 reps, stop 3 reps before failure", focus: "Learn the movements, build the habit." },

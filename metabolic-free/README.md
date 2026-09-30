@@ -1,11 +1,11 @@
-# Metabolic Free: client acquisition system
+# Metabolic Flex: client acquisition system
 
 **Goal:** the coach only coaches. Everything upstream of the first session
 (attention → lead → nurture → booking) and everything around retention
 (reminders, check-ins, referrals, reporting) is run by a set of narrow agents
 with a single decision layer on top.
 
-> **Metabolic Free.** Use every tool humanity has built (GLP-1s, hormone
+> **Metabolic Flex.** Use every tool humanity has built (GLP-1s, hormone
 > therapy, the Lumen metabolic breath device, training, nutrition) to get
 > metabolically healthy now, while building the habits that eventually let
 > behavior replace the tools.

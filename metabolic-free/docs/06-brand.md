@@ -1,4 +1,4 @@
-# Brand: GFC Xtreme × Metabolic Free
+# Brand: GFC Xtreme × Metabolic Flex
 
 One palette for everything: website, client app, ad creatives, social posts, email headers, slides and video
 end cards. The source is the GFC Xtreme Fitness logo (distressed orange "GFC", white "Xtreme", spaced
@@ -22,3 +22,8 @@ end cards. The source is the GFC Xtreme Fitness logo (distressed orange "GFC", w
   the chest**. End cards are black, with the quiz URL in white and one orange call to action.
 - Don't add other brand colors. Only red and amber are allowed, and only for warnings in the app.
 - Type: bold, condensed headlines (system sans-serif on the web); keep body text plain and readable.
+
+## Name (Sept 30, 2026)
+The program is **Metabolic Flex** (formerly "Metabolic Free"). The name comes from *metabolic flexibility*: the body's
+ability to switch between burning fat and burning carbohydrate, which is what the Lumen reads each morning. The spoken
+promise in the videos stays "metabolic dysfunction free". The repo folder keeps its old name `metabolic-free/`.

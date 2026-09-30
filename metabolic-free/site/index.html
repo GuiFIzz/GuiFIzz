@@ -3,30 +3,34 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Metabolic Free</title>
+<title>Metabolic Flex</title>
 <meta name="description" content="Take the free 2-minute Metabolic Score. Coaching that uses every tool now and builds habits for life.">
 <link rel="stylesheet" href="styles.css">
 <script src="config.js"></script>
 </head>
 <body>
 <nav class="topnav" aria-label="Main"><div class="wrap">
-  <a class="brand" href="index.html">Metabolic <span>Free</span></a>
+  <a class="brand" href="index.html">Metabolic <span>Flex</span></a>
   <a class="tab" href="index.html" aria-current="page">Home</a>
   <a class="tab" href="science.html">The Science</a>
   <a class="tab" href="program.html">Program</a>
+  <a class="tab" href="coach.html">Coach</a>
   <a class="tab lab" href="lab.html">GFC Lab</a>
   <a class="tab" href="app/index.html">Client login</a>
 </div></nav>
-<div class="wrap">
-  <header class="hero">
-    <div class="eyebrow">Metabolic Free coaching</div>
+<div class="wrap wrap-wide">
+  <header class="hero hero-grid"><div>
+    <div class="eyebrow">Metabolic Flex coaching</div>
     <h1>Use every tool. Keep only the habits.</h1>
-    <p class="sub">Medication, hormones, a metabolic breath device, training and nutrition, coordinated by a coach who checks in with you every two weeks, until behavior does the work.</p>
+    <p class="sub">A science-driven approach: medication, hormones, a metabolic breath device, training and nutrition, coordinated by a coach who checks in with you every two weeks, until behavior does the work.</p>
     <a class="btn" href="#quiz">Take the 2-minute Metabolic Score</a>
     <div><span class="spots" id="spots"></span></div>
+    </div>
+    <figure style="margin:0"><img class="photo" src="https://d8j0ntlcm91z4.cloudfront.net/user_3GropuPoqpt1pxiVObRHkDV9Xf7/hf_20260926_153332_83c7dcb6-304f-45f2-a0df-6a667cb92834.png" alt="Coach Gui in the GFC Xtreme gym, wearing the GFC Xtreme Fitness shirt" loading="eager"></figure>
   </header>
 
   <section class="pillars" aria-label="How it works">
+    <div class="pill"><b>Science-driven</b><span>Every part of the program is built on published research. <a href="science.html">See the studies</a>.</span></div>
     <div class="pill"><b>Keep your muscle</b><span>Lose fat without losing the muscle that runs your metabolism.</span></div>
     <div class="pill"><b>Know when to eat</b><span>Free Lumen metabolic device ($249 value) with your program: see fat vs. carb burn each morning.</span></div>
     <div class="pill"><b>Every tool, in order</b><span>GLP-1s and hormone therapy via licensed providers when appropriate.</span></div>
@@ -43,6 +47,20 @@
       <div class="pill"><b style="font-size:30px;color:var(--accent)">8 in 10</b><span>adults with pre-diabetes don't know they have it (CDC).</span></div>
     </div>
     <p><a href="science.html">Read the science and all references →</a></p>
+  </section>
+
+  <section class="block hero-grid" aria-label="Meet your coach">
+    <div>
+      <div class="eyebrow">Meet your coach</div>
+      <h2>Coach Gui, GFC Xtreme Fitness</h2>
+      <p>Every two weeks you meet with the same coach, who reads your Lumen and check-in data and adjusts your training
+        and nutrition so you keep your muscle and burn the fat.</p>
+      <p><a href="coach.html">Watch the 60-second intro →</a></p>
+    </div>
+    <div class="photo-row" style="margin:0">
+      <img class="photo" src="https://d8j0ntlcm91z4.cloudfront.net/user_3GropuPoqpt1pxiVObRHkDV9Xf7/hf_20260930_024927_44a3799b-d2cb-41ec-a65a-7121b7aaca14.png" alt="Coach Gui coaching a client on a video call" loading="lazy">
+      <img class="photo" src="https://d8j0ntlcm91z4.cloudfront.net/user_3GropuPoqpt1pxiVObRHkDV9Xf7/hf_20260930_024927_6d7cf4d6-7fb5-4111-8c55-3c201597c64b.png" alt="Coach Gui performing a goblet squat" loading="lazy">
+    </div>
   </section>
 
   <section id="quiz" aria-live="polite">
@@ -139,7 +157,7 @@ function renderCapture() {
       <div class="consent"><input id="c_email" type="checkbox" required>
         <label for="c_email" style="margin:0">Email me my results and the 7-Day Metabolic Reset. I can unsubscribe anytime. <a href="privacy.html" target="_blank">Privacy policy</a></label></div>
       <div class="consent"><input id="c_sms" type="checkbox">
-        <label for="c_sms" style="margin:0">Optional: I agree to receive text messages from Metabolic Free about my results and coaching, including automated messages. Up to 4 msgs/week. Msg &amp; data rates may apply. Reply STOP to opt out. Consent is not a condition of purchase.</label></div>
+        <label for="c_sms" style="margin:0">Optional: I agree to receive text messages from Metabolic Flex about my results and coaching, including automated messages. Up to 4 msgs/week. Msg &amp; data rates may apply. Reply STOP to opt out. Consent is not a condition of purchase.</label></div>
       <button class="btn" id="go" type="submit" disabled>See my score</button>
     </form>`));
   const f = document.getElementById("lead");

@@ -24,7 +24,7 @@ Every email ends with the footer below. Sender: **Coach's name, GFC Xtreme**, se
 > For years I've watched the same thing happen. People lose weight and lose their muscle with it. Their blood sugar
 > creeps up without anyone noticing. And the plan falls apart the moment they're on their own.
 >
-> So I built **Metabolic Free**. It uses every tool we have:
+> So I built **Metabolic Flex**. It uses every tool we have:
 > - **Training that protects your muscle**, in an app built for you
 > - A **free Lumen device** ($249 value) that shows from your breath whether you're burning fat or carbs
 > - **GFC Lab:** licensed clinicians for GLP-1 medications and hormone therapy, when they're right for you
@@ -56,7 +56,7 @@ Same body as Email 1.
 > and the weight comes back, often as fat.
 >
 > The fix isn't complicated: **lift 3 times a week, eat protein at every meal, and walk after your biggest meal.**
-> It's the base of everything we do in Metabolic Free, and your Lumen tells us each morning whether it's working.
+> It's the base of everything we do in Metabolic Flex, and your Lumen tells us each morning whether it's working.
 >
 > Not sure where you stand? The Metabolic Score takes 2 minutes: {{quiz_link}}
 >
@@ -82,14 +82,14 @@ Same body as Email 1.
 > {{coach_name}}
 
 ## Email 4 · Day 6 · how it works and what it costs
-**Subject:** How Metabolic Free works (and what it costs)
+**Subject:** How Metabolic Flex works (and what it costs)
 **Preview:** No surprises
 
 > {{first_name}}, here's the whole thing, straight:
 >
 > **Phase 1 · Foundation: $299/month, 3-month minimum**
 > - 1:1 session with me every two weeks
-> - Your training program and daily check-ins in the Metabolic Free app
+> - Your training program and daily check-ins in the Metabolic Flex app
 > - **Free Lumen device** ($249 value) + 12 months of Lumen membership
 > - Access to GFC Lab (medical visits and medication are billed separately by our licensed partner)
 >
@@ -109,7 +109,7 @@ Same body as Email 1.
 
 > {{first_name}},
 >
-> Quick one: I'm keeping Metabolic Free to 30 founding clients so I can coach each of you properly, and
+> Quick one: I'm keeping Metabolic Flex to 30 founding clients so I can coach each of you properly, and
 > **{{spots_left}} spots are left.**
 >
 > If you've been thinking about it, this is the moment. Take the score or book directly:

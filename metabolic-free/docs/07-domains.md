@@ -18,7 +18,7 @@ and each part runs where it belongs.
 
 ```
 gfcxtreme.com               → current GFC Xtreme website (unchanged)
-metabolicgfcxtremefit.com     → Metabolic Free site: Home, The Science, Program, quiz, client login   (site/)
+metabolicgfcxtremefit.com     → Metabolic Flex site: Home, The Science, Program, quiz, client login   (site/)
 lab.metabolicgfcxtremefit.com           → GFC Lab: Altrohealth's platform (intake, clinicians, prescriptions, pharmacy)
 ```
 
@@ -58,25 +58,25 @@ Whichever it shows is where the CNAME records get added.
    > (frame-ancestors allowed)? If not, do you provide a partner referral link with tracking?"
 2. **Find where your DNS lives:** the company where you bought gfcxtreme.com, or where its DNS is managed
    (GoDaddy, Namecheap, Cloudflare, Wix, Squarespace, Google/Squarespace Domains…).
-3. **Host the Metabolic Free site** on a free static host (Netlify, Vercel or Cloudflare Pages) and connect
+3. **Host the Metabolic Flex site** on a free static host (Netlify, Vercel or Cloudflare Pages) and connect
    `metabolicgfcxtremefit.com` to it. The host tells you the exact CNAME to add, and it issues HTTPS automatically.
 4. **Add the DNS records** (about 5 minutes each):
 
    | Type | Name | Value | For |
    |---|---|---|---|
-   | CNAME | `metabolic` | *(given by Netlify / Vercel / Cloudflare)* | Metabolic Free site + client app |
+   | CNAME | `metabolic` | *(given by Netlify / Vercel / Cloudflare)* | Metabolic Flex site + client app |
    | CNAME | `lab` | *(given by Altrohealth)* | GFC Lab |
 
 5. **Update `site/config.js`:** set `ALTROHEALTH_URL` to `https://lab.metabolicgfcxtremefit.com`, and Supabase's allowed
    redirect URL to `https://metabolicgfcxtremefit.com/app/`.
 
 ## Subdomain vs. new domain
-| | Subdomain (`metabolicgfcxtremefit.com`) | New domain (e.g. a Metabolic Free .com) |
+| | Subdomain (`metabolicgfcxtremefit.com`) | New domain (e.g. a Metabolic Flex .com) |
 |---|---|---|
 | Cost | Free | ~$12–20/year |
 | Trust | Borrows GFC Xtreme's name and history | Starts from zero |
 | Email | Launch emails come from the gym's domain, which your 2,049 contacts already know | Needs a new, warmed-up sending domain |
 | Brand | "Part of GFC Xtreme" | Standalone brand, easier to grow beyond one gym |
 
-**Recommendation:** launch on subdomains now. If Metabolic Free grows into its own brand, buy the new domain later
+**Recommendation:** launch on subdomains now. If Metabolic Flex grows into its own brand, buy the new domain later
 and point it at the same site. Nothing gets rebuilt.

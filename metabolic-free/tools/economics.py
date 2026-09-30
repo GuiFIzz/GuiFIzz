@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Metabolic Free client economics.
+"""Metabolic Flex client economics.
 
 Answers four questions:
   1. What is one client worth (LTV, gross profit)?

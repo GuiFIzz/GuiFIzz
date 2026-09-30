@@ -1,4 +1,4 @@
--- Metabolic Free: lead/client pipeline + decision evidence log (Postgres / Supabase)
+-- Metabolic Flex: lead/client pipeline + decision evidence log (Postgres / Supabase)
 -- Health answers live ONLY here (BAA-covered storage). Never sync them to ad platforms.
 
 create type segment as enum ('weight_energy', 'prediabetic', 'type2', 'glp1', 'hormones', 'performance');

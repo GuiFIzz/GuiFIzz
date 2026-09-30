@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coach Gui · Metabolic Flex</title>
+<meta name="description" content="Meet Coach Gui of GFC Xtreme Fitness: discipline, accountability and consistency, with a coaching session every two weeks.">
+<link rel="stylesheet" href="styles.css">
+<script src="config.js"></script>
+</head>
+<body>
+<nav class="topnav" aria-label="Main"><div class="wrap">
+  <a class="brand" href="index.html">Metabolic <span>Flex</span></a>
+  <a class="tab" href="index.html">Home</a>
+  <a class="tab" href="science.html">The Science</a>
+  <a class="tab" href="program.html">Program</a>
+  <a class="tab" href="coach.html" aria-current="page">Coach</a>
+  <a class="tab lab" href="lab.html">GFC Lab</a>
+  <a class="tab" href="app/index.html">Client login</a>
+</div></nav>
+<div class="wrap wrap-wide">
+  <header class="hero hero-grid">
+    <div>
+      <div class="eyebrow">Your coach</div>
+      <h1>Coach Gui</h1>
+      <p class="sub">Founder of GFC Xtreme Fitness. I coach people to become metabolic dysfunction free with a
+        science-driven approach: every tool that works, used in the right order, until the habits are yours.</p>
+      <p><a class="btn" id="cta" href="index.html#quiz">Take the 2-minute Metabolic Score</a></p>
+      <div><span class="spots" id="spots"></span></div>
+    </div>
+    <figure style="margin:0">
+      <video class="video" controls playsinline preload="metadata"
+        poster="https://d8j0ntlcm91z4.cloudfront.net/user_3GropuPoqpt1pxiVObRHkDV9Xf7/hf_20260926_153332_83c7dcb6-304f-45f2-a0df-6a667cb92834.png"
+        src="https://d8j0ntlcm91z4.cloudfront.net/user_3GropuPoqpt1pxiVObRHkDV9Xf7/hf_20260928_223406_9b9dcc80-2f96-4fe5-bd45-37fb6794c868.mp4">
+        Your browser can't play this video.
+      </video>
+      <figcaption>Coach Gui introduces Metabolic Flex. <span class="ai-note">Video created with AI from the coach's own photos and voice.</span></figcaption>
+    </figure>
+  </header>
+
+  <section class="block">
+    <h2>How I coach</h2>
+    <div class="pillars">
+      <div class="pill"><b>Discipline</b><span>A clear weekly plan: three strength sessions, protein at every meal, and a walk after your biggest meal.</span></div>
+      <div class="pill"><b>Accountability</b><span>A 1:1 session with me every two weeks, plus a 60-second daily check-in I read.</span></div>
+      <div class="pill"><b>Consistency</b><span>Small habits, repeated, measured by your Lumen each morning, until you need the tools less.</span></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>What a session looks like</h2>
+    <div class="hero-grid">
+      <ol class="steps">
+        <li><b>Your data first:</b> we review your Lumen trend, check-ins, weight and training log from the last two weeks.</li>
+        <li><b>What worked, what didn't:</b> we keep what's working and fix one thing at a time.</li>
+        <li><b>Your next two weeks:</b> training loads, protein target and meal timing, adjusted to your numbers.</li>
+        <li><b>Tools check:</b> if you use a GLP-1 or hormone therapy through GFC Lab, we build around it so you keep your muscle and burn the fat.</li>
+      </ol>
+      <img class="photo" src="https://d8j0ntlcm91z4.cloudfront.net/user_3GropuPoqpt1pxiVObRHkDV9Xf7/hf_20260930_024927_44a3799b-d2cb-41ec-a65a-7121b7aaca14.png" alt="Coach Gui on a video coaching session" loading="lazy">
+    </div>
+  </section>
+
+  <div class="photo-row">
+    <img class="photo" src="https://d8j0ntlcm91z4.cloudfront.net/user_3GropuPoqpt1pxiVObRHkDV9Xf7/hf_20260930_024927_6d7cf4d6-7fb5-4111-8c55-3c201597c64b.png" alt="Coach Gui performing a goblet squat" loading="lazy">
+    <img class="photo" src="https://d8j0ntlcm91z4.cloudfront.net/user_3GropuPoqpt1pxiVObRHkDV9Xf7/hf_20260930_024927_b3d0242b-48d0-4d79-befd-4f24ca44a0ac.png" alt="Coach Gui on an evening walk after dinner" loading="lazy">
+    <img class="photo" src="https://d8j0ntlcm91z4.cloudfront.net/user_3GropuPoqpt1pxiVObRHkDV9Xf7/hf_20260930_024927_347ebb15-a0ea-4cb1-9441-17eae4dc9ecb.png" alt="A high-protein plate with salmon, vegetables and quinoa" loading="lazy">
+  </div>
+  <p class="ai-note">Photos of Coach Gui are AI-generated from his own photos.</p>
+
+  <footer>
+    Coaching is educational and not a substitute for medical care. Individual results vary.
+    <br><a href="privacy.html" style="color:inherit">Privacy policy</a> · <a href="terms.html" style="color:inherit">Terms</a>
+  </footer>
+</div>
+<script>
+  MF.renderSpots(document.getElementById("spots"));
+  if (MF.spotsLeft() === 0) document.getElementById("cta").textContent = "Join the waitlist";
+</script>
+</body>
+</html>

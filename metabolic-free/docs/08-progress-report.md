@@ -1,4 +1,4 @@
-# Progress report: Metabolic Free / GFC Xtreme (Sept 28, 2026)
+# Progress report: Metabolic Flex / GFC Xtreme (Sept 28, 2026)
 
 **Overall: foundation, website, platform, emails and video are built. Nothing is live yet.** Launch is blocked on
 five connections that only the coach can make (see "Blocking items").

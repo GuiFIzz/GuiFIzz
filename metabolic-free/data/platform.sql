@@ -1,4 +1,4 @@
--- Metabolic Free client platform (Supabase). Apply as a migration.
+-- Metabolic Flex client platform (Supabase). Apply as a migration.
 -- Scope: coaching and lifestyle data only. Medication, prescriptions and medical records live
 -- in Altrohealth (GFC Lab) and are NEVER stored here.
 

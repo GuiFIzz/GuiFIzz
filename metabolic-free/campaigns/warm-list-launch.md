@@ -46,7 +46,7 @@ the GFC Xtreme address. **Send in batches of ~150/day for the first 4 days** if 
 
 | Day | Subject | Content | CTA |
 |---|---|---|---|
-| 0 | I built something for you, {{first_name}} | Personal note: why you built Metabolic Free + **the hero video** | Watch → take the Metabolic Score |
+| 0 | I built something for you, {{first_name}} | Personal note: why you built Metabolic Flex + **the hero video** | Watch → take the Metabolic Score |
 | 3 | (to non-openers) Did you see this? | Same email, new subject | Same |
 | 2 | Losing weight but losing muscle? | GLP-1 muscle problem + free Lumen ($249 value) | Take the score |
 | 4 | 1 in 3 adults, and most don't know | Pre-diabetes stat (CDC) + what the score checks | Take the score |
@@ -64,7 +64,7 @@ After Day 8, anyone who took the quiz but didn't book moves into the regular 14-
 > For years I've watched the same thing happen: people lose weight and lose their muscle with it, their blood sugar
 > creeps up without anyone noticing, and the plan falls apart the moment they're on their own.
 >
-> So I built **Metabolic Free**. It uses every tool we have (GLP-1s and hormone therapy through licensed medical
+> So I built **Metabolic Flex**. It uses every tool we have (GLP-1s and hormone therapy through licensed medical
 > partners when they fit, training that protects your muscle, and a **free Lumen device** that reads your metabolism
 > from your breath), with a coaching session with me every two weeks.
 >

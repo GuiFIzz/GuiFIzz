@@ -17,7 +17,7 @@ the same body, which gives 3 ads for the cost of one video.
 |---|---|
 | A. "If you're losing weight fast, how much of it is muscle?" | GLP-1 users |
 | B. "1 in 3 adults has pre-diabetes, and more than 8 in 10 of them don't know it." | Hidden metabolic illness |
-| C. "Medication. Hormones. Devices. Use every tool, then make yourself not need them." | Hormones / the whole Metabolic Free idea |
+| C. "Medication. Hormones. Devices. Use every tool, then make yourself not need them." | Hormones / the whole Metabolic Flex idea |
 
 (Stat B source: CDC National Diabetes Statistics Report. Link it in the caption and on the landing page.)
 
