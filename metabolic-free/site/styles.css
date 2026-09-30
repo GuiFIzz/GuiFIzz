@@ -59,6 +59,7 @@
   figcaption { color:var(--muted); font-size:13px; margin-top:8px; }
   .photo-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin:16px 0; }
   .video { width:100%; max-width:420px; aspect-ratio:9/16; border-radius:16px; border:1px solid var(--line); background:#000; display:block; }
+  .video.wide { max-width:none; aspect-ratio:16/9; object-fit:cover; }
   .chart { width:100%; max-width:560px; height:auto; display:block; margin:12px 0; }
   .chart text { fill:var(--ink); font:600 13px/1 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
   .chart .muted { fill:var(--muted); font-weight:400; }
