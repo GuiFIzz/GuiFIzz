@@ -43,6 +43,7 @@ it improved.
 | [`docs/03-client-economics.md`](docs/03-client-economics.md) | What a client is worth to the business (LTV, CAC, capacity, Lumen payback). |
 | [`docs/04-compliance-guardrails.md`](docs/04-compliance-guardrails.md) | Hard rules every agent enforces (health claims, GLP-1 ads, HIPAA, SMS, LinkedIn). |
 | [`docs/05-launch-plan.md`](docs/05-launch-plan.md) | 90-day rollout, week by week. |
+| [`docs/09-tool-stack.md`](docs/09-tool-stack.md) | **Tool picks:** Systeme.io (email), Cal.com (booking), Cloudflare Pages (site): ≈ $18/mo. |
 | [`docs/08-progress-report.md`](docs/08-progress-report.md) | **Progress report:** what is built, agent status, blockers. |
 | [`docs/07-domains.md`](docs/07-domains.md) | **Domains:** `metabolic.` site + `lab.` (Altrohealth) subdomains, setup steps. |
 | [`docs/06-brand.md`](docs/06-brand.md) | **Brand palette: GFC orange + black.** Used by every page, creative and video. |

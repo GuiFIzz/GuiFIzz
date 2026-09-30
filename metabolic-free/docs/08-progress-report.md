@@ -12,7 +12,7 @@ five connections that only the coach can make (see "Blocking items").
 | Compliance rules | ✅ Done | Health claims, GLP-1/LegitScript, HIPAA, TCPA/SMS, no scraping | `docs/04` |
 | Brand | ✅ Done | GFC orange #F26B2A + black, logo shirt rule | `docs/06` |
 | Website | ✅ Built, not hosted | Home + Metabolic Score quiz, The Science (13 studies), Program, GFC Lab tab, 30 spots → waitlist | `site/` |
-| GFC Lab (Altrohealth) | 🟡 Built, waiting on link | Tab embeds Altrohealth inside the site; subdomain plan `lab.gfcxtreme.com` | `site/lab.html`, `docs/07` |
+| GFC Lab (Altrohealth) | 🟡 Built, waiting on link | Tab embeds Altrohealth inside the site; subdomain plan `lab.metabolicgfcxtremefit.com` | `site/lab.html`, `docs/07` |
 | Client training platform | 🟡 Built, demo mode | Daily check-in (Lumen, protein, walk, weight, sleep), 12-week program, progress, coach roster with at-risk + week-6 renewal flags | `site/app/`, `data/platform.sql` |
 | Contact list | ✅ Cleaned | 2,188 reachable people (2,049 emails, 1,796 mobiles, 0 SMS consent), 4 send waves | `data/private/` (never in git) |
 | Launch emails | ✅ Written | 5 emails + resend + waitlist + SMS opt-in | `campaigns/launch-emails.md` |
@@ -37,7 +37,7 @@ accounts/tools below connected. Until then, Claude has been doing their launch w
 | **Reporting** | Weekly 1-page report, scores every decision | Evidence log schema, weekly funnel view | Supabase live + ad/email accounts connected |
 
 ## 3. Blocking items (coach)
-1. **Domain:** nameservers at lookup.icann.org (GoDaddy or Cloudflare) → publish `metabolic.gfcxtreme.com`.
+1. **Domain:** nameservers at lookup.icann.org (GoDaddy or Cloudflare) → publish `metabolicgfcxtremefit.com`.
 2. **Altrohealth:** send the message in `docs/07` (subdomain, branding, embedding) → get the GFC Lab link.
 3. **Supabase:** OK to restore the paused "GFCxtreme app" project → client logins go live.
 4. **Email/CRM platform + booking calendar** → launch emails and booking can run.
