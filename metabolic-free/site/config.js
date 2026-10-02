@@ -6,13 +6,13 @@ window.MF_CONFIG = {
   SPOTS_TAKEN: 0,            // updated by hand, or live from Supabase once connected
   BOOKING_URL: "https://cal.com/gfcxtreme-fitness-nmylwf/30min", // discovery-call calendar link (Cal.com)
   LEAD_ENDPOINT: "/api/lead", // Cloudflare Pages Function → Systeme.io (functions/api/lead.js)
-  ALTROHEALTH_URL: "",       // GFC Lab: your Altrohealth partner/intake link (ideally https://lab.metabolicgfcxtremefit.com)
+  ALTROHEALTH_URL: "https://altroapp.com/gfcxtremefit", // GFC Lab: Altrohealth storefront/intake link
   ALTROHEALTH_EMBED: true,   // true = show Altrohealth inside the GFC Lab tab (needs Altrohealth to allow embedding)
   FORTIFY_URL: "",           // GFC Fortify: your supplement store link
   FORTIFY_EMBED: true,       // true = try showing the store inside the GFC Fortify tab (most e-commerce platforms, Shopify included, block this via X-Frame-Options — if the embed stays blank, set this to false to just link out instead)
   SUPABASE_URL: "",          // client platform backend; empty = demo mode
   SUPABASE_ANON_KEY: "",
-  COACH_NAME: "Coach",
+  COACH_NAME: "Coach Gui",
 };
 
 window.MF = {
