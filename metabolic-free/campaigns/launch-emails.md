@@ -27,7 +27,7 @@ Every email ends with the footer below. Sender: **Coach's name, GFC Xtreme**, se
 > So I built **Metabolic Flex**. It uses every tool we have:
 > - **Training that protects your muscle**, in an app built for you
 > - A **free Lumen device** ($249 value) that shows from your breath whether you're burning fat or carbs
-> - **GFC Lab:** licensed clinicians for GLP-1 medications and hormone therapy, when they're right for you
+> - **GFC Lab:** licensed clinicians for GLP-1 medications, peptide therapy and hormone therapy, when they're right for you
 > - **A 1:1 session with me every two weeks.** Discipline, accountability, consistency.
 >
 > Watch the 60-second video: {{video_link}}
@@ -35,6 +35,8 @@ Every email ends with the footer below. Sender: **Coach's name, GFC Xtreme**, se
 > Then take the free 2-minute Metabolic Score to see where you stand: {{quiz_link}}
 >
 > I'm opening **30 founding spots** so every person gets my real attention. After that, it's a waitlist.
+>
+> *"From the first phone conversation I had with Gui I knew I wanted to work with him — he was so enthusiastic! Best decision I've made in a long time!"* — Melissa Rocher
 >
 > In your corner,
 > {{coach_name}}
@@ -59,6 +61,8 @@ Same body as Email 1.
 > It's the base of everything we do in Metabolic Flex, and your Lumen tells us each morning whether it's working.
 >
 > Not sure where you stand? The Metabolic Score takes 2 minutes: {{quiz_link}}
+>
+> *"Gui is exceptional. Clearly educated on physical health and nutrition. I've been training with Gui for 4 weeks and am very pleased with my results."* — Thomas M.
 >
 > {{coach_name}}
 
@@ -97,7 +101,9 @@ Same body as Email 1.
 >
 > Details and FAQ: {{program_link}}
 >
-> If you're ready, grab a free 15-minute call and we'll map your first 30 days: {{booking_link}}
+> *"Gui is a great guy, great trainer and works on helping you reach your specific goals. I highly recommend him."* — Rodrigo Bravo
+>
+> If you're ready, grab a free 30-minute call and we'll map your first 30 days: {{booking_link}}
 >
 > **{{spots_left}} founding spots left.**
 >
@@ -114,7 +120,9 @@ Same body as Email 1.
 >
 > If you've been thinking about it, this is the moment. Take the score or book directly:
 > - Metabolic Score (2 min): {{quiz_link}}
-> - Free 15-min call: {{booking_link}}
+> - Free 30-min call: {{booking_link}}
+>
+> *"I am very impressed by the professionalism and knowledge that Gui has shown from the very first training session. Gui is also very punctual and focused on results."* — Joseph Savarese
 >
 > If the timing isn't right, no problem. You'll still get my tips, and you'll be first to know when spots open again.
 >

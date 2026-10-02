@@ -20,7 +20,7 @@ that volume. Brevo becomes the better pick later **if we add SMS in the same too
 but at ~$97/mo it isn't worth it until the roster is ~20+ clients.
 
 ## Scheduling: **Cal.com Free, $0**
-Unlimited event types (discovery call 15 min, coaching session 30 min, renewal session), Google Calendar sync,
+Unlimited event types (discovery call 30 min, coaching session 30 min, renewal session), Google Calendar sync,
 video links, email reminders, **webhooks** (so a booking can tag the contact in Systeme.io), and embedding in the site.
 Calendly's free plan allows only 1 event type.
 

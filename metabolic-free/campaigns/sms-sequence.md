@@ -2,7 +2,7 @@
 
 | When | Message |
 |---|---|
-| Instantly after quiz | Hi {{first_name}}, it's {{coach_name}}. Your Metabolic Score is {{score}}. Full breakdown is in your email. Want me to walk you through it on a free 15-min call? {{short_booking_link}} Reply STOP to opt out. |
+| Instantly after quiz | Hi {{first_name}}, it's {{coach_name}}. Your Metabolic Score is {{score}}. Full breakdown is in your email. Want me to walk you through it on a free 30-min call? {{short_booking_link}} Reply STOP to opt out. |
 | +1 day (no booking) | Quick one: what's the #1 thing you want to change in the next 90 days? Just reply here, I read these. |
 | +3 days (no booking) | {{first_name}}, 3 slots open this week for free strategy calls: {{short_booking_link}} |
 | Reply received | → Nurture agent answers from FAQ; medical questions → "Great question for our call / your doctor" + booking link; hot reply → alert coach |

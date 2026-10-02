@@ -16,7 +16,7 @@ not legal advice; have a healthcare attorney review before launch.*
 | "Are you diabetic?", "You're overweight" (Meta personal-attribute rule) | "Tired of blood sugar swings?", "For people who want to…" |
 | Unsourced statistics | Every stat in a post links a source (CDC, NIH, peer-reviewed study) |
 
-## 2. GLP-1 and hormone therapy advertising
+## 2. GLP-1, peptide and hormone therapy advertising
 
 - **Partners: Altrohealth / OpenLoop** hold LegitScript. That certification covers *their* domain and ads. **Your** ads
   and landing page are a separate advertiser, so either (a) keep your ads coaching-first and send medication interest to the
@@ -28,6 +28,11 @@ not legal advice; have a healthcare attorney review before launch.*
   organic content that's educational only.
 - Never name a drug brand (Ozempic, Wegovy, Mounjaro, Zepbound) in paid ads without certification.
 - Compounded GLP-1s: never claim they are "the same as" or "generic" brand drugs; the FDA has warned on this.
+- **Peptides (BPC-157, ipamorelin, sermorelin, etc.):** most are compounded, not FDA-approved for the uses we'd
+  market, and several are on the FDA's "difficult to compound" / do-not-compound list. Same rules as GLP-1s: no
+  named peptide in paid ads, no "cure," "reverse," or guaranteed-result language, no claim of safety or efficacy
+  we can't source, and dosing/prescribing only by a clinician licensed in the client's state. Route peptide
+  interest to GFC Lab / Altrohealth's intake exactly like GLP-1 interest — never sell or ship a peptide directly.
 - Prescribing only after evaluation by a clinician **licensed in the client's state**. The coach never implies
   a prescription is guaranteed.
 

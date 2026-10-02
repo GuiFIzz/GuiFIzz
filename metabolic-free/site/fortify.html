@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GFC Fortify · Metabolic Flex</title>
+<meta name="description" content="GFC Fortify: quality-tested supplements that support your training and nutrition, picked by your coach.">
+<link rel="stylesheet" href="styles.css">
+<style>
+  #visit { display:none; margin:24px 0; }
+  #visit.on { display:block; }
+  #visit iframe { width:100%; height:calc(100vh - 140px); min-height:640px; border:1px solid var(--line); border-radius:14px; background:#fff; }
+  #visit .bar2 { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:10px; font-size:14px; color:var(--muted); }
+</style>
+<script src="config.js"></script>
+</head>
+<body>
+<nav class="topnav" aria-label="Main"><div class="wrap">
+  <a class="brand" href="index.html">Metabolic <span>Flex</span></a>
+  <a class="tab" href="index.html">Home</a>
+  <a class="tab" href="science.html">The Science</a>
+  <a class="tab" href="program.html">Program</a>
+  <a class="tab" href="coach.html">Coach</a>
+  <a class="tab lab" href="lab.html">GFC Lab</a>
+  <a class="tab fortify" href="fortify.html" aria-current="page">GFC Fortify</a>
+  <a class="tab" href="app/index.html">Client login</a>
+</div></nav>
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">GFC Fortify · supplements</div>
+    <h1>The supplements I'd actually put my name on.</h1>
+    <p class="sub">Protein, recovery and daily-essentials picks that back up the training and nutrition in your
+      program — nothing here replaces a real meal plan or the GFC Lab's clinician-prescribed treatments, it just
+      fills the gaps.</p>
+    <p><a class="btn" id="start" href="#">Shop GFC Fortify</a></p>
+  </header>
+
+  <section id="visit" aria-label="GFC Fortify store">
+    <div class="bar2"><span>🛒 GFC Fortify store</span>
+      <a id="popout" href="#" target="_blank" rel="noopener">Open full screen ↗</a></div>
+    <iframe id="fortifyframe" title="GFC Fortify store" allow="payment" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  </section>
+
+  <section class="block">
+    <h2>What GFC Fortify offers</h2>
+    <div class="card"><b>Protein & recovery</b><p>Protein and recovery support to go with your twice-weekly strength sessions.</p></div>
+    <div class="card"><b>Daily essentials</b><p>Core vitamins and minerals to cover the basics while you dial in food first.</p></div>
+    <div class="card"><b>Performance support</b><p>Picks that support training output and consistency — never a substitute for sleep, protein or the plan itself.</p></div>
+  </section>
+
+  <section class="block">
+    <h2>Good to know</h2>
+    <ul class="check">
+      <li>GFC Fortify is a separate supplement retailer, owned in part by Coach Gui. Orders, pricing and shipping are handled by the store, separately from coaching.</li>
+      <li>Supplements support your program; they don't replace training, nutrition or (when prescribed) GFC Lab's clinician-directed treatment.</li>
+      <li>These statements haven't been evaluated by the FDA. Supplements aren't intended to diagnose, treat, cure or prevent any disease. Check with your doctor before starting anything new, especially if you're on medication.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Coaching is educational and not a substitute for medical care. Individual results vary.
+    <br><a href="privacy.html" style="color:inherit">Privacy policy</a> · <a href="terms.html" style="color:inherit">Terms</a>
+  </footer>
+</div>
+<script>
+  const { FORTIFY_URL: url, FORTIFY_EMBED: embed } = MF_CONFIG;
+  const btn = document.getElementById("start");
+  if (!url) {
+    btn.href = "#"; btn.textContent = "Coming soon";
+    btn.onclick = (e) => e.preventDefault();
+  } else if (embed) {
+    const visit = document.getElementById("visit");
+    document.getElementById("popout").href = url;
+    btn.href = "#visit";
+    btn.onclick = (e) => {
+      e.preventDefault();
+      const f = document.getElementById("fortifyframe");
+      if (!f.src) f.src = url;
+      visit.classList.add("on");
+      visit.scrollIntoView({ behavior: "smooth" });
+    };
+    if (location.hash === "#visit") btn.click();
+  } else {
+    btn.href = url; btn.target = "_blank"; btn.rel = "noopener";
+  }
+</script>
+</body>
+</html>

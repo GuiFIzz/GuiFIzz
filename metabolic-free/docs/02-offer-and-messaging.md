@@ -3,9 +3,9 @@
 ## Positioning
 
 **Metabolic Flex.** A coaching system that uses **every tool available now**
-(GLP-1s, hormone therapy, Lumen metabolic tracking, training, nutrition) to get
-you metabolically healthy, **and** builds the behavior that eventually replaces
-the tools.
+(GLP-1s, peptide therapy, hormone therapy, Lumen metabolic tracking, training,
+nutrition) to get you metabolically healthy, **and** builds the behavior that
+eventually replaces the tools.
 
 - Most GLP-1 clinics sell a prescription, which people stop, and then the weight
   comes back.
@@ -43,7 +43,7 @@ market, a real problem (lean mass loss), and few coaches own it.
 | 3 | **Metabolic Flex Coaching**: biweekly 1:1, 3-month minimum, built on discipline, accountability and consistency | **$299/mo** | Core offer |
 | 3a | **Continue: 6-month commitment at $199/mo** (offered in month 2, starts after the minimum) | **$199/mo** | Retention: lower price for a longer commitment |
 | 3b | **Lumen metabolic device: FREE** with enrollment ($249 value) | $0 to client; **$199 cost to GFC Xtreme** | Hook + daily data between sessions |
-| 4 | + Telehealth add-on: GLP-1 / hormone evaluation via **Altrohealth or OpenLoop** (licensed clinicians, LegitScript-certified) | Partner pricing | Tools layer |
+| 4 | + Telehealth add-on: GLP-1 / peptide / hormone evaluation via **Altrohealth or OpenLoop** (licensed clinicians, LegitScript-certified) | Partner pricing | Tools layer |
 | 5 | Power Warrior group (monthly group call + community) | Lower $/mo | Downsell / alumni retention |
 
 ### The Lumen offer
@@ -68,7 +68,7 @@ market, a real problem (lean mass loss), and few coaches own it.
 
 1. **The muscle problem.** Up to a third or more of the weight lost on GLP-1s can be lean mass if you don't train and eat
    protein. Losing muscle slows your metabolism. *(cite a source in the post; see guardrails)*
-2. **Tools are a bridge.** Medication is a tool. So is a Lumen. The destination is habits you own.
+2. **Tools are a bridge.** Medication is a tool. So are peptides. So is a Lumen. The destination is habits you own.
 3. **Know when to eat.** Your breath can tell you if you're burning fat or carbs this morning. Use that to plan meals.
 4. **Every two weeks, someone checks.** Accountability is the thing most programs are missing.
 5. **Metabolic dysfunction is common.** A large majority of adults show at least one marker. You're not broken; you're normal in a broken environment.

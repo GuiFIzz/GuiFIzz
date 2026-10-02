@@ -16,6 +16,7 @@
   <a class="tab" href="program.html">Program</a>
   <a class="tab" href="coach.html">Coach</a>
   <a class="tab lab" href="lab.html">GFC Lab</a>
+  <a class="tab fortify" href="fortify.html">GFC Fortify</a>
   <a class="tab" href="app/index.html">Client login</a>
 </div></nav>
 <div class="wrap wrap-wide">
@@ -37,7 +38,7 @@
     <div class="pill"><b>Science-driven</b><span>Every part of the program is built on published research. <a href="science.html">See the studies</a>.</span></div>
     <div class="pill"><b>Keep your muscle</b><span>Lose fat without losing the muscle that runs your metabolism.</span></div>
     <div class="pill"><b>Know when to eat</b><span>Free Lumen metabolic device ($249 value) with your program: see fat vs. carb burn each morning.</span></div>
-    <div class="pill"><b>Every tool, in order</b><span>GLP-1s and hormone therapy via licensed providers when appropriate.</span></div>
+    <div class="pill"><b>Every tool, in order</b><span>GLP-1s, peptide therapy and hormone therapy via licensed providers when appropriate.</span></div>
     <div class="pill"><b>Coach every 2 weeks</b><span>Discipline, accountability, consistency: a plan that becomes a lifestyle.</span></div>
   </section>
 
@@ -64,12 +65,27 @@
     <p><a href="science.html">Read the science and all references →</a></p>
   </section>
 
+  <section class="block" aria-label="What clients say">
+    <div class="eyebrow">Real clients, real words</div>
+    <h2>Training doesn't stop working at 40</h2>
+    <div class="testimonials">
+      <div class="testimonial"><img class="avatar" src="media/testimonial-arlyn-haas.jpg" alt="Arlyn Haas" loading="lazy">
+        <b>Arlyn Haas, 46</b>
+        <p>"I have been into fitness all my life. Today, at 46, I find myself in great shape... after working with Gui Cury for the past year, I can truly say, I found MY PERSONAL TRAINER."</p></div>
+      <div class="testimonial"><img class="avatar" src="media/testimonial-zulema-lopez.jpg" alt="Zulema Lopez" loading="lazy">
+        <b>Zulema Lopez, 45</b>
+        <p>"At 45 my body changed and I wanted to get back in shape. I started working with Gui and — wow — I saw a total difference. Truly excellent."</p></div>
+    </div>
+    <p><a href="coach.html#testimonials">More client stories →</a></p>
+  </section>
+
   <section class="block hero-grid" aria-label="Meet your coach">
     <div>
       <div class="eyebrow">Meet your coach</div>
       <h2>Coach Gui, GFC Xtreme Fitness</h2>
       <p>Every two weeks you meet with the same coach, who reads your Lumen and check-in data and adjusts your training
         and nutrition so you keep your muscle and burn the fat.</p>
+      <p class="sub" style="font-size:15px">B.S. Chemistry · M.S. Food Science · NFPT-Certified Personal Trainer · former college athlete (tennis, soccer)</p>
       <p><a href="coach.html">More about your coach →</a></p>
     </div>
     <figure style="margin:0">
@@ -212,12 +228,12 @@ function renderResult(score, segment, name) {
     ? `<p>Based on your answers, please talk with your physician before starting a new nutrition or training program. We've sent your results by email, and the coach will reach out personally.</p>`
     : FULL
     ? `<p><b>All founding spots are taken, and you're on the waitlist.</b> You'll be first to hear when a spot opens, and we'll email you the 7-Day Metabolic Reset in the meantime.</p>`
-    : `<p><a class="btn" href="${BOOKING_URL}">Book a free 15-minute strategy call</a></p>`;
+    : `<p><a class="btn" href="${BOOKING_URL}">Book a free 30-minute strategy call</a></p>`;
   stage.replaceChildren(el(`
     <p class="eyebrow">${name ? MF.esc(name) + ", your" : "Your"} Metabolic Score</p>
     <div class="score">${score}<span style="font-size:24px;color:var(--muted)">/100</span></div>
     <p class="sub">${SEGMENT_LINES[segment]}</p>
-    <p>Your full breakdown is on its way to your inbox. On a free call we'll map your first 30 days: training, meal timing, and whether tools like a Lumen device, GLP-1s or hormone therapy belong in your plan.</p>
+    <p>Your full breakdown is on its way to your inbox. On a free call we'll map your first 30 days: training, meal timing, and whether tools like a Lumen device, GLP-1s, peptides or hormone therapy belong in your plan.</p>
     ${cta}
     <p class="note">The Metabolic Score is an educational self-assessment, not a diagnosis.</p>`));
   stage.scrollIntoView({ behavior: "smooth", block: "start" });

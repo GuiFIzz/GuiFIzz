@@ -41,6 +41,7 @@
   <a class="tab" href="../program.html">Program</a>
   <a class="tab" href="../coach.html">Coach</a>
   <a class="tab lab" href="../lab.html">GFC Lab</a>
+  <a class="tab fortify" href="../fortify.html">GFC Fortify</a>
   <a class="tab" href="index.html" aria-current="page">My program</a>
 </div></nav>
 <main class="wrap" id="root" aria-live="polite"></main>
@@ -179,7 +180,7 @@ function renderLab(panel) {
   const url = MF_CONFIG.ALTROHEALTH_URL;
   panel.innerHTML = `
     <div class="card"><div class="eyebrow">GFC Lab · powered by Altrohealth</div>
-      <p>Medication (GLP-1s), hormone therapy and labs are handled by licensed clinicians on Altrohealth's secure platform, and your coach builds the training and nutrition around them so you can keep your muscle and burn the fat. Your medical records stay there.</p>
+      <p>Medication (GLP-1s), peptide therapy, hormone therapy and labs are handled by licensed clinicians on Altrohealth's secure platform, and your coach builds the training and nutrition around them so you can keep your muscle and burn the fat. Your medical records stay there.</p>
       <p><a class="btn" href="../lab.html${url && MF_CONFIG.ALTROHEALTH_EMBED ? "#visit" : ""}">${url ? "Open GFC Lab" : "Learn about GFC Lab"}</a></p>
       <p class="note">Tell your coach about any new medication or dose change at your next session so your training and nutrition can be adjusted.</p></div>`;
 }
