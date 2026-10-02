@@ -3,3 +3,4 @@ metabolic-free/data/private/
 *.csv
 *.xlsx
 *.xls
+.DS_Store
