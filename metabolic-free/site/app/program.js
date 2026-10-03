@@ -20,3 +20,20 @@ window.MF_PROGRAM = {
     return this.phases.find((p) => week >= p.from && week <= p.to) || this.phases[this.phases.length - 1];
   },
 };
+
+// Onboarding options, shared by the intake wizard and the coach roster.
+window.MF_FITNESS_LEVELS = [
+  { value: "beginner", label: "Beginner", note: "New to structured strength training, or it's been years since you trained consistently. We start with lighter loads and focus on learning the movements." },
+  { value: "intermediate", label: "Intermediate", note: "You've trained consistently for 6+ months and know the basic lifts (squat, press, row, hinge). We push the pace a bit faster." },
+  { value: "advanced", label: "Advanced", note: "You've trained for years and are comfortable with free weights under real load. We load you heavier from week 1." },
+];
+
+window.MF_EQUIPMENT = [
+  { value: "bodyweight", label: "Bodyweight only", note: "No equipment at all. We'll substitute bodyweight variations for every lift." },
+  { value: "dumbbells", label: "Dumbbells only", note: "A set of dumbbells, no barbell or machines. Covers almost everything in Foundations." },
+  { value: "suspension", label: "Suspension trainer", note: "A TRX-style strap system. Great for rows, presses and core work." },
+  { value: "home_gym", label: "Home gym", note: "Barbell, rack and plates at home. Full access to every lift in the program." },
+  { value: "full_gym", label: "Full commercial gym", note: "Machines, cables, barbells and dumbbells. Full access, most exercise variety." },
+];
+
+window.MF_WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];

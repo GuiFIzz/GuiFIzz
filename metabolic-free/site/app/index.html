@@ -63,7 +63,183 @@ async function boot() {
   if (!user) return renderLogin();
   const profile = await S.profile();
   if (profile?.role === "coach") { location.href = "coach.html"; return; }
+  if (!profile?.onboarded) return renderOnboarding(profile);
   render(profile);
+}
+
+// ---------------------------------------------------------------------------
+// Onboarding: a first-time intake wizard, gates the dashboard until complete.
+// ---------------------------------------------------------------------------
+const OB_STEPS = ["welcome", "health", "level", "equipment", "schedule", "goals", "baseline"];
+let obStep = 0, obAnswers = { equipment: [], schedule_days: [], health_flags: [] };
+
+function obBar() {
+  return `<div class="bar" style="margin-bottom:20px"><i style="width:${(obStep / (OB_STEPS.length - 1) * 100).toFixed(0)}%"></i></div>`;
+}
+function obNav(backDisabled) {
+  return `<p style="display:flex;gap:10px;margin-top:20px">
+    ${backDisabled ? "" : `<button class="btn" type="button" id="obBack" style="background:var(--card);color:var(--ink)">Back</button>`}
+    <button class="btn" type="submit">${obStep === OB_STEPS.length - 1 ? "Finish" : "Continue"}</button>
+  </p>`;
+}
+function obWireNav(form, onNext) {
+  const back = document.getElementById("obBack");
+  if (back) back.onclick = () => { obStep--; renderOnboarding(obProfile); };
+  form.onsubmit = (e) => { e.preventDefault(); onNext(); };
+}
+let obProfile = null;
+
+async function renderOnboarding(profile) {
+  obProfile = profile;
+  const step = OB_STEPS[obStep];
+  const panel = root;
+
+  if (step === "welcome") {
+    html(`<header class="hero"><div class="eyebrow">Welcome to Metabolic Flex</div>
+      <h1>Hi ${esc(profile?.first_name || "there")}, let's set you up.</h1>
+      <p class="sub">Before your first session, a few quick questions so your coach can build your plan around you.
+        Takes about 3 minutes.</p></header>
+      <div class="card">
+        <b>How this works</b>
+        <ul class="check" style="margin-top:10px">
+          <li><b>Discipline:</b> a clear weekly plan, 3 strength sessions.</li>
+          <li><b>Accountability:</b> a 1:1 session with your coach every two weeks, plus a daily 60-second check-in.</li>
+          <li><b>Consistency:</b> small habits, repeated, until you need the tools less.</li>
+        </ul>
+      </div>
+      <form id="obf">${obNav(true)}</form>`);
+    obWireNav(document.getElementById("obf"), () => { obStep++; renderOnboarding(profile); });
+    return;
+  }
+
+  if (step === "health") {
+    const flags = [
+      "Chest pain, or a heart condition diagnosed by a doctor",
+      "Pregnant, or gave birth in the last 6 weeks",
+      "Dizziness or loss of balance",
+      "A bone or joint problem that could get worse with exercise",
+      "Currently prescribed medication for blood pressure or your heart",
+    ];
+    html(`${obBar()}<header class="hero" style="padding-bottom:0"><div class="eyebrow">Step ${obStep + 1} of ${OB_STEPS.length}</div>
+      <h1 style="font-size:28px">Quick health screen</h1>
+      <p class="sub">Check any that apply to you. This isn't a diagnosis — it just tells your coach to loop in your doctor first.</p></header>
+      <form id="obf" class="card">
+        ${flags.map((f, i) => `<label class="toggle"><input type="checkbox" name="f${i}" ${obAnswers.health_flags.includes(f) ? "checked" : ""}> ${esc(f)}</label>`).join("")}
+        ${obNav(false)}
+      </form>`);
+    obWireNav(document.getElementById("obf"), () => {
+      const f = document.getElementById("obf");
+      obAnswers.health_flags = flags.filter((_, i) => f[`f${i}`].checked);
+      obStep++; renderOnboarding(profile);
+    });
+    return;
+  }
+
+  if (step === "level") {
+    html(`${obBar()}<header class="hero" style="padding-bottom:0"><div class="eyebrow">Step ${obStep + 1} of ${OB_STEPS.length}</div>
+      <h1 style="font-size:28px">Where are you starting from?</h1>
+      <p class="sub">Be honest — this sets your starting weights, not your ceiling.</p></header>
+      <form id="obf">
+        ${MF_FITNESS_LEVELS.map((l) => `<label class="card" style="display:block;cursor:pointer">
+          <div class="toggle" style="margin:0"><input type="radio" name="level" value="${l.value}" ${obAnswers.fitness_level === l.value ? "checked" : ""} required>
+          <b>${esc(l.label)}</b></div>
+          <p class="note" style="margin:6px 0 0 32px">${esc(l.note)}</p></label>`).join("")}
+        ${obNav(false)}
+      </form>`);
+    obWireNav(document.getElementById("obf"), () => {
+      obAnswers.fitness_level = document.querySelector('input[name="level"]:checked')?.value;
+      obStep++; renderOnboarding(profile);
+    });
+    return;
+  }
+
+  if (step === "equipment") {
+    html(`${obBar()}<header class="hero" style="padding-bottom:0"><div class="eyebrow">Step ${obStep + 1} of ${OB_STEPS.length}</div>
+      <h1 style="font-size:28px">What do you have to train with?</h1>
+      <p class="sub">Check everything you have access to — pick as many as apply.</p></header>
+      <form id="obf">
+        ${MF_EQUIPMENT.map((eq) => `<label class="card" style="display:block;cursor:pointer">
+          <div class="toggle" style="margin:0"><input type="checkbox" name="eq" value="${eq.value}" ${obAnswers.equipment.includes(eq.value) ? "checked" : ""}>
+          <b>${esc(eq.label)}</b></div>
+          <p class="note" style="margin:6px 0 0 32px">${esc(eq.note)}</p></label>`).join("")}
+        ${obNav(false)}
+      </form>`);
+    obWireNav(document.getElementById("obf"), () => {
+      obAnswers.equipment = [...document.querySelectorAll('input[name="eq"]:checked')].map((i) => i.value);
+      obStep++; renderOnboarding(profile);
+    });
+    return;
+  }
+
+  if (step === "schedule") {
+    html(`${obBar()}<header class="hero" style="padding-bottom:0"><div class="eyebrow">Step ${obStep + 1} of ${OB_STEPS.length}</div>
+      <h1 style="font-size:28px">Which days work best?</h1>
+      <p class="sub">Pick at least 3 — your program is 3 sessions a week.</p></header>
+      <form id="obf" class="card">
+        ${MF_WEEKDAYS.map((d) => `<label class="toggle"><input type="checkbox" name="d" value="${d}" ${obAnswers.schedule_days.includes(d) ? "checked" : ""}> ${d[0].toUpperCase()}${d.slice(1)}</label>`).join("")}
+        ${obNav(false)}
+      </form>`);
+    obWireNav(document.getElementById("obf"), () => {
+      obAnswers.schedule_days = [...document.querySelectorAll('input[name="d"]:checked')].map((i) => i.value);
+      obStep++; renderOnboarding(profile);
+    });
+    return;
+  }
+
+  if (step === "goals") {
+    html(`${obBar()}<header class="hero" style="padding-bottom:0"><div class="eyebrow">Step ${obStep + 1} of ${OB_STEPS.length}</div>
+      <h1 style="font-size:28px">What do you want out of this?</h1>
+      <p class="sub">In your own words. Your coach reads every answer.</p></header>
+      <form id="obf" class="card">
+        <textarea name="goals" rows="4" placeholder="e.g. lose fat without losing muscle, more energy for my kids, get off my GLP-1 eventually...">${esc(obAnswers.goals || "")}</textarea>
+        ${obNav(false)}
+      </form>`);
+    obWireNav(document.getElementById("obf"), () => {
+      obAnswers.goals = document.querySelector('textarea[name="goals"]').value.trim();
+      obStep++; renderOnboarding(profile);
+    });
+    return;
+  }
+
+  if (step === "baseline") {
+    html(`${obBar()}<header class="hero" style="padding-bottom:0"><div class="eyebrow">Step ${obStep + 1} of ${OB_STEPS.length}</div>
+      <h1 style="font-size:28px">Starting point</h1>
+      <p class="sub">Both optional — skip anything you're not comfortable sharing yet.</p></header>
+      <form id="obf" class="card">
+        <label for="obw">Starting weight (lb)</label>
+        <input id="obw" type="number" step="0.1" inputmode="decimal" value="${obAnswers.start_weight_lb ?? ""}">
+        <label for="obp" style="margin-top:16px">Baseline photo</label>
+        <input id="obp" type="file" accept="image/*">
+        <div class="consent" style="margin-top:10px">
+          <input id="obc" type="checkbox" ${obAnswers.photo_consent ? "checked" : ""}>
+          <label for="obc" style="margin:0">I'm comfortable sharing this photo with my coach for progress tracking. Only my coach sees it.</label>
+        </div>
+        ${obNav(false)}
+      </form>`);
+    obWireNav(document.getElementById("obf"), async () => {
+      const w = document.getElementById("obw").value;
+      obAnswers.start_weight_lb = w === "" ? null : Number(w);
+      const fileInput = document.getElementById("obp");
+      const consent = document.getElementById("obc").checked;
+      const btn = document.querySelector("#obf button[type=submit]");
+      btn.disabled = true; btn.textContent = "Saving...";
+      try {
+        if (fileInput.files[0] && consent) await S.uploadPhoto(fileInput.files[0], "baseline");
+        await S.completeOnboarding({
+          fitness_level: obAnswers.fitness_level, equipment: obAnswers.equipment, schedule_days: obAnswers.schedule_days,
+          goals: obAnswers.goals || null, start_weight_lb: obAnswers.start_weight_lb,
+          red_flag: obAnswers.health_flags.length > 0,
+          health_notes: obAnswers.health_flags.length ? obAnswers.health_flags.join("; ") : null,
+        });
+        const fresh = await S.profile();
+        render(fresh);
+      } catch (err) {
+        btn.disabled = false; btn.textContent = "Finish";
+        alert("Something went wrong saving your answers. Please try again.");
+      }
+    });
+    return;
+  }
 }
 
 function renderLogin(msg = "") {

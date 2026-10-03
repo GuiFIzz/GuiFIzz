@@ -18,12 +18,14 @@
       };
     }
     return {
-      profile: { first_name: "Demo client", role: "client", start_date: iso(daysAgo(20)), next_session: daysAgo(-3).toISOString(), plan: "foundation" },
+      profile: { first_name: "Demo client", role: "client", start_date: iso(daysAgo(20)), next_session: daysAgo(-3).toISOString(), plan: "foundation",
+        onboarded: true, fitness_level: "intermediate", equipment: ["dumbbells", "home_gym"], schedule_days: ["monday", "wednesday", "friday"], goals: "Lose fat, keep muscle, have more energy for my kids." },
       checkins, workouts: { "1-A": 1, "1-B": 1, "1-C": 1, "2-A": 1, "2-B": 1, "2-C": 1, "3-A": 1 },
       roster: [
-        { first_name: "Demo client", start_date: iso(daysAgo(20)), last_checkin: iso(daysAgo(1)), adherence7: 86, next_session: daysAgo(-3).toISOString() },
-        { first_name: "Maria (sample)", start_date: iso(daysAgo(44)), last_checkin: iso(daysAgo(0)), adherence7: 100, next_session: daysAgo(-1).toISOString() },
-        { first_name: "John (sample)", start_date: iso(daysAgo(12)), last_checkin: iso(daysAgo(6)), adherence7: 29, next_session: daysAgo(-6).toISOString() },
+        { first_name: "Demo client", start_date: iso(daysAgo(20)), last_checkin: iso(daysAgo(1)), adherence7: 86, next_session: daysAgo(-3).toISOString(), onboarded: true, red_flag: false, goals: "Lose fat, keep muscle." },
+        { first_name: "Maria (sample)", start_date: iso(daysAgo(44)), last_checkin: iso(daysAgo(0)), adherence7: 100, next_session: daysAgo(-1).toISOString(), onboarded: true, red_flag: false, goals: "Get back in shape after having kids." },
+        { first_name: "John (sample)", start_date: iso(daysAgo(12)), last_checkin: iso(daysAgo(6)), adherence7: 29, next_session: daysAgo(-6).toISOString(), onboarded: true, red_flag: true, goals: "Doctor says watch my blood pressure." },
+        { first_name: "New sign-up (sample)", start_date: null, last_checkin: null, adherence7: 0, next_session: null, onboarded: false, red_flag: false, goals: null },
       ],
     };
   }
@@ -48,6 +50,15 @@
       save(s);
     },
     async roster() { return load().roster; },
+    async completeOnboarding(data) {
+      const s = load();
+      s.profile = { ...s.profile, ...data, onboarded: true, start_date: iso(new Date()) };
+      save(s);
+    },
+    async uploadPhoto(file) {
+      // Demo mode doesn't persist files; just acknowledge so the wizard can move on.
+      return { ok: true, name: file?.name || "photo" };
+    },
   };
 
   // ---------- Supabase backend ----------
@@ -86,7 +97,7 @@
       async roster() {
         const since = iso(daysAgo(6)); // last 7 days including today
         const [{ data: people }, { data: recent }] = await Promise.all([
-          sb.from("profiles").select("id,first_name,start_date,next_session").eq("role", "client").eq("active", true),
+          sb.from("profiles").select("id,first_name,start_date,next_session,onboarded,fitness_level,equipment,goals").eq("role", "client").eq("active", true),
           sb.from("checkins").select("client_id,day").gte("day", iso(daysAgo(60))),
         ]);
         return (people || []).map((p) => {
@@ -94,6 +105,20 @@
           return { ...p, last_checkin: mine[mine.length - 1] || null,
                    adherence7: Math.round(mine.filter((d) => d >= since).length / 7 * 100) };
         });
+      },
+      async completeOnboarding(data) {
+        const { error } = await sb.from("profiles").update({ ...data, onboarded: true, start_date: iso(new Date()) })
+          .eq("id", await uid());
+        if (error) throw error;
+      },
+      async uploadPhoto(file, kind = "baseline") {
+        const id = await uid();
+        const path = `${id}/${Date.now()}-${file.name}`;
+        const { error: upErr } = await sb.storage.from("progress-photos").upload(path, file);
+        if (upErr) throw upErr;
+        const { error } = await sb.from("progress_photos").insert({ client_id: id, storage_path: path, kind });
+        if (error) throw error;
+        return { ok: true, path };
       },
     };
   }

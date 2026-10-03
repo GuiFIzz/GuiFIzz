@@ -40,6 +40,8 @@ const root = document.getElementById("root");
   const enriched = rows.map((r) => {
     const day = r.start_date ? Math.floor((Date.now() - new Date(r.start_date + "T00:00:00")) / 864e5) : 0;
     const flags = [];
+    if (r.red_flag) flags.push(["risk", "Health screen flagged"]);
+    if (!r.onboarded) flags.push(["renew", "Onboarding incomplete"]);
     if (!r.last_checkin || r.last_checkin < riskDay) flags.push(["risk", "No check-in 5+ days"]);
     if (r.adherence7 < 50) flags.push(["risk", "Low adherence"]);
     if (day >= 35 && day <= 49) flags.push(["renew", "Week 6: offer $199 renewal"]);
@@ -53,11 +55,12 @@ const root = document.getElementById("root");
       <h1 style="font-size:32px">${rows.length} active clients</h1>
       <p class="sub" style="font-size:16px">${spotsLeft} of ${MF_CONFIG.FOUNDING_SPOTS} founding spots left · clients who need you most are at the top.</p></header>
     <div class="scroll"><table>
-      <thead><tr><th>Client</th><th>Week</th><th>Last check-in</th><th>7-day check-ins</th><th>Next session</th><th>Status</th></tr></thead>
+      <thead><tr><th>Client</th><th>Week</th><th>Last check-in</th><th>7-day check-ins</th><th>Next session</th><th>Goals</th><th>Status</th></tr></thead>
       <tbody>${enriched.map((r) => `<tr>
         <td><b>${esc(r.first_name || "—")}</b></td><td>${r.week}</td>
         <td>${r.last_checkin === today ? "Today" : esc(r.last_checkin || "never")}</td>
         <td>${r.adherence7}%</td><td>${esc(fmt(r.next_session))}</td>
+        <td style="max-width:220px;color:var(--muted)">${esc(r.goals || "—")}</td>
         <td>${r.flags.map(([c, t]) => `<span class="flag ${c}">${esc(t)}</span>`).join("")}</td></tr>`).join("")}</tbody>
     </table></div>`;
 })();
