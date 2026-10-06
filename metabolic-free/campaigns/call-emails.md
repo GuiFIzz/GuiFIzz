@@ -8,10 +8,11 @@ automations cover what Cal.com doesn't. Each one starts when the tag is added (A
 |---|---|---|
 | `call_booked` | Email 1 right away | Remove the contact from the "book a call" nurture campaign |
 | `call_cancelled` | Email 2 after 1 hour | |
-| `call_no_show` | Email 3 right away (the guest is 7 min late on Cal Video) | Email 3b 2 days later if still not rebooked |
+| `call_no_show` | Subscribes to the "No-Show Recovery" campaign: Email 3 immediately, Email 3b 2 days later |  |
 
 When someone rebooks, the webhook removes `call_cancelled` / `call_no_show` and adds `call_booked`.
-In Systeme.io, set the email 3b step to check "has tag call_booked → stop".
+The `call_booked` automation rule unsubscribes the contact from both the nurture campaign and the
+No-Show Recovery campaign, so Email 3b never fires if they've already rebooked.
 
 ---
 
