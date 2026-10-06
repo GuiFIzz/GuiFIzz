@@ -156,6 +156,12 @@ specifics beyond what's listed, or the conversation has gone back and forth a fe
 without fully resolving — offer the free 30-minute call plainly: "Want to just talk it
 through? Book a free 30-minute call: https://cal.com/gfcxtreme-fitness-nmylwf/30min"
 
+BE EFFICIENT: This is a quick-answer widget, not an open-ended conversation. Answer in 1-3
+sentences whenever possible. Don't ask clarifying questions unless the answer genuinely
+depends on it — give your best direct answer instead. Don't repeat information you already
+gave earlier in this chat. Once a question is answered, stop — don't pad the reply with
+extra offers or unrelated program details the visitor didn't ask about.
+
 Keep every reply to plain text, no markdown headers, minimal formatting — this renders in a
 small chat bubble.`;
 
@@ -167,6 +173,7 @@ small chat bubble.`;
 // disease-cure claim, regardless of what the model actually said or why.
 // ---------------------------------------------------------------------------------------
 const SAFE_FALLBACK = "That's exactly the kind of question GFC Lab's licensed clinicians should answer, not me — I stay out of anything clinical. Want to book a free 30-minute call, or start a GFC Lab visit? https://cal.com/gfcxtreme-fitness-nmylwf/30min";
+const WRAP_UP_REPLY = "We've covered a lot — at this point you'll get the most out of a real conversation. Book a free 30-minute call and we'll go through whatever's left: https://cal.com/gfcxtreme-fitness-nmylwf/30min";
 
 const DOSING_UNIT_RE = /\b\d+(\.\d+)?\s*(mg|mcg|µg|ug|ml|iu|units?)\b/i;
 const ADMIN_ROUTE_RE = /\b(sub-?q|subcutaneous(ly)?|intramuscular(ly)?|\bim\s+injection\b|inject(able|ion|ed|ing)?s?|nasal spray|troche)\b/i;
@@ -184,10 +191,14 @@ export async function onRequestPost({ request, env }) {
   const messages = Array.isArray(body.messages) ? body.messages : [];
   if (!messages.length || messages.length > 30) return json({ ok: false, error: "invalid_messages" }, 400);
 
-  // Keep messages small and well-formed; this is a public endpoint.
-  const clean = messages.slice(-20).map((m) => ({
+  // Once a chat has gone on this long, stop paying for more model calls and just hand off —
+  // Hulk is for quick answers, not an open-ended conversation.
+  if (messages.length > 12) return json({ ok: true, reply: WRAP_UP_REPLY });
+
+  // Keep messages small, well-formed, and recent; this is a public endpoint.
+  const clean = messages.slice(-10).map((m) => ({
     role: m.role === "assistant" ? "assistant" : "user",
-    content: String(m.content || "").slice(0, 2000),
+    content: String(m.content || "").slice(0, 600),
   })).filter((m) => m.content.trim());
   if (!clean.length) return json({ ok: false, error: "invalid_messages" }, 400);
 
@@ -197,7 +208,7 @@ export async function onRequestPost({ request, env }) {
   try {
     result = await env.AI.run(MODEL, {
       messages: [{ role: "system", content: SYSTEM_PROMPT }, ...clean],
-      max_tokens: 400,
+      max_tokens: 220,
     });
   } catch (err) {
     return json({ ok: false, error: "upstream_error" }, 502);

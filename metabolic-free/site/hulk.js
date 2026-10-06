@@ -15,7 +15,7 @@
       <div id="hulkMsgs"></div>
       <p class="hulkNote">AI assistant, not medical advice. For anything clinical, <a href="lab.html">GFC Lab</a> has you covered.</p>
       <form id="hulkForm">
-        <textarea id="hulkInput" rows="1" placeholder="Ask about pricing, the program, Lumen..." required></textarea>
+        <textarea id="hulkInput" rows="1" maxlength="600" placeholder="Ask about pricing, the program, Lumen..." required></textarea>
         <button id="hulkSend" type="submit">Send</button>
       </form>
     </div>`);
