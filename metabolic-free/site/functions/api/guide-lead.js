@@ -1,11 +1,15 @@
 // Cloudflare Pages Function: POST /api/guide-lead
 // Captures an email from a gated content download (e.g. the Peptide Guide) and tags the
 // contact in Systeme.io. Separate from /api/lead (the Metabolic Score quiz) because this
-// lead has no score/segment — just a name, email, and which guide they wanted.
+// lead has no score/segment — just a name and email.
+//
+// Reuses the quiz_lead tag (not a dedicated one) so a guide download enters the same
+// nurture sequence as a quiz-taker — same funnel, same "general lead" treatment, and no
+// extra Systeme.io tag needed.
 //
 // Cloudflare Pages → Settings → Environment variables:
-//   SYSTEME_API_KEY            (required) same key as /api/lead
-//   SYSTEME_TAG_PEPTIDE_GUIDE  (optional) tag id added when someone unlocks the Peptide Guide
+//   SYSTEME_API_KEY   (required) same key as /api/lead
+//   SYSTEME_TAG_QUIZ  (required) same tag id as /api/lead's quiz_lead tag
 
 const API = "https://api.systeme.io/api";
 
@@ -36,9 +40,9 @@ export async function onRequestPost({ request, env }) {
     if (!contactId) return json({ ok: false, error: "systeme_create_failed", status: created.status }, 502);
   }
 
-  if (env.SYSTEME_TAG_PEPTIDE_GUIDE) {
+  if (env.SYSTEME_TAG_QUIZ) {
     await fetch(`${API}/contacts/${contactId}/tags`, { method: "POST", headers,
-      body: JSON.stringify({ tagId: Number(env.SYSTEME_TAG_PEPTIDE_GUIDE) }) });
+      body: JSON.stringify({ tagId: Number(env.SYSTEME_TAG_QUIZ) }) });
   }
 
   return json({ ok: true });
