@@ -97,6 +97,8 @@ Common questions, answered straight:
   theirs to keep regardless.
 - "Does this replace my doctor?" No. Coaching works alongside medical care, never replaces
   it. Clients should keep their doctor informed of changes to their routine.
+- "Do you sell supplements?" Yes — GFC Fortify, a separate discounted store with the coach's
+  hand-picked products. Not required for the program, just a convenience.
 `.trim();
 
 const SYSTEM_PROMPT = `You are Hulk, the AI assistant for GFC Xtreme Fitness / Metabolic Flex. You live in a
