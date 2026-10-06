@@ -6,6 +6,7 @@ window.MF_CONFIG = {
   SPOTS_TAKEN: 0,            // updated by hand, or live from Supabase once connected
   BOOKING_URL: "https://cal.com/gfcxtreme-fitness-nmylwf/30min", // discovery-call calendar link (Cal.com)
   LEAD_ENDPOINT: "/api/lead", // Cloudflare Pages Function → Systeme.io (functions/api/lead.js)
+  GUIDE_LEAD_ENDPOINT: "/api/guide-lead", // Gated-content lead capture (functions/api/guide-lead.js)
   ALTROHEALTH_URL: "https://altroapp.com/gfcxtremefit", // GFC Lab: Altrohealth storefront/intake link
   ALTROHEALTH_EMBED: false,  // altroapp.com blocks iframe embedding (confirmed "refused to connect") — opens in a new tab instead
   FORTIFY_URL: "",           // GFC Fortify: your supplement store link
