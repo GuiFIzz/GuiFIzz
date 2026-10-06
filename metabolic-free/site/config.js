@@ -10,8 +10,8 @@ window.MF_CONFIG = {
   HULK_ENDPOINT: "/api/hulk", // Hulk AI chat widget (functions/api/hulk.js)
   ALTROHEALTH_URL: "https://altroapp.com/gfcxtremefit", // GFC Lab: Altrohealth storefront/intake link
   ALTROHEALTH_EMBED: false,  // altroapp.com blocks iframe embedding (confirmed "refused to connect") — opens in a new tab instead
-  FORTIFY_URL: "",           // GFC Fortify: your supplement store link
-  FORTIFY_EMBED: true,       // true = try showing the store inside the GFC Fortify tab (most e-commerce platforms, Shopify included, block this via X-Frame-Options — if the embed stays blank, set this to false to just link out instead)
+  FORTIFY_URL: "https://us.fullscript.com/s/gfcxtremefit/shop", // GFC Fortify: Fullscript storefront
+  FORTIFY_EMBED: false,      // Fullscript sends X-Frame-Options: DENY (confirmed) — opens in a new tab instead
   SUPABASE_URL: "",          // client platform backend; empty = demo mode
   SUPABASE_ANON_KEY: "",
   COACH_NAME: "Coach Gui",

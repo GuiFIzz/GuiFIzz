@@ -42,6 +42,9 @@
   .price { font-size:40px; font-weight:800; }
   .price small { font-size:16px; color:var(--muted); font-weight:400; }
   .spots { display:inline-block; margin-top:14px; padding:6px 12px; border-radius:999px; border:1px solid var(--accent); color:var(--accent); font-size:14px; font-weight:700; }
+  .btn-fortify { font-size:19px; padding:17px 28px; box-shadow:0 6px 24px rgba(242,107,42,.35); animation:fortifyPulse 2.5s ease-in-out infinite; }
+  .btn-fortify:hover { animation:none; }
+  @keyframes fortifyPulse { 0%,100% { box-shadow:0 6px 24px rgba(242,107,42,.35), 0 0 0 0 rgba(242,107,42,.45); } 50% { box-shadow:0 6px 24px rgba(242,107,42,.35), 0 0 0 9px rgba(242,107,42,0); } }
   .spots.full { border-color:#f26b2a; color:#f26b2a; }
   details { border-bottom:1px solid var(--line); padding:12px 0; }
   summary { cursor:pointer; font-weight:600; }

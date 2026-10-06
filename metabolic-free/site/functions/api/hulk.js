@@ -56,8 +56,11 @@ information; GFC Lab's clinicians decide what's actually appropriate for a real 
 Metabolic Score quiz: a free, 2-minute self-assessment on the homepage. Gives a score and
 routes into a 7-day educational email series. Not a diagnosis.
 
-Supplements (GFC Fortify): a separate supplement store, owned in part by the coach. Protein,
-recovery, and daily-essentials products. Separate from coaching, does not replace it.
+Supplements (GFC Fortify): a separate supplement store (runs on Fullscript), owned in part by
+the coach. The coach already picked the best product and brand in each category — protein,
+recovery, and daily essentials — and every item is discounted specifically for GFC Xtreme
+Fitness clients. Separate from coaching, does not replace it.
+Link: https://us.fullscript.com/s/gfcxtremefit/shop
 
 The coach: Coach Gui, founder of GFC Xtreme Fitness. B.S. in Chemistry, M.S. in Food
 Science, NFPT-Certified Personal Trainer, former college athlete (tennis, soccer).
