@@ -77,6 +77,23 @@
     <p><a class="btn" id="cta" href="index.html#quiz">Take the Metabolic Score</a></p>
   </section>
 
+  <section class="block" id="signup">
+    <h2>Already know this is for you?</h2>
+    <p class="sub" style="font-size:16px">Skip the quiz and the call — tell us you're ready, and Coach Gui will reach out directly to get you enrolled.</p>
+    <div class="card" id="signupCard">
+      <form id="signupForm" novalidate>
+        <label for="sn">First name</label><input id="sn" type="text" autocomplete="given-name" required>
+        <label for="se">Email</label><input id="se" type="email" autocomplete="email" required>
+        <label for="sp">Phone (optional)</label><input id="sp" type="tel" autocomplete="tel">
+        <p><button class="btn" id="signupGo" type="submit">I'm ready — sign me up</button></p>
+        <p class="note" id="signupMsg"></p>
+      </form>
+      <div id="signupDone" hidden>
+        <p><b>Got it!</b> Coach Gui will reach out directly to get you started.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="block">
     <h2>Questions</h2>
     <details><summary>Do I have to take medication?</summary><p>No. Medication is one tool, not a requirement. Many clients never use it. If you do, we build the training and nutrition that protect your muscle and prepare you to need it less.</p></details>
@@ -95,6 +112,23 @@
 <script>
   MF.renderSpots(document.getElementById("spots"));
   if (MF.spotsLeft() === 0) document.getElementById("cta").textContent = "Join the waitlist";
+
+  document.getElementById("signupForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById("signupGo"), msg = document.getElementById("signupMsg");
+    const first_name = document.getElementById("sn").value.trim(), email = document.getElementById("se").value.trim(),
+      phone = document.getElementById("sp").value.trim();
+    if (!first_name || !/\S+@\S+\.\S+/.test(email)) { msg.textContent = "Enter a valid name and email."; return; }
+    btn.disabled = true; btn.textContent = "Sending...";
+    try {
+      await fetch("/api/signup-lead", { method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ first_name, email, phone }) });
+    } catch (err) { console.warn("Signup lead submit failed", err); }
+    if (window.fbq) fbq("track", "Lead");
+    if (window.gtag) gtag("event", "generate_lead");
+    document.getElementById("signupForm").hidden = true;
+    document.getElementById("signupDone").hidden = false;
+  });
 </script>
 <script src="hulk.js"></script>
 </body>
