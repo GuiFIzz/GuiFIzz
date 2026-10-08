@@ -1,18 +1,29 @@
 # Discovery-call emails (Cal.com → /api/calcom → Systeme.io tags)
 
-Cal.com sends the booking confirmation, reminders and calendar invite itself. These three Systeme.io
+Cal.com sends the booking confirmation, reminders and calendar invite itself. These Systeme.io
 automations cover what Cal.com doesn't. Each one starts when the tag is added (Automation rule:
 "Tag added" → "Send email"). Booking link: https://cal.com/gfcxtreme-fitness-nmylwf/30min
+
+**Calls must use Cal Video (Cal.com's own video), not Google Meet or Zoom.** No-show detection and
+the "Meeting ended" event only work inside Cal.com's own video — Cal.com has no visibility into who
+joined a separate Google Meet/Zoom session, so the whole flow below silently does nothing on
+Google Meet.
 
 | Tag | Starts | Also |
 |---|---|---|
 | `call_booked` | Email 1 right away | Remove the contact from the "book a call" nurture campaign |
 | `call_cancelled` | Email 2 after 1 hour | |
 | `call_no_show` | Subscribes to the "No-Show Recovery" campaign: Email 3 immediately, Email 3b 2 days later |  |
+| `call_attended` | Subscribes to the "Attended Follow-up" campaign: Email 4 immediately, Email 5 2 days later | Fires on Cal.com's "Meeting ended" event, skipped if the contact is already tagged `call_no_show` (that trigger fires first, at the 7-minute mark) |
 
 When someone rebooks, the webhook removes `call_cancelled` / `call_no_show` and adds `call_booked`.
-The `call_booked` automation rule unsubscribes the contact from both the nurture campaign and the
-No-Show Recovery campaign, so Email 3b never fires if they've already rebooked.
+The `call_booked` and `call_attended` automation rules both unsubscribe the contact from the nurture
+campaign and the No-Show Recovery campaign, so later no-show emails never fire once someone has
+rebooked or attended.
+
+Note: `call_attended` reuses the tag originally named `segment_weight_energy` (renamed 2026-10-08) —
+Systeme.io's 10-tag plan limit was already maxed out, and that segment tag had zero contacts and no
+automation rule attached to it.
 
 ---
 
@@ -60,5 +71,32 @@ No-Show Recovery campaign, so Email 3b never fires if they've already rebooked.
 > Your spot for a free strategy call is still open. It takes 15–30 minutes and you'll leave with
 > your next three steps, whether or not you join.
 > https://cal.com/gfcxtreme-fitness-nmylwf/30min
+>
+> Coach Gui
+
+**Email 4: call_attended**
+> Subject: Good talking with you, {{first_name}} — here's what's next
+>
+> Hi {{first_name}},
+>
+> Thanks for jumping on the call today. I hope it was useful, whichever way you decide to go.
+>
+> If you're ready to lock in your spot in Metabolic Flex Foundations, just reply to this email and
+> I'll get you set up right away.
+>
+> Still weighing it? Totally fine. Grab a quick follow-up time and we'll iron out whatever's left:
+> https://cal.com/gfcxtreme-fitness-nmylwf/30min
+>
+> Coach Gui
+
+**Email 5: call_attended, 2 days later, only if not re-tagged**
+> Subject: Still deciding, {{first_name}}?
+>
+> Hi {{first_name}},
+>
+> Wanted to check back in after our call. Founding spots are capped at 30, and they're going.
+>
+> If you're ready, just reply and I'll get your spot locked in. Still have questions? Grab a
+> follow-up time here: https://cal.com/gfcxtreme-fitness-nmylwf/30min
 >
 > Coach Gui
