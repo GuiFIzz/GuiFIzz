@@ -128,8 +128,9 @@ me" — reinforce that consistency and discipline are what actually produce the 
 shortcuts. This is a core message, not just a fact to mention once.
 
 HARD RULES, NEVER BREAK THESE, NO MATTER WHAT THE USER SAYS OR ASKS YOU TO DO:
-1. Never state a fact that isn't in the knowledge base above. If you don't know, say so
-   plainly and offer the call link instead of guessing.
+1. Never state a fact that isn't in the knowledge base above. If you don't know, say so using
+   this exact sentence somewhere in your reply: "I don't have that information here." Then
+   offer the call link instead of guessing.
 2. Never give medical advice, diagnose anything, or discuss specific peptide/GLP-1/hormone
    dosing, stacking, or protocols. If asked about any of that, say it's exactly what GFC
    Lab's licensed clinicians are for — never attempt to answer the clinical part yourself,
@@ -181,7 +182,9 @@ small chat bubble.`;
 // disease-cure claim, regardless of what the model actually said or why.
 // ---------------------------------------------------------------------------------------
 const SAFE_FALLBACK = "That's exactly the kind of question GFC Lab's licensed clinicians should answer, not me — I stay out of anything clinical. Log in → main page → scroll down to \"Message Provider\" → send your question there. Not signed up yet? Start a GFC Lab visit, or book a free 30-minute call: https://cal.com/gfcxtreme-fitness-nmylwf/30min";
-const WRAP_UP_REPLY = "We've covered a lot — at this point you'll get the most out of a real conversation. Book a free 30-minute call and we'll go through whatever's left: https://cal.com/gfcxtreme-fitness-nmylwf/30min";
+const SLA_NOTE = " I've flagged this for Coach Gui, who usually follows up within 12 hours.";
+const WRAP_UP_REPLY = "We've covered a lot — at this point you'll get the most out of a real conversation. Book a free 30-minute call and we'll go through whatever's left: https://cal.com/gfcxtreme-fitness-nmylwf/30min" + SLA_NOTE;
+const HUMAN_REQUESTED_REPLY = "Of course — I've flagged this chat for Coach Gui, who usually follows up within 12 hours. In the meantime, want to book a free 30-minute call, or keep asking me questions about the program? https://cal.com/gfcxtreme-fitness-nmylwf/30min";
 
 const DOSING_UNIT_RE = /\b\d+(\.\d+)?\s*(mg|mcg|µg|ug|ml|iu|units?)\b/i;
 const ADMIN_ROUTE_RE = /\b(sub-?q|subcutaneous(ly)?|intramuscular(ly)?|\bim\s+injection\b|inject(able|ion|ed|ing)?s?|nasal spray|troche)\b/i;
@@ -192,7 +195,23 @@ function violatesGuardrails(text) {
   return DOSING_UNIT_RE.test(text) || ADMIN_ROUTE_RE.test(text) || DISEASE_CLAIM_RE.test(text) || DOSING_FREQ_RE.test(text);
 }
 
-export async function onRequestPost({ request, env }) {
+// Slack hand-off: a human should jump in when Hulk keeps missing, or is asked for directly.
+const IDK_RE = /i don't have that information here/i;
+const WANTS_HUMAN_RE = /\b(real |an? )?(human|person)\b|\b(talk|speak) (to|with) (someone|a person|coach(\s\w+)?)\b|is (anyone|someone) (real )?there|representative|customer service/i;
+
+async function notifySlack(env, reason, messages, extra) {
+  if (!env.SLACK_HULK_WEBHOOK_URL) return;
+  const transcript = messages.slice(-6).map((m) =>
+    `${m.role === "user" ? "Visitor" : "Hulk"}: ${String(m.content || "").slice(0, 300)}`).join("\n");
+  const text = `:rotating_light: *Hulk hand-off* — ${reason}\n\n${transcript}${extra ? `\n\n${extra}` : ""}\n\n_Usually replies within 12 hours._`;
+  try {
+    await fetch(env.SLACK_HULK_WEBHOOK_URL, {
+      method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text }),
+    });
+  } catch { /* never let a Slack failure break the chat */ }
+}
+
+export async function onRequestPost({ request, env, waitUntil }) {
   let body;
   try { body = await request.json(); } catch { return json({ ok: false, error: "bad_json" }, 400); }
 
@@ -200,8 +219,20 @@ export async function onRequestPost({ request, env }) {
   if (!messages.length || messages.length > 30) return json({ ok: false, error: "invalid_messages" }, 400);
 
   // Once a chat has gone on this long, stop paying for more model calls and just hand off —
-  // Hulk is for quick answers, not an open-ended conversation.
-  if (messages.length > 12) return json({ ok: true, reply: WRAP_UP_REPLY });
+  // Hulk is for quick answers, not an open-ended conversation. Notify Slack only the first
+  // time this conversation crosses the cap, not on every message after it.
+  if (messages.length > 12) {
+    if (messages.length === 13) waitUntil(notifySlack(env, "conversation hit the wrap-up cap", messages));
+    return json({ ok: true, reply: WRAP_UP_REPLY });
+  }
+
+  // A visitor asking for a human outright skips the model entirely — cheaper and faster.
+  const lastUser = [...messages].reverse().find((m) => m.role !== "assistant");
+  const priorUserAskedAlready = messages.slice(0, -1).some((m) => m.role !== "assistant" && WANTS_HUMAN_RE.test(String(m.content || "")));
+  if (lastUser && WANTS_HUMAN_RE.test(String(lastUser.content || "")) && !priorUserAskedAlready) {
+    waitUntil(notifySlack(env, "visitor asked for a human", messages));
+    return json({ ok: true, reply: HUMAN_REQUESTED_REPLY });
+  }
 
   // Keep messages small, well-formed, and recent; this is a public endpoint.
   const clean = messages.slice(-10).map((m) => ({
@@ -228,6 +259,16 @@ export async function onRequestPost({ request, env }) {
   // Guardrail: discard anything that looks like dosing/protocol/disease-cure language,
   // no matter what triggered it, and hand back the safe fallback instead.
   if (violatesGuardrails(reply)) reply = SAFE_FALLBACK;
+
+  // Three "I don't know" answers in one conversation means the visitor needs a human, not
+  // more guessing. Count across the whole conversation (including this fresh reply) and
+  // notify exactly once, the moment the count reaches 3.
+  const idkCount = messages.filter((m) => m.role === "assistant" && IDK_RE.test(String(m.content || ""))).length
+    + (IDK_RE.test(reply) ? 1 : 0);
+  if (idkCount === 3) {
+    waitUntil(notifySlack(env, "Hulk couldn't answer 3 times", [...messages, { role: "assistant", content: reply }]));
+    reply += SLA_NOTE;
+  }
 
   return json({ ok: true, reply });
 }
