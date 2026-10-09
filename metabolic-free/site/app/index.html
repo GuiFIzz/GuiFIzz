@@ -3,365 +3,41 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Program · Metabolic Flex</title>
+<title>Client Login · Metabolic Flex</title>
+<meta name="description" content="Log in to your Metabolic Flex training program, powered by PT Distinction.">
 <link rel="stylesheet" href="../styles.css">
 <style>
-  .tabs { display:flex; gap:6px; margin:16px 0; overflow-x:auto; }
-  .tabs button { background:var(--card); color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:8px 14px; font-size:15px; cursor:pointer; white-space:nowrap; }
-  .tabs button[aria-selected=true] { color:var(--accent-ink); background:var(--accent); border-color:var(--accent); font-weight:700; }
-  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-  .stat { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; }
-  .stat b { display:block; font-size:28px; }
-  .stat span { color:var(--muted); font-size:13px; }
-  .scale { display:flex; gap:6px; }
-  .scale button { flex:1; padding:12px 0; border-radius:8px; border:1px solid var(--line); background:var(--bg); color:var(--ink); font-size:17px; cursor:pointer; }
-  .scale button[aria-pressed=true] { background:var(--accent); color:var(--accent-ink); border-color:var(--accent); font-weight:800; }
-  .toggle { display:flex; align-items:center; gap:10px; margin:10px 0; font-size:16px; color:var(--ink); }
-  .toggle input { width:22px; height:22px; flex:none; accent-color:var(--accent); }
-  input[type=number], textarea { width:100%; padding:10px; border-radius:8px; border:1px solid var(--line); background:var(--bg); color:var(--ink); font-size:16px; font-family:inherit; }
-  .workout { display:flex; gap:12px; align-items:flex-start; }
-  .workout input { width:26px; height:26px; margin-top:2px; accent-color:var(--accent); flex:none; }
-  .workout ul { margin:6px 0 0; padding-left:18px; color:var(--muted); font-size:15px; }
-  .dots { display:flex; gap:4px; flex-wrap:wrap; }
-  .dots i { width:16px; height:16px; border-radius:4px; background:var(--line); }
-  .dots i.on { background:var(--accent); }
-  .banner { background:#1f0f06; border:1px solid #f26b2a; color:#ffb58c; border-radius:10px; padding:10px 14px; font-size:14px; margin-top:12px; }
-  .saved { color:var(--accent); font-weight:700; margin-left:10px; }
-  svg.spark { width:100%; height:70px; }
+  #ptdWrap { margin:20px 0 40px; min-height:70vh; }
+  #ptd_portal { width:100%; min-height:70vh; }
 </style>
 <script src="../config.js"></script>
-<script src="program.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="store.js"></script>
 </head>
 <body>
 <nav class="topnav" aria-label="Main"><div class="wrap">
   <a class="brand" href="../index.html">Metabolic <span>Flex</span></a>
+  <a class="tab" href="../index.html">Home</a>
   <a class="tab" href="../science.html">The Science</a>
   <a class="tab" href="../program.html">Program</a>
   <a class="tab" href="../coach.html">Coach</a>
   <a class="tab lab" href="../lab.html">GFC Lab</a>
   <a class="tab fortify" href="../fortify.html">Supplements</a>
-  <a class="tab" href="index.html" aria-current="page">My program</a>
+  <a class="tab" href="index.html" aria-current="page">Client login</a>
 </div></nav>
-<main class="wrap" id="root" aria-live="polite"></main>
-
-<script>
-const S = window.MF_STORE, P = window.MF_PROGRAM, { iso, daysAgo } = window.MF_UTIL, esc = MF.esc;
-const root = document.getElementById("root");
-const html = (h) => { root.innerHTML = h; };
-let tab = "today";
-
-function weekOf(profile) {
-  if (!profile?.start_date) return 1;
-  const d = Math.floor((Date.now() - new Date(profile.start_date + "T00:00:00")) / 864e5);
-  return Math.min(P.weeks, Math.max(1, Math.floor(d / 7) + 1));
-}
-
-async function boot() {
-  const user = await S.session();
-  if (!user) return renderLogin();
-  const profile = await S.profile();
-  if (profile?.role === "coach") { location.href = "coach.html"; return; }
-  if (!profile?.onboarded) return renderOnboarding(profile);
-  render(profile);
-}
-
-// ---------------------------------------------------------------------------
-// Onboarding: a first-time intake wizard, gates the dashboard until complete.
-// ---------------------------------------------------------------------------
-const OB_STEPS = ["welcome", "health", "level", "equipment", "schedule", "goals", "baseline"];
-let obStep = 0, obAnswers = { equipment: [], schedule_days: [], health_flags: [] };
-
-function obBar() {
-  return `<div class="bar" style="margin-bottom:20px"><i style="width:${(obStep / (OB_STEPS.length - 1) * 100).toFixed(0)}%"></i></div>`;
-}
-function obNav(backDisabled) {
-  return `<p style="display:flex;gap:10px;margin-top:20px">
-    ${backDisabled ? "" : `<button class="btn" type="button" id="obBack" style="background:var(--card);color:var(--ink)">Back</button>`}
-    <button class="btn" type="submit">${obStep === OB_STEPS.length - 1 ? "Finish" : "Continue"}</button>
-  </p>`;
-}
-function obWireNav(form, onNext) {
-  const back = document.getElementById("obBack");
-  if (back) back.onclick = () => { obStep--; renderOnboarding(obProfile); };
-  form.onsubmit = (e) => { e.preventDefault(); onNext(); };
-}
-let obProfile = null;
-
-async function renderOnboarding(profile) {
-  obProfile = profile;
-  const step = OB_STEPS[obStep];
-  const panel = root;
-
-  if (step === "welcome") {
-    html(`<header class="hero"><div class="eyebrow">Welcome to Metabolic Flex</div>
-      <h1>Hi ${esc(profile?.first_name || "there")}, let's set you up.</h1>
-      <p class="sub">Before your first session, a few quick questions so your coach can build your plan around you.
-        Takes about 3 minutes.</p></header>
-      <div class="card">
-        <b>How this works</b>
-        <ul class="check" style="margin-top:10px">
-          <li><b>Discipline:</b> a clear weekly plan, 3 strength sessions.</li>
-          <li><b>Accountability:</b> a 1:1 session with your coach every two weeks, plus a daily 60-second check-in.</li>
-          <li><b>Consistency:</b> small habits, repeated, until you need the tools less.</li>
-        </ul>
-      </div>
-      <form id="obf">${obNav(true)}</form>`);
-    obWireNav(document.getElementById("obf"), () => { obStep++; renderOnboarding(profile); });
-    return;
-  }
-
-  if (step === "health") {
-    const flags = [
-      "Chest pain, or a heart condition diagnosed by a doctor",
-      "Pregnant, or gave birth in the last 6 weeks",
-      "Dizziness or loss of balance",
-      "A bone or joint problem that could get worse with exercise",
-      "Currently prescribed medication for blood pressure or your heart",
-    ];
-    html(`${obBar()}<header class="hero" style="padding-bottom:0"><div class="eyebrow">Step ${obStep + 1} of ${OB_STEPS.length}</div>
-      <h1 style="font-size:28px">Quick health screen</h1>
-      <p class="sub">Check any that apply to you. This isn't a diagnosis — it just tells your coach to loop in your doctor first.</p></header>
-      <form id="obf" class="card">
-        ${flags.map((f, i) => `<label class="toggle"><input type="checkbox" name="f${i}" ${obAnswers.health_flags.includes(f) ? "checked" : ""}> ${esc(f)}</label>`).join("")}
-        ${obNav(false)}
-      </form>`);
-    obWireNav(document.getElementById("obf"), () => {
-      const f = document.getElementById("obf");
-      obAnswers.health_flags = flags.filter((_, i) => f[`f${i}`].checked);
-      obStep++; renderOnboarding(profile);
-    });
-    return;
-  }
-
-  if (step === "level") {
-    html(`${obBar()}<header class="hero" style="padding-bottom:0"><div class="eyebrow">Step ${obStep + 1} of ${OB_STEPS.length}</div>
-      <h1 style="font-size:28px">Where are you starting from?</h1>
-      <p class="sub">Be honest — this sets your starting weights, not your ceiling.</p></header>
-      <form id="obf">
-        ${MF_FITNESS_LEVELS.map((l) => `<label class="card" style="display:block;cursor:pointer">
-          <div class="toggle" style="margin:0"><input type="radio" name="level" value="${l.value}" ${obAnswers.fitness_level === l.value ? "checked" : ""} required>
-          <b>${esc(l.label)}</b></div>
-          <p class="note" style="margin:6px 0 0 32px">${esc(l.note)}</p></label>`).join("")}
-        ${obNav(false)}
-      </form>`);
-    obWireNav(document.getElementById("obf"), () => {
-      obAnswers.fitness_level = document.querySelector('input[name="level"]:checked')?.value;
-      obStep++; renderOnboarding(profile);
-    });
-    return;
-  }
-
-  if (step === "equipment") {
-    html(`${obBar()}<header class="hero" style="padding-bottom:0"><div class="eyebrow">Step ${obStep + 1} of ${OB_STEPS.length}</div>
-      <h1 style="font-size:28px">What do you have to train with?</h1>
-      <p class="sub">Check everything you have access to — pick as many as apply.</p></header>
-      <form id="obf">
-        ${MF_EQUIPMENT.map((eq) => `<label class="card" style="display:block;cursor:pointer">
-          <div class="toggle" style="margin:0"><input type="checkbox" name="eq" value="${eq.value}" ${obAnswers.equipment.includes(eq.value) ? "checked" : ""}>
-          <b>${esc(eq.label)}</b></div>
-          <p class="note" style="margin:6px 0 0 32px">${esc(eq.note)}</p></label>`).join("")}
-        ${obNav(false)}
-      </form>`);
-    obWireNav(document.getElementById("obf"), () => {
-      obAnswers.equipment = [...document.querySelectorAll('input[name="eq"]:checked')].map((i) => i.value);
-      obStep++; renderOnboarding(profile);
-    });
-    return;
-  }
-
-  if (step === "schedule") {
-    html(`${obBar()}<header class="hero" style="padding-bottom:0"><div class="eyebrow">Step ${obStep + 1} of ${OB_STEPS.length}</div>
-      <h1 style="font-size:28px">Which days work best?</h1>
-      <p class="sub">Pick at least 3 — your program is 3 sessions a week.</p></header>
-      <form id="obf" class="card">
-        ${MF_WEEKDAYS.map((d) => `<label class="toggle"><input type="checkbox" name="d" value="${d}" ${obAnswers.schedule_days.includes(d) ? "checked" : ""}> ${d[0].toUpperCase()}${d.slice(1)}</label>`).join("")}
-        ${obNav(false)}
-      </form>`);
-    obWireNav(document.getElementById("obf"), () => {
-      obAnswers.schedule_days = [...document.querySelectorAll('input[name="d"]:checked')].map((i) => i.value);
-      obStep++; renderOnboarding(profile);
-    });
-    return;
-  }
-
-  if (step === "goals") {
-    html(`${obBar()}<header class="hero" style="padding-bottom:0"><div class="eyebrow">Step ${obStep + 1} of ${OB_STEPS.length}</div>
-      <h1 style="font-size:28px">What do you want out of this?</h1>
-      <p class="sub">In your own words. Your coach reads every answer.</p></header>
-      <form id="obf" class="card">
-        <textarea name="goals" rows="4" placeholder="e.g. lose fat without losing muscle, more energy for my kids, get off my GLP-1 eventually...">${esc(obAnswers.goals || "")}</textarea>
-        ${obNav(false)}
-      </form>`);
-    obWireNav(document.getElementById("obf"), () => {
-      obAnswers.goals = document.querySelector('textarea[name="goals"]').value.trim();
-      obStep++; renderOnboarding(profile);
-    });
-    return;
-  }
-
-  if (step === "baseline") {
-    html(`${obBar()}<header class="hero" style="padding-bottom:0"><div class="eyebrow">Step ${obStep + 1} of ${OB_STEPS.length}</div>
-      <h1 style="font-size:28px">Starting point</h1>
-      <p class="sub">Both optional — skip anything you're not comfortable sharing yet.</p></header>
-      <form id="obf" class="card">
-        <label for="obw">Starting weight (lb)</label>
-        <input id="obw" type="number" step="0.1" inputmode="decimal" value="${obAnswers.start_weight_lb ?? ""}">
-        <label for="obp" style="margin-top:16px">Baseline photo</label>
-        <input id="obp" type="file" accept="image/*">
-        <div class="consent" style="margin-top:10px">
-          <input id="obc" type="checkbox" ${obAnswers.photo_consent ? "checked" : ""}>
-          <label for="obc" style="margin:0">I'm comfortable sharing this photo with my coach for progress tracking. Only my coach sees it.</label>
-        </div>
-        ${obNav(false)}
-      </form>`);
-    obWireNav(document.getElementById("obf"), async () => {
-      const w = document.getElementById("obw").value;
-      obAnswers.start_weight_lb = w === "" ? null : Number(w);
-      const fileInput = document.getElementById("obp");
-      const consent = document.getElementById("obc").checked;
-      const btn = document.querySelector("#obf button[type=submit]");
-      btn.disabled = true; btn.textContent = "Saving...";
-      try {
-        if (fileInput.files[0] && consent) await S.uploadPhoto(fileInput.files[0], "baseline");
-        await S.completeOnboarding({
-          fitness_level: obAnswers.fitness_level, equipment: obAnswers.equipment, schedule_days: obAnswers.schedule_days,
-          goals: obAnswers.goals || null, start_weight_lb: obAnswers.start_weight_lb,
-          red_flag: obAnswers.health_flags.length > 0,
-          health_notes: obAnswers.health_flags.length ? obAnswers.health_flags.join("; ") : null,
-        });
-        const fresh = await S.profile();
-        render(fresh);
-      } catch (err) {
-        btn.disabled = false; btn.textContent = "Finish";
-        alert("Something went wrong saving your answers. Please try again.");
-      }
-    });
-    return;
-  }
-}
-
-function renderLogin(msg = "") {
-  html(`
-    <header class="hero"><div class="eyebrow">Client login</div><h1>Your program</h1>
-    <p class="sub">Enter the email you enrolled with and we'll send you a secure login link. No password needed.</p></header>
-    <form id="login" class="card">
-      <label for="em">Email</label><input id="em" type="email" autocomplete="email" required>
-      <p><button class="btn" type="submit">Send my login link</button></p>
-      <p class="note">${esc(msg)}</p>
-    </form>`);
-  document.getElementById("login").onsubmit = async (e) => {
-    e.preventDefault();
-    try { await S.signIn(document.getElementById("em").value.trim()); renderLogin("Check your inbox for the login link."); }
-    catch (err) { renderLogin("Couldn't send the link. Check the email and try again."); }
-  };
-}
-
-async function render(profile) {
-  const week = weekOf(profile), phase = P.phaseFor(week);
-  const next = profile?.next_session ? new Date(profile.next_session) : null;
-  html(`
-    ${S.mode === "demo" ? `<div class="banner">Demo mode: sample data stored only in this browser. Connect Supabase in config.js to go live.</div>` : ""}
-    <header class="hero" style="padding-bottom:0">
-      <div class="eyebrow">Week ${week} of ${P.weeks} · ${esc(phase.name)} phase</div>
-      <h1 style="font-size:32px">Hi ${esc(profile?.first_name || "there")} 👋</h1>
-      <p class="sub" style="font-size:16px">Next session with ${esc(MF_CONFIG.COACH_NAME)}: <b>${next ? next.toLocaleString([], { weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }) : "not scheduled yet"}</b>
-      · <a href="${esc(MF_CONFIG.BOOKING_URL)}">reschedule</a></p>
-    </header>
-    <div class="tabs" role="tablist">
-      ${[["today", "Today"], ["train", "Training"], ["progress", "Progress"], ["lab", "GFC Lab"]]
-        .map(([k, l]) => `<button role="tab" data-tab="${k}" aria-selected="${tab === k}">${l}</button>`).join("")}
-    </div>
-    <section id="panel"></section>
-    <p class="note"><a href="#" id="out">Log out</a></p>`);
-  root.querySelectorAll("[data-tab]").forEach((b) => b.onclick = () => { tab = b.dataset.tab; render(profile); });
-  document.getElementById("out").onclick = async (e) => { e.preventDefault(); await S.signOut(); location.reload(); };
-  const panel = document.getElementById("panel");
-  ({ today: renderToday, train: renderTrain, progress: renderProgress, lab: renderLab })[tab](panel, week, phase);
-}
-
-async function renderToday(panel) {
-  const today = iso(new Date());
-  const c = (await S.checkins(1)).find((x) => x.day === today) || { day: today };
-  const scale = (name, val, labels) => `<div class="scale" data-name="${name}">${[1, 2, 3, 4, 5]
-    .map((n) => `<button type="button" aria-pressed="${val === n}" title="${labels?.[n] || n}">${n}</button>`).join("")}</div>`;
-  panel.innerHTML = `
-    <form id="ci" class="card">
-      <h2>Today's check-in <span style="font-size:14px;color:var(--muted)">(60 seconds)</span></h2>
-      <label>Lumen morning score <span class="note">1 = burning fat · 5 = burning carbs</span></label>
-      ${scale("lumen_score", c.lumen_score, { 1: "Fat burn", 5: "Carb burn" })}
-      <label>Energy today</label>${scale("energy", c.energy)}
-      ${P.daily.slice(0, 2).map((t, i) => `<label class="toggle"><input type="checkbox" name="${["walk_done", "protein_hit"][i]}" ${c[["walk_done", "protein_hit"][i]] ? "checked" : ""}> ${esc(t)}</label>`).join("")}
-      <div class="grid2">
-        <div><label for="w">Weight (lb, optional)</label><input id="w" name="weight_lb" type="number" step="0.1" inputmode="decimal" value="${c.weight_lb ?? ""}"></div>
-        <div><label for="st">Steps</label><input id="st" name="steps" type="number" inputmode="numeric" value="${c.steps ?? ""}"></div>
-        <div><label for="sl">Sleep (hours)</label><input id="sl" name="sleep_hours" type="number" step="0.5" inputmode="decimal" value="${c.sleep_hours ?? ""}"></div>
-      </div>
-      <label for="nt">Note for your coach (optional)</label><textarea id="nt" name="note" rows="2">${esc(c.note || "")}</textarea>
-      <p><button class="btn" type="submit">Save check-in</button><span class="saved" id="ok"></span></p>
-    </form>`;
-  const vals = { lumen_score: c.lumen_score ?? null, energy: c.energy ?? null };
-  panel.querySelectorAll(".scale").forEach((sc) => sc.querySelectorAll("button").forEach((b, i) => b.onclick = () => {
-    vals[sc.dataset.name] = i + 1;
-    sc.querySelectorAll("button").forEach((x, j) => x.setAttribute("aria-pressed", j === i));
-  }));
-  document.getElementById("ci").onsubmit = async (e) => {
-    e.preventDefault();
-    const f = e.target, num = (v) => (v === "" ? null : Number(v));
-    await S.saveCheckin({ day: today, ...vals, walk_done: f.walk_done.checked, protein_hit: f.protein_hit.checked,
-      weight_lb: num(f.weight_lb.value), steps: num(f.steps.value), sleep_hours: num(f.sleep_hours.value), note: f.note.value.trim() || null });
-    document.getElementById("ok").textContent = "Saved ✓";
-  };
-}
-
-async function renderTrain(panel, week, phase) {
-  const done = await S.workouts();
-  panel.innerHTML = `
-    <div class="card"><div class="eyebrow">${esc(phase.name)} · weeks ${phase.from}–${phase.to}</div>
-      <p style="margin:.4em 0"><b>${esc(phase.dose)}</b></p><p class="note" style="margin:0">${esc(phase.focus)}</p></div>
-    ${Object.entries(P.days).map(([k, d]) => `
-      <label class="card workout"><input type="checkbox" data-day="${k}" ${done[`${week}-${k}`] ? "checked" : ""}>
-        <div><b>${esc(d.label)}</b><ul>${d.exercises.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div></label>`).join("")}
-    <div class="card"><b>Every day</b><ul class="check">${P.daily.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div>`;
-  panel.querySelectorAll("[data-day]").forEach((cb) => cb.onchange = () => S.toggleWorkout(week, cb.dataset.day, cb.checked));
-}
-
-function spark(points, invert) {
-  if (points.length < 2) return `<p class="note">Not enough data yet.</p>`;
-  const ys = points.map((p) => p[1]), min = Math.min(...ys), max = Math.max(...ys), span = max - min || 1;
-  const d = points.map((p, i) => `${i ? "L" : "M"}${(i / (points.length - 1) * 300).toFixed(1)},${(8 + (invert ? (p[1] - min) : (max - p[1])) / span * 54).toFixed(1)}`).join(" ");
-  return `<svg class="spark" viewBox="0 0 300 70" preserveAspectRatio="none" role="img"><path d="${d}" fill="none" stroke="var(--accent)" stroke-width="2.5" vector-effect="non-scaling-stroke"/></svg>`;
-}
-
-async function renderProgress(panel) {
-  const cs = await S.checkins(30), byDay = Object.fromEntries(cs.map((c) => [c.day, c]));
-  const last14 = [...Array(14)].map((_, i) => iso(daysAgo(13 - i)));
-  const last7 = last14.slice(7).filter((d) => byDay[d]).length;
-  let streak = 0; for (let i = 0; byDay[iso(daysAgo(i))] || (i === 0 && !byDay[iso(daysAgo(0))]); i++) { if (byDay[iso(daysAgo(i))]) streak++; else if (i > 0) break; }
-  const weights = cs.filter((c) => c.weight_lb).map((c) => [c.day, +c.weight_lb]);
-  const lumen = cs.filter((c) => c.lumen_score).map((c) => [c.day, c.lumen_score]);
-  const change = weights.length > 1 ? (weights[weights.length - 1][1] - weights[0][1]).toFixed(1) : null;
-  panel.innerHTML = `
-    <div class="grid2">
-      <div class="stat"><b>${streak}</b><span>day check-in streak</span></div>
-      <div class="stat"><b>${Math.round(last7 / 7 * 100)}%</b><span>check-ins, last 7 days</span></div>
-    </div>
-    <div class="card"><b>Last 14 days</b><div class="dots" style="margin-top:8px">${last14.map((d) => `<i class="${byDay[d] ? "on" : ""}" title="${d}"></i>`).join("")}</div></div>
-    <div class="card"><b>Weight (30 days)</b> ${change !== null ? `<span class="note">${change > 0 ? "+" : ""}${change} lb</span>` : ""}${spark(weights)}</div>
-    <div class="card"><b>Lumen score (30 days)</b> <span class="note">lower = more fat burning</span>${spark(lumen, true)}</div>`;
-}
-
-function renderLab(panel) {
-  const url = MF_CONFIG.ALTROHEALTH_URL;
-  panel.innerHTML = `
-    <div class="card"><div class="eyebrow">GFC Lab · powered by Altrohealth</div>
-      <p>Medication (GLP-1s), peptide therapy, hormone therapy and labs are handled by licensed clinicians on Altrohealth's secure platform, and your coach builds the training and nutrition around them so you can keep your muscle and burn the fat. Your medical records stay there.</p>
-      <p><a class="btn" href="../lab.html${url && MF_CONFIG.ALTROHEALTH_EMBED ? "#visit" : ""}">${url ? "Open GFC Lab" : "Learn about GFC Lab"}</a></p>
-      <p class="note">Tell your coach about any new medication or dose change at your next session so your training and nutrition can be adjusted.</p></div>`;
-}
-
-boot();
+<div class="wrap">
+  <header class="hero" style="padding-bottom:0">
+    <div class="eyebrow">Client login</div>
+    <h1>Your training program</h1>
+    <p class="sub">Log in or sign up below to access your workouts, nutrition tracking, habits and progress — powered by PT Distinction.</p>
+  </header>
+  <div id="ptdWrap">
+    <div id="ptd_portal"></div>
+  </div>
+</div>
+<script type="text/javascript">
+  var ptd_param = {};
+  ptd_param.apk = "GF4EJMK9NP396347";
+  ptd_param.domain = "https://v3portal.ptdistinction.com";
 </script>
+<script src="https://v3portal.ptdistinction.com/v3/inside/integration/v1/portal.js"></script>
 </body>
 </html>
