@@ -56,42 +56,29 @@
     </ol>
   </section>
 
-  <section class="block">
+  <section class="block" id="signup">
     <h2>Investment</h2>
+    <p class="sub" style="font-size:16px">Already know this is for you? Sign up and pay securely below — no need to wait for a call. Prefer to talk it through first? Take the Metabolic Score or book a call instead.</p>
     <div class="card">
       <div class="eyebrow">Phase 1: Foundation</div>
       <div class="price">$299<small>/month · 3-month minimum</small></div>
       <p>Everything above, including the free Lumen.</p>
+      <p><a class="btn btn-fortify" href="https://www.ptdistinction.com/package_signup?str=1&amp;apk=GF4EJMK9NP396347&amp;pkid=47504" target="_blank" rel="noopener">Sign up & pay — $299/mo →</a></p>
     </div>
     <div class="card">
       <div class="eyebrow">Phase 2: Momentum</div>
       <div class="price">$199<small>/month · 6-month commitment</small></div>
       <p>Offered after your first 3 months. Same coaching and app, at a lower price for a longer commitment.</p>
+      <p><a class="btn" href="https://www.ptdistinction.com/package_signup?str=1&amp;apk=GF4EJMK9NP396347&amp;pkid=47505" target="_blank" rel="noopener">Sign up & pay — $199/mo →</a></p>
     </div>
     <div class="card">
       <div class="eyebrow">Phase 3: Consistency</div>
       <div class="price">$149<small>/month · 12-month commitment</small></div>
       <p>Our lowest price, for clients ready to commit to a full year. Same coaching and app, built for the long game.</p>
+      <p><a class="btn" href="https://www.ptdistinction.com/package_signup?str=1&amp;apk=GF4EJMK9NP396347&amp;pkid=47506" target="_blank" rel="noopener">Sign up & pay — $149/mo →</a></p>
     </div>
-    <p class="note">GFC Lab medical visits, labs and medications are provided and billed by our licensed telehealth partner, separately from coaching.</p>
-    <p><a class="btn" id="cta" href="index.html#quiz">Take the Metabolic Score</a></p>
-  </section>
-
-  <section class="block" id="signup">
-    <h2>Already know this is for you?</h2>
-    <p class="sub" style="font-size:16px">Skip the quiz and the call — tell us you're ready, and Coach Gui will reach out directly to get you enrolled.</p>
-    <div class="card" id="signupCard">
-      <form id="signupForm" novalidate>
-        <label for="sn">First name</label><input id="sn" type="text" autocomplete="given-name" required>
-        <label for="se">Email</label><input id="se" type="email" autocomplete="email" required>
-        <label for="sp">Phone (optional)</label><input id="sp" type="tel" autocomplete="tel">
-        <p><button class="btn" id="signupGo" type="submit">I'm ready — sign me up</button></p>
-        <p class="note" id="signupMsg"></p>
-      </form>
-      <div id="signupDone" hidden>
-        <p><b>Got it!</b> Coach Gui will reach out directly to get you started.</p>
-      </div>
-    </div>
+    <p class="note">GFC Lab medical visits, labs and medications are provided and billed by our licensed telehealth partner, separately from coaching. Billing is monthly and automatic; minimum-commitment terms are part of your enrollment agreement.</p>
+    <p><a class="btn" id="cta" href="index.html#quiz" style="background:transparent;border:1px solid var(--line);color:var(--ink)">Not sure yet? Take the Metabolic Score</a></p>
   </section>
 
   <section class="block">
@@ -112,23 +99,6 @@
 <script>
   MF.renderSpots(document.getElementById("spots"));
   if (MF.spotsLeft() === 0) document.getElementById("cta").textContent = "Join the waitlist";
-
-  document.getElementById("signupForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const btn = document.getElementById("signupGo"), msg = document.getElementById("signupMsg");
-    const first_name = document.getElementById("sn").value.trim(), email = document.getElementById("se").value.trim(),
-      phone = document.getElementById("sp").value.trim();
-    if (!first_name || !/\S+@\S+\.\S+/.test(email)) { msg.textContent = "Enter a valid name and email."; return; }
-    btn.disabled = true; btn.textContent = "Sending...";
-    try {
-      await fetch("/api/signup-lead", { method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ first_name, email, phone }) });
-    } catch (err) { console.warn("Signup lead submit failed", err); }
-    if (window.fbq) fbq("track", "Lead");
-    if (window.gtag) gtag("event", "generate_lead");
-    document.getElementById("signupForm").hidden = true;
-    document.getElementById("signupDone").hidden = false;
-  });
 </script>
 <script src="hulk.js"></script>
 </body>
