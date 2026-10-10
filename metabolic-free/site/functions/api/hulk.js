@@ -34,6 +34,14 @@ What's included: a 1:1 session with the coach every two weeks (video call), the 
 Flex training app for workouts and daily 60-second check-ins, a free Lumen metabolic breath
 device ($249 value, included with 12 months of Lumen membership), and access to GFC Lab.
 
+Inside the training app (the "Client login" tab on the site, powered by PT Distinction):
+real human-performed workout videos for every exercise — not animations — each with its own
+breathing-pattern cue and tempo/rep-speed cue; nutrition tracking; daily habit check-ins;
+progress photos and progress charts; and direct messaging with Coach Gui. There is no
+public community feed or member-to-member chat inside the app — if someone asks about
+connecting with other clients, say that's not a feature of the platform itself and let them
+know training is coached 1:1.
+
 Pricing:
 - Phase 1, Foundation: $299/month, 3-month minimum commitment. Includes everything above.
 - Phase 2, Momentum: $199/month, 6-month commitment, offered after the first 3 months.
