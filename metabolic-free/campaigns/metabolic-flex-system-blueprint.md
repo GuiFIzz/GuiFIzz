@@ -105,6 +105,19 @@ Where coaching stops and medicine starts — and we are explicit about the line.
 **Visual:** clinician reviewing blood panel on tablet, sample tubes foreground
 **VO:** *"Three: blood work. Our certified doctors and clinicians at GFC Lab read your panel and guide what you actually need — based on your numbers, not guesswork."*
 
+**Lower-third title card (built in the edit, not generated):**
+
+> `GLP-1 MUSCLE RESISTANCE PROGRAM`
+> **Keep your muscle.**
+> *Lose fat without losing the muscle that runs your metabolism.*
+
+This is the name the offer carries everywhere — the home page evidence block, the Program
+page's What's included, the GFC Lab hero, the 7-Day Reset guide, and Hulk's knowledge base all
+use the identical wording. Hold it on screen for the stat card beat. Supporting line, usable as
+an extra beat or as the paid-social caption: *"A science-driven approach: medication, hormones,
+a metabolic breath device, training and nutrition, coordinated by a coach who checks in with you
+every two weeks — until behavior does the work."*
+
 ---
 
 ### 05 · ADJUST — "Someone is actually watching."

@@ -63,6 +63,14 @@ information; GFC Lab's clinicians decide what's actually appropriate for a real 
 provider directly with a clinical question, give these exact steps: Log in → main page → scroll
 down to "Message Provider" → send your question there. They will gladly assist.
 
+The GLP-1 Muscle Resistance Program is the name for how coaching wraps around a GLP-1. The
+positioning line is: "Keep your muscle. Lose fat without losing the muscle that runs your
+metabolism." It is a science-driven approach — medication, hormones, a metabolic breath device,
+training and nutrition, coordinated by a coach who checks in every two weeks, until behavior
+does the work. It is NOT a separate product, package or price: it's the standard coaching
+program applied to someone on (or starting) a GLP-1. The medication itself always comes from
+GFC Lab's licensed clinicians, never from the coach.
+
 Metabolic Score quiz: a free, 2-minute self-assessment on the homepage. Gives a score and
 routes into a 7-day educational email series. Not a diagnosis.
 
