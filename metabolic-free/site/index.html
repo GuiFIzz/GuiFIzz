@@ -236,13 +236,13 @@ function renderResult(score, segment, name) {
   const cta = redFlag
     ? `<p>Based on your answers, please talk with your physician before starting a new nutrition or training program. We've sent your results by email, and the coach will reach out personally.</p>`
     : FULL
-    ? `<p><b>All founding spots are taken, and you're on the waitlist.</b> You'll be first to hear when a spot opens, and we'll email you the 7-Day Metabolic Reset in the meantime.</p>`
+    ? `<p><b>All founding spots are taken, and you're on the waitlist.</b> You'll be first to hear when a spot opens.</p>`
     : `<p><a class="btn" href="${BOOKING_URL}">Book a free 30-minute strategy call</a></p>`;
   stage.replaceChildren(el(`
     <p class="eyebrow">${name ? MF.esc(name) + ", your" : "Your"} Metabolic Score</p>
     <div class="score">${score}<span style="font-size:24px;color:var(--muted)">/100</span></div>
     <p class="sub">${SEGMENT_LINES[segment]}</p>
-    <p>Your full breakdown is on its way to your inbox. On a free call we'll map your first 30 days: training, meal timing, and whether tools like a Lumen device, GLP-1s, peptides or hormone therapy belong in your plan.</p>
+    <p>Your 7-Day Metabolic Reset is ready — <a href="7-day-reset.html">read it here</a>, and a copy is on its way to your inbox. On a free call we'll map your first 30 days: training, meal timing, and whether tools like a Lumen device, GLP-1s, peptides or hormone therapy belong in your plan.</p>
     ${cta}
     <p class="note">The Metabolic Score is an educational self-assessment, not a diagnosis.</p>`));
   stage.scrollIntoView({ behavior: "smooth", block: "start" });

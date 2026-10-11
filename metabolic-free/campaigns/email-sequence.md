@@ -3,16 +3,23 @@
 Trigger: quiz submitted with email consent. Exit: call booked. Personalize `{{segment_line}}` per segment.
 From: Coach first name. Plain-text style (no heavy design). One link per email.
 
+**Lead magnet delivery (the promise this whole sequence is named after):** the 7-Day Metabolic
+Reset lives at `/7-day-reset` and is delivered twice — on screen the instant the quiz finishes,
+and again as the first thing in the Day-0 email. Keep both. The Peptide Guide download
+(`/api/guide-lead`) reuses the same `quiz_lead` tag and so enters this same sequence, which is
+why Day 0 must stay neutral about how the person arrived — do not reintroduce
+"thanks for taking the Metabolic Score" into Day 0.
+
 | Day | Subject | Body (summary + CTA) |
 |---|---|---|
-| 0 | Your Metabolic Score: {{score}}/100 | Score explained in plain words, top 3 levers for their segment. Day-1 action: 10-min walk after the biggest meal. CTA: book a free call. |
+| 0 | Your 7-Day Metabolic Reset is here | **Delivers the guide** (link to `/7-day-reset`) as the first thing in the email. What's in it, the honest "seven days won't transform you" framing, then Day-1 action: 10-min walk after the biggest meal. CTA: book a free call. |
 | 1 | The muscle mistake | Why losing muscle slows metabolism; protein target = ~0.7–1 g/lb goal weight (tell them to check with their doctor if they have kidney disease). Action: protein at breakfast. |
 | 2 | Why you crash at 3pm | Blood sugar swings + meal order (veg/protein first, carbs last). Action: try meal order today. |
 | 3 | A story: {{client_story}} | Consented client story from the same segment. CTA: "Want the same plan? Book 30 min." |
 | 4 | Medication, peptides, hormones, apps: my honest take | Tools are bridges, not destinations. How we combine GLP-1s/peptides/HRT (via licensed providers) with habits. |
 | 5 | Know when to eat | Lumen explained; **free device ($249 value)** for every client. CTA: see if you qualify / book a call. |
 | 6 | 2 lifts that matter most after 40 | Strength basics, 2×/week. Action: do one session. |
-| 7 | Your reset recap + next step | Recap 6 habits. Strong CTA to book. |
+| 7 | Your reset recap + next step | Recap the guide's **seven** days in order (must match `/7-day-reset` exactly), re-link the guide to keep, then: which stuck without effort, which needed willpower? Strong CTA to book. |
 | 9 | "Is this for me?" | FAQ: cost range, time per week, remote, what if I'm on medication. CTA book. |
 | 11 | What happens on the call | 30 min, no pressure, what they'll leave with. CTA book. |
 | 14 | Closing the door (for now) | Last push; then moves to monthly newsletter. |

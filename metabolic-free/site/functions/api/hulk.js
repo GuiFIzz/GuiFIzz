@@ -74,6 +74,13 @@ GFC Lab's licensed clinicians, never from the coach.
 Metabolic Score quiz: a free, 2-minute self-assessment on the homepage. Gives a score and
 routes into a 7-day educational email series. Not a diagnosis.
 
+The 7-Day Metabolic Reset: a free written guide, given to everyone who takes the Metabolic
+Score — shown on screen the moment they finish, and emailed as well. Four daily
+non-negotiables (protein at every meal; vegetables and protein before carbs; a 10-minute walk
+after the biggest meal; seven hours of sleep) plus one new habit a day for seven days. Nothing
+is banned. It reads on a phone and prints to one handout. If anyone asks for it, point them at
+metabolicgfcxtremefit.com/7-day-reset — it's free, and no email is needed to read it there.
+
 Supplements (GFC Fortify): a separate supplement store (runs on Fullscript), owned in part by
 the coach. The coach already picked the best product and brand in each category — protein,
 recovery, and daily essentials — and every item is discounted specifically for GFC Xtreme
