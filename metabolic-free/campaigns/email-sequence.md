@@ -10,12 +10,25 @@ and again as the first thing in the Day-0 email. Keep both. The Peptide Guide do
 why Day 0 must stay neutral about how the person arrived — do not reintroduce
 "thanks for taking the Metabolic Score" into Day 0.
 
+**Send timing (set 2026-10-11).** Day 0 fires immediately on signup (zero delay, no fixed
+send time) because it carries the lead magnet — never give Day 0 a `sendAtLocalTime`, or
+someone who signs up at 10am waits until the next day for the guide they were just promised.
+Every following step is pinned to **14:00**, which is the Systeme account's **Europe/Paris**
+timezone, chosen because it lands at 08:00 US Eastern. **If the account timezone is ever
+changed to America/New_York, every one of those must be reset to 08:00** or the whole sequence
+jumps to 2am Eastern. Weekday skipping is deliberately off — it would desynchronise the
+"Day N" labels from the guide's days.
+
+**Testing the funnel:** a contact who already carries `quiz_lead` cannot re-enter — `tag_added`
+does not re-fire for a tag already present, and Systeme will not restart a campaign the
+contact is already in. Always test with a fresh address (plus-addressing works).
+
 | Day | Subject | Body (summary + CTA) |
 |---|---|---|
 | 0 | Your 7-Day Metabolic Reset is here | **Delivers the guide** (link to `/7-day-reset`) as the first thing in the email. What's in it, the honest "seven days won't transform you" framing, then Day-1 action: 10-min walk after the biggest meal. CTA: book a free call. |
 | 1 | The muscle mistake | Why losing muscle slows metabolism; protein target = ~0.7–1 g/lb goal weight (tell them to check with their doctor if they have kidney disease). Action: protein at breakfast. |
 | 2 | Why you crash at 3pm | Blood sugar swings + meal order (veg/protein first, carbs last). Action: try meal order today. |
-| 3 | A story: {{client_story}} | Consented client story from the same segment. CTA: "Want the same plan? Book 30 min." |
+| 3 | What actually makes the difference | Social proof. "Almost nobody quits because the plan was wrong — they quit because nobody noticed." Two consented testimonials (Melissa Rocher, Thomas M. — deliberately *not* the two used on Day 6). Action: name the habit that slipped first. CTA book. |
 | 4 | Medication, peptides, hormones, apps: my honest take | Tools are bridges, not destinations. How we combine GLP-1s/peptides/HRT (via licensed providers) with habits. |
 | 5 | Know when to eat | Lumen explained; **free device ($249 value)** for every client. CTA: see if you qualify / book a call. |
 | 6 | 2 lifts that matter most after 40 | Strength basics, 2×/week. Action: do one session. |
