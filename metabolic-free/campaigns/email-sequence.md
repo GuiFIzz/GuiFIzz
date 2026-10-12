@@ -83,3 +83,49 @@ contact is already in. Always test with a fresh address (plus-addressing works).
 > {{coach_name}}
 >
 > *This is educational and not medical advice. Talk to your doctor before changing medication.*
+
+---
+
+# Long-Term Nurture (campaign 1210493) — the recapture net
+
+Built 2026-10-12. Catches everyone who finished another sequence without converting, so
+nobody dead-ends into silence. **Costs zero tags** — the whole chain runs on
+`campaign_completed` triggers, which matters because all 10 tag slots are spent.
+
+## The chain
+
+```
+quiz_lead ──► Nurture (14d) ──────────────┐
+                                           ├──► LONG-TERM NURTURE (~100d)
+call_attended ──► Attended F/U (2d) ──────┘
+
+launch_list ──► Launch Sequence (8d) ──► Nurture (14d) ──► Long-Term Nurture
+```
+
+Rules: `2458742` (Nurture done → LT), `2458743` (Attended done → LT),
+`2458744` (Launch done → Nurture). Existing `2454042` (No-Show done → Nurture).
+
+Total runway for an imported contact: **8 + 14 + ~100 = ~122 days** of automatic contact,
+versus 8 days before.
+
+## The five emails
+
+| # | Gap | Subject | Job |
+|---|---|---|---|
+| 1 | +14d | The part nobody posts about | Reframe to the long game. Twelve weeks is a photo. Arlyn Haas (1-year client). No ask. |
+| 2 | +14d | A 30-second test you can do right now | Pure value, zero pitch: the 30-second chair stand. Rebuilds goodwill after a sales sequence. |
+| 3 | +21d | What's changed since we last spoke | Real reason to re-open: human-filmed exercise library, free Lumen, GFC Lab live. First CTA of the sequence. |
+| 4 | +21d | Was it the money or the timing? | The objection email. Asks for a **one-word reply**, not a booking — surfaces the real blocker and feeds product decisions. |
+| 5 | +30d | Still here when you're ready | Soft re-offer with no deadline, plus an explicit invitation to unsubscribe. Protects list quality. |
+
+**Note on testimonials:** all six consented quotes are now in use across the sequences
+(Arlyn, Zulema, Melissa, Thomas, Rodrigo, Joseph). LT1 reuses Arlyn deliberately — the
+"after a year with Gui" line is the only one that supports a long-game message. New
+testimonials are the constraint on writing more social proof.
+
+## Still outstanding before launch
+
+- [ ] `client_signed_up` tag + rule to unsubscribe from **all four** campaigns (1203488,
+      1203500, 1206790, 1208671, 1210493) — needs a tag slot freed
+- [ ] `launch_list` tag + rule → subscribe to 1203500 — needs a tag slot freed
+- [ ] Optional: `skipWeekdays` on the Launch Sequence so no sales email lands on a weekend
