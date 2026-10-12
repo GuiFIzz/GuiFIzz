@@ -10,14 +10,20 @@ and again as the first thing in the Day-0 email. Keep both. The Peptide Guide do
 why Day 0 must stay neutral about how the person arrived — do not reintroduce
 "thanks for taking the Metabolic Score" into Day 0.
 
-**Send timing (set 2026-10-11).** Day 0 fires immediately on signup (zero delay, no fixed
-send time) because it carries the lead magnet — never give Day 0 a `sendAtLocalTime`, or
-someone who signs up at 10am waits until the next day for the guide they were just promised.
-Every following step is pinned to **14:00**, which is the Systeme account's **Europe/Paris**
-timezone, chosen because it lands at 08:00 US Eastern. **If the account timezone is ever
-changed to America/New_York, every one of those must be reset to 08:00** or the whole sequence
-jumps to 2am Eastern. Weekday skipping is deliberately off — it would desynchronise the
-"Day N" labels from the guide's days.
+**Send timing (corrected 2026-10-12).** The Systeme account timezone is now
+**America/New_York**, so send times are set literally: every delayed step across all five
+campaigns is pinned to **`09:00`**. Four steps stay immediate and must never be given a
+`sendAtLocalTime` — nurture Day 0 (carries the lead magnet; delaying it breaks the promise),
+the no-show "Sorry we missed you", and the post-call "Good talking with you".
+
+*History worth keeping:* the account used to be Europe/Paris, which forced a 14:00 setting to
+land at 8am ET and created a one-week DST hole every October. Changing the account timezone
+removed both problems. **If the timezone is ever changed again, every `sendAtLocalTime` in all
+five campaigns has to be re-checked** — a silent 6-hour shift is the failure mode.
+
+Weekday skipping is off on the nurture (it would desynchronise the "Day N" labels from the
+guide's days, and habit coaching reads fine at weekends). Consider turning it on for the
+**Launch Sequence** only, since weekend sales emails convert poorly.
 
 **Testing the funnel:** a contact who already carries `quiz_lead` cannot re-enter — `tag_added`
 does not re-fire for a tag already present, and Systeme will not restart a campaign the
