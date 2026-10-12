@@ -89,32 +89,29 @@ One hand braced on a bench, torso bent over, dumbbell drawn from full stretch to
 **Work both sides evenly.**
 **P** latissimus dorsi · **S** rhomboids, mid/lower trapezius, teres major, posterior deltoid, biceps, core anti-rotators
 
-**13. Unilateral Kneeling Cable Back Row** ⟲ — `IMG_0071`
-Tall-kneeling at a cable, one arm drawing the handle back past the ribs. Kneeling removes leg
-drive so the back does the work, and the position challenges the core. **Work both sides evenly.**
-**P** latissimus dorsi · **S** rhomboids, mid trapezius, posterior deltoid, biceps, glutes, core
+**13. Unilateral Cable Lat Pulldown** ⟲ — `IMG_0070`
+Tall-kneeling at a high pulley. The bicep drives up to the ear, then the elbow pulls down toward
+the ribs to 80–90 degrees. Confirmed by Coach Gui; `IMG_0071` is the same movement from another
+angle and is not uploaded. She only works one arm in the clip, so the Notes must say to turn
+around and do the other. **Work both sides evenly.**
+**P** latissimus dorsi · **S** teres major, rhomboids, lower trapezius, biceps, obliques, glutes
 
-**14. Kneeling Single-Arm Cable Pulldown** ⟲ — `IMG_0070`
-Tall-kneeling at a high pulley, one arm sweeping the handle down and across. **Work both sides
-evenly.** *(Flagged: confirm this is a pulldown and not a second row angle.)*
-**P** latissimus dorsi · **S** teres major, posterior deltoid, triceps long head, obliques, glutes
+**14. Unilateral Standing Cable Row** ⟲ — `IMG_0067`
+Standing at a cable, one arm drawing the handle back past the ribs with the chest held square.
+**Work both sides evenly.**
+**P** latissimus dorsi · **S** rhomboids, mid/lower trapezius, posterior deltoid, biceps, core anti-rotators
 
 **15. Squat Hold with Cable Row** — `IMG_0066`
 Hold a squat and row the cable to the ribs without standing up. Combines a leg isometric with a
 horizontal pull.
 **P** latissimus dorsi, quadriceps · **S** rhomboids, mid trapezius, biceps, gluteus maximus, core
 
-### Pull — rear delt
-
-**16. Standing Cable Reverse Fly** — `IMG_0051`
-Standing at a cable crossover, arms sweeping apart from crossed to wide with long arms.
-**P** posterior deltoid · **S** rhomboids, mid trapezius, infraspinatus, teres minor
-
-**17. Standing Single-Arm Cable Reverse Fly** ⟲ — `IMG_0067`
-The single-arm version, chest held square through the sweep. **Work both sides evenly.**
-**P** posterior deltoid · **S** rhomboids, mid trapezius, rotator cuff, core anti-rotators
-
 ### Push — chest
+
+**16. Standing Cable Chest Fly** — `IMG_0051`
+Standing at a cable crossover, arms opening wide then sweeping together in front of the chest
+with a fixed soft elbow.
+**P** pectoralis major · **S** anterior deltoid, serratus anterior, biceps (stabilising), core
 
 **18. Dumbbell Chest Fly** — `IMG_0054`
 Lying on a flat bench, arms opening wide with a fixed soft elbow, then closing over the chest.
