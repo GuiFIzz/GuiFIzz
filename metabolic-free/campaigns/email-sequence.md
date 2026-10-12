@@ -135,3 +135,55 @@ testimonials are the constraint on writing more social proof.
       1203500, 1206790, 1208671, 1210493) — needs a tag slot freed
 - [ ] `launch_list` tag + rule → subscribe to 1203500 — needs a tag slot freed
 - [ ] Optional: `skipWeekdays` on the Launch Sequence so no sales email lands on a weekend
+
+---
+
+# Hard platform limits (learned 2026-10-12)
+
+**The Systeme plan caps BOTH tags and automation rules at 10 each.** The rules cap is the
+tighter constraint and it is not documented anywhere obvious — `create_automation_rule` just
+returns "Automation rules limit reached".
+
+**A rule can carry multiple triggers.** This is the escape hatch: any two rules that share the
+same action can be merged into one. Two merges freed the two slots needed for the launch and
+client tags, so **no live automation had to be deleted** — the branded cancellation email and
+the waitlist email both survived.
+
+Current 10 rules:
+
+| Rule | Trigger(s) | Action |
+|---|---|---|
+| 2441954 | `quiz_lead` added | → Nurture |
+| 2441955 | `waitlist` added | → waitlist email |
+| 2441956 | `call_booked` added | → confirmation email, out of Nurture + No-Show |
+| 2441957 | `call_cancelled` added | → cancellation email |
+| 2441958 | `call_no_show` added | → No-Show Recovery |
+| 2453619 | `call_attended` added | → Attended F/U, out of Nurture + No-Show |
+| 2454042 | No-Show **or** Launch completed | → Nurture |
+| 2458742 | Nurture **or** Attended F/U completed | → Long-Term Nurture |
+| 2458766 | `launch_list` added | → Launch Sequence |
+| 2458767 | `client_signed_up` added | → **out of all five campaigns** |
+
+**Tags are now all 10 spent:** `quiz_lead`, `waitlist`, `launch_list`*, `segment_prediabetic`,
+`segment_glp1`, `client_signed_up`*, `call_attended`, `call_booked`, `call_cancelled`,
+`call_no_show`.
+
+*`launch_list` was `segment_type2`; `client_signed_up` was `segment_hormones`. Both were chosen
+because **no automation rule referenced them** — they were labels only, and no email used
+segment personalization. **Required Cloudflare change: drop the `type2` and `hormones` keys from
+`SYSTEME_TAG_SEGMENTS`** so the quiz stops applying them, or new quiz leads will be
+mis-tagged as launch-list members and as paying clients. No code deploy needed.
+
+**Any further automation needs a plan upgrade or another merge.**
+
+# GFC Labs / Best Supplements block
+
+Appended to **all 25 emails** across all five campaigns. Full-size body text, bold brand names,
+each half closing on a curiosity CTA rather than a description — it is a second offer, not a
+footer. Links point at `/lab.html` and `/fortify.html`, never straight at Altrohealth or
+Fullscript, so the branding and the clinician disclaimer travel with the click and the vendor
+can change without re-editing 25 emails.
+
+**Never state a discount percentage.** The site has only ever said "discounted exclusively for
+GFC Xtreme Fitness"; the block says "an exclusive discount on the best hand-picked product
+brands". A number in 25 emails that does not match the store is a consumer-protection problem.
