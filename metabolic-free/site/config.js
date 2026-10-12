@@ -22,11 +22,14 @@ window.MF = {
     const c = window.MF_CONFIG;
     return Math.max(0, c.FOUNDING_SPOTS - c.SPOTS_TAKEN);
   },
+  // Never print a running count: a hard number goes stale the moment someone joins,
+  // and a wrong number on a live page is worse than no number. Scarcity is stated,
+  // not counted. FOUNDING_SPOTS/SPOTS_TAKEN still drive the waitlist switch below.
   renderSpots(el) {
     if (!el) return;
     const left = this.spotsLeft();
     el.textContent = left > 0
-      ? `${left} of ${window.MF_CONFIG.FOUNDING_SPOTS} founding spots left`
+      ? "Founding spots are limited"
       : "Founding spots full: join the waitlist";
     el.classList.toggle("full", left === 0);
   },
