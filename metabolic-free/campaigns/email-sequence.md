@@ -108,8 +108,9 @@ call_attended ──► Attended F/U (2d) ──────┘
 launch_list ──► Launch Sequence (8d) ──► Nurture (14d) ──► Long-Term Nurture
 ```
 
-Rules: `2458742` (Nurture done → LT), `2458743` (Attended done → LT),
-`2458744` (Launch done → Nurture). Existing `2454042` (No-Show done → Nurture).
+Rules (consolidated — see the platform-limits section below for why):
+`2458742` fires on **Nurture done OR Attended F/U done** → Long-Term.
+`2454042` fires on **No-Show done OR Launch done** → Nurture.
 
 Total runway for an imported contact: **8 + 14 + ~100 = ~122 days** of automatic contact,
 versus 8 days before.
@@ -131,10 +132,17 @@ testimonials are the constraint on writing more social proof.
 
 ## Still outstanding before launch
 
-- [ ] `client_signed_up` tag + rule to unsubscribe from **all four** campaigns (1203488,
-      1203500, 1206790, 1208671, 1210493) — needs a tag slot freed
-- [ ] `launch_list` tag + rule → subscribe to 1203500 — needs a tag slot freed
+- [x] `client_signed_up` tag + rule `2458767` → unsubscribe from all five campaigns. **You must
+      tag a client manually the moment they pay** — Systeme has no way to know, because payment
+      happens in PT Distinction via Stripe. Untagged, a brand-new paying client receives
+      "Still deciding?" two days later.
+- [x] `launch_list` tag + rule `2458766` → Launch Sequence
+- [ ] **Cloudflare: drop `type2` and `hormones` from `SYSTEME_TAG_SEGMENTS`** — those tag IDs
+      are now `launch_list` and `client_signed_up`. Until this is done, a quiz lead who answers
+      type-2 or hormones gets added to the launch list or marked as a paying client.
 - [ ] Optional: `skipWeekdays` on the Launch Sequence so no sales email lands on a weekend
+- [ ] Warm the domain before the 1000-contact import: ~16 lifetime sends so far. 50 → 100 → 200,
+      checking bounce and complaint rates between batches.
 
 ---
 
