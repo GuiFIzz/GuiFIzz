@@ -91,13 +91,13 @@ Same body as Email 1.
 
 > {{first_name}}, here's the whole thing, straight:
 >
-> **Phase 1 · Foundation: $299/month, 3-month minimum**
+> **Phase 1 · Foundation: $399/month, 3-month minimum**
 > - 1:1 session with me every two weeks
 > - Your training program and daily check-ins in the Metabolic Flex app
 > - **Free Lumen device** ($249 value) + 12 months of Lumen membership
 > - Access to GFC Lab (medical visits and medication are billed separately by our licensed partner)
 >
-> **Phase 2 · Momentum: $199/month for 6 months** after your first 3, if you want to keep going.
+> **Phase 2 · Momentum: $299/month for 6 months** after your first 3, if you want to keep going.
 >
 > Details and FAQ: {{program_link}}
 >

@@ -40,9 +40,9 @@ market, a real problem (lean mass loss), and few coaches own it.
 | 0 | **Metabolic Score quiz** + personalized results | Free | Lead capture + segmentation |
 | 1 | "7-Day Metabolic Reset" email/SMS mini-course | Free | Nurture, first quick win |
 | 2 | **Discovery call** (30 min) | Free | Conversion |
-| 3 | **Metabolic Flex Coaching**: biweekly 1:1, 3-month minimum, built on discipline, accountability and consistency | **$299/mo** | Core offer |
-| 3a | **Momentum: 6-month commitment at $199/mo** (offered in month 2, starts after the minimum) | **$199/mo** | Retention: lower price for a longer commitment |
-| 3a2 | **Consistency: 12-month commitment at $149/mo** (offered alongside 3a) | **$149/mo** | Retention: lowest price for the longest commitment |
+| 3 | **Metabolic Flex Coaching**: biweekly 1:1, 3-month minimum, built on discipline, accountability and consistency | **$399/mo** | Core offer |
+| 3a | **Momentum: 6-month commitment at $299/mo** (offered in month 2, starts after the minimum) | **$299/mo** | Retention: lower price for a longer commitment |
+| 3a2 | **Consistency: 12-month commitment at $279/mo** (offered alongside 3a) | **$279/mo** | Retention: lowest price for the longest commitment |
 | 3b | **Lumen metabolic device: FREE** with enrollment ($249 value) | $0 to client; **$199 cost to GFC Xtreme** | Hook + daily data between sessions |
 | 4 | + Telehealth add-on: GLP-1 / peptide / hormone evaluation via **Altrohealth or OpenLoop** (licensed clinicians, LegitScript-certified) | Partner pricing | Tools layer |
 | 5 | Power Warrior group (monthly group call + community) | Lower $/mo | Downsell / alumni retention |
@@ -50,7 +50,7 @@ market, a real problem (lean mass loss), and few coaches own it.
 ### The Lumen offer
 - **Headline:** "Free Lumen metabolic device ($249 value) when you join."
 - **Lumen membership:** the first 12 months are included with the device, so there's no app cost during the program.
-- **Cost to GFC Xtreme:** $199 per client. It's covered in month one ($299 coaching) and fully protected by the
+- **Cost to GFC Xtreme:** $199 per client. It's covered in month one ($399 coaching) and fully protected by the
   3-month minimum ($897 committed per client).
 - **Rules:** ship only **after** the first payment clears. The enrollment agreement states the 3-month minimum is owed
   even if the client cancels early (the device is theirs to keep). Never ship on a free trial.

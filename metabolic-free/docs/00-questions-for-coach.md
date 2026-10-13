@@ -3,12 +3,12 @@
 ## Answered (Sept 2026)
 | Question | Answer | Where it's used |
 |---|---|---|
-| Price | $299/mo, 3-month minimum; focus on discipline, accountability and consistency | Calculator, offer, copy |
+| Price | $399/mo, 3-month minimum; focus on discipline, accountability and consistency | Calculator, offer, copy |
 | Lumen | **Free to the client** ($249 value); costs GFC Xtreme $199 | Calculator, offer, ads |
 | Prescribing | Altrohealth or OpenLoop (LegitScript-certified) | Offer ladder, guardrails |
 | Ad budget | $500/month at launch, growing with clients | Calculator, compounding rule, Meta plan |
 | Coaching hours | 25/week → capacity ~81 clients | Calculator |
-| Renewal | After 3 months: 6-month commitment at $199/mo | Calculator, offer |
+| Renewal | After 3 months: 6-month commitment at $299/mo | Calculator, offer |
 | Lumen membership | First 12 months included with the device | Calculator (no app cost) |
 | Launch approach | One video, one offer, pushed through every channel | `campaigns/hero-video.md` |
 | Video production | Higgsfield (the coach is the face/voice) | `campaigns/hero-video.md` |
@@ -19,7 +19,7 @@
 1. **Do you have SMS consent anywhere** for these contacts (sign-up forms, gym agreements, a texting tool)? If not, texts start only after people opt in.
 2. **Which state is GFC Xtreme in?** (Florida has stricter texting rules.)
 4. **Video:** Option 2 chosen (digital twin). Waiting on your photos + voice trained in Higgsfield.
-5. **Renewal:** of clients who finish 3 months, what share do you expect to take $199 × 6? (Calculator assumes 50%.)
+5. **Renewal:** of clients who finish 3 months, what share do you expect to take $299 × 6? (Calculator assumes 50%.)
 3. Does **every** client get a free Lumen? (Calculator assumes yes.)
 4. **Session length:** 30 minutes? (It changes capacity: 45 min → ~59 clients.)
 5. **Telehealth payout:** what do you earn per GLP-1 / hormone client per month from Altrohealth or OpenLoop?

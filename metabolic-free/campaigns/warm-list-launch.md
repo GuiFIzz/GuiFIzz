@@ -25,7 +25,7 @@ everyone after that goes on a waitlist. Waves also protect email deliverability 
 | Lumen cost (30 × $199) | $5,970, covered as each first payment clears |
 | Month-1 coaching revenue | ~$8,970 |
 | Guaranteed profit over the 3-month minimum | ~$21,000 |
-| If half renew at $199 × 6 months | + ~$18,300 |
+| If half renew at $299 × 6 months | + ~$18,300 |
 | Your time | ~9 h/week of your 25 (room for ~50 more clients) |
 | Ad budget under the compounding rule | $500 + $100 × 30 = **$3,000 cap** (you approve going past $500) |
 
@@ -50,7 +50,7 @@ the GFC Xtreme address. **Send in batches of ~150/day for the first 4 days** if 
 | 3 | (to non-openers) Did you see this? | Same email, new subject | Same |
 | 2 | Losing weight but losing muscle? | GLP-1 muscle problem + free Lumen ($249 value) | Take the score |
 | 4 | 1 in 3 adults, and most don't know | Pre-diabetes stat (CDC) + what the score checks | Take the score |
-| 6 | How it works (and what it costs) | Biweekly sessions, Lumen, medical partners, 3 months → $199 renewal | Book a call |
+| 6 | How it works (and what it costs) | Biweekly sessions, Lumen, medical partners, 3 months → $299 renewal | Book a call |
 | 8 | Founding spots closing | "I'm taking 30 founding clients so I can give each one real attention." | Book a call |
 
 After Day 8, anyone who took the quiz but didn't book moves into the regular 14-day nurture sequence

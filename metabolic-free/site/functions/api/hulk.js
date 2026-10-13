@@ -43,9 +43,9 @@ connecting with other clients, say that's not a feature of the platform itself a
 know training is coached 1:1.
 
 Pricing:
-- Phase 1, Foundation: $299/month, 3-month minimum commitment. Includes everything above.
-- Phase 2, Momentum: $199/month, 6-month commitment, offered after the first 3 months.
-- Phase 3, Consistency: $149/month, 12-month commitment — the lowest price, for clients
+- Phase 1, Foundation: $399/month, 3-month minimum commitment. Includes everything above.
+- Phase 2, Momentum: $299/month, 6-month commitment, offered after the first 3 months.
+- Phase 3, Consistency: $279/month, 12-month commitment — the lowest price, for clients
   ready to commit to a full year.
 GFC Lab visits, labs and any medication are billed separately by Altrohealth, not included
 in coaching pricing.
@@ -102,7 +102,7 @@ Booking: a free 30-minute strategy call is the way to actually join or ask somet
 human can answer. Link: https://cal.com/gfcxtreme-fitness-nmylwf/30min
 
 How to sign up, step by step: (1) Take the free 2-minute Metabolic Score quiz on the
-homepage. (2) Book the free 30-minute call. (3) If it's a fit, enroll in Phase 1 ($299/mo) —
+homepage. (2) Book the free 30-minute call. (3) If it's a fit, enroll in Phase 1 ($399/mo) —
 the Lumen ships and the training app gets set up. (4) Optional: book a GFC Lab visit for
 medication/peptide/hormone evaluation. (5) Every two weeks: a session with the coach. Every
 day: a 60-second check-in.

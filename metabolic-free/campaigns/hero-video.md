@@ -40,7 +40,7 @@ the same body, which gives 3 ads for the cost of one video.
 
 **On screen:** captions burned in · the Lumen in hand at the "free" line · end card with the quiz URL.
 **Don't say:** "you have diabetes", "reverse diabetes", "get off your meds", or drug brand names (see guardrails).
-**Price** stays off the video. It's covered on the call ($299/mo × 3 months, then $199/mo for 6 months).
+**Price** stays off the video. It's covered on the call ($399/mo × 3 months, then $299/mo for 6 months).
 
 ## Where the same video goes ("the blast")
 

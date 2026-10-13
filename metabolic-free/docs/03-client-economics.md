@@ -1,11 +1,16 @@
 # Client economics: what one client is worth
 
+> ⚠️ **Prices changed 2026-10-13 to $399 / $299 / $279.** The tier prices below are updated, but every
+> **derived** figure in this document (revenue at capacity, payback, LTV, CAC ratios, and `tools/economics.py`)
+> was computed on the old $299 / $199 / $149 pricing and has NOT been recalculated. Treat the totals as stale
+> until the calculator is re-run.
+
 Same logic as valuing a cow on a farm: milk is only part of the value. You
 also count what she eats, how long she produces, and the calves she brings.
 
 | Farm | Coaching business |
 |---|---|
-| Milk per month | $299/mo (months 1–3), then $199/mo (6-month renewal) + telehealth margin |
+| Milk per month | $399/mo (months 1–3), then $299/mo (6-month renewal) + telehealth margin |
 | Feed cost | Software, payment fees, your time (Lumen membership: first 12 months included) |
 | Productive years | 3-month minimum + 6-month renewal (if they renew) |
 | Calves | Referrals |
@@ -18,8 +23,8 @@ Run `python3 tools/economics.py` (override anything, e.g. `--renewal_rate 0.6`).
 
 | Input | Value | Source |
 |---|---|---|
-| Coaching | $299/mo, 3-month minimum | Coach |
-| Renewal | 6 months at $199/mo | Coach |
+| Coaching | $399/mo, 3-month minimum | Coach |
+| Renewal | 6 months at $299/mo | Coach |
 | Lumen membership | First 12 months included (no cost during the program) | Coach / Lumen |
 | Lumen | Free to client, $199 cost to GFC Xtreme | Coach |
 | Telehealth | Altrohealth / OpenLoop (LegitScript) | Coach |
@@ -33,7 +38,7 @@ Run `python3 tools/economics.py` (override anything, e.g. `--renewal_rate 0.6`).
 
 | Metric | Value | What it means |
 |---|---|---|
-| Day-one cash after device | **~$85** ($299 − $199 − fees) | The device is paid off in month 1 |
+| Day-one cash after device | **~$185** ($399 − $199 − fees) | The device is paid off in month 1 |
 | Guaranteed gross profit (3-month minimum) | **~$700** | Floor value of every client, after the Lumen |
 | Each 6-month renewal adds | **~$1,220** | Worth more than the whole first phase |
 | Lifetime gross profit (50% renew) | **~$1,310** | What one client is worth |
@@ -42,7 +47,7 @@ Run `python3 tools/economics.py` (override anything, e.g. `--renewal_rate 0.6`).
 | Max cost per lead | **~$11** | Ads agent kill line |
 | Target cost per lead | ~$8 | Healthy running level |
 | Coach capacity (25 h/wk, 30-min biweekly + 10 min admin) | **81 clients** | Solo ceiling |
-| Revenue at capacity (half the roster on $199) | **~$21.6k/mo** | |
+| Revenue at capacity (half the roster on $299) | **~$21.6k/mo** | |
 | New clients/month to stay full | ~13.5 | |
 
 ## The honest math on $500/month
@@ -55,7 +60,7 @@ Early growth comes from free channels and compounding:
 |---|---|---|
 | Meta ads ($500) | 1–2 | $500 |
 | Organic content + "comment SCORE" DMs | 2–4 | Your weekly video |
-| Referrals (1 free month per enrolled referral) | 1–3 | $299 per referral |
+| Referrals (1 free month per enrolled referral) | 1–3 | $399 per referral |
 | Existing network / GFC Xtreme members / past clients | 2–4 | Free |
 | B2B employer pilot (LinkedIn, local) | 0–10 (lumpy) | Time |
 
