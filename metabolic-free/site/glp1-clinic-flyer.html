@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GLP-1 Muscle Resistance Program · Clinic Flyer · GFC Xtreme Fitness</title>
+<meta name="robots" content="noindex">
+<style>
+  /* ---- Print-first: exactly US Letter, no browser margins ---- */
+  @page { size: 8.5in 11in; margin: 0; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; background: #52525b; }
+
+  :root {
+    --ink: #0A0A0A;
+    --accent: #F26B2A;
+    --paper: #FFFFFF;
+    --mute: #A1A1AA;
+    --line: #27272A;
+  }
+
+  .sheet {
+    width: 8.5in; height: 11in;
+    margin: 0 auto; position: relative; overflow: hidden;
+    background: var(--ink); color: var(--paper);
+    font: 400 10.5pt/1.45 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 0.52in 0.56in 0.42in;
+    display: flex; flex-direction: column;
+  }
+  @media screen { .sheet { margin: 24px auto; box-shadow: 0 10px 50px rgba(0,0,0,.55); } }
+
+  /* glow behind the headline, keeps it from feeling flat in print */
+  .sheet::before {
+    content: ""; position: absolute; top: -2.2in; right: -1.8in;
+    width: 6in; height: 6in; border-radius: 50%;
+    background: radial-gradient(circle, rgba(242,107,42,.22) 0%, rgba(242,107,42,0) 68%);
+  }
+  .sheet > * { position: relative; }
+
+  /* ---- masthead ---- */
+  .top { display: flex; align-items: center; justify-content: space-between; }
+  .top img { height: 0.46in; width: auto; display: block; }
+  .partner { text-align: right; font-size: 7pt; letter-spacing: .14em; text-transform: uppercase; color: var(--mute); line-height: 1.5; }
+
+  /* ---- headline ---- */
+  .eyebrow { margin-top: .22in; font-size: 7.6pt; font-weight: 700; letter-spacing: .20em;
+             text-transform: uppercase; color: var(--accent); }
+  h1 { font-size: 43pt; line-height: .94; letter-spacing: -.025em; font-weight: 800;
+       margin: .06in 0 0; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .sub { margin: .11in 0 0; font-size: 12pt; line-height: 1.3; color: #E4E4E7; max-width: 6.1in; font-weight: 300; }
+
+  /* ---- stats strip ---- */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: .13in; margin: .22in 0 0; }
+  .stat { border-top: 2.5px solid var(--accent); padding-top: .075in; }
+  .stat b { display: block; font-size: 18.5pt; font-weight: 800; letter-spacing: -.02em; line-height: 1; }
+  .stat span { display: block; margin-top: .05in; font-size: 6.9pt; line-height: 1.33; color: #D4D4D8; }
+  .src { margin: .085in 0 0; font-size: 6.2pt; color: #71717A; letter-spacing: .02em; }
+
+  /* ---- body split ---- */
+  .split { display: grid; grid-template-columns: 1fr 2.34in; gap: .26in; margin-top: .18in; flex: 0 0 auto; }
+  h2 { font-size: 13.5pt; line-height: 1.2; font-weight: 700; margin: 0 0 .09in; letter-spacing: -.01em; }
+  .lede { font-size: 8.9pt; line-height: 1.42; color: #D4D4D8; margin: 0 0 .12in; }
+  .lede strong { color: var(--paper); font-weight: 600; }
+
+  ul.inc { list-style: none; padding: 0; margin: 0; }
+  ul.inc li { position: relative; padding-left: .215in; margin-bottom: .07in; font-size: 8.4pt; line-height: 1.32; color: #E4E4E7; }
+  ul.inc li::before { content: ""; position: absolute; left: 0; top: .055in;
+                      width: .105in; height: .105in; border-radius: 50%; background: var(--accent); }
+  ul.inc li b { color: var(--paper); font-weight: 700; }
+
+  /* free device callout */
+  .free { margin: .12in 0 0; border: 1.5px solid var(--accent); border-radius: .1in;
+          padding: .135in .16in; background: rgba(242,107,42,.09); }
+  .free .tag { font-size: 7.2pt; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); }
+  .free b { display: block; font-size: 11.5pt; font-weight: 800; margin: .035in 0 .035in; }
+  .free p { margin: 0; font-size: 7.8pt; line-height: 1.34; color: #D4D4D8; }
+
+  /* ---- right rail ---- */
+  .rail img.photo { width: 100%; height: 1.62in; object-fit: cover; border-radius: .1in; display: block; filter: contrast(1.04) saturate(.94); }
+  .rail img.lumen { width: 100%; height: .95in; object-fit: cover; border-radius: .1in; display: block; margin-top: .13in; }
+  .cap { font-size: 6.8pt; color: #71717A; margin: .055in 0 0; line-height: 1.35; }
+
+  .arc { margin-top: .13in; border-top: 1px solid var(--line); padding-top: .13in; }
+  .arc .t { font-size: 7.2pt; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: .075in; }
+  .arc ol { margin: 0; padding-left: .155in; font-size: 7.5pt; line-height: 1.33; color: #D4D4D8; }
+  .arc ol li { margin-bottom: .036in; }
+  .arc ol li b { color: var(--paper); }
+
+  /* ---- closing ---- */
+  .close { margin-top: auto; border-top: 1px solid var(--line); padding-top: .14in;
+           display: flex; align-items: center; gap: .24in; }
+  .close .qr { width: .92in; height: .92in; flex: none; background: #fff; border-radius: .07in; padding: .045in; }
+  .close .qr img { width: 100%; height: 100%; display: block; }
+  .close .say { flex: 1; }
+  .close .say .big { font-size: 13.5pt; font-weight: 800; line-height: 1.12; letter-spacing: -.01em; }
+  .close .say .big i { font-style: normal; color: var(--accent); }
+  .close .say p { margin: .055in 0 0; font-size: 8.6pt; color: #D4D4D8; line-height: 1.4; }
+  .close .say .url { margin-top: .05in; font-size: 9.5pt; font-weight: 700; color: var(--accent); letter-spacing: .01em; }
+
+  footer { margin-top: .13in; border-top: 1px solid var(--line); padding-top: .1in;
+           font-size: 6.6pt; line-height: 1.5; color: #71717A; }
+  footer b { color: #A1A1AA; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="top">
+    <img src="media/gfc-xtreme-logo.png" alt="GFC Xtreme Fitness">
+    <div class="partner">Coaching partner to your<br>weight-management care</div>
+  </div>
+
+  <div class="eyebrow">The GLP-1 Muscle Resistance Program</div>
+  <h1>Keep Your<br><em>Muscle.</em></h1>
+  <p class="sub">Your medication is doing its job. This is how you protect the part
+    that decides whether the results last — the muscle that runs your metabolism.</p>
+
+  <div class="stats">
+    <div class="stat"><b>25–40%</b><span>of weight lost on a GLP-1 can be lean mass, without a structured strength program</span></div>
+    <div class="stat"><b>⅔</b><span>of lost weight was regained within a year of stopping semaglutide</span></div>
+    <div class="stat"><b>~80%</b><span>of post-meal glucose is taken up by your skeletal muscle</span></div>
+    <div class="stat"><b>11%</b><span>of U.S. adults now use a GLP-1, up from 3% in 2024 — most with no muscle plan</span></div>
+  </div>
+  <p class="src">Lean-mass figures from DXA sub-studies of the semaglutide and tirzepatide pivotal trials; regain from the STEP 1 extension; adoption data Gallup 2026.</p>
+
+  <div class="split">
+    <div>
+      <h2>Three months. Then you don't need us.</h2>
+      <p class="lede">Most programs want you dependent. We want the opposite. In twelve weeks you learn
+        <strong>how, when and what to eat</strong> — and you train in a way that tells your body to keep
+        its muscle while the fat comes off. After that, the habits are yours. You carry them on your own,
+        with or without medication, for the rest of your life.</p>
+
+      <ul class="inc">
+        <li><b>A 1:1 coaching call every two weeks</b> — someone who actually notices when you drift</li>
+        <li><b>Protein-first nutrition</b> built around your own daily data, not a generic meal plan</li>
+        <li><b>Real human-filmed exercise videos</b> — every movement with its own breathing and tempo cue</li>
+        <li><b>Resistance training that protects lean mass</b> while you're in a calorie deficit</li>
+      </ul>
+
+      <div class="free">
+        <div class="tag">Included free · $249 value</div>
+        <b>A Lumen metabolic breath device</b>
+        <p>Breathe into it each morning and see whether your body is burning fat or carbs that day.
+          Nutrition stops being a guess and becomes a number you can act on.</p>
+      </div>
+    </div>
+
+    <div class="rail">
+      <img class="photo" src="media/glp1-flyer-training.jpg" alt="Controlled single-arm dumbbell row">
+      <img class="lumen" src="media/lumen-device-app.webp" alt="The Lumen metabolic breath device and its app">
+      <p class="cap">Your free Lumen device and app — a single breath each morning.</p>
+
+      <div class="arc">
+        <div class="t">Your 12 weeks</div>
+        <ol>
+          <li><b>Measure.</b> Metabolic score, baseline breath reading, your numbers.</li>
+          <li><b>Learn.</b> How, when and what to eat — and why it works.</li>
+          <li><b>Build.</b> Strength training that signals your body to keep muscle.</li>
+          <li><b>Own it.</b> You run it yourself, for good.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="close">
+    <div class="qr"><img src="media/qr-metabolic-score.png" alt="Scan for your free Metabolic Score"></div>
+    <div class="say">
+      <div class="big">Knowledge is power. <i>Muscle is longevity.</i></div>
+      <p>Scan the code for your free 2-minute Metabolic Score — no cost, no obligation.</p>
+      <div class="url">metabolicgfcxtremefit.com</div>
+    </div>
+  </div>
+
+  <footer>
+    <b>Coaching support only. Not medical advice.</b> GFC Xtreme Fitness provides fitness coaching and
+    nutrition education. We do not prescribe, adjust, or discontinue any medication — your prescribing
+    clinician manages your treatment, and you should never change your medication without speaking to them.
+    This program is designed to work alongside your care, not in place of it. Individual results vary.
+    &nbsp;·&nbsp; © GFC Xtreme Fitness · metabolicgfcxtremefit.com
+  </footer>
+
+</div>
+</body>
+</html>
