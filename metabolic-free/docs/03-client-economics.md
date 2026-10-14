@@ -1,10 +1,5 @@
 # Client economics: what one client is worth
 
-> ⚠️ **Prices changed 2026-10-13 to $399 / $299 / $279.** The tier prices below are updated, but every
-> **derived** figure in this document (revenue at capacity, payback, LTV, CAC ratios, and `tools/economics.py`)
-> was computed on the old $299 / $199 / $149 pricing and has NOT been recalculated. Treat the totals as stale
-> until the calculator is re-run.
-
 Same logic as valuing a cow on a farm: milk is only part of the value. You
 also count what she eats, how long she produces, and the calves she brings.
 
@@ -38,17 +33,33 @@ Run `python3 tools/economics.py` (override anything, e.g. `--renewal_rate 0.6`).
 
 | Metric | Value | What it means |
 |---|---|---|
-| Day-one cash after device | **~$185** ($399 − $199 − fees) | The device is paid off in month 1 |
-| Guaranteed gross profit (3-month minimum) | **~$700** | Floor value of every client, after the Lumen |
-| Each 6-month renewal adds | **~$1,220** | Worth more than the whole first phase |
-| Lifetime gross profit (50% renew) | **~$1,310** | What one client is worth |
-| With referrals | ~$1,700 | |
-| Max cost to acquire a client (3:1) | **~$437** | |
-| Max cost per lead | **~$11** | Ads agent kill line |
-| Target cost per lead | ~$8 | Healthy running level |
-| Coach capacity (25 h/wk, 30-min biweekly + 10 min admin) | **81 clients** | Solo ceiling |
-| Revenue at capacity (half the roster on $299) | **~$21.6k/mo** | |
-| New clients/month to stay full | ~13.5 | |
+| Day-one cash after device | **~$185** ($399 − $199 − fees) | The device now pays for itself in month 1 |
+| Guaranteed gross profit (3-month minimum) | **~$992** | Floor value of every client, after the Lumen |
+| Each 6-month renewal adds | **~$1,800** | Worth nearly double the whole first phase |
+| Lifetime gross profit (50% renew) | **~$1,892** | What one client is worth |
+| With referrals | **~$2,460** | |
+| Max cost to acquire a client (3:1) | **~$631** | |
+| Max cost per lead | **~$15.89** | Ads agent kill line |
+| Target cost per lead | ~$8 | Real market rate. Do **not** raise bids just because the ceiling rose |
+| Coach capacity (25 h/wk, 30-min biweekly + 10 min admin) | **81 clients** | Solo ceiling, unchanged |
+| Revenue at capacity (half the roster on $299) | **~$29.7k/mo** | |
+| New clients/month to stay full | ~13.5 | Unchanged |
+
+Recalculated 2026-10-13 against the live $399 / $299 / $279 pricing. The model was first validated by
+reproducing every pre-change figure exactly, so these are trustworthy. Re-run with
+`python3 tools/economics.py`.
+
+### If the client takes the 12-month tier instead
+
+| Metric | 6-month renewal ($299) | 12-month renewal ($279) |
+|---|---|---|
+| Lifetime gross profit | ~$1,892 | **~$2,676** |
+| Max cost to acquire | ~$631 | **~$892** |
+| Revenue at capacity | **~$29.7k/mo** | ~$27.3k/mo |
+
+**The 12-month tier maximises what one client is worth but lowers revenue per slot**, because they
+occupy a place on the roster longer at a lower rate. Push it hard while slots are empty; stop
+pushing it as you approach 81.
 
 ## The honest math on $500/month
 
@@ -67,13 +78,13 @@ Early growth comes from free channels and compounding:
 ## Compounding rule: how the ad budget grows by itself
 
 A client costs ~$310 to acquire (at ~$8 CPL, ~40 leads) plus $199 for the Lumen, about $510 in total. The 3-month
-minimum brings in ~$870 after fees, so **every client is profitable by month 2 even if they quit at the minimum.**
+minimum brings in ~$1,161 after fees, so **every client is profitable by month 2 even if they quit at the minimum.**
 That means the budget can safely grow with the client count:
 
 ```
 monthly ad budget = $500 + $100 × active clients
    cap: the coach's monthly limit (default $3,000)
-   only if: last 30 days' cost per enrolled client < $434 (max CAC)
+   only if: last 30 days' cost per enrolled client < $631 (max CAC)
 ```
 
 | Active clients | Ad budget | Expected paid clients/month |
@@ -88,8 +99,8 @@ above the cap needs your approval.
 
 ## Levers, ranked by impact
 
-1. **Renewal rate.** Each renewal is worth ~$1,220, more than the first 3 months. Going from 30% → 70% renewal
-   raises LTV from ~$1,070 to ~$1,550. Present the renewal in the **week-6 session** with the client's own Lumen and
+1. **Renewal rate.** Each renewal is worth ~$1,800, more than the first 3 months. Going from 30% → 70% renewal
+   raises LTV from ~$1,532 to ~$2,252. Present the renewal in the **week-6 session** with the client's own Lumen and
    progress data. The Retention agent prepares that progress summary for you.
 2. **Close rate** on discovery calls (30% → 40% cuts CAC 25%).
 3. **Referrals.** The cheapest client you'll ever get.
@@ -99,7 +110,7 @@ above the cap needs your approval.
 ## Rule for the Ads agent
 
 ```
-kill an ad set     if CPL > $16 (1.5 × $11) after 3 days AND ≥ $30 spent
+kill an ad set     if CPL > $24 (1.5 × $15.89) after 3 days AND ≥ $30 spent
 scale              per the compounding rule above
 optimize for       leads now; switch to booked calls (Schedule) once ≥ 50 bookings/week
 ```

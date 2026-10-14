@@ -14,9 +14,11 @@ import argparse
 
 ASSUMPTIONS = {
     # Revenue
-    "price_per_month": 299.0,         # phase 1 coaching fee
+    "price_per_month": 399.0,         # phase 1 coaching fee (raised 2026-10-13)
     "minimum_months": 3.0,            # phase 1 commitment
-    "renewal_price": 199.0,           # phase 2: cheaper price for a longer commitment
+    "renewal_price": 299.0,           # phase 2: cheaper price for a longer commitment (raised 2026-10-13)
+    # NOTE: phase 3 (12 months at $279) is NOT modelled here. Run the 12-month case with
+    #   --renewal_price 279 --renewal_months 12   to see it.
     "renewal_months": 6.0,            # phase 2 commitment
     "renewal_rate": 0.50,             # ESTIMATE: share of clients who take the 6-month renewal
     "telehealth_attach_rate": 0.30,   # share of clients who add GLP-1 / hormone care
