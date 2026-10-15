@@ -5,6 +5,8 @@
 //   cancelled             → "call cancelled" tag: send a rebook email
 //   no-show (7 min late)  → "call no-show" tag: send "sorry we missed you" + rebook link
 //   meeting ended         → "call attended" tag (unless already marked no-show): post-call follow-up
+//   guest marked attended → "call attended" tag: the manual path, for when the room event never
+//                           arrives (coach unmarks the no-show flag on the booking in Cal.com)
 // Cal.com already emails the coach when a call is booked, cancelled or rescheduled.
 //
 // No-show detection ("After guests didn't join cal video") and the "Meeting ended" event only fire
@@ -50,9 +52,12 @@ function plan(event, payload, env) {
     case "AFTER_GUESTS_CAL_VIDEO_NO_SHOW":
       return { add: [noShow], remove: [booked] };
     case "BOOKING_NO_SHOW_UPDATED":
-      // Coach marked (or unmarked) the guest as a no-show in Cal.com.
+      // Coach marked (or unmarked) the guest as a no-show in Cal.com. Unmarked means the coach
+      // is saying they were there, so treat it exactly like a meeting that ended: this is the
+      // one attendance signal that works on any booking, whatever the video room reports.
       return (payload.attendees || []).some((a) => a.noShow)
-        ? { add: [noShow], remove: [booked] } : { add: [], remove: [noShow] };
+        ? { add: [noShow], remove: [booked] }
+        : { add: [attended], remove: [booked, noShow] };
     case "MEETING_ENDED":
       // Fires even when the guest never joined, so skip anyone already tagged no-show —
       // the no-show trigger (which fires earlier, at the 7-minute mark) already handled them.
