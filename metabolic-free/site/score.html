@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Metabolic Score</title>
+<meta name="description" content="Nine quick questions. Your free Metabolic Score and 7-Day Metabolic Reset at the end.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="styles.css">
+<script src="config.js"></script>
+<style>
+  /* This page has one job: get the first answer tapped. No nav, no hero, no
+     links out above the quiz — every escape route here is a lost lead. */
+  .scorebar{background:#0A0A0A;padding:13px 18px;}
+  .scorebar img{height:26px;width:auto;display:block;}
+  .quizwrap{max-width:620px;margin:0 auto;padding:22px 18px 40px;}
+  .qintro{font:400 15px/1.5 Helvetica,Arial,sans-serif;color:var(--muted);margin:0 0 18px;}
+  .trust{max-width:620px;margin:0 auto;padding:0 18px 44px;font:400 13px/1.6 Helvetica,Arial,sans-serif;color:var(--muted);}
+  .trust b{color:inherit;}
+</style>
+</head>
+<body>
+
+<div class="scorebar"><img src="media/gfc-xtreme-logo.png" alt="GFC Xtreme Fitness"></div>
+
+<div class="quizwrap">
+  <p class="qintro">Nine quick questions &mdash; about two minutes. No wrong answers.</p>
+  <section id="quiz" aria-live="polite">
+    <div class="bar"><i id="progress"></i></div>
+    <div id="stage"></div>
+  </section>
+</div>
+
+<div class="trust">
+  <p><b>Why we ask.</b> Your answers decide which track you belong in and what your first 30 days
+  look like. The Metabolic Score is an educational self-assessment, not a diagnosis.</p>
+  <p>GFC Xtreme Fitness &middot; Metabolic Flex &middot;
+  <a href="privacy.html" style="color:inherit">Privacy policy</a> &middot;
+  <a href="terms.html" style="color:inherit">Terms</a></p>
+</div>
+
+<script src="quiz.js"></script>
+<script>
+  // An email CTA can carry the first answer, so the click itself counts as
+  // answering and the page opens on question 2.
+  MF_QUIZ.init({ prefillQ1: new URLSearchParams(location.search).get("q1") });
+</script>
+<script src="hulk.js"></script>
+</body>
+</html>
