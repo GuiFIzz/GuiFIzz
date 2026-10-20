@@ -30,7 +30,7 @@
     <div class="eyebrow">GFC Lab · powered by Altrohealth</div>
     <h1>GLP-1s, peptides and hormone therapy. One clinician-reviewed plan.</h1>
     <p class="sub">GFC Lab brings GLP-1 medications, peptide therapy and hormone therapy together under licensed clinicians who decide what's right for you — paired with the strength training and nutrition coaching that keeps what actually matters: your muscle.</p>
-    <p><a class="btn" id="start" href="#">Start my GFC Lab visit</a> <a href="peptide-guide.html" style="margin-left:14px">Get the free Peptide Guide →</a></p>
+    <p class="cta-row"><a class="btn" id="start" href="#">Start my GFC Lab visit</a><a href="peptide-guide.html" id="guide-cta">Get the free Peptide Guide &rarr;</a></p>
   </header>
 
   <aside class="glp1">
@@ -105,6 +105,87 @@
   } else {
     btn.href = url; btn.target = "_blank"; btn.rel = "noopener";
   }
+</script>
+
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+  <div class="gate-box">
+    <button class="gate-close" type="button" id="gate-x" aria-label="Close">&times;</button>
+    <h2 id="gate-title">The Peptide Guide</h2>
+    <p class="sub">What peptides actually do, which ones have evidence behind them, and the questions
+      to ask a clinician before you start. Yours free &mdash; tell me where to send it.</p>
+    <form id="gate-form" novalidate>
+      <label for="g-fn">First name</label>
+      <input id="g-fn" type="text" autocomplete="given-name" required>
+      <label for="g-em">Email</label>
+      <input id="g-em" type="email" autocomplete="email" required>
+      <div class="consent">
+        <input id="g-ok" type="checkbox" required>
+        <label for="g-ok" style="margin:0;font-weight:400">Send me the guide and Coach Gui's tips.
+          I can unsubscribe anytime. <a href="privacy.html" target="_blank">Privacy policy</a></label>
+      </div>
+      <button class="btn" id="g-go" type="submit">Send me the guide &rarr;</button>
+      <p class="gate-err" id="g-err" hidden></p>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Trade the Peptide Guide for an email. The guide is the lead magnet, so the contact
+  // is created and tagged before the file opens - but a failure on our side must not
+  // cost the reader the guide they were promised, so delivery happens either way.
+  (function () {
+    const gate = document.getElementById("gate");
+    const cta  = document.getElementById("guide-cta");
+    const form = document.getElementById("gate-form");
+    const err  = document.getElementById("g-err");
+    const go   = document.getElementById("g-go");
+    const dest = cta.getAttribute("href");
+    let lastFocus = null;
+
+    const open = (e) => {
+      e.preventDefault();
+      lastFocus = document.activeElement;
+      gate.classList.add("on");
+      document.getElementById("g-fn").focus();
+    };
+    const close = () => {
+      gate.classList.remove("on");
+      if (lastFocus) lastFocus.focus();
+    };
+
+    cta.addEventListener("click", open);
+    document.getElementById("gate-x").addEventListener("click", close);
+    gate.addEventListener("click", (e) => { if (e.target === gate) close(); });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && gate.classList.contains("on")) close();
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const first_name = document.getElementById("g-fn").value.trim();
+      const email = document.getElementById("g-em").value.trim();
+      if (!first_name || !/\S+@\S+\.\S+/.test(email) || !document.getElementById("g-ok").checked) {
+        err.textContent = "Add your name, a valid email, and tick the box.";
+        err.hidden = false;
+        return;
+      }
+      err.hidden = true;
+      go.disabled = true;
+      go.textContent = "Sending\u2026";
+      try {
+        await fetch(MF_CONFIG.GUIDE_LEAD_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ first_name, email, source: "peptide_guide" }),
+        });
+      } catch (e) {
+        console.warn("Guide lead submit failed", e);
+      }
+      if (window.fbq) fbq("track", "Lead");
+      if (window.gtag) gtag("event", "generate_lead");
+      location.href = dest;
+    });
+  })();
 </script>
 <script src="hulk.js"></script>
 </body>
