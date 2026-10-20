@@ -140,3 +140,4 @@
 .gate-err{margin:10px 0 0;font-size:13px;color:#ff8a66;}
 /* The two hero CTAs stack instead of colliding once there isn't room for both. */
 .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px;}
+.guide-offer{border:1px solid var(--line,#2a2a2a);border-radius:12px;padding:20px;}
