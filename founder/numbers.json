@@ -1,0 +1,28 @@
+{
+  "business": "GFC Xtreme - online/hybrid coaching agency (BASELINE: every figure is an assumption pending real data)",
+  "unit": "client-month",
+  "price": 149.00,
+  "variable": [
+    {"label": "Coach time (est. 2.5 h/client-month at $22/h loaded)", "cost": 55.00},
+    {"label": "App / delivery platform seat (est.)", "cost": 9.00},
+    {"label": "Payment processing (2.9% + $0.30)", "cost": 4.62},
+    {"label": "Onboarding + check-in materials (est., amortised)", "cost": 3.00}
+  ],
+  "fixed_monthly": [
+    {"label": "Founder draw (est.)", "cost": 4000},
+    {"label": "Software stack - CRM, scheduling, email, hosting (est.)", "cost": 450},
+    {"label": "Insurance + accounting (est.)", "cost": 300},
+    {"label": "Always-on ad spend (est.)", "cost": 1200}
+  ],
+  "startup": [
+    {"label": "Site + funnel build (est.)", "cost": 3500},
+    {"label": "Programme + content library build (est.)", "cost": 2500},
+    {"label": "Brand + photo/video (est.)", "cost": 1500},
+    {"label": "Launch ads (est.)", "cost": 2000},
+    {"label": "Legal - entity, waivers, scope-of-practice review (est.)", "cost": 1200}
+  ],
+  "days_per_month": 30,
+  "capacity_per_day": 2.67,
+  "plan_per_day": 2.0,
+  "ramp_per_day": [0.27, 0.47, 0.70, 0.93, 1.17, 1.37, 1.53, 1.67, 1.77, 1.87, 1.93, 2.0]
+}

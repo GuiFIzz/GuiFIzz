@@ -1,0 +1,14 @@
+scenario                            contrib margin@plan  B/E clients   yr1 profit   cash need
+---------------------------------------------------------------------------------------------
+BASELINE $149 / 2.5h coach time       77.38        -15%           77      -35,000      45,700
+price $199                           127.38         14%           47      -11,480      27,740
+price $249                           177.38         31%           34       12,040      21,888
+price $299                           227.38         43%           26       35,560      18,727
+coach time 1.5h (group model)         99.38          0%           60      -24,652      35,364
+coach time 1.0h (app-led)            110.38          8%           54      -19,477      31,533
+coach time 0.5h (app + async)        121.38         15%           49      -14,303      28,899
+$199 + 1.5h coach time               149.38         25%           40       -1,132      24,586
+$249 + 1.5h coach time               199.38         40%           30       22,388      20,324
+$99 app-only, 0.25h                   76.88        -23%           77      -35,236      45,936
+
+Plan volume = 60 clients/mo   Capacity = 80 clients/mo
