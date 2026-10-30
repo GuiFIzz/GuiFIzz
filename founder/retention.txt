@@ -1,0 +1,40 @@
+Price $300/client-month   contribution $279.00 (93%)   fixed $5,950/mo
+
+LIFETIME VALUE — how long a client stays is worth more than what they pay
+  monthly churn   avg months         LTV   max CAC @ 3:1
+--------------------------------------------------------
+            3%         33.3       9,300           3,100
+            5%         20.0       5,580           1,860
+            8%         12.5       3,488           1,162
+           12%          8.3       2,325             775
+           20%          5.0       1,395             465
+
+
+THE LEAKY BUCKET — the roster you can actually hold
+Steady-state clients = new clients per month / churn rate
+  new/mo          3%          5%          8%         12%         20%
+--------------------------------------------------------------------
+       2          67          40          25          17          10
+       4         133          80          50          33          20
+       6         200         120          75          50          30
+       8         267         160         100          67          40
+      12         400         240         150         100          60
+
+
+WHAT STANDING STILL COSTS — replacing churn before you grow at all
+  roster   churn  lost/mo   CAC $150   CAC $300   CAC $500    vs ad budget
+------------------------------------------------------------------------
+      40      5%      2.0        300        600      1,000              OK
+      40      8%      3.2        480        960      1,600              OK
+      40     12%      4.8        720      1,440      2,400    over by $240
+
+      80      5%      4.0        600      1,200      2,000              OK
+      80      8%      6.4        960      1,920      3,200    over by $720
+      80     12%      9.6      1,440      2,880      4,800  over by $1,680
+
+     108      5%      5.4        810      1,620      2,700    over by $420
+     108      8%      8.6      1,296      2,592      4,320  over by $1,392
+     108     12%     13.0      1,944      3,888      6,480  over by $2,688
+
+Ad budget in numbers.json: $1,200/mo. 'vs ad budget' tests the
+$300 CAC column — what it costs to merely REPLACE churn, before growth.
