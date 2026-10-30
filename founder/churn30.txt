@@ -1,0 +1,28 @@
+Target roster: 30 clients by month 12
+Price $300  contribution $279.00  ad budget $1,200/mo
+
+  churn  gross sales yr1  lost yr1  avg new/mo   CAC $150   CAC $300   CAC $500
+-------------------------------------------------------------------------------
+    3%               36         6         3.0      5,346     10,692     17,820
+    5%               39         9         3.3      5,910     11,820     19,700
+    8%               45        15         3.8      6,756     13,512     22,520
+   12%               53        23         4.4      7,884     15,768     26,280
+   20%               68        38         5.6     10,140     20,280     33,800
+
+Year 1 ad budget at $1,200/mo = $14,400.
+Any CAC column above that number is a hole you fund out of pocket.
+
+WHAT CHURN COSTS YOU IN YEAR 1 REVENUE
+  churn   client-months lost   revenue lost   contribution lost
+---------------------------------------------------------------
+    3%                    6          1,692               1,574
+    5%                    9          2,820               2,623
+    8%                   15          4,512               4,196
+   12%                   23          6,768               6,294
+   20%                   38         11,280              10,490
+
+Break-even is 21 clients. At 30, you carry 9 clients of cushion.
+  At 5% churn with zero new sales you fall below break-even in 6.0 months.
+  At 8% churn with zero new sales you fall below break-even in 3.8 months.
+  At 12% churn with zero new sales you fall below break-even in 2.5 months.
+  At 20% churn with zero new sales you fall below break-even in 1.5 months.

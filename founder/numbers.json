@@ -1,27 +1,76 @@
 {
-  "business": "GFC Xtreme - 1:1 online coaching, founder-delivered, leveraged by app/async",
+  "business": "GFC Xtreme - 1:1 online coaching, founder-delivered (plan: 30 clients by month 12)",
   "unit": "client-month",
-  "price": 300.00,
+  "price": 300.0,
   "variable": [
-    {"label": "App / delivery platform seat (est.)", "cost": 9.00},
-    {"label": "Payment processing (2.9% + $0.30)", "cost": 9.00},
-    {"label": "Onboarding + check-in materials (est., amortised)", "cost": 3.00}
+    {
+      "label": "App / delivery platform seat (est.)",
+      "cost": 9.0
+    },
+    {
+      "label": "Payment processing (2.9% + $0.30)",
+      "cost": 9.0
+    },
+    {
+      "label": "Onboarding + check-in materials (est., amortised)",
+      "cost": 3.0
+    }
   ],
   "fixed_monthly": [
-    {"label": "Founder draw (est.) - your labour lives here, not in variable", "cost": 4000},
-    {"label": "Software stack - CRM, scheduling, email, hosting (est.)", "cost": 450},
-    {"label": "Insurance + accounting (est.)", "cost": 300},
-    {"label": "Always-on ad spend (est.)", "cost": 1200}
+    {
+      "label": "Founder draw (est.) - your labour lives here, not in variable",
+      "cost": 4000
+    },
+    {
+      "label": "Software stack - CRM, scheduling, email, hosting (est.)",
+      "cost": 450
+    },
+    {
+      "label": "Insurance + accounting (est.)",
+      "cost": 300
+    },
+    {
+      "label": "Always-on ad spend (est.)",
+      "cost": 1200
+    }
   ],
   "startup": [
-    {"label": "Site + funnel build (est.)", "cost": 3500},
-    {"label": "Programme + content library build (est.)", "cost": 2500},
-    {"label": "Brand + photo/video (est.)", "cost": 1500},
-    {"label": "Launch ads (est.)", "cost": 2000},
-    {"label": "Legal - entity, waivers, scope-of-practice review (est.)", "cost": 1200}
+    {
+      "label": "Site + funnel build (est.)",
+      "cost": 3500
+    },
+    {
+      "label": "Programme + content library build (est.)",
+      "cost": 2500
+    },
+    {
+      "label": "Brand + photo/video (est.)",
+      "cost": 1500
+    },
+    {
+      "label": "Launch ads (est.)",
+      "cost": 2000
+    },
+    {
+      "label": "Legal - entity, waivers, scope-of-practice review (est.)",
+      "cost": 1200
+    }
   ],
   "days_per_month": 30,
   "capacity_per_day": 2.67,
-  "plan_per_day": 1.33,
-  "ramp_per_day": [0.13, 0.27, 0.43, 0.60, 0.77, 0.90, 1.00, 1.10, 1.17, 1.23, 1.30, 1.33]
+  "plan_per_day": 1.0,
+  "ramp_per_day": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.767,
+    0.833,
+    0.9,
+    0.967,
+    1.0
+  ]
 }

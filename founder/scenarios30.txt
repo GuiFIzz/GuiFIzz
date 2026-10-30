@@ -1,0 +1,14 @@
+scenario                            contrib   B/E  margin   yr1 profit   cash need  payback
+-------------------------------------------------------------------------------------------
+AS PLANNED  $300, 30 by mo 12           279    21     27%      -10,575      28,914   >12 mo
+price $400                              376    16     44%       10,594      23,526   >12 mo
+price $500                              473    13     55%       31,762      20,304    mo 10
+faster ramp (30 by mo 10)               279    21     27%        3,922      20,832   >12 mo
+fastest ramp (30 by mo 9)               279    21     27%        1,143      23,710   >12 mo
+founder draw $2,500 in year 1           279    16     44%        7,425      20,395   >12 mo
+$400 + faster ramp                      376    16     44%       30,136      17,267     mo 9
+$400 + draw $2,500                      376    12     57%       28,594      17,280    mo 10
+$500 + faster ramp                      473    13     55%       56,350      15,502     mo 7
+
+B/E = clients needed to break even. Plan ends at 30 in every row.
+'cash need' = the deepest the bank account goes before it climbs back.
