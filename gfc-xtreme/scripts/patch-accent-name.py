@@ -51,6 +51,24 @@ def patch_pack(path: Path):
     path.write_text(src, encoding='utf-8')
     return word
 
+def patch_settings_test(path: Path):
+    """Settings shows the default accent's NAME; the test asserts it as 'Green'."""
+    src = path.read_text(encoding='utf-8')
+    if 'ACCENT_NAMES' in src:
+        return False
+    imp_old = "import { readableIn } from '../lib/accent.js'"
+    imp_new = (imp_old + "\nimport { DEFAULT_ACCENT } from '../lib/accent.js'"
+                       + "\nimport { ACCENT_NAMES } from '../lib/format.js'")
+    assert_old = "expect(host.querySelector('.lrow-v').textContent).toBe('Green')"
+    assert_new = "expect(host.querySelector('.lrow-v').textContent).toBe(ACCENT_NAMES[DEFAULT_ACCENT])"
+    for old in (imp_old, assert_old):
+        if src.count(old) != 1:
+            sys.exit(f"patch-accent-name: expected 1 occurrence in {path.name}:\n  {old}")
+    src = src.replace(imp_old, imp_new, 1).replace(assert_old, assert_new, 1)
+    path.write_text(src, encoding='utf-8')
+    return True
+
+
 def main(frontend_src):
     root = Path(frontend_src)
     changed = patch_format(root / 'lib' / 'format.js')
@@ -63,6 +81,8 @@ def main(frontend_src):
     print(f"  locales: {len(done)} pack(s) named the accent")
     if done:
         print("    " + ', '.join(done))
+    st = patch_settings_test(root / 'views' / 'Settings.accent.test.jsx')
+    print(f"  Settings.accent.test.jsx: {'now reads ACCENT_NAMES[DEFAULT_ACCENT]' if st else 'already patched'}")
 
 if __name__ == '__main__':
     main(sys.argv[1])

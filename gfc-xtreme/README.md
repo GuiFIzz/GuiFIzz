@@ -59,10 +59,18 @@ the point — the alternative is a half-applied brand discovered by a member.
 
 ## Verified
 
-- Upstream's full frontend suite: **6,540 tests**. The overlay broke two, both
-  legitimately; both are fixed, and `color-mix-fallback.test.js` caught a real Safari
-  bug in our own CSS before it shipped.
-- Total upstream diff: **six files, about fifteen lines.**
+Applied to a clean upstream checkout, then run in full:
+
+```
+Test Files  543 passed (543)
+     Tests  6540 passed (6540)
+```
+
+The overlay broke three along the way, each legitimately — two asserted the old default
+accent as a string literal, and `color-mix-fallback.test.js` caught a real bug in our own
+CSS that would have broken the sign-in card on Safari before 16.2. All three are fixed.
+
+Total upstream diff: **seven files, about twenty lines.**
 
 ## Licence, and one thing to settle
 

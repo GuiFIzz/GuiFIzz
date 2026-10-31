@@ -18,6 +18,7 @@ anchor has moved. The last two are component edits and are done by hand.
 | 5 | `frontend/index.html` | `data-brand="gfc"` on `<html>` |
 | 6 | `frontend/src/lib/accent.test.js` | eleven assertions read `DEFAULT_ACCENT` instead of the literal `'lime'` |
 | 7 | `frontend/src/lib/format.js` + 19 locale packs | the accent gets an accessible name |
+| 8 | `frontend/src/views/Settings.accent.test.jsx` | the shown default name reads `ACCENT_NAMES[DEFAULT_ACCENT]` |
 
 ### Why the accent is a preset and not a custom colour
 
@@ -32,7 +33,9 @@ members, and overriding `--acc` globally would have broken the picker silently.
 
 ### Why upstream's tests were edited
 
-Two of them asserted things our change legitimately makes untrue:
+Three of them asserted things our change legitimately makes untrue. In each case the
+literal was replaced by the constant it stands for, so the next brand change touches
+none of them:
 
 - **`accent.test.js`** asserted the fallback accent as the bare string `'lime'`, eleven
   times. Swapping in `'gfc'` would only move the problem to the next rebrand, so the
@@ -43,6 +46,10 @@ Two of them asserted things our change legitimately makes untrue:
   by screen readers and `"gfc"` is not a word. Each pack's name is built from the word
   that pack already uses for `'Orange'` (`GFC Laranja`, `GFC Orange`, `GFC 橙色`), so
   nothing is machine-translated. Have a native speaker check these if it matters to you.
+- **`Settings.accent.test.jsx`** asserted the *displayed name* of the default accent as
+  `'Green'`; it now reads `ACCENT_NAMES[DEFAULT_ACCENT]`. This one only surfaced on a
+  full-suite run — the three obvious accent files passed without it, which is the argument
+  for running all 543 files rather than the ones that look related.
 
 A third test, **`color-mix-fallback.test.js`**, was not edited — it caught a real bug in
 our own CSS. It requires a plain declaration before any `color-mix()`, because Safari
