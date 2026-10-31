@@ -1,0 +1,50 @@
+{
+  "$comment": "GFC Xtreme Fitness — the single source of truth for brand. Nothing user-visible is branded anywhere else: scripts/build-tokens.mjs reads this file and writes the CSS tokens, the PWA manifest and the native theme colours. Change a value here, run `npm run brand`, rebuild.",
+
+  "identity": {
+    "name": "GFC Xtreme Fitness",
+    "short": "GFC Xtreme",
+    "appName": "GFC Xtreme",
+    "tagline": "Train with intent.",
+    "site": "https://www.metabolicgfcxtremefit.com",
+    "supportEmail": "ptrainer@gfcxtreme.com"
+  },
+
+  "color": {
+    "$comment": "Sampled from the supplied logo (brand/assets/gfc-logo.png). Orange is the dominant saturated pixel at hue 16.4 deg, sat 0.84 — 409 px of exactly #FC6228 before any neighbouring shade. Contrast figures are measured, not estimated; see scripts/check-contrast.mjs.",
+
+    "accent":      { "hex": "#FC6228", "from": "logo wordmark 'GFC'", "contrastOnBg": 6.92 },
+    "accentPress": { "hex": "#D14A17", "from": "accent darkened for the pressed/active state" },
+    "onAccent":    { "hex": "#000000", "from": "measured: black scores 6.92 on the accent, white only 3.04", "contrastOnAccent": 6.92 },
+
+    "ink":      { "hex": "#000000", "from": "logo field — also openGym's existing default background" },
+    "surface":  { "hex": "#111B1C", "from": "gym photo cool shadow (hue 185 deg) — depth without flat grey" },
+    "surface2": { "hex": "#172324", "from": "surface, one step up" },
+
+    "label":  { "hex": "#F5F5F5", "from": "logo wordmark 'Xtreme'", "contrastOnBg": 19.26 },
+    "label2": { "hex": "#909090", "from": "logo wordmark 'FITNESS'" },
+    "line":   { "hex": "#3E3E3E", "from": "logo rope graphic — hairlines and separators" }
+  },
+
+  "assets": {
+    "logo":         "assets/gfc-logo.png",
+    "logoHeader":   "assets/gfc-logo-header.png",
+    "logoHeader2x": "assets/gfc-logo-header@2x.png",
+    "logoHeader3x": "assets/gfc-logo-header@3x.png",
+    "$logoNote":    "Black keyed to transparent so the mark sits on any dark surface. Replace with an SVG when the original vector turns up — the slot and the sizes stay the same."
+  },
+
+  "imagery": {
+    "loginBackground":      "assets/gym-bg.jpg",
+    "loginBackgroundSmall": "assets/gym-bg-480.jpg",
+    "$note": "Darkened to 62% at build time so white and orange UI stays legible; the CSS lays a gradient scrim over it as well. Swap in your own gym photography here — same filenames, no code change.",
+    "scrimTop": "rgba(0,0,0,.35)",
+    "scrimBottom": "rgba(0,0,0,.92)"
+  },
+
+  "logoPlacement": {
+    "$comment": "Where the mark appears. 'corner' is the request: upper-left of the app chrome, above the content, never scrolling away.",
+    "appHeader": { "position": "top-left", "height": 26, "insetX": 16, "insetY": 10 },
+    "login":     { "position": "top-left", "height": 34, "insetX": 20, "insetY": 18 }
+  }
+}
