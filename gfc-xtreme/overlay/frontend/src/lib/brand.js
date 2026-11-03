@@ -4,13 +4,13 @@
 // What the UI calls this app. Substituted into every string openGym's source (and its 19
 // locale packs) spells "openGym", so the packs keep matching their keys after an upstream
 // update and new strings are rebranded the day they arrive.
-export const PRODUCT_NAME = "GFCXtremeFit"
+export const PRODUCT_NAME = "GFCXtreme"
 
 // The lowercase, filename-safe form, for the files a member finds in their backup
 // folder. Machine identifiers that nobody reads as a brand -- cache names, event names,
 // Health Connect record ids, the Android package -- deliberately keep upstream's
 // spelling: renaming those orphans data and buys nothing.
-export const FILE_SLUG = "gfcxtremefit"
+export const FILE_SLUG = "gfcxtreme"
 
 // The gym itself, where the business is meant rather than the software.
 export const GYM_NAME = "GFC Xtreme Fitness"
@@ -23,12 +23,12 @@ export const SITE_HOST = "www.metabolicgfcxtremefit.com"
 // The AGPL obliges us to offer members the source of what they are running. Settings links
 // here; null until the repository exists, and the link is left out rather than pointing at
 // somebody else's code.
-export const SOURCE_REPO = "GuiFIzz/GFCXtremeFit"
+export const SOURCE_REPO = "GuiFIzz/GFCXtreme"
 
 // Owner/name for the in-app update check. null switches the check off, which is right until
 // this fork publishes releases of its own — pointing it at upstream would offer members
 // openGym's builds.
-export const UPDATE_REPO = "GuiFIzz/GFCXtremeFit"
+export const UPDATE_REPO = "GuiFIzz/GFCXtreme"
 
 // Where "report this exercise" goes. null hides the link.
-export const ISSUES_URL = "https://github.com/GuiFIzz/GFCXtremeFit/issues"
+export const ISSUES_URL = "https://github.com/GuiFIzz/GFCXtreme/issues"

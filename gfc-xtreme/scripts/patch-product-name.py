@@ -133,7 +133,7 @@ SITES = [
      'crash log prefix'),
     # These are the one set of machine identifiers a member actually reads: they
     # browse to the folder, and the UI names it in its own copy. Leaving them as
-    # "openGym" while the text above them says GFCXtremeFit would make the app lie
+    # "openGym" while the text above them says the new name would make the app lie
     # about where it put their data. Nothing else named opengym-* is renamed --
     # cache names, event names, state files and Health Connect record ids are never
     # read as a brand and renaming them orphans data for no gain.
@@ -280,7 +280,7 @@ def add_import(path: Path, spec: str, names='PRODUCT_NAME'):
     path.write_text(''.join(lines), encoding='utf-8')
 
 
-def patch_sites(root: Path, name='GFCXtremeFit', slug='gfcxtremefit'):
+def patch_sites(root: Path, name: str, slug: str):
     """`new` may carry {slug} or {name}: upstream's Java-parity test reads
     AUTO_BACKUP_NAME as a literal regex, so the slug is written in rather than
     composed at runtime, and that test keeps doing its job."""
@@ -358,7 +358,10 @@ def main(frontend_src, product_name=None, repo=None, slug=None):
     root = Path(frontend_src)
     changed = patch_i18n(root / 'lib' / 'i18n-core.js')
     print(f"  i18n-core.js: {'t() and tn() now rebrand every string' if changed else 'already patched'}")
-    done = patch_sites(root, product_name or 'GFCXtremeFit', slug or 'gfcxtremefit')
+    if not (product_name and slug):
+        sys.exit('patch-product-name: the product name and file slug are required — '
+                 'they come from brand.config.json, never from a default here.')
+    done = patch_sites(root, product_name, slug)
     print(f"  outside t(): {len(done)} site(s) — {', '.join(done) if done else 'already patched'}")
     if product_name and repo:
         st = patch_static(Path(repo), product_name)

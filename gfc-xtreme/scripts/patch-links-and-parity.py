@@ -2,7 +2,7 @@
 """The three rename consequences that are not string swaps.
 
 1. LINKS that pointed at upstream. The in-app update check asked GitHub for openGym's
-   latest release -- left alone, a member tapping "check for updates" in a GFCXtremeFit
+   latest release -- left alone, a member tapping "check for updates" in a rebranded
    app would be offered openGym's APK. The source-code link matters more than it looks:
    the AGPL obliges us to offer members the source of the version they are running, and
    that link is how. Both come from brand.config.json, and while a URL is null the
@@ -21,7 +21,7 @@
 One deliberate non-change: the sentence "Media licensed for use in openGym only" in
 Settings. That is a quotation of the media licence's own wording (agreement 8c, which is
 why upstream marks it as not translated). It describes the agreement openGym holds with
-gymvisual.com, so rewriting it to say GFCXtremeFit would misstate a licence we do not yet
+gymvisual.com, so rewriting it to say our name would misstate a licence we do not yet
 have. It stays, and the NOTICE.md link beside it keeps pointing at upstream's notice,
 which is the document it refers to.
 """

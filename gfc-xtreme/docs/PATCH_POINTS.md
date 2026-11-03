@@ -87,7 +87,7 @@ on tap, wrap it in a `<Link>` and drop that line.
 and put `gfc-login-card` on the class list of the sheet holding the sign-in buttons.
 
 **Replace `head`, do not just add to it.** Upstream's sign-in screen is a centred
-dumbbell icon above an `<h1>` wordmark, which after the rename reads "GFCXtremeFit" as
+dumbbell icon above an `<h1>` wordmark, which after the rename reads "GFCXtreme" as
 plain text. Leaving it there puts the brand on the screen twice — once as the logo in the
 corner, once as text in the middle — and the logo already *is* the wordmark. Drop the
 `head` fragment (both lines) and let the corner mark carry it, as the preview shows.
@@ -121,6 +121,11 @@ It is the one piece of branding that lives outside the frontend.
 ---
 
 # The product name
+
+The name itself lives in `brand/brand.config.json` (`identity.productName`, currently
+**GFCXtreme**, with `fileSlug` as its lowercase form). Changing it is one edit there plus
+a re-run of `apply-overlay.sh` — the examples below use the current value, but nothing in
+the code does.
 
 `openGym` appears about 1,470 times in the frontend. Almost none of them were replaced
 one by one, because most are not what they look like.
@@ -170,8 +175,8 @@ About a hundred occurrences are not the brand at all:
 
 | Renamed | Why it is not just an identifier |
 |---|---|
-| `Documents/openGym` → `Documents/GFCXtremeFit` | members browse to it, and the UI names it in its own copy — leaving it would have made the app lie about where it put their data |
-| `opengym-backup-*.json` → `gfcxtremefit-backup-*.json` | members see these files in that folder |
+| `Documents/openGym` → `Documents/GFCXtreme` | members browse to it, and the UI names it in its own copy — leaving it would have made the app lie about where it put their data |
+| `opengym-backup-*.json` → `gfcxtreme-backup-*.json` | members see these files in that folder |
 | the FIT export's product string | it identifies us in files members send to Garmin or Strava |
 | the CSV source label | shown in "Import from another app"; both sides moved together so a round trip still recognises itself |
 | the Nominatim `User-Agent` | the service asks callers to identify themselves; it must be us, not upstream |
@@ -180,7 +185,7 @@ About a hundred occurrences are not the brand at all:
 ## Three consequences that were not string swaps
 
 - **The update check** asked GitHub for openGym's latest release. Left alone, a member
-  tapping "check for updates" in a GFCXtremeFit app would have been offered openGym's APK.
+  tapping "check for updates" in a rebranded app would have been offered openGym's APK.
   It now reads `links.updateRepo` from the brand config.
 - **The source-code link.** The AGPL obliges us to offer members the source of the version
   they are running, and that link is how. It reads `links.repo`. **That repository does not
