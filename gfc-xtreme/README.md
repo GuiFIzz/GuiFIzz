@@ -42,8 +42,13 @@ git clone https://github.com/DuarteSantos8/openGym.git
 ./gfc-xtreme/scripts/apply-overlay.sh ./openGym
 ```
 
-Then the two hand edits and the `.env` line in `docs/PATCH_POINTS.md`, and openGym's
-own `docker compose up`.
+That applies everything. The only step left is one line of configuration:
+
+```bash
+echo 'RP_NAME="GFCXtreme"' >> openGym/.env
+```
+
+Then openGym's own `docker compose up`.
 
 ## Taking upstream updates
 

@@ -101,10 +101,11 @@ REPO_SLUG="$(node -e "process.stdout.write(require('$HERE/brand/brand.config.jso
 python3 "$HERE/scripts/patch-test-copy.py" "$UP/frontend/src" "$PRODUCT_NAME" "$FILE_SLUG" "$REPO_SLUG" "$SITE_HOST"
 # Links that pointed at upstream, JS/Java parity, and the CSP hash the edited index.html invalidates.
 python3 "$HERE/scripts/patch-links-and-parity.py" "$UP" "$HERE/brand/brand.config.json"
+# The mark on screen: corner logo, and the photograph behind sign-in.
+GYM_NAME="$(node -e "process.stdout.write(require('$HERE/brand/brand.config.json').identity.gymName)")"
+python3 "$HERE/scripts/patch-chrome.py" "$UP/frontend/src" "$GYM_NAME"
 
 echo "overlay applied: $ok change(s), $skip already in place"
 echo
-echo "Still to do by hand (they are component edits, not one-line anchors):"
-echo "  frontend/src/App.jsx        render <img class=\"gfc-mark\"> — see docs/PATCH_POINTS.md"
-echo "  frontend/src/views/Login.jsx add <div class=\"gfc-login-bg\"> and the login mark"
-echo "  .env                        RP_NAME=\"GFC Xtreme\""
+echo "One thing left, and it is not a code edit:"
+echo "  .env    RP_NAME=\"$PRODUCT_NAME\"   (the name in the Face ID / Touch ID prompt)"

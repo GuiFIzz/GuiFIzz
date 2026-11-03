@@ -56,56 +56,34 @@ our own CSS. It requires a plain declaration before any `color-mix()`, because S
 before 16.2 has neither. Members are on iPhones, so the generator now emits the `rgba()`
 fallback ahead of every mix.
 
-## Done by hand
+## The mark on screen (`patch-chrome.py`)
 
-These are JSX edits inside components, with no stable one-line anchor to patch against.
+| File | Change |
+|---|---|
+| `App.jsx` | the mark, fixed upper-left, rendered **outside `#app`** — a fixed element inside it rides along with the page transition's transform, which is upstream's own reason for everything else that sits out there |
+| `views/Login.jsx` | the photograph behind sign-in, the mark in the corner, and the stock head removed |
+| `views/MobileOnboarding.jsx` | the logo in place of the stock head |
 
-### `frontend/src/App.jsx` — the mark in the corner
+These were manual until they were not. Leaving them by hand meant a fresh checkout was
+never actually branded until somebody remembered to finish it.
 
-Render it once, inside the app shell, above the routed content:
+**Why the stock head goes.** Upstream centres a dumbbell icon above an `<h1>` of the
+product name. After the rename that `<h1>` reads "GFCXtreme" in plain text, so alongside
+the corner mark the brand would appear twice on one screen — and the logo *is* the
+wordmark. Onboarding has no app chrome to hold a corner mark, so there the logo takes the
+head's place rather than being dropped. Removing the head orphans the `Icon` and
+`PRODUCT_NAME` imports it used, and those are removed with it.
 
-```jsx
-<img className="gfc-mark" src="/brand/gfc-logo-header.png"
-     srcSet="/brand/gfc-logo-header@2x.png 2x, /brand/gfc-logo-header@3x.png 3x"
-     alt="GFC Xtreme Fitness" />
-```
-
-`.gfc-mark` is `position: fixed`, offset by openGym's own `--sat` (the status bar) and
-`--conn` (the connection banner), so it never collides with either and never scrolls away.
-It is `pointer-events: none` — it is a mark, not a button. If you later want it to go Home
-on tap, wrap it in a `<Link>` and drop that line.
-
-### `frontend/src/views/Login.jsx` — photography behind the sign-in
-
-```jsx
-<div className="gfc-login-bg" aria-hidden="true" />
-<img className="gfc-mark gfc-mark--login" src="/brand/gfc-logo-header.png"
-     srcSet="/brand/gfc-logo-header@2x.png 2x, /brand/gfc-logo-header@3x.png 3x"
-     alt="GFC Xtreme Fitness" />
-```
-
-and put `gfc-login-card` on the class list of the sheet holding the sign-in buttons.
-
-**Replace `head`, do not just add to it.** Upstream's sign-in screen is a centred
-dumbbell icon above an `<h1>` wordmark, which after the rename reads "GFCXtreme" as
-plain text. Leaving it there puts the brand on the screen twice — once as the logo in the
-corner, once as text in the middle — and the logo already *is* the wordmark. Drop the
-`head` fragment (both lines) and let the corner mark carry it, as the preview shows.
-The same applies to `MobileOnboarding.jsx`, which has the same icon-plus-wordmark pair.
-
-The photo is decorative, so it is a CSS background and is hidden from assistive tech.
-It is served at 480px wide below a 520px viewport, and replaced by the flat brand black
-for anyone who has asked for reduced motion or more contrast — a photograph behind a
-form is a legibility risk, and that preference is how people say so.
-
-### `.env`
+## The one thing still done by hand
 
 ```
-RP_NAME="GFC Xtreme"
+.env
+RP_NAME="GFCXtreme"
 ```
 
-This is the name the phone shows in the Face ID / Touch ID prompt when a member signs in.
-It is the one piece of branding that lives outside the frontend.
+The name shown in the Face ID / Touch ID prompt when a member signs in. It is the only
+piece of branding that lives outside the build, because it is the API's configuration
+rather than the app's code.
 
 ## What was deliberately left alone
 

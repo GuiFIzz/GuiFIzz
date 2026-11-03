@@ -70,6 +70,15 @@ const css = `${banner}
 /* Reduced to the wordmark alone on very narrow screens, so it never crowds a title. */
 @media (max-width: 360px) { .gfc-mark { height: ${Math.round(L.appHeader.height * 0.82)}px } }
 
+/* Onboarding has no app chrome to hold a corner mark, so the logo stands in for the
+   wordmark the stock screen printed as text. Capped so it never crowds a small screen. */
+.gfc-onboard-logo {
+  display: block;
+  width: min(72vw, 260px);
+  height: auto;
+  margin: 0 auto 10px;
+}
+
 /* ----------------------------------------------------------------- login --
    The gym photograph, with a scrim that is nearly opaque where the form sits and light
    at the top where the mark sits. Without the scrim the white labels fall onto the
