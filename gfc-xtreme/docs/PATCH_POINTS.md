@@ -86,6 +86,13 @@ on tap, wrap it in a `<Link>` and drop that line.
 
 and put `gfc-login-card` on the class list of the sheet holding the sign-in buttons.
 
+**Replace `head`, do not just add to it.** Upstream's sign-in screen is a centred
+dumbbell icon above an `<h1>` wordmark, which after the rename reads "GFCXtremeFit" as
+plain text. Leaving it there puts the brand on the screen twice — once as the logo in the
+corner, once as text in the middle — and the logo already *is* the wordmark. Drop the
+`head` fragment (both lines) and let the corner mark carry it, as the preview shows.
+The same applies to `MobileOnboarding.jsx`, which has the same icon-plus-wordmark pair.
+
 The photo is decorative, so it is a CSS background and is hidden from assistive tech.
 It is served at 480px wide below a 520px viewport, and replaced by the flat brand black
 for anyone who has asked for reduced motion or more contrast — a photograph behind a
