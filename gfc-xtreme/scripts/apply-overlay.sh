@@ -50,6 +50,7 @@ fi
 
 # 4 ── the generated sheet and the assets -------------------------------------
 cp "$HERE/overlay/frontend/src/gfc-brand.css" "$UP/frontend/src/gfc-brand.css"
+cp "$HERE/overlay/frontend/src/lib/brand.js"    "$UP/frontend/src/lib/brand.js"
 mkdir -p "$UP/frontend/public/brand"
 cp "$HERE/brand/assets/gfc-logo-header.png"    "$UP/frontend/public/brand/"
 cp "$HERE/brand/assets/gfc-logo-header@2x.png" "$UP/frontend/public/brand/"
@@ -84,6 +85,22 @@ if grep -qF "GFC Orange" "$F"; then skip=$((skip+1)); else
   python3 "$HERE/scripts/patch-accent-name.py" "$UP/frontend/src"
   ok=$((ok+1))
 fi
+
+# 8 ── the product name, everywhere the UI says it ---------------------------
+#      t() and tn() rebrand every translated string from one constant, so the 1,224
+#      occurrences in the locale packs and the keys they hang off are left untouched.
+#      The handful of places that print the name outside t() are patched one by one.
+#      Storage keys, cache names, backup folders and event names keep upstream's
+#      spelling on purpose: renaming them orphans members' data.
+PRODUCT_NAME="$(node -e "process.stdout.write(require('$HERE/brand/brand.config.json').identity.productName)")"
+FILE_SLUG="$(node -e "process.stdout.write(require('$HERE/brand/brand.config.json').identity.fileSlug)")"
+python3 "$HERE/scripts/patch-product-name.py" "$UP/frontend/src" "$PRODUCT_NAME" "$UP" "$FILE_SLUG"
+# The tests assert the copy the app shows, so they move with it.
+SITE_HOST="$(node -e "const u=require('$HERE/brand/brand.config.json').identity.site;process.stdout.write(u.replace(/^https?:\\/\\//,'').replace(/\\/$/,''))")"
+REPO_SLUG="$(node -e "process.stdout.write(require('$HERE/brand/brand.config.json').links.repo||'')")"
+python3 "$HERE/scripts/patch-test-copy.py" "$UP/frontend/src" "$PRODUCT_NAME" "$FILE_SLUG" "$REPO_SLUG" "$SITE_HOST"
+# Links that pointed at upstream, JS/Java parity, and the CSP hash the edited index.html invalidates.
+python3 "$HERE/scripts/patch-links-and-parity.py" "$UP" "$HERE/brand/brand.config.json"
 
 echo "overlay applied: $ok change(s), $skip already in place"
 echo

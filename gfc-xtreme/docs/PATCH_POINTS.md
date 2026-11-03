@@ -110,3 +110,86 @@ It is the one piece of branding that lives outside the frontend.
   brand share a colour, neither reads.
 - **The 1,469 "openGym" strings** in the UI copy. Renaming those is the next piece of work
   and belongs at the `t()` chokepoint in `lib/i18n-core.js`, not in a find-and-replace.
+
+---
+
+# The product name
+
+`openGym` appears about 1,470 times in the frontend. Almost none of them were replaced
+one by one, because most are not what they look like.
+
+## The chokepoint
+
+1,224 of those occurrences are in the nineteen locale packs — and they are in strings
+whose **keys are the English source text**. Rewriting a key stops the pack matching;
+rewriting only the value leaves every string upstream adds next month saying `openGym`
+again.
+
+So the swap happens at the one point every translated string passes through:
+
+```js
+// lib/i18n-core.js
+const UPSTREAM_NAME = 'openGym'
+const brandName = v =>
+  typeof v === 'string' && v.includes(UPSTREAM_NAME) ? v.replaceAll(UPSTREAM_NAME, PRODUCT_NAME) : v
+```
+
+applied inside `t()` and inside `tn()`'s fast path (which returns without calling `t()`).
+One constant rebrands every string in every language, and keeps doing it for strings
+that do not exist yet.
+
+Two details that matter:
+
+- **The key is never touched**, only the resolved value — so a pack still matches after
+  an upstream update.
+- **The swap runs before `{0}` interpolation**, so a member's own routine called
+  "openGym leg day" is not quietly renamed in a message about it.
+
+## What is NOT renamed, and why
+
+About a hundred occurrences are not the brand at all:
+
+| Kept as upstream wrote it | Why |
+|---|---|
+| `opengym-state.json`, `opengym-remote.json`, `opengym-stash.json` | the phone's state files — invisible, and renaming orphans them |
+| `opengym-media-v1`, `opengym-device` | cache names |
+| `opengym:back-preview` | an internal event name |
+| `opengym-bw-…` | **Health Connect record ids** — rename these and the app loses track of every body-weight record it has already written, and re-writes them all |
+| `ch.duartesantos.opengym` | the Android package. Renaming it is a new signing identity and a new Play listing, not a brand edit |
+| `openGymSheet` | a history-state key |
+| "Media licensed for use in openGym only" | a **quotation of the media licence** (agreement §8c, which is why upstream marks it as untranslated). It describes the agreement *openGym* holds with gymvisual.com; rewriting it would misstate a licence we do not have |
+
+## What IS renamed beyond the UI copy
+
+| Renamed | Why it is not just an identifier |
+|---|---|
+| `Documents/openGym` → `Documents/GFCXtremeFit` | members browse to it, and the UI names it in its own copy — leaving it would have made the app lie about where it put their data |
+| `opengym-backup-*.json` → `gfcxtremefit-backup-*.json` | members see these files in that folder |
+| the FIT export's product string | it identifies us in files members send to Garmin or Strava |
+| the CSV source label | shown in "Import from another app"; both sides moved together so a round trip still recognises itself |
+| the Nominatim `User-Agent` | the service asks callers to identify themselves; it must be us, not upstream |
+| `opengym.ch` in the printed-plan footer | it is printed on a member's plan |
+
+## Three consequences that were not string swaps
+
+- **The update check** asked GitHub for openGym's latest release. Left alone, a member
+  tapping "check for updates" in a GFCXtremeFit app would have been offered openGym's APK.
+  It now reads `links.updateRepo` from the brand config.
+- **The source-code link.** The AGPL obliges us to offer members the source of the version
+  they are running, and that link is how. It reads `links.repo`. **That repository does not
+  exist yet** — creating it is not optional once members are signing in.
+- **The CSP hash.** `index.html`'s inline boot script is allowed by a sha256 pinned in
+  `web/Dockerfile`. Editing the script's text changes the hash, and a stale one means the
+  browser refuses the script: the app would load without its first-paint language and
+  direction. The hash is recomputed from the patched file. Upstream's own test caught this.
+
+## A note on the tests
+
+Renaming user-visible copy makes tests that assert that copy wrong, so they move with it —
+98 expectations across 41 files, rewritten by `patch-test-copy.py` with the same
+distinction: the brand standing on its own is replaced, `opengym-state.json` and
+`DuarteSantos8/openGym` are not.
+
+One test needed care rather than a rule. `api.test.js` keeps a locale key as the English
+source string *and* compares it against rendered output. The key has to stay; the
+comparison has to be branded. Both, explicitly.

@@ -59,18 +59,33 @@ the point — the alternative is a half-applied brand discovered by a member.
 
 ## Verified
 
-Applied to a clean upstream checkout, then run in full:
+Applied to a clean upstream checkout, then both suites run in full:
 
 ```
-Test Files  543 passed (543)
-     Tests  6540 passed (6540)
+frontend   Test Files  543 passed (543)
+                Tests  6540 passed (6540)
+api             tests  696   pass 693   fail 0   (3 skipped: root, midnight UTC)
 ```
 
-The overlay broke three along the way, each legitimately — two asserted the old default
-accent as a string literal, and `color-mix-fallback.test.js` caught a real bug in our own
-CSS that would have broken the sign-in card on Safari before 16.2. All three are fixed.
+Upstream's tests earned their keep. They caught, among others, a `color-mix()` with no
+fallback that would have broken the sign-in card on Safari before 16.2; a stale CSP hash
+that would have stopped the app's boot script running at all; and a backup-filename
+pattern that had drifted out of step between the JavaScript and the Android plugin.
 
-Total upstream diff: **seven files, about twenty lines.**
+## Naming
+
+`openGym` appears about 1,470 times in the frontend. The brand is swapped at the one
+point every translated string passes through — `t()` and `tn()` in `lib/i18n-core.js` —
+so one constant renames the app in all nineteen languages and keeps renaming strings
+upstream adds later. The locale keys are untouched, so the packs still match.
+
+Roughly a hundred of those occurrences are **not** the brand: cache names, state files,
+event names, Health Connect record ids, the Android package. They keep upstream's
+spelling, because renaming them orphans members' data and buys nothing. The exceptions
+are the things members actually read — the backup folder and the files in it, the FIT
+export's product string, the printed footer — which move with the brand.
+
+`docs/PATCH_POINTS.md` lists every one of those decisions.
 
 ## Licence, and one thing to settle
 

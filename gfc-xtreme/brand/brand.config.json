@@ -2,12 +2,22 @@
   "$comment": "GFC Xtreme Fitness — the single source of truth for brand. Nothing user-visible is branded anywhere else: scripts/build-tokens.mjs reads this file and writes the CSS tokens, the PWA manifest and the native theme colours. Change a value here, run `npm run brand`, rebuild.",
 
   "identity": {
-    "name": "GFC Xtreme Fitness",
-    "short": "GFC Xtreme",
-    "appName": "GFC Xtreme",
+    "$comment": "productName is the one that matters most: it replaces every \"openGym\" in the UI copy, in all 19 languages, through the substitution in lib/i18n-core.js. fileSlug is the lowercase, filename-safe form used for the files members see in their backup folder. gymName is the business behind the app, used where the gym is meant rather than the product.",
+
+    "productName": "GFCXtremeFit",
+    "fileSlug": "gfcxtremefit",
+    "gymName": "GFC Xtreme Fitness",
+    "short": "GFCXtremeFit",
     "tagline": "Train with intent.",
     "site": "https://www.metabolicgfcxtremefit.com",
     "supportEmail": "ptrainer@gfcxtreme.com"
+  },
+
+  "links": {
+    "$comment": "THIS REPOSITORY DOES NOT EXIST YET — create it before members use the app over the network: the AGPL obliges you to offer them the source of the version they are running, and the app links to it from Settings. updateRepo is the GitHub owner/name the in-app update check reads; while it is null the check is not offered, which is correct for a fork with no releases of its own — it must never be left pointing at upstream, or members would be offered openGym's APKs.",
+    "repo": "GuiFIzz/GFCXtremeFit",
+    "updateRepo": "GuiFIzz/GFCXtremeFit",
+    "issues": "https://github.com/GuiFIzz/GFCXtremeFit/issues"
   },
 
   "color": {
