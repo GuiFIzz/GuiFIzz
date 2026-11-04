@@ -145,7 +145,7 @@ About a hundred occurrences are not the brand at all:
 | `opengym-media-v1`, `opengym-device` | cache names |
 | `opengym:back-preview` | an internal event name |
 | `opengym-bw-…` | **Health Connect record ids** — rename these and the app loses track of every body-weight record it has already written, and re-writes them all |
-| `ch.duartesantos.opengym` | the Android package. Renaming it is a new signing identity and a new Play listing, not a brand edit |
+| `ch.duartesantos.opengym` | the Android `applicationId` and the iOS bundle id — the app's identity to the store, to its signing key, and to Health Connect, which files records against it. The **display** names members read under the icon (Capacitor `appName`, iOS `CFBundleDisplayName`) *are* renamed; the identifiers are a deliberate decision to take before first publish, not a side effect of a rename |
 | `openGymSheet` | a history-state key |
 | "Media licensed for use in openGym only" | a **quotation of the media licence** (agreement §8c, which is why upstream marks it as untranslated). It describes the agreement *openGym* holds with gymvisual.com; rewriting it would misstate a licence we do not have |
 

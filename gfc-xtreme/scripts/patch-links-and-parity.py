@@ -122,6 +122,33 @@ def patch_java_parity(repo: Path, slug: str):
     return ['Android backup pattern (JS/Java parity)']
 
 
+def patch_native_names(repo: Path, name: str):
+    """The name members read under the app icon on their home screen.
+
+    Only the DISPLAY names. The Android applicationId and the iOS bundle id stay
+    ch.duartesantos.opengym: those are the app's identity to the store and to the
+    signing key, and to Health Connect, which files its records against them.
+    Changing them is a new listing and a new signing identity, not a brand edit --
+    it has to be a deliberate decision before first publish, not a side effect of
+    a rename.
+    """
+    done = []
+    cap = repo / 'frontend' / 'capacitor.config.json'
+    if cap.exists():
+        s = cap.read_text(encoding='utf-8')
+        if '"appName": "openGym"' in s:
+            cap.write_text(s.replace('"appName": "openGym"', f'"appName": "{name}"', 1), encoding='utf-8')
+            done.append('Capacitor appName')
+    plist = repo / 'frontend/ios/App/App/Info.plist'
+    if plist.exists():
+        s = plist.read_text(encoding='utf-8')
+        old = "<key>CFBundleDisplayName</key>\n\t<string>openGym</string>"
+        if old in s:
+            plist.write_text(s.replace(old, f"<key>CFBundleDisplayName</key>\n\t<string>{name}</string>", 1), encoding='utf-8')
+            done.append('iOS home-screen name')
+    return done
+
+
 def patch_csp(repo: Path):
     html = (repo / 'frontend/index.html').read_text(encoding='utf-8')
     docker = repo / 'web/Dockerfile'
@@ -150,6 +177,7 @@ def main(repo, cfg_path):
     done = patch_api_test(repo / 'frontend/src/lib/api.test.js', cfg['identity']['productName'])
     done += patch_links(repo / 'frontend' / 'src', cfg)
     done += patch_java_parity(repo, cfg['identity']['fileSlug'])
+    done += patch_native_names(repo, cfg['identity']['productName'])
     done += patch_csp(repo)
     print(f"  links & parity: {len(done)} — {', '.join(done) if done else 'already patched'}")
 
