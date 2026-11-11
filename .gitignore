@@ -4,3 +4,5 @@ metabolic-free/data/private/
 *.xlsx
 *.xls
 .DS_Store
+*.bak
+CLAUDE.md

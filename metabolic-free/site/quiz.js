@@ -42,8 +42,8 @@
   const MAX = QUESTIONS.reduce((s, x) => s + Math.max(...x.a.map(o => o[1])), 0);
   
   const SEGMENT_LINES = {
-    type2:        "You're in our Power Warrior track: coaching that works alongside your doctor's care.",
-    prediabetic:  "You're in our Power Warrior track. Borderline is the best window to act.",
+    type2:        "You're in our Pre-Diabetic Warrior track: coaching that works alongside your doctor's care.",
+    prediabetic:  "You're in our Pre-Diabetic Warrior track. Borderline is the best window to act.",
     glp1:         "Your focus: keep your muscle while you lose fat, and build the plan for after medication.",
     hormones:     "Your focus: energy, body composition, and whether a hormone evaluation makes sense.",
     weight_energy:"Your focus: steady energy, fat loss, and keeping your muscle.",
