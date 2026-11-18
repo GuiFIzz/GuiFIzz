@@ -38,6 +38,19 @@ continuam coerentes e se o número de meses na série está certo.
 
 Ao final, entregar a planilha ao usuário e resumir em texto o que mudou e o que ele precisa decidir.
 
+## Regra permanente: chegou um extrato bancário novo
+
+Salvar o PDF em `financeiro/extratos/` e rodar:
+
+```bash
+cd financeiro/scripts && python3 atualizar_consolidado.py
+```
+
+Reconstrói a planilha consolidada do zero a partir dos relatórios de energia e dos extratos.
+O saldo final da aba Extrato tem que bater com o saldo do extrato do banco — conferir sempre.
+Depois: procurar categoria nova (um fornecedor que nunca apareceu é um fato novo),
+distribuição feita com caixa curto, imposto fora do padrão e operação entre partes relacionadas.
+
 ## Contexto que não pode ser esquecido
 
 - **O contrato GD-074-02-24 é de OUTRA empresa e não rege esta usina** (confirmado em 18/11/2026).
@@ -49,7 +62,12 @@ Ao final, entregar a planilha ao usuário e resumir em texto o que mudou e o que
 - FOTOVOLT CURRAL NOVO SPE é a dona do ativo; LF AGROPASTORIL recebe o repasse.
   Não misturar com Agropastoril dos Poções. Ver `empresas/Fotovolt_Curral_Novo/`.
 - Contato na comercializadora: **Luana, da Bro Energy**.
-- A planilha é `financeiro/LF_Agropastoril_Analise_Relatorios_2026.xlsx`.
+- São DUAS planilhas, com papéis diferentes:
+  `financeiro/Fotovolt_Curral_Novo_Consolidado.xlsx` é a de decisão (dinheiro + energia + retorno),
+  `financeiro/LF_Agropastoril_Analise_Relatorios_2026.xlsx` é a operacional (detalhe por cliente).
+- O repasse de uma competência entra na conta da SPE no mês seguinte. Sempre conciliar com essa defasagem.
+- A TIR realizada é negativa porque o payback não fechou. Nunca apresentar esse número sozinho:
+  vem sempre junto da TIR projetada da aba Cenarios.
 - O conhecimento das empresas fica em `empresas/`, em markdown, no formato Entity Overview.
 - Dinheiro sempre conferido contra o rodapé do PDF de origem. Nunca digitar número à mão.
 - Números estimados (tributos, produtividade de kWp) ficam em célula azul, editável,
