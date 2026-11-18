@@ -1,5 +1,5 @@
 # FICHA-MESTRE DE SPE — modelo piloto (Grupo GuiFizz / LF)
-# Status: v0.4 — campos marcados PENDENTE dependem de resposta do sócio ou de documento ainda não enviado.
+# Status: v0.5 — campos marcados PENDENTE dependem de resposta do sócio ou de documento ainda não enviado.
 # Fonte de cada campo é obrigatória: nenhum número entra aqui sem documento que o sustente.
 
 identificacao:
@@ -44,7 +44,10 @@ atividade:
 
 societario:
   capital_social_total: 360000.00
-  quotas: PENDENTE  # QSA não traz percentuais — exige contrato social / alteração
+  quotas: |
+    A aba Análise Sócios trata como 25% para cada um dos 4 que aportaram R$ 90.000.
+    LF AGROPASTORIL consta no QSA mas não aportou nem recebe. Confirmar no contrato social
+    qual é a quota dela e se os 25% dos demais estão corretos.
   socios:
     - nome: GUILHERME FILIZZOLA CURY
       qualificacao: 49 - Sócio-Administrador
@@ -99,7 +102,11 @@ ativo_operacional:
   numero_uc_distribuidora: PENDENTE
   distribuidora: PENDENTE (presumivelmente CEMIG)
   capex_total: PENDENTE
-  origem_do_capex: PENDENTE  # integralização dos R$ 360k? aporte extra? mútuo de sócio?
+  origem_do_capex: |
+    RESOLVIDO pelo extrato: R$ 360.000,00 integralizados por 4 sócios (R$ 90.000 cada:
+    Guilherme Cury, Ricardo Vasconcelos, Luiz Felipe Filizzola, Lucas Bauer Filizzola)
+    entre jul e set/2023, e integralmente pagos à BRO ENERGY pela usina.
+    LF AGROPASTORIL não aportou capital e não recebe distribuição.
   seguro: PENDENTE
   contrato_om: PENDENTE
 
@@ -169,13 +176,23 @@ alertas_abertos:
   - A7: SPE sem linha de receita identificada — custo fixo mensal sem contrapartida no resultado
   - A8: Origem do CAPEX desconhecida; se superou os R$ 360k de capital, há aporte não formalizado
   - A9: Usina ocupa área da fazenda sem título documentado (comodato? arrendamento?)
-  - A10: R$ 67.638,47 de repasse em 9 meses entraram na LF AGROPASTORIL, não na SPE dona do ativo,
-         sem contrato entre as duas pontas
+  - A10: RESOLVIDO E CORRIGIDO (extrato bancário da SPE, 18/11/2026).
+         O repasse NÃO vai para a LF Agropastoril: ele entra na conta da PRÓPRIA SPE,
+         com defasagem de um mês, e bate centavo a centavo com os relatórios da Bro.
+         O relatório é apenas ENDEREÇADO à LF Agropastoril. Não há desvio de receita.
   - A11: Estoque de créditos caiu 78% (36.430 -> 7.823 kWh); UC principal zerou em out/26.
          Receita cai quando o estoque acabar — projetado para nov-dez/2026
   - A12: Zero clientes novos em 9 meses e 2 UCs perdidas, incluindo a 2ª maior em faturamento
   - A13: O indicador de inadimplência do relatório subdeclara a dívida em 19,5x (out/26)
   - A14: Relatório de fevereiro/2026 nunca foi entregue pela Bro
+  - A25: Distribuições desiguais entre sócios com participação igual de 25%:
+         Guilherme R$ 56.048,91 contra Lucas R$ 52.333,04 — diferença de R$ 3.715,87.
+         Falta conta corrente de sócios para acertar
+  - A26: Caixa de R$ 2.373,72 contra custo fixo de ~R$ 1.376/mês = 1,7 mês de fôlego.
+         Houve 14 aportes de sócio (R$ 6.904,15) para cobrir furos. Não existe política de caixa mínimo
+  - A27: Nenhuma provisão para reposição de inversor — e um inversor acabou de quebrar
+  - A28: "Ressarcimento Impostos - SPE Poções" de R$ 1.000 em set/26: operação entre partes
+         relacionadas sem documento conhecido
   - A15: RESOLVIDO — contrato GD074 analisado. Novos achados abaixo.
   - A16: O GD074 está em nome de AGRO PASTORIL DOS POCOES, não da SPE nem da LF.
          Três CNPJs ocupam os três papéis do mesmo negócio

@@ -15,7 +15,8 @@ documentos revelam. Hoje três CNPJs diferentes ocupam os três papéis do mesmo
 |---|---|---|---|
 | Dona dos equipamentos | FOTOVOLT CURRAL NOVO SPE LTDA | 51.245.620/0001-21 | Informação do sócio (18/11/2026) |
 | Assina o contrato de gestão com a Bro | A DEFINIR — contrato correto pendente | — | GD-074-02-24 descartado: é de outra empresa |
-| Recebe os relatórios e o repasse mensal | LF AGROPASTORIL LTDA | — | 9 relatórios mensais da Bro, 2026 |
+| Endereçada nos relatórios mensais | LF AGROPASTORIL LTDA | — | 10 relatórios da Bro, 2026 |
+| **Recebe o dinheiro na conta** | **FOTOVOLT CURRAL NOVO SPE** | 51.245.620/0001-21 | **Extrato bancário da SPE** |
 
 O contrato GD074 declara, nos "Considerandos", que a CONTRATANTE (Poções) "é detentora de imóvel
 rural e suas respectivas instalações de Sistema de Geração de Energia - SGE". Isso contradiz a
@@ -35,6 +36,13 @@ Até que ele chegue, nenhuma cláusula, percentual, prazo ou multa pode ser cita
 O que se sabe da relação com a Bro vem exclusivamente dos relatórios mensais:
 administração de 10,0% sobre o valor pago e taxa de 50% sobre o primeiro faturamento de cliente
 novo — ambas confirmadas pelo sócio como corretas e acordadas.
+
+## Correção importante (18/11/2026)
+
+O extrato bancário da SPE prova que **o repasse da Bro entra na conta da própria SPE**, com
+defasagem de um mês, batendo centavo a centavo com os relatórios. O relatório é apenas
+*endereçado* à LF Agropastoril — provavelmente um resquício de nomenclatura. **Não há receita
+indo para a empresa errada.** O alerta anterior nesse sentido está retirado.
 
 ## O que é o negócio, em uma frase
 
