@@ -1,5 +1,5 @@
 # FICHA-MESTRE DE SPE — modelo piloto (Grupo GuiFizz / LF)
-# Status: v0.3 — campos marcados PENDENTE dependem de resposta do sócio ou de documento ainda não enviado.
+# Status: v0.4 — campos marcados PENDENTE dependem de resposta do sócio ou de documento ainda não enviado.
 # Fonte de cada campo é obrigatória: nenhum número entra aqui sem documento que o sustente.
 
 identificacao:
@@ -133,11 +133,27 @@ modelo_economico:
   # medir o que cada sócio recebe pelo que investiu.
 
 contratos_vinculados:
-  - tipo: Gestão / Agro Pastoril
-    referencia: GD074 - Contrato de Gestão - Agro Pastoril
-    status: NÃO RECEBIDO nesta sessão — é o documento que define a receita da SPE
-  - tipo: Locação de equipamento
-    status: INEXISTENTE — confirmado pelo sócio 18/11/2026
+  - tipo: Intermediação e Gestão de Negócios
+    referencia: GD-074-02-24
+    status: RECEBIDO E ANALISADO
+    contratante: AGRO PASTORIL DOS POCOES LTDA (19.605.278/0001-10)   # NÃO é a SPE
+    contratada: BRO ENERGY GESTÃO DE ENERGIA LTDA (29.118.895/0001-45)
+    assinado_em: 2024-03-07
+    assinado_por: GUILHERME FILIZZOLA CURY
+    vigencia_anos: 5                                  # termina 2029-03-07
+    foro: Belo Horizonte/MG
+    taxa_inicial: 0.50 do primeiro faturamento de cada novo consumidor
+    taxa_administracao: 0.10 do faturamento bruto recebido (cl. 2.1 B)
+    parcela_fixa_locacao_mensal: 1000.00              # cl. 2.2 — nunca apareceu nos relatórios
+    potencia_declarada_kwp: 37                        # geração observada indica ~70 kWp
+    om_por_conta_de: CONTRATANTE (cl. 2.4 e 6.1.6)
+    risco_inadimplencia: 100% do contratante (cl. 2.5 e 2.6)
+    garantia_geracao: minimo 80% da média esperada (cl. 6.1.7)
+    rescisao: aviso de 90 dias + multa de 2x a Taxa Inicial na faixa atual (mês 32)
+    detalhes: empresas/Fotovolt_Curral_Novo/01_Contrato_GD074_BroEnergy.md
+  - tipo: Locação da usina com o consórcio
+    status: PREVISTO NO GD074 (cl. 2.2, Parcela Fixa de R$ 1.000/mês) MAS NUNCA APRESENTADO
+    nota: não é locação para a fazenda — é para o consórcio de consumidores
   - tipo: Arrendamento/cessão de área
     status: PENDENTE — a usina está em área da fazenda; falta o título que sustenta isso
   - tipo: Conexão / acesso à distribuidora
@@ -160,4 +176,18 @@ alertas_abertos:
   - A12: Zero clientes novos em 9 meses e 2 UCs perdidas, incluindo a 2ª maior em faturamento
   - A13: O indicador de inadimplência do relatório subdeclara a dívida em 19,5x (out/26)
   - A14: Relatório de fevereiro/2026 nunca foi entregue pela Bro
-  - A15: Contrato com a Bro não apresentado — prazo, rescisão e dono da carteira desconhecidos
+  - A15: RESOLVIDO — contrato GD074 analisado. Novos achados abaixo.
+  - A16: O GD074 está em nome de AGRO PASTORIL DOS POCOES, não da SPE nem da LF.
+         Três CNPJs ocupam os três papéis do mesmo negócio
+  - A17: O contrato declara a CONTRATANTE como detentora das instalações de geração,
+         o que contradiz a propriedade da SPE (cl. 10.1 é declaração de validade)
+  - A18: Contrato de locação com o consórcio (Parcela Fixa R$ 1.000/mês) nunca apresentado
+  - A19: Base tributável da locação é R$ 75.261,28, não o repasse de R$ 67.638,47.
+         A taxa de administração é despesa, não redução de receita
+  - A20: Contradição interna do contrato na base da Taxa de Administração
+         (cl. 2.1 B: recebido / cl. 2.2: independentemente do pagamento) — exposição de R$ 3.146,12
+  - A21: Cl. 4.2 sugere que a carteira de clientes é propriedade da Bro — exige leitura jurídica
+  - A22: Geração abaixo do piso contratual de 80% em mar, ago e out/2026 (out em 58%)
+  - A23: Potência declarada de 37 kWp incompatível com geração média de 10.056 kWh/mês
+  - A24: Cl. 1.1.3/1.1.4 autorizam troca de titularidade da UC geradora para o consórcio —
+         verificar em nome de quem a UC está hoje na CEMIG
