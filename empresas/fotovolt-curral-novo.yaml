@@ -1,0 +1,118 @@
+# FICHA-MESTRE DE SPE — modelo piloto (Grupo GuiFizz / LF)
+# Status: v0.1 — campos marcados PENDENTE dependem de resposta do sócio ou de documento ainda não enviado.
+# Fonte de cada campo é obrigatória: nenhum número entra aqui sem documento que o sustente.
+
+identificacao:
+  codigo_interno: GD074            # PENDENTE confirmar se GD074 é o código desta SPE
+  razao_social: FOTOVOLT CURRAL NOVO SPE LTDA
+  nome_fantasia: CURRAL NOVO
+  cnpj: 51.245.620/0001-21
+  natureza_juridica: 206-2 Sociedade Empresária Limitada
+  data_abertura: 2023-06-30
+  situacao_cadastral: ATIVA (em 30/06/2023)
+  porte: DEMAIS
+  fonte: Cartao CNPJ emitido 30/06/2023
+
+endereco:
+  logradouro: Estrada Baldim/Jequitibá, s/nº
+  bairro: Zona Rural
+  municipio: Jequitibá
+  uf: MG
+  cep: 35767-000
+  observacao: endereço é a área rural (fazenda) — confirmar matrícula e se há contrato de arrendamento/cessão de área para a SPE
+
+contato_cadastral_receita:
+  email: wanderleypereira@coletivacontabilidade.com.br
+  telefone: (31) 3220-0949
+  risco: e-mail e telefone oficiais na Receita são do CONTADOR, não do grupo.
+         Intimações e avisos do e-CAC/DTE chegam fora do controle dos sócios.
+
+atividade:
+  cnae_principal: 43.21-5-00 Instalação e manutenção elétrica
+  cnae_secundario:
+    - 70.20-4-00 Consultoria em gestão empresarial
+  atividade_real_informada: Aluguel de equipamento (locação de bens móveis)
+  divergencia: |
+    O cadastro NÃO contempla locação (ex.: 77.39-0-99 Aluguel de outras máquinas e
+    equipamentos). Isso muda base de cálculo e incidência: locação de bem móvel não
+    sofre ISS (Súmula Vinculante 31), serviço de instalação/manutenção sofre.
+    Também muda o enquadramento no Lucro Presumido e a redação da nota fiscal.
+    AÇÃO: validar com o contador antes do próximo faturamento.
+
+societario:
+  capital_social_total: 360000.00
+  quotas: PENDENTE  # QSA não traz percentuais — exige contrato social / alteração
+  socios:
+    - nome: GUILHERME FILIZZOLA CURY
+      qualificacao: 49 - Sócio-Administrador
+      percentual: PENDENTE
+    - nome: LUIZ FELIPE COELHO FILIZZOLA
+      qualificacao: 49 - Sócio-Administrador
+      percentual: PENDENTE
+    - nome: RICARDO VASCONCELOS NOVAIS
+      qualificacao: 22 - Sócio
+      percentual: PENDENTE
+    - nome: LF AGROPASTORIL LTDA
+      qualificacao: 22 - Sócio (PJ)
+      representante_legal: LUIZ FELIPE COELHO FILIZZOLA (05 - Administrador)
+      percentual: PENDENTE
+    - nome: LUCAS BAUER FILIZZOLA
+      qualificacao: 22 - Sócio
+      percentual: PENDENTE
+  fonte: Consulta QSA emitida 31/08/2023
+  parte_relacionada: |
+    LF AGROPASTORIL é sócia da SPE e (provavelmente) também a tomadora/locatária e
+    dona da área. Contrato entre partes relacionadas exige preço de mercado
+    documentado e contrato escrito, sob pena de glosa fiscal e de litígio societário.
+
+regime_tributario:
+  regime: LUCRO PRESUMIDO
+  fonte: Contrato de contabilidade, cláusula 1.1
+
+contabilidade:
+  prestador: COLETIVA ORGANIZAÇÃO CONTÁBIL E CONSULTORIA LTDA
+  cnpj_prestador: 28.688.395/0001-86
+  crc: MG-014284/O-1
+  plano: BÁSICO
+  honorario_mensal: 300.00
+  vencimento: dia 30, pagamento até o 5º dia útil do mês seguinte
+  reajuste: anual pelo SALÁRIO MÍNIMO
+  vigencia_inicio: 2023-06-01
+  vigencia_fim: 2024-05-31
+  status_vigencia: PENDENTE — vencido desde 31/05/2024; confirmar renovação/aditivo
+  limites_do_plano:
+    funcionarios: 5          # excedente R$ 73,50 por funcionário
+    notas_fiscais_mes: 10    # excedente R$ 5,40 por nota
+    faturamento_anual: 185000.00  # acima disso o plano sobe automaticamente de faixa
+  multa_atraso: 2% + 1% a.m. + IGP-M
+  foro: Contagem/MG
+  fonte: Contrato assinado 01/06/2023
+
+ativo_operacional:          # TUDO PENDENTE — nenhum documento técnico recebido
+  potencia_kwp: PENDENTE
+  data_energizacao: PENDENTE
+  numero_uc_distribuidora: PENDENTE
+  distribuidora: PENDENTE (presumivelmente CEMIG)
+  capex_total: PENDENTE
+  financiamento: PENDENTE
+  seguro: PENDENTE
+  contrato_om: PENDENTE
+
+contratos_vinculados:
+  - tipo: Gestão / Agro Pastoril
+    referencia: GD074 - Contrato de Gestão - Agro Pastoril
+    status: NÃO RECEBIDO nesta sessão — é o documento que define a receita da SPE
+  - tipo: Locação de equipamento
+    status: PENDENTE
+  - tipo: Arrendamento/cessão de área
+    status: PENDENTE
+  - tipo: Conexão / acesso à distribuidora
+    status: PENDENTE
+
+alertas_abertos:
+  - A1: CNAE não cobre locação de equipamento (impacto fiscal direto)
+  - A2: Contrato de contabilidade vencido em 31/05/2024
+  - A3: Teto de faturamento de R$ 185.000/ano dispara troca automática de plano
+  - A4: E-mail oficial na Receita é do contador
+  - A5: Percentual de quotas de cada sócio desconhecido
+  - A6: Contrato assinado em 01/06/2023 já cita CNPJ aberto só em 30/06/2023
