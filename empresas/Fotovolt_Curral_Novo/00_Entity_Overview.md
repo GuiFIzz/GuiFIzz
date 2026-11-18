@@ -45,7 +45,9 @@ linha de R$ 1.000,00. Ver `01_Contrato_GD074_BroEnergy.md`.
 ## Ativo
 
 - Potência declarada no contrato: 37 kWp (cláusula 2.1)
-- Geração média observada nos relatórios 2026: 10.056 kWh/mês — incompatível com 37 kWp
+- Geração média observada nos relatórios 2026: 10.396 kWh/mês — implica ~73 kWp, não 37
+- A usina tem DOIS inversores. Um ficou inoperante e foi reparado; ambos voltaram a produzir em nov/2026
+- Nenhum relatório mensal sinalizou a parada do inversor
 - Equipamentos: quitados, sem financiamento
 - Localização: Estrada Baldim/Jequitibá, s/nº, Zona Rural, Jequitibá/MG, CEP 35767-000
 - Distribuidora: CEMIG
@@ -69,3 +71,5 @@ linha de R$ 1.000,00. Ver `01_Contrato_GD074_BroEnergy.md`.
 6. Relatório de fevereiro/2026, nunca entregue pela Bro
 7. Renovação do contrato contábil
 8. Potência real da usina contra os 37 kWp declarados no contrato
+9. 17.348 kWh de créditos sumiram do saldo entre set e out/2026 sem contrapartida de consumo
+   (~R$ 12.020). Concentrados na UC 3014144595. Causa desconhecida — possível expiração
