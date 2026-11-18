@@ -32,7 +32,7 @@ ws["A2"].font=Font(name=F,size=9,italic=True,color="595959")
 NKPI=12
 TR0=5+NKPI+2
 ws.cell(TR0-1,1,"Série mensal — produção, consumo e estoque").font=SUB
-cols=["Competência","Produção kWh","Consumo kWh","Resultado kWh","Saldo de créditos kWh","Piso contratual 80% kWh","Variação do saldo kWh","Diferença não explicada kWh","Controle"]
+cols=["Competência","Produção kWh","Consumo kWh","Resultado kWh","Saldo de créditos kWh","Referência 80% da média kWh","Variação do saldo kWh","Diferença não explicada kWh","Controle"]
 for i,c in enumerate(cols,1):
     x=ws.cell(TR0,i,c); x.font=H; x.fill=HF; x.border=THIN
     x.alignment=Alignment(horizontal="center",vertical="center",wrap_text=True)
@@ -73,7 +73,7 @@ kpis=[("Produção total no período (kWh)",f"=B{TOT}",KW,None),
       ("Consumo total compensado (kWh)",f"=C{TOT}",KW,None),
       ("Taxa de aproveitamento (consumo / produção)",f"=IFERROR(C{TOT}/B{TOT},0)",PC,None),
       ("Saldo de créditos no último relatório",f"=E{last}",KW,WARN),
-      ("Meses abaixo do piso contratual de 80%",f"=SUMPRODUCT(--($B${first}:$B${last}<$F${first}:$F${last}))",'0',ALERT),
+      ("Meses abaixo de 80% da produção média",f"=SUMPRODUCT(--($B${first}:$B${last}<$F${first}:$F${last}))",'0',ALERT),
       ("Créditos que sumiram sem consumo (kWh)",f"=-SUMIF($H${first+1}:$H${last},\"<-1000\")",KW,ALERT),
       ("Valor estimado desses créditos",f"=IFERROR(-SUMIF($H${first+1}:$H${last},\"<-1000\")*Indicadores!$B$8,0)",R2,ALERT),
       ("Potência implícita na produção média (kWp)",f"=IFERROR(B{MED}/(4.7*30.4),0)",KW,None),

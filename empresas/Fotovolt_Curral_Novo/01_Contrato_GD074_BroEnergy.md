@@ -1,3 +1,12 @@
+# ⚠ DOCUMENTO SUSPENSO — NÃO USAR
+
+O sócio confirmou em 18/11/2026 que o GD-074-02-24 é de **outra empresa** e **não rege**
+a usina Curral Novo. O contrato correto com a Bro Energy será providenciado.
+Até lá, nada desta página vale: não cite estas cláusulas, percentuais ou prazos com a Bro.
+O conteúdo fica arquivado apenas como referência de estrutura.
+
+---
+
 # GD-074-02-24 — Contrato de Intermediação e Gestão de Negócios
 
 - Partes: AGRO PASTORIL DOS POCOES LTDA (19.605.278/0001-10) × BRO ENERGY GESTÃO DE ENERGIA LTDA (29.118.895/0001-45)

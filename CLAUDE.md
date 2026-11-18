@@ -30,7 +30,7 @@ Se houver matéria suficiente, redigir o e-mail em `comunicacao/`.
 Produção, consumo, resultado do mês, estoque de créditos e **conciliação do saldo**:
 a variação do saldo tem que bater com o resultado do mês. Diferença acima de 1.000 kWh é
 crédito sumindo e precisa ser investigada e cobrada.
-Conferir também o piso contratual de 80% da geração média (cl. 6.1.7 do GD-074).
+Conferir também os meses abaixo de 80% da produção média (referência operacional, não contratual).
 
 **5. Reajustar o dashboard energético.**
 A aba `Dashboard_Energia` se refaz sozinha no passo 1. Conferir se os gráficos e os KPIs
@@ -40,9 +40,15 @@ Ao final, entregar a planilha ao usuário e resumir em texto o que mudou e o que
 
 ## Contexto que não pode ser esquecido
 
-- Três empresas se confundem neste negócio e **não podem ser misturadas**:
-  FOTOVOLT CURRAL NOVO SPE (dona do ativo), AGRO PASTORIL DOS POÇÕES (assinou o contrato
-  com a Bro) e LF AGROPASTORIL (recebe o repasse). Ver `empresas/Fotovolt_Curral_Novo/`.
+- **O contrato GD-074-02-24 é de OUTRA empresa e não rege esta usina** (confirmado em 18/11/2026).
+  A aba `Contrato_Bro` está suspensa e `empresas/.../01_Contrato_GD074_BroEnergy.md` está arquivado.
+  Não citar cláusula, percentual, prazo ou multa daquele contrato com a Bro. O contrato correto
+  será providenciado pelo sócio; quando chegar, refazer a aba a partir dele.
+- A administração de 10% sobre o valor pago e a taxa de 50% do primeiro faturamento de cliente novo
+  **estão corretas e acordadas** — confirmado pelo sócio. Não questionar.
+- FOTOVOLT CURRAL NOVO SPE é a dona do ativo; LF AGROPASTORIL recebe o repasse.
+  Não misturar com Agropastoril dos Poções. Ver `empresas/Fotovolt_Curral_Novo/`.
+- Contato na comercializadora: **Luana, da Bro Energy**.
 - A planilha é `financeiro/LF_Agropastoril_Analise_Relatorios_2026.xlsx`.
 - O conhecimento das empresas fica em `empresas/`, em markdown, no formato Entity Overview.
 - Dinheiro sempre conferido contra o rodapé do PDF de origem. Nunca digitar número à mão.

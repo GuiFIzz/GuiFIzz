@@ -14,25 +14,25 @@ wb["Contrato_Bro"]["E14"].font=SM
 # ---- novas perguntas vindas do contrato
 ws=wb["Perguntas_Bro"]
 r=max(x for x in range(5,60) if ws.cell(x,1).value is not None)+1
-novas=[("CRÍTICA","O contrato GD074 está no nome de AGRO PASTORIL DOS POCOES. A usina é da FOTOVOLT CURRAL NOVO SPE e o repasse vai para LF AGROPASTORIL. Como corrigir a titularidade?",
+novas=[("SUSPENSA","O contrato GD074 está no nome de AGRO PASTORIL DOS POCOES. A usina é da FOTOVOLT CURRAL NOVO SPE e o repasse vai para LF AGROPASTORIL. Como corrigir a titularidade?",
         "Preâmbulo e considerandos do GD-074-02-24 contra o QSA da SPE e os relatórios mensais.",
         "São três CNPJs em três papéis. Enquanto não bater, a receita está sendo declarada por quem não é dono do ativo."),
- ("CRÍTICA","Cadê o contrato de locação da usina com o consórcio, que define a Parcela Fixa de R$ 1.000,00/mês?",
+ ("SUSPENSA","Cadê o contrato de locação da usina com o consórcio, que define a Parcela Fixa de R$ 1.000,00/mês?",
   "Cláusula 2.2 do GD074 cita esse contrato; ele nunca foi apresentado e não aparece em nenhum relatório.",
   "É o documento que dá base legal ao enquadramento como locação de equipamento."),
- ("CRÍTICA","A titularidade da UC geradora foi transferida para o consórcio? Em nome de quem ela está hoje na CEMIG?",
+ ("SUSPENSA","A titularidade da UC geradora foi transferida para o consórcio? Em nome de quem ela está hoje na CEMIG?",
   "Cláusulas 1.1.3 e 1.1.4 autorizam sublocação da UFV e troca de titularidade da UC geradora.",
   "Se a UC geradora saiu do nome da SPE, o controle do ativo mudou sem que isso apareça em lugar nenhum."),
- ("ALTA","A Taxa de Administração é 10% do RECEBIDO (cl. 2.1 B) ou sobre a energia compensada independentemente do pagamento (cl. 2.2)?",
+ ("SUSPENSA","A Taxa de Administração é 10% do RECEBIDO (cl. 2.1 B) ou sobre a energia compensada independentemente do pagamento (cl. 2.2)?",
   "O próprio contrato traz as duas definições. A Bro aplica a primeira.",
   "Exposição de R$ 3.146,12 em 9 meses se a Bro passar a aplicar a segunda leitura."),
- ("ALTA",'A cláusula 4.2 diz que "todo o trabalho desenvolvido será de exclusiva propriedade da CONTRATADA". Isso inclui a carteira de clientes?',
+ ("SUSPENSA",'A cláusula 4.2 diz que "todo o trabalho desenvolvido será de exclusiva propriedade da CONTRATADA". Isso inclui a carteira de clientes?',
   "Cláusula 4.2 do GD074.",
   "Se a carteira é da Bro, a SPE não tem ativo comercial — tem um fluxo que pode ser desligado."),
- ("ALTA","O contrato declara usina de 37 kWp, mas a geração observada e os dois inversores indicam potência muito maior. Qual a potência registrada na CEMIG para esta UC geradora?",
+ ("SUSPENSA","O contrato declara usina de 37 kWp, mas a geração observada e os dois inversores indicam potência muito maior. Qual a potência registrada na CEMIG para esta UC geradora?",
   "Cláusula 2.1 contra a média dos relatórios e a configuração real da usina.",
   "Um contrato que descreve metade do ativo não serve de base para nada — nem para seguro, nem para venda."),
- ("MÉDIA","Qual foi a Taxa Inicial efetivamente paga desde 2024?",
+ ("SUSPENSA","Qual foi a Taxa Inicial efetivamente paga desde 2024?",
   "Cláusula 2.1(A): 50% do primeiro faturamento de cada consumidor captado.",
   "A multa rescisória é múltiplo desse valor. Sem ele não se sabe se sair do contrato é caro ou barato."),
 ]
@@ -40,7 +40,8 @@ i=r-4
 for pr,q,ev,dec in novas:
     ws.cell(r,1,i).font=N; i+=1
     c=ws.cell(r,2,pr); c.font=VM if pr=="CRÍTICA" else NB
-    c.fill=ALERT if pr=="CRÍTICA" else (WARN if pr=="ALTA" else PatternFill())
+    c.fill=ALERT if pr=="CRÍTICA" else (WARN if pr=="ALTA" else PatternFill("solid",fgColor="D9D9D9") if pr=="SUSPENSA" else PatternFill())
+    if pr=="SUSPENSA": q="[SUSPENSA — nasceu do GD-074, contrato de outra empresa] "+q
     c.alignment=Alignment(horizontal="center")
     for ci,t in [(3,q),(4,ev),(5,dec)]:
         x=ws.cell(r,ci,t); x.font=N if ci==3 else SM

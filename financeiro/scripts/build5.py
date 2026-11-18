@@ -23,7 +23,11 @@ ws["A1"]="Cálculo com a Bro Energy — contrato GD-074-02-24 contra o que foi p
 ws["A1"].font=TIT
 ws["A2"]="Contratante no papel: AGRO PASTORIL DOS POCOES LTDA (19.605.278/0001-10). Contratada: BRO ENERGY GESTÃO DE ENERGIA LTDA (29.118.895/0001-45). Assinado 07/03/2024, vigência 5 anos."
 ws["A2"].font=Font(name=F,size=9,italic=True,color="595959")
-r=4
+ws["A3"]="ATENÇÃO — ESTA ABA ESTÁ SUSPENSA. O sócio confirmou em 18/11/2026 que o GD-074-02-24 é de OUTRA empresa e NÃO rege esta usina. O contrato correto com a Bro Energy será providenciado. Até lá, NÃO use nenhum número desta aba e NÃO cite estas cláusulas com a Bro."
+ws["A3"].font=Font(name=F,size=11,bold=True,color="C00000")
+ws["A3"].fill=PatternFill("solid",fgColor="FCE4E4")
+ws.row_dimensions[3].height=30
+r=5
 
 def bloco(t):
     global r

@@ -14,7 +14,7 @@ documentos revelam. Hoje três CNPJs diferentes ocupam os três papéis do mesmo
 | Papel | Empresa | CNPJ | Documento que prova |
 |---|---|---|---|
 | Dona dos equipamentos | FOTOVOLT CURRAL NOVO SPE LTDA | 51.245.620/0001-21 | Informação do sócio (18/11/2026) |
-| Assina o contrato de gestão com a Bro | AGRO PASTORIL DOS POCOES LTDA | 19.605.278/0001-10 | Contrato GD-074-02-24, preâmbulo |
+| Assina o contrato de gestão com a Bro | A DEFINIR — contrato correto pendente | — | GD-074-02-24 descartado: é de outra empresa |
 | Recebe os relatórios e o repasse mensal | LF AGROPASTORIL LTDA | — | 9 relatórios mensais da Bro, 2026 |
 
 O contrato GD074 declara, nos "Considerandos", que a CONTRATANTE (Poções) "é detentora de imóvel
@@ -26,6 +26,15 @@ declaração precisa ser revista.
 LF Agropastoril também é sócia (quotista) da SPE, junto com Guilherme Filizzola Cury,
 Luiz Felipe Coelho Filizzola, Ricardo Vasconcelos Novais e Lucas Bauer Filizzola.
 Capital social: R$ 360.000,00. Percentual de cada sócio: ainda desconhecido.
+
+## Situação contratual (18/11/2026)
+
+O contrato GD-074-02-24, antes tratado aqui como o instrumento desta usina, **é de outra
+empresa e não se aplica**. O contrato correto com a BRO ENERGY será providenciado pelo sócio.
+Até que ele chegue, nenhuma cláusula, percentual, prazo ou multa pode ser citado como vigente.
+O que se sabe da relação com a Bro vem exclusivamente dos relatórios mensais:
+administração de 10,0% sobre o valor pago e taxa de 50% sobre o primeiro faturamento de cliente
+novo — ambas confirmadas pelo sócio como corretas e acordadas.
 
 ## O que é o negócio, em uma frase
 
