@@ -1,5 +1,5 @@
 # FICHA-MESTRE DE SPE — modelo piloto (Grupo GuiFizz / LF)
-# Status: v0.6 — campos marcados PENDENTE dependem de resposta do sócio ou de documento ainda não enviado.
+# Status: v0.7 — campos marcados PENDENTE dependem de resposta do sócio ou de documento ainda não enviado.
 # Fonte de cada campo é obrigatória: nenhum número entra aqui sem documento que o sustente.
 
 identificacao:
@@ -145,6 +145,11 @@ modelo_economico:
     caixa_em_31_10_2026: 5157.60
     folego_meses: 3.3
     receita_por_kwh_produzido: 0.7335
+    imposto_darf_bruto: 31268.88
+    estorno_imposto_spe_pocoes: 2930.52
+    imposto_liquido_suportado: 28338.36
+    custo_fixo_mensal_liquido: 1306.27
+    folego_meses_liquido: 3.9
   # Sem locação e sem venda, a usina gera CRÉDITOS DE ENERGIA que abatem a conta de
   # alguma(s) UC(s). O valor da SPE não aparece no resultado dela: aparece na conta de
   # luz de quem recebe o crédito. Enquanto o rateio não for explícito, não há como
@@ -202,8 +207,12 @@ alertas_abertos:
   - A26: Caixa de R$ 2.373,72 contra custo fixo de ~R$ 1.376/mês = 1,7 mês de fôlego.
          Houve 14 aportes de sócio (R$ 6.904,15) para cobrir furos. Não existe política de caixa mínimo
   - A27: Nenhuma provisão para reposição de inversor — e um inversor acabou de quebrar
-  - A28: Recebimentos da SPE POÇÕES LOCAÇÃO DE EQUIPAMENTOS: R$ 1.000,00 em set/26 e
-         R$ 1.930,52 em out/26. Partes relacionadas, sem documento conhecido. Já é padrão, não exceção
+  - A28: RESOLVIDO (sócio, 18/11/2026). Os recebimentos da SPE POÇÕES LOCAÇÃO DE EQUIPAMENTOS
+         (R$ 1.000,00 em set/26 e R$ 1.930,52 em out/26) são ESTORNO de imposto pago pela empresa
+         errada — o mesmo diretor responde pelas duas. Não é receita.
+         Reclassificado na planilha como redução de imposto, não como entrada.
+         Observação: os valores não correspondem a nenhum DARF isolado desta conta,
+         então convém guardar a memória de cálculo do contador junto ao lançamento.
   - A29: Out/26 teve R$ 2.929,89 de DARF (IRPJ e CSLL trimestrais) contra R$ 4.776,66 de receita.
          Não houve distribuição no mês e o caixa subiu para R$ 5.157,60 — decisão correta
   - A30: Primeiro gasto de O&M do histórico: R$ 600,00 à SOLCARE RETROFIT SOLAR em out/26,

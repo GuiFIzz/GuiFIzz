@@ -52,8 +52,9 @@ r=lin(ws,r,"Receita média mensal (últimos 12 meses)",
 CUSTO=r
 r=lin(ws,r,"Custo fixo médio mensal (últimos 12 meses)",
       f'=-(SUMIFS({FE},{FC},"Impostos (DARF)",{FD},">="&{d0})+SUMIFS({FE},{FC},"Contabilidade",{FD},">="&{d0})'
-      f'+SUMIFS({FE},{FC},"O&M / Manutenção",{FD},">="&{d0})+SUMIFS({FE},{FC},"Outras Despesas",{FD},">="&{d0}))/12',
-      R2,N,None,"Impostos, contabilidade, O&M e outras despesas.")
+      f'+SUMIFS({FE},{FC},"O&M / Manutenção",{FD},">="&{d0})+SUMIFS({FE},{FC},"Outras Despesas",{FD},">="&{d0})'
+      f'+SUMIFS({FE},{FC},"Estorno de Imposto (SPE Poções)",{FD},">="&{d0}))/12',
+      R2,N,None,"Impostos, contabilidade, O&M e outras despesas, já líquido dos estornos de imposto.")
 r=lin(ws,r,"Distribuição média mensal (últimos 12 meses)",
       f'=-(SUMIFS({FE},{FC},"Dist. Sócio - Guilherme",{FD},">="&{d0})+SUMIFS({FE},{FC},"Dist. Sócio - Luiz Felipe",{FD},">="&{d0})'
       f'+SUMIFS({FE},{FC},"Dist. Sócio - Ricardo",{FD},">="&{d0})+SUMIFS({FE},{FC},"Dist. Sócio - Lucas",{FD},">="&{d0}))/12',
@@ -61,6 +62,14 @@ r=lin(ws,r,"Distribuição média mensal (últimos 12 meses)",
 FOLEGO=r
 r=lin(ws,r,"Fôlego de caixa (meses de custo fixo)",f"=IFERROR(B4/B{CUSTO},0)",'0.0" meses"',VM,ALERT,
       "Quantos meses a empresa paga as contas sem receber nada.")
+r+=1
+ws.cell(r,1,"Imposto bruto contra imposto líquido").font=SUB; r+=1
+r=lin(ws,r,"DARF pago (todo o histórico)",f'=-SUMIFS({FE},{FC},"Impostos (DARF)")',R2,N,None,
+      "Tudo que saiu da conta como DARF.")
+r=lin(ws,r,"Estorno de imposto recebido da SPE Poções",f'=SUMIFS({FE},{FC},"Estorno de Imposto (SPE Poções)")',R2,N,None,
+      "Devolução de imposto pago pela empresa errada. Mesmo diretor nas duas, apenas estorno.")
+r=lin(ws,r,"Imposto líquido efetivamente suportado",f"=B{r-2}-B{r-1}",R2,NB,OKF,
+      "É este o número que entra no custo fixo acima, não o bruto.")
 r+=1
 ws.cell(r,1,"O problema dos aportes de emergência").font=SUB; r+=1
 r=lin(ws,r,"Aportes de sócio para cobrir furos de caixa",f'=SUMIFS({FE},{FC},"Aporte Sócio")',R2,N,None,

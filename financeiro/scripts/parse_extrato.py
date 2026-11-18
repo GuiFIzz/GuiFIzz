@@ -13,7 +13,7 @@ def categoriza(desc, valor):
     if "DARF" in d: return "Impostos (DARF)"
     if "COLETIVA" in d: return "Contabilidade"
     if "SOLCARE" in d or "RETROFIT" in d: return "O&M / Manutenção"
-    if "SPE POCOES" in d or "SPE POÇÕES" in d: return "Ressarcimento - SPE Poções"
+    if "SPE POCOES" in d or "SPE POÇÕES" in d: return "Estorno de Imposto (SPE Poções)"
     if "BRO ENERGY" in d: return "Receita Energia" if valor>0 else "Investimento - Usina (BRO Energy)"
     for n,c in [("GUILHERME","Guilherme"),("LUIZ FELIPE","Luiz Felipe"),
                 ("RICARDO","Ricardo"),("LUCAS","Lucas")]:
@@ -56,6 +56,8 @@ def do_pdf(p):
     return out
 
 linhas=do_xlsx()
+for l in linhas:
+    if "SPE Po" in l["cat"]: l["cat"]="Estorno de Imposto (SPE Poções)"
 vistos={(l["data"],l["desc"][:40],l["valor"]) for l in linhas}
 for p in sorted(glob.glob(os.path.join(EXT,"*.pdf"))):
     for l in do_pdf(p):

@@ -62,6 +62,9 @@ distribuição feita com caixa curto, imposto fora do padrão e operação entre
 - FOTOVOLT CURRAL NOVO SPE é a dona do ativo; LF AGROPASTORIL recebe o repasse.
   Não misturar com Agropastoril dos Poções. Ver `empresas/Fotovolt_Curral_Novo/`.
 - Contato na comercializadora: **Luana, da Bro Energy**.
+- Entradas vindas da **SPE POÇÕES LOCAÇÃO DE EQUIPAMENTOS** são **estorno de imposto pago pela
+  empresa errada** (mesmo diretor nas duas), não receita. Classificar sempre como redução de
+  imposto na categoria `Estorno de Imposto (SPE Poções)`.
 - São DUAS planilhas, com papéis diferentes:
   `financeiro/Fotovolt_Curral_Novo_Consolidado.xlsx` é a de decisão (dinheiro + energia + retorno),
   `financeiro/LF_Agropastoril_Analise_Relatorios_2026.xlsx` é a operacional (detalhe por cliente).

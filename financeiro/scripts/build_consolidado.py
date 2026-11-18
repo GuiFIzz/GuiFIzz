@@ -56,8 +56,8 @@ E=f"Extrato!"
 mes=defaultdict(lambda: defaultdict(float)); cats=set()
 for l in L: mes[l["data"][:7]][l["cat"]]+=l["valor"]; cats.add(l["cat"])
 MS=sorted(mes)
-ordem=["Receita Energia","Ressarcimento - SPE Poções","Aporte de Capital","Aporte Sócio","Resgate Aplicação",
-       "Outras Entradas","Investimento - Usina (BRO Energy)","Impostos (DARF)","Contabilidade",
+ordem=["Receita Energia","Aporte de Capital","Aporte Sócio","Resgate Aplicação",
+       "Outras Entradas","Investimento - Usina (BRO Energy)","Impostos (DARF)","Estorno de Imposto (SPE Poções)","Contabilidade",
        "O&M / Manutenção","Outras Despesas","Reembolso Sócio - Guilherme","Aplicação Financeira"]+ \
       [f"Dist. Sócio - {s}" for s in SOC]
 ordem=[c for c in ordem if c in cats]+[c for c in sorted(cats) if c not in ordem]
