@@ -1,5 +1,5 @@
 # FICHA-MESTRE DE SPE — modelo piloto (Grupo GuiFizz / LF)
-# Status: v0.1 — campos marcados PENDENTE dependem de resposta do sócio ou de documento ainda não enviado.
+# Status: v0.2 — campos marcados PENDENTE dependem de resposta do sócio ou de documento ainda não enviado.
 # Fonte de cada campo é obrigatória: nenhum número entra aqui sem documento que o sustente.
 
 identificacao:
@@ -31,13 +31,16 @@ atividade:
   cnae_principal: 43.21-5-00 Instalação e manutenção elétrica
   cnae_secundario:
     - 70.20-4-00 Consultoria em gestão empresarial
-  atividade_real_informada: Aluguel de equipamento (locação de bens móveis)
+  atividade_real_informada: "Aluguel de equipamento" (rótulo usado pelo grupo)
+  atividade_de_fato: |
+    Confirmado pelo sócio (18/11/2026): NÃO existe contrato de aluguel com a fazenda.
+    A SPE é proprietária dos equipamentos (usina) e o ativo está QUITADO.
+    Logo, hoje a SPE é uma sociedade PROPRIETÁRIA DE ATIVO, não uma locadora.
   divergencia: |
-    O cadastro NÃO contempla locação (ex.: 77.39-0-99 Aluguel de outras máquinas e
-    equipamentos). Isso muda base de cálculo e incidência: locação de bem móvel não
-    sofre ISS (Súmula Vinculante 31), serviço de instalação/manutenção sofre.
-    Também muda o enquadramento no Lucro Presumido e a redação da nota fiscal.
-    AÇÃO: validar com o contador antes do próximo faturamento.
+    O rótulo "aluguel de equipamento" não corresponde nem ao CNAE cadastrado
+    (43.21-5-00 instalação elétrica) nem ao fato (propriedade sem locação).
+    Três coisas precisam convergir: CNAE, contrato e nota fiscal.
+    AÇÃO: decidir qual é o modelo-alvo antes de emitir qualquer NF.
 
 societario:
   capital_social_total: 360000.00
@@ -88,31 +91,46 @@ contabilidade:
   foro: Contagem/MG
   fonte: Contrato assinado 01/06/2023
 
-ativo_operacional:          # TUDO PENDENTE — nenhum documento técnico recebido
+ativo_operacional:
+  propriedade: SPE é dona dos equipamentos        # confirmado pelo sócio 18/11/2026
+  financiamento: NENHUM — ativo QUITADO           # confirmado pelo sócio 18/11/2026
   potencia_kwp: PENDENTE
   data_energizacao: PENDENTE
   numero_uc_distribuidora: PENDENTE
   distribuidora: PENDENTE (presumivelmente CEMIG)
   capex_total: PENDENTE
-  financiamento: PENDENTE
+  origem_do_capex: PENDENTE  # integralização dos R$ 360k? aporte extra? mútuo de sócio?
   seguro: PENDENTE
   contrato_om: PENDENTE
+
+modelo_economico:
+  aluguel_para_a_fazenda: NÃO EXISTE              # confirmado pelo sócio 18/11/2026
+  arrendamento_pago_pela_spe: PENDENTE            # a usina ocupa área da fazenda a que título?
+  receita_atual_da_spe: PENDENTE — AINDA NÃO IDENTIFICADA
+  destino_dos_creditos_de_energia: PENDENTE
+  # Sem locação e sem venda, a usina gera CRÉDITOS DE ENERGIA que abatem a conta de
+  # alguma(s) UC(s). O valor da SPE não aparece no resultado dela: aparece na conta de
+  # luz de quem recebe o crédito. Enquanto o rateio não for explícito, não há como
+  # medir o que cada sócio recebe pelo que investiu.
 
 contratos_vinculados:
   - tipo: Gestão / Agro Pastoril
     referencia: GD074 - Contrato de Gestão - Agro Pastoril
     status: NÃO RECEBIDO nesta sessão — é o documento que define a receita da SPE
   - tipo: Locação de equipamento
-    status: PENDENTE
+    status: INEXISTENTE — confirmado pelo sócio 18/11/2026
   - tipo: Arrendamento/cessão de área
-    status: PENDENTE
+    status: PENDENTE — a usina está em área da fazenda; falta o título que sustenta isso
   - tipo: Conexão / acesso à distribuidora
     status: PENDENTE
 
 alertas_abertos:
-  - A1: CNAE não cobre locação de equipamento (impacto fiscal direto)
+  - A1: CNAE, rótulo ("aluguel de equipamento") e fato (propriedade sem locação) não batem
   - A2: Contrato de contabilidade vencido em 31/05/2024
   - A3: Teto de faturamento de R$ 185.000/ano dispara troca automática de plano
   - A4: E-mail oficial na Receita é do contador
   - A5: Percentual de quotas de cada sócio desconhecido
   - A6: Contrato assinado em 01/06/2023 já cita CNPJ aberto só em 30/06/2023
+  - A7: SPE sem linha de receita identificada — custo fixo mensal sem contrapartida no resultado
+  - A8: Origem do CAPEX desconhecida; se superou os R$ 360k de capital, há aporte não formalizado
+  - A9: Usina ocupa área da fazenda sem título documentado (comodato? arrendamento?)
