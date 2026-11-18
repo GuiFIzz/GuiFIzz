@@ -51,6 +51,25 @@ O saldo final da aba Extrato tem que bater com o saldo do extrato do banco — c
 Depois: procurar categoria nova (um fornecedor que nunca apareceu é um fato novo),
 distribuição feita com caixa curto, imposto fora do padrão e operação entre partes relacionadas.
 
+## Regra permanente: as planilhas vivem em DOIS lugares
+
+O GitHub é a oficina (fontes, scripts, regras). O Google Drive é a vitrine (onde sócios e
+contador abrem). Toda vez que uma planilha for reconstruída, publicar nos dois.
+
+Passo extra depois de rodar `atualizar.py` ou `atualizar_consolidado.py`:
+substituir o arquivo correspondente na pasta do Drive, pelos IDs abaixo.
+
+```
+Pasta no Drive : 1hG4wic6wDg0EmmedjfSTZ_p-KJKkUAcQ
+  Consolidado  : 1SQY7LGd19iPWHTBqogaLH2VTfG4OQphr
+  Operacional  : 16WMK23mSJRujMVJZsuJHJgMvX-RvPg0B
+  LEIA-ME      : 1p2uk8Slfbp5_j8QK2e9bJgJETZe5Y4etrteMnzgkGfM
+```
+
+Subir sempre com `disableConversionToGoogleType: true`, para o arquivo continuar .xlsx e
+não perder fórmulas nem gráficos na conversão para Google Sheets.
+Se o LEIA-ME da pasta estiver desatualizado quanto à base de dados, atualizar também.
+
 ## Contexto que não pode ser esquecido
 
 - **O contrato GD-074-02-24 é de OUTRA empresa e não rege esta usina** (confirmado em 18/11/2026).
