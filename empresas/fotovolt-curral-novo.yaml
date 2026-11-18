@@ -1,5 +1,5 @@
 # FICHA-MESTRE DE SPE — modelo piloto (Grupo GuiFizz / LF)
-# Status: v0.2 — campos marcados PENDENTE dependem de resposta do sócio ou de documento ainda não enviado.
+# Status: v0.3 — campos marcados PENDENTE dependem de resposta do sócio ou de documento ainda não enviado.
 # Fonte de cada campo é obrigatória: nenhum número entra aqui sem documento que o sustente.
 
 identificacao:
@@ -106,8 +106,27 @@ ativo_operacional:
 modelo_economico:
   aluguel_para_a_fazenda: NÃO EXISTE              # confirmado pelo sócio 18/11/2026
   arrendamento_pago_pela_spe: PENDENTE            # a usina ocupa área da fazenda a que título?
-  receita_atual_da_spe: PENDENTE — AINDA NÃO IDENTIFICADA
-  destino_dos_creditos_de_energia: PENDENTE
+  modelo_identificado: |
+    RESOLVIDO pelos relatórios mensais da Bro (jan-out/2026):
+    a usina gera créditos de energia alocados a UCs de consumidores terceiros.
+    A Bro (vendedora/gestora) fatura os clientes a uma tarifa com desconto sobre a CEMIG,
+    cobra, retém 10% de administração sobre o VALOR PAGO, deduz a fatura da concessionária
+    e repassa o líquido. Não há locação: há venda de energia compensada via consórcio.
+  destinatario_do_repasse: LF AGROPASTORIL LTDA   # NÃO a SPE dona do ativo
+  gestora_vendedora: Bro
+  periodo_medido: 2026-01 a 2026-10 (fevereiro ausente)
+  faturamento_bruto_emitido: 72332.70
+  repasse_liquido_recebido: 67638.47
+  administracao_paga_a_bro: 7622.80
+  taxa_administracao: 0.10                        # sobre o valor pago, não o faturado
+  desconto_medio_ao_cliente: 0.36
+  ucs_ativas_inicio_fim: [15, 13]
+  clientes_novos_no_periodo: 0
+  concentracao_maior_cliente: 0.59                # UC 3014144595
+  contas_a_receber_confirmado: 6076.57
+  contas_a_receber_a_verificar: 6056.06           # depende do relatório de fev/26
+  saldo_creditos_kwh_jan_out: [36430, 7823]       # queda de 78%
+  fonte: 9 relatórios PDF da Bro, parseados e conciliados (ver financeiro/)
   # Sem locação e sem venda, a usina gera CRÉDITOS DE ENERGIA que abatem a conta de
   # alguma(s) UC(s). O valor da SPE não aparece no resultado dela: aparece na conta de
   # luz de quem recebe o crédito. Enquanto o rateio não for explícito, não há como
@@ -134,3 +153,11 @@ alertas_abertos:
   - A7: SPE sem linha de receita identificada — custo fixo mensal sem contrapartida no resultado
   - A8: Origem do CAPEX desconhecida; se superou os R$ 360k de capital, há aporte não formalizado
   - A9: Usina ocupa área da fazenda sem título documentado (comodato? arrendamento?)
+  - A10: R$ 67.638,47 de repasse em 9 meses entraram na LF AGROPASTORIL, não na SPE dona do ativo,
+         sem contrato entre as duas pontas
+  - A11: Estoque de créditos caiu 78% (36.430 -> 7.823 kWh); UC principal zerou em out/26.
+         Receita cai quando o estoque acabar — projetado para nov-dez/2026
+  - A12: Zero clientes novos em 9 meses e 2 UCs perdidas, incluindo a 2ª maior em faturamento
+  - A13: O indicador de inadimplência do relatório subdeclara a dívida em 19,5x (out/26)
+  - A14: Relatório de fevereiro/2026 nunca foi entregue pela Bro
+  - A15: Contrato com a Bro não apresentado — prazo, rescisão e dono da carteira desconhecidos
