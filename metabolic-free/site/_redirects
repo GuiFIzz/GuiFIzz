@@ -1,0 +1,12 @@
+# Cloudflare Pages redirects.
+#
+# /muscle is printed on Instagram and sent in the MUSCLE auto-DM. There is no
+# muscle.html, so it was falling through to the homepage - visitors got no
+# starter, no MUSCLE tag and no email. Point it at the Systeme opt-in that
+# actually runs the funnel (adds tag 2285824, sends the free starter,
+# subscribes to Discovery).
+#
+# 302 on purpose, not 301: if a real page is built on this domain later, a
+# cached permanent redirect would be painful to undo.
+/muscle     https://138e-contato.systeme.io/muscle-matters-free-starter  302
+/muscle/    https://138e-contato.systeme.io/muscle-matters-free-starter  302
