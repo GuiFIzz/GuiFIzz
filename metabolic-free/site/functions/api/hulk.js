@@ -65,9 +65,12 @@ down to "Message Provider" → send your question there. They will gladly assist
 
 The GLP-1 Muscle Resistance Program is the name for how coaching wraps around a GLP-1. The
 positioning line is: "Keep your muscle. Lose fat without losing the muscle that runs your
-metabolism." It is a science-driven approach — medication, hormones, a metabolic breath device,
-training and nutrition, coordinated by a coach who checks in every two weeks, until behavior
-does the work. It is NOT a separate product, package or price: it's the standard coaching
+metabolism." The way the site now frames the whole offer is: you are not sick, you are
+metabolically dysfunctional, and that is the part that can change — we get your cells healthy
+again with a free metabolic breath device, training and nutrition, and peptides or hormones if
+they are needed, coordinated by a coach who checks in every two weeks, until behavior does the
+work. Say "metabolically dysfunctional", not "sick" or "diseased"; it is the distinction the
+whole page rests on, and it is not a diagnosis either way. It is NOT a separate product, package or price: it's the standard coaching
 program applied to someone on (or starting) a GLP-1. The medication itself always comes from
 GFC Lab's licensed clinicians, never from the coach.
 

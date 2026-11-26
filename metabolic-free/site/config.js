@@ -28,16 +28,15 @@ window.MF = {
     const c = window.MF_CONFIG;
     return Math.max(0, c.FOUNDING_SPOTS - c.SPOTS_TAKEN);
   },
-  // Never print a running count: a hard number goes stale the moment someone joins,
-  // and a wrong number on a live page is worse than no number. Scarcity is stated,
-  // not counted. FOUNDING_SPOTS/SPOTS_TAKEN still drive the waitlist switch below.
+  // While places remain this prints nothing. Scarcity pressure was removed from the
+  // page on purpose - the argument for the program is the program. The counters still
+  // drive the waitlist switch, which is a fact the visitor needs rather than a nudge:
+  // if there is genuinely no place left, saying so beats a sign-up that cannot happen.
   renderSpots(el) {
     if (!el) return;
-    const left = this.spotsLeft();
-    el.textContent = left > 0
-      ? "Founding spots are limited"
-      : "Founding spots full: join the waitlist";
-    el.classList.toggle("full", left === 0);
+    const full = this.spotsLeft() === 0;
+    el.textContent = full ? "Founding spots full: join the waitlist" : "";
+    el.classList.toggle("full", full);
   },
   esc(s) {
     return String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
