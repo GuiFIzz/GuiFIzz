@@ -1,0 +1,14 @@
+[
+ {"src":"/Users/GuiFizzCury/Downloads/GFcxtreme_workout_Mari/IMG_0070.MOV",
+  "out":"unilateral-cable-lat-pulldown__breathing__IMG_0070.mp4",
+  "name":"Unilateral Cable Lat Pulldown","variant":"Breathing",
+  "cue":"Bicep drives to your ear, then exhale as you pull the elbow down toward your ribs. Inhale as the arm travels back overhead."},
+ {"src":"/Users/GuiFizzCury/Downloads/GFcxtreme_workout_Mari/IMG_0070.MOV",
+  "out":"unilateral-cable-lat-pulldown__tempo__IMG_0070.mp4",
+  "name":"Unilateral Cable Lat Pulldown","variant":"Tempo",
+  "cue":"1 second to pull the elbow down to 80-90 degrees at your ribs, 1 second squeeze, 3 seconds back overhead."},
+ {"src":"/Users/GuiFizzCury/Downloads/GFcxtreme_workout_Mari/IMG_0070.MOV",
+  "out":"unilateral-cable-lat-pulldown__common-mistake__IMG_0070.mp4",
+  "name":"Unilateral Cable Lat Pulldown","variant":"Common Mistake",
+  "cue":"Don't let your shoulder take over the pull. Try to feel the lats working, not the shoulder."}
+]

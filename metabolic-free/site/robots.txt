@@ -1,0 +1,14 @@
+# metabolicgfcxtremefit.com
+User-agent: *
+Allow: /
+
+# The quiz itself and the printable clinic flyer are not search destinations.
+Disallow: /score
+Disallow: /score.html
+Disallow: /glp1-clinic-flyer
+Disallow: /glp1-clinic-flyer.html
+
+# The client platform is behind a login; nothing there belongs in an index.
+Disallow: /app/
+
+Sitemap: https://metabolicgfcxtremefit.com/sitemap.xml

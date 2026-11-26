@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GFC Lab · Metabolic Flex</title>
+<meta name="description" content="GFC Lab: online evaluation by licensed clinicians for GLP-1 medications, peptide therapy and hormone therapy, coordinated with your coaching.">
+<link rel="stylesheet" href="styles.css">
+<style>
+  #visit { display:none; margin:24px 0; }
+  #visit.on { display:block; }
+  #visit iframe { width:100%; height:calc(100vh - 140px); min-height:640px; border:1px solid var(--line); border-radius:14px; background:#fff; }
+  #visit .bar2 { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:10px; font-size:14px; color:var(--muted); }
+</style>
+<script src="config.js"></script>
+<link rel="canonical" href="https://metabolicgfcxtremefit.com/lab">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GFC Xtreme Fitness">
+<meta property="og:url" content="https://metabolicgfcxtremefit.com/lab">
+<meta property="og:title" content="GFC Lab · Metabolic Flex">
+<meta property="og:description" content="GFC Lab: online evaluation by licensed clinicians for GLP-1 medications, peptide therapy and hormone therapy, coordinated with your coaching.">
+<meta property="og:image" content="https://metabolicgfcxtremefit.com/media/og-metabolic-flex.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GFC Lab · Metabolic Flex">
+<meta name="twitter:description" content="GFC Lab: online evaluation by licensed clinicians for GLP-1 medications, peptide therapy and hormone therapy, coordinated with your coaching.">
+<meta name="twitter:image" content="https://metabolicgfcxtremefit.com/media/og-metabolic-flex.jpg">
+</head>
+<body>
+<nav class="topnav" aria-label="Main"><div class="wrap">
+  <a class="brand" href="index.html"><img src="media/gfc-xtreme-logo.png" alt="GFC Xtreme Fitness"><b>Metabolic <span>Flex</span></b></a>
+  <a class="tab" href="index.html">Home</a>
+  <a class="tab" href="science.html">The Science</a>
+  <a class="tab" href="program.html">Program</a>
+  <a class="tab" href="coach.html">Coach</a>
+  <a class="tab lab" href="lab.html" aria-current="page">GFC Lab</a>
+  <a class="tab fortify" href="fortify.html">Supplements</a>
+  <a class="tab" href="app/index.html">Client login</a>
+</div></nav>
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">GFC Lab · powered by Altrohealth</div>
+    <h1>GLP-1s, peptides and hormone therapy. One clinician-reviewed plan.</h1>
+    <p class="sub">GFC Lab brings GLP-1 medications, peptide therapy and hormone therapy together under licensed clinicians who decide what's right for you — paired with the strength training and nutrition coaching that keeps what actually matters: your muscle.</p>
+    <p><a class="btn" id="start" href="#">Start my GFC Lab visit</a></p>
+  </header>
+
+  <aside class="glp1">
+    <div class="tag">GLP-1 Muscle Resistance Program</div>
+    <b>Keep your muscle.</b>
+    <p class="lead">Lose fat without losing the muscle that runs your metabolism.</p>
+    <p>A science-driven approach: medication, hormones, a metabolic breath device, training and nutrition,
+      coordinated by a coach who checks in with you every two weeks — until behavior does the work.</p>
+  </aside>
+
+  <section class="block guide-offer">
+    <div class="eyebrow">Free guide</div>
+    <b>The Peptide Guide</b>
+    <p class="lead">What peptides actually do, which ones have evidence behind them, and the questions
+      to ask a clinician before you start.</p>
+    <p><a class="btn" href="peptide-guide.html" id="guide-cta">Get the free Peptide Guide &rarr;</a></p>
+  </section>
+
+
+  <section id="visit" aria-label="GFC Lab visit">
+    <div class="bar2"><span>🔒 Secure visit on Altrohealth's HIPAA-compliant platform</span>
+      <a id="popout" href="#" target="_blank" rel="noopener">Open full screen ↗</a></div>
+    <iframe id="labframe" title="GFC Lab visit (Altrohealth)" allow="camera; microphone; payment; clipboard-write"
+      referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  </section>
+
+  <section class="block">
+    <h2>What GFC Lab offers</h2>
+    <div class="card"><b>GLP-1 weight-management medications</b><p>Clinician-evaluated and monitored. We pair them with strength training and protein so you lose fat, not muscle.</p></div>
+    <div class="card"><b>Peptide therapy</b><p>Clinician-evaluated peptide protocols for recovery, body composition and healthy aging, monitored alongside your training.</p></div>
+    <div class="card"><b>Hormone therapy</b><p>For men and women with symptoms of low testosterone, perimenopause or menopause, after evaluation and labs.</p></div>
+    <div class="card"><b>Metabolic labs</b><p>Blood work such as A1c, fasting glucose, lipids and hormones, when ordered by your clinician.</p></div>
+  </section>
+
+  <section class="block">
+    <h2>How a visit works</h2>
+    <ol class="steps">
+      <li><b>Online intake</b> on Altrohealth's secure platform: health history and goals.</li>
+      <li><b>Review by a licensed clinician</b> in your state, with labs if needed.</li>
+      <li><b>If appropriate, a prescription</b> sent to a pharmacy and shipped to you.</li>
+      <li><b>Ongoing check-ins</b> with the clinician for dosing and safety.</li>
+      <li><b>Your coach connects it all</b> to your training, nutrition and Lumen data.</li>
+    </ol>
+  </section>
+
+  <section class="block">
+    <h2>Good to know</h2>
+    <ul class="check">
+      <li>Prescriptions are issued only when a licensed clinician determines they are medically appropriate. They are never guaranteed.</li>
+      <li>Your medical records stay with Altrohealth on its secure, HIPAA-compliant platform. Your coach sees only what you choose to share.</li>
+      <li>Visits, labs and medications are priced and billed by Altrohealth, separately from coaching.</li>
+      <li>Availability depends on your state.</li>
+    </ul>
+  </section>
+
+  <footer>
+    GFC Lab medical services are provided by independent licensed clinicians through Altrohealth. GFC Xtreme / Metabolic Flex
+    provides coaching only and does not diagnose, prescribe or provide medical care. In an emergency, call 911.
+      <br><a href="privacy.html" style="color:inherit">Privacy policy</a> · <a href="terms.html" style="color:inherit">Terms</a>
+  </footer>
+</div>
+<script>
+  const { ALTROHEALTH_URL: url, ALTROHEALTH_EMBED: embed } = MF_CONFIG;
+  const btn = document.getElementById("start");
+  if (!url) {
+    btn.href = "index.html#quiz"; btn.textContent = "Take the Metabolic Score first";
+  } else if (embed) {
+    // Altrohealth runs inside this tab. Their pages are served from their own servers, so medical
+    // data goes straight to them and never passes through this site.
+    const visit = document.getElementById("visit");
+    document.getElementById("popout").href = url;
+    btn.href = "#visit";
+    btn.onclick = (e) => {
+      e.preventDefault();
+      const f = document.getElementById("labframe");
+      if (!f.src) f.src = url;
+      visit.classList.add("on");
+      visit.scrollIntoView({ behavior: "smooth" });
+    };
+    if (location.hash === "#visit") btn.click();
+  } else {
+    btn.href = url; btn.target = "_blank"; btn.rel = "noopener";
+  }
+</script>
+
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+  <div class="gate-box">
+    <button class="gate-close" type="button" id="gate-x" aria-label="Close">&times;</button>
+    <h2 id="gate-title">The Peptide Guide</h2>
+    <p class="sub">What peptides actually do, which ones have evidence behind them, and the questions
+      to ask a clinician before you start. Yours free &mdash; tell me where to send it.</p>
+    <form id="gate-form" novalidate>
+      <label for="g-fn">First name</label>
+      <input id="g-fn" type="text" autocomplete="given-name" required>
+      <label for="g-em">Email</label>
+      <input id="g-em" type="email" autocomplete="email" required>
+      <div class="consent">
+        <input id="g-ok" type="checkbox" required>
+        <label for="g-ok" style="margin:0;font-weight:400">Send me the guide and Coach Gui's tips.
+          I can unsubscribe anytime. <a href="privacy.html" target="_blank">Privacy policy</a></label>
+      </div>
+      <button class="btn" id="g-go" type="submit">Send me the guide &rarr;</button>
+      <p class="gate-err" id="g-err" hidden></p>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Trade the Peptide Guide for an email. The guide is the lead magnet, so the contact
+  // is created and tagged before the file opens - but a failure on our side must not
+  // cost the reader the guide they were promised, so delivery happens either way.
+  (function () {
+    const gate = document.getElementById("gate");
+    const cta  = document.getElementById("guide-cta");
+    const form = document.getElementById("gate-form");
+    const err  = document.getElementById("g-err");
+    const go   = document.getElementById("g-go");
+    const dest = cta.getAttribute("href");
+    let lastFocus = null;
+
+    const open = (e) => {
+      e.preventDefault();
+      lastFocus = document.activeElement;
+      gate.classList.add("on");
+      document.getElementById("g-fn").focus();
+    };
+    const close = () => {
+      gate.classList.remove("on");
+      if (lastFocus) lastFocus.focus();
+    };
+
+    cta.addEventListener("click", open);
+    document.getElementById("gate-x").addEventListener("click", close);
+    gate.addEventListener("click", (e) => { if (e.target === gate) close(); });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && gate.classList.contains("on")) close();
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const first_name = document.getElementById("g-fn").value.trim();
+      const email = document.getElementById("g-em").value.trim();
+      if (!first_name || !/\S+@\S+\.\S+/.test(email) || !document.getElementById("g-ok").checked) {
+        err.textContent = "Add your name, a valid email, and tick the box.";
+        err.hidden = false;
+        return;
+      }
+      err.hidden = true;
+      go.disabled = true;
+      go.textContent = "Sending\u2026";
+      try {
+        await fetch(MF_CONFIG.GUIDE_LEAD_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ first_name, email, source: "peptide_guide" }),
+        });
+      } catch (e) {
+        console.warn("Guide lead submit failed", e);
+      }
+      if (window.fbq) fbq("track", "Lead");
+      if (window.gtag) gtag("event", "generate_lead");
+      location.href = dest;
+    });
+  })();
+</script>
+<script src="hulk.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Client Login · Metabolic Flex</title>
+<meta name="description" content="Log in to your Metabolic Flex training program.">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  #ptdWrap { margin:20px 0 40px; min-height:70vh; }
+  #ptd_portal { width:100%; min-height:70vh; }
+</style>
+<script src="../config.js"></script>
+</head>
+<body>
+<nav class="topnav" aria-label="Main"><div class="wrap">
+  <a class="brand" href="../index.html"><img src="../media/gfc-xtreme-logo.png" alt="GFC Xtreme Fitness"><b>Metabolic <span>Flex</span></b></a>
+  <a class="tab" href="../index.html">Home</a>
+  <a class="tab" href="../science.html">The Science</a>
+  <a class="tab" href="../program.html">Program</a>
+  <a class="tab" href="../coach.html">Coach</a>
+  <a class="tab lab" href="../lab.html">GFC Lab</a>
+  <a class="tab fortify" href="../fortify.html">Supplements</a>
+  <a class="tab" href="index.html" aria-current="page">Client login</a>
+</div></nav>
+<div class="wrap">
+  <header class="hero" style="padding-bottom:0">
+    <div class="eyebrow">Client login</div>
+    <h1>Your training program</h1>
+    <p class="sub">Log in or sign up below to access your tailored workouts with real human demo videos, nutrition tracking, daily habit check-ins, progress photos and charts, and direct messaging with your coach.</p>
+  </header>
+
+  <!-- New clients land here from the nav expecting a login and find only a login,
+       with no way to become a client. The packages go above the portal so the
+       person who has no account yet sees a route before the password field. -->
+  <section class="block" id="packages" style="padding-top:8px">
+    <h2>Not a client yet? Choose your package</h2>
+    <p class="sub" style="font-size:16px">Sign up and pay securely through PT Distinction, the same platform your training program lives in. Your login is created as soon as you enrol.</p>
+    <div class="card">
+      <div class="eyebrow">Phase 1: Foundation</div>
+      <div class="price">$399<small>/month · 3-month minimum</small></div>
+      <p>Coaching, the training app, bi-weekly 1:1 calls, and the free Lumen ($249 value).</p>
+      <p><a class="btn btn-fortify" href="https://www.ptdistinction.com/package_signup?str=1&amp;apk=GF4EJMK9NP396347&amp;pkid=47504" target="_blank" rel="noopener">Sign up &amp; pay — $399/mo &rarr;</a></p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Phase 2: Momentum</div>
+      <div class="price">$299<small>/month · 6-month commitment</small></div>
+      <p>Offered after your first 3 months. Same coaching and app, at a lower price for a longer commitment.</p>
+      <p><a class="btn" href="https://www.ptdistinction.com/package_signup?str=1&amp;apk=GF4EJMK9NP396347&amp;pkid=47505" target="_blank" rel="noopener">Sign up &amp; pay — $299/mo &rarr;</a></p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Phase 3: Consistency</div>
+      <div class="price">$279<small>/month · 12-month commitment</small></div>
+      <p>Our lowest price, for clients ready to commit to a full year. Same coaching and app, built for the long game.</p>
+      <p><a class="btn" href="https://www.ptdistinction.com/package_signup?str=1&amp;apk=GF4EJMK9NP396347&amp;pkid=47506" target="_blank" rel="noopener">Sign up &amp; pay — $279/mo &rarr;</a></p>
+    </div>
+    <div class="block-cta">
+      <a class="btn btn-sm btn-ghost" href="https://cal.com/gfcxtreme-fitness-nmylwf/30min" target="_blank" rel="noopener">Rather talk first? Book a free call &rarr;</a>
+      <p class="hint">Already a client? Your login is below.</p>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:0">
+    <h2>Already a client? Log in</h2>
+  </section>
+  <div id="ptdWrap">
+    <div id="ptd_portal"></div>
+  </div>
+</div>
+<script type="text/javascript">
+  var ptd_param = {};
+  ptd_param.apk = "GF4EJMK9NP396347";
+  ptd_param.domain = "https://v3portal.ptdistinction.com";
+</script>
+<script src="https://v3portal.ptdistinction.com/v3/inside/integration/v1/portal.js"></script>
+</body>
+</html>
