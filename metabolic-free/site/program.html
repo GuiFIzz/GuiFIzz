@@ -80,6 +80,24 @@
     </ol>
   </section>
 
+  <!-- The objection arrives here, between reading what the program is and seeing what it
+       costs, so the answer sits here too. The copy is duplicated from the training app's
+       /api/gfc/packages, and MF.renderWhy() replaces it with whatever the app is serving
+       once that is live (config.js). It is written out in full rather than fetched alone
+       so the section reads with no JavaScript, with the app down, and for a crawler. -->
+  <section class="block" id="why-three-months">
+    <h2 data-why="heading">Why three months?</h2>
+    <p class="sub" data-why="short">Because that is how long the measurement takes. HbA1c — the standard marker for how your body handles sugar — reflects the previous two to three months, because that is how long a red blood cell lives. Test at six weeks and you are still reading the old you.</p>
+    <ul data-why="points">
+      <li>Twelve weeks is the standard window in the trials that improve insulin sensitivity — it is the length the research itself uses.</li>
+      <li>Habits take about 66 days on average to become automatic, not the 21 days you have been told.</li>
+      <li>Metabolic change builds quietly for years before a routine blood test picks it up. What took years does not come apart in ten days.</li>
+    </ul>
+    <p data-why="closing"><b>Three months is the shortest program that can honestly show you a result. It is where we start, not where we finish.</b></p>
+    <p><a href="science.html">See the studies behind this</a></p>
+    <p class="note" data-why="disclaimer">Coaching, not medical treatment. If you have a diagnosed condition, work with your physician — this runs alongside their care, never instead of it.</p>
+  </section>
+
   <section class="block" id="signup">
     <h2>Investment</h2>
     <p class="sub" style="font-size:16px">Already know this is for you? Sign up and pay securely below — no need to wait for a call. Prefer to talk it through first? Take the Metabolic Score or book a call instead.</p>
@@ -123,6 +141,9 @@
 <script>
   MF.renderSpots(document.getElementById("spots"));
   if (MF.spotsLeft() === 0) document.getElementById("cta").textContent = "Join the waitlist";
+  // Takes the three-month copy from the training app when it is reachable. A failure
+  // here is silent on purpose: the section is already on the page and already correct.
+  MF.renderWhy(document.getElementById("why-three-months"));
 </script>
 <script src="hulk.js"></script>
 </body>

@@ -15,6 +15,12 @@ window.MF_CONFIG = {
   SUPABASE_URL: "",          // client platform backend; empty = demo mode
   SUPABASE_ANON_KEY: "",
   COACH_NAME: "Coach Gui",
+  // The training app's public package list, which also carries the reason the program
+  // has a three-month minimum. The app is the source of truth for that copy, so the
+  // pricing page reads it rather than keeping a second version that drifts.
+  // Empty until app.metabolicgfcxtremefit.com is live — the page falls back to the
+  // copy written into the HTML, which is the same text.
+  PACKAGES_ENDPOINT: "",     // e.g. "https://app.metabolicgfcxtremefit.com/api/gfc/packages"
 };
 
 window.MF = {
@@ -35,5 +41,53 @@ window.MF = {
   },
   esc(s) {
     return String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  },
+
+  // Replace the "Why three months?" copy with whatever the training app is serving.
+  //
+  // THE PAGE ALREADY READS CORRECTLY WITHOUT THIS. The same words are written into the
+  // HTML, so the section works with no JavaScript, with the app down, before the app
+  // exists at all, and for a crawler. This only keeps the two from drifting once the
+  // coach edits the copy in one place — which is the whole reason the app serves it.
+  //
+  // Everything below writes with textContent, never innerHTML. The text arrives over the
+  // network, and a page that injected it as markup would be one compromised response away
+  // from running someone else's script on the checkout page.
+  async renderWhy(root) {
+    const url = window.MF_CONFIG.PACKAGES_ENDPOINT;
+    if (!root || !url) return;
+
+    let why;
+    try {
+      // 4s: past that the visitor has read the static copy and a swap would only make
+      // the page jump under them. No credentials — this endpoint is public by design.
+      const ctl = new AbortController();
+      const timer = setTimeout(() => ctl.abort(), 4000);
+      const res = await fetch(url, { signal: ctl.signal, credentials: "omit" });
+      clearTimeout(timer);
+      if (!res.ok) return;
+      why = (await res.json()).why;
+    } catch { return; }          // offline, blocked, slow, not deployed — keep the HTML
+
+    if (!why || !why.short) return;
+
+    const set = (sel, text) => {
+      const el = root.querySelector(sel);
+      if (el && text) el.textContent = text;
+    };
+    set("[data-why=heading]", why.heading);
+    set("[data-why=short]", why.short);
+    set("[data-why=closing]", why.closing);
+    set("[data-why=disclaimer]", why.disclaimer);
+
+    const list = root.querySelector("[data-why=points]");
+    if (list && Array.isArray(why.points) && why.points.length) {
+      list.replaceChildren(...why.points.map((p) => {
+        const li = document.createElement("li");
+        li.textContent = p;
+        return li;
+      }));
+    }
+    root.dataset.source = "app";  // so you can tell in devtools which copy you are reading
   },
 };
